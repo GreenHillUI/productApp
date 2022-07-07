@@ -1,5 +1,5 @@
 
-client/dist/styles.css
+bundle.js
 package-lock.json
 
 .vscode
