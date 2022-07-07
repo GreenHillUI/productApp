@@ -6,7 +6,7 @@
     "build": "webpack --config webpack.config.js",
     "build:watch": "webpack --watch --config webpack.config.js",
     "start-server": "node server/index.js",
-    "test": "jest"
+    "test": "jest ./spec"
   },
   "repository": {
     "type": "git",
