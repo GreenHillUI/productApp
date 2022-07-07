@@ -3,13 +3,16 @@
   "version": "1.0.0",
   "description": "simple product application",
   "scripts": {
-    
+    "start-server": "npm server/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GreenHillUI/productApp.git"
   },
-  "author": "",
+  "dependencies": {
+    "express":"4.18.1",
+    "path":"0.12.7"
+  },
   "license": "ISC",
   "homepage": "https://github.com/GreenHillUI/productApp#readme"
 }
