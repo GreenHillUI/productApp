@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "simple product application",
   "scripts": {
-    "start-server": "npm server/index.js"
+    "start-server": "node server/index.js"
   },
   "repository": {
     "type": "git",
