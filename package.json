@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "Creates user interface and display for products",
   "scripts": {
-    "build": "webpack --watch --config webpack.config.js"
+    "build": "webpack --watch --config webpack.config.js",
+    "start-server": "node server/index.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GreenHillUI/productApp.git"
   },
-  "author": "",
   "license": "ISC",
   "homepage": "https://github.com/GreenHillUI/productApp#readme",
   "devDependencies": {
@@ -24,6 +24,8 @@
   "dependencies": {
     "@babel/runtime": "^7.18.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "express":"4.18.1",
+    "path":"0.12.7"
   }
 }
