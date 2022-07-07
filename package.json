@@ -1,0 +1,15 @@
+{
+  "name": "productapp",
+  "version": "1.0.0",
+  "description": "simple product application",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GreenHillUI/productApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/GreenHillUI/productApp#readme"
+}
