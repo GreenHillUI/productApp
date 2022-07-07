@@ -3,7 +3,7 @@ const path = require('path');
 
 var app = express();
 
-app.use(express.static(__dirname + '../client/dist'));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 
 
