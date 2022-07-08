@@ -1,4 +1,5 @@
 {
+    "root": true,
     "env": {
         "browser": true,
         "es2021": true
@@ -19,5 +20,7 @@
     ],
     "rules": {
         // Turn on/off rules here as needed
+        "quotes": "off",
+        "max-len": "off"
     }
 }
