@@ -7,7 +7,7 @@ const api = path.join( 'https://app-hrsei-api.herokuapp.com/api/fec2/', process.
 /**
  * Makes a get request to the API using the endpoint specified
  * @param endpoint destination in the API for the request
- * @param args optional parameters: [options object] [,callback] [,print error boolean]
+ * @param config [optional] additional parameters to send with the request
  * @returns A thenable promise to use
  */
 module.exports.get = ( endpoint, config={} ) => {
