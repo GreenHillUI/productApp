@@ -21,6 +21,9 @@
     "rules": {
         // Turn on/off rules here as needed
         "quotes": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "eol-last":"off",
+        "spaced-comment":"off",
+        "comma-dangle":"off"
     }
 }
