@@ -1,8 +1,0 @@
-const expandQuestions = (bool) => (
-  {
-    type: 'CHANGE_QUESTION_VIEW',
-    expand: bool
-  }
-);
-
-module.exports.expand = expandQuestions;

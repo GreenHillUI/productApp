@@ -2,7 +2,7 @@ import React from 'react';
 import Question from './Question';
 // const { data } = require('../exampleData');
 
-export default function QuestionList() {
+export default function QuestionList( { moreAnsweredQuestionsClick } ) {
   return (
     <div id='q-container'>
       <span id='q-title'>QUESTIONS & ANSWERS</span>
@@ -13,7 +13,9 @@ export default function QuestionList() {
         <Question />
       </div>
       <div id='q-buttons'>
-        <button type='button'>MORE ANSWERED QUESTIONS</button>
+        <button
+        onClick={moreAnsweredQuestionsClick}
+        type='button'>MORE ANSWERED QUESTIONS</button>
         <button type='button'>ADD A QUESTION +</button>
       </div>
     </div>

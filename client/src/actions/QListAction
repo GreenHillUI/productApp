@@ -1,0 +1,8 @@
+const expandQuestions = (bool) => (
+  {
+    type: 'Q_EXPAND',
+    expand: bool
+  }
+);
+
+export default expandQuestions;
