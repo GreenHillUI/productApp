@@ -1,12 +1,15 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
+// import axios from 'axios';
 import rootReducer from './reducers/main';
-
-
+import get from '../../server/controllers';
 // const store = Redux.legacy_createStore(rootReducer);
 
 const initialState = { //ADD to the initial state with any data you should be mounting/starting the program with
-  qExpanded: false //this state will have to be imported and addressed in a reducer and container file
+  qExpanded: false, //this state will have to be imported and addressed in a reducer and container file
+  qModal: false,
+  products: get('/product').then((res) => { initialState.products = res; }),
+  display: this.products[0]
 };
 
 

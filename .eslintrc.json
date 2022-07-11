@@ -30,6 +30,8 @@
         "react/prop-types":"off",
         "spaced-comment":"off",
         "comma-dangle":"off",
-        "jsx-quotes": "off"
+        "jsx-quotes": "off",
+        "padded-blocks":"off",
+        "no-trailing-spaces":"off"
     }
 }

@@ -5,4 +5,12 @@ const expandQuestions = (bool) => (
   }
 );
 
-export default expandQuestions;
+const showQModal = (bool) => (
+  {
+    type: 'Q_MODAL',
+    qModal: bool
+  }
+);
+
+module.exports.expandQuestions = expandQuestions;
+module.exports.showQModal = showQModal;
