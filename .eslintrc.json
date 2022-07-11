@@ -24,7 +24,10 @@
         "no-multiple-empty-lines":"off",
         "no-console":"off",
         "quotes": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "eol-last":"off",
+        "spaced-comment":"off",
+        "comma-dangle":"off"
 
     }
 }
