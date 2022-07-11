@@ -1,14 +1,15 @@
 import React from 'react';
 import * as ReactRedux from 'react-redux';
 
+import store from './store';
+import Search from './example/Search';
 
-// stateful component
 function App() {
   return (
     <div>
-      {/* <ReactRedux.Provider store={store}> */}
-      Hello World!
-      {/* </ReactRedux.Provider> */}
+      <ReactRedux.Provider store={store}>
+        <Search />
+      </ReactRedux.Provider>
     </div>
   );
 }

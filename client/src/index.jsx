@@ -3,11 +3,11 @@
  * it should not have to be changed. To add components modify App.jsx
  */
 
+import React from 'react';
 import { createRoot } from 'react-dom/client';
-import App from './App';
 
-console.log('help plz');
+import App from './App';
 
 const container = document.getElementById('app');
 const root = createRoot(container);
-root.render(<App />,);
+root.render(<App />);
