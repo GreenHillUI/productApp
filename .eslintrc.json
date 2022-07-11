@@ -19,5 +19,7 @@
     ],
     "rules": {
         // Turn on/off rules here as needed
+        "no-multiple-empty-lines":"off",
+        "no-console":"off"
     }
 }
