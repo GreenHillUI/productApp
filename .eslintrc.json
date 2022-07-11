@@ -26,10 +26,12 @@
         "quotes": "off",
         "max-len": "off",
         "eol-last":"off",
+
         "linebreak-style":"off",
         "no-multiple-empty-lines":"off",
         "default-param-last":"off",
         "react/prop-types":"off"
-
+        "spaced-comment":"off",
+        "comma-dangle":"off"
     }
 }
