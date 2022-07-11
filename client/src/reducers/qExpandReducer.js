@@ -1,10 +1,10 @@
 
 const qExpandReducer = (state = false, action) => {
   if (action.type === 'Q_EXPAND') {
-      return action.expand;
+      return action.qExpanded || false;
   } else {
     return state;
   }
 };
 
-module.exports.qExpandReducer = qExpandReducer;
+export default qExpandReducer;

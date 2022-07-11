@@ -1,7 +1,7 @@
 const expandQuestions = (bool) => (
   {
     type: 'Q_EXPAND',
-    expand: bool
+    qExpanded: bool
   }
 );
 

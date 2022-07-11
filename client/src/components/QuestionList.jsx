@@ -1,8 +1,7 @@
 import React from 'react';
 import Question from './Question';
-// const { data } = require('../exampleData');
 
-export default function QuestionList( { moreAnsweredQuestionsClick } ) {
+const QuestionList = ( {qExpanded, moreAnsweredQuestionsClick} ) => {
   return (
     <div id='q-container'>
       <span id='q-title'>QUESTIONS & ANSWERS</span>
@@ -14,10 +13,12 @@ export default function QuestionList( { moreAnsweredQuestionsClick } ) {
       </div>
       <div id='q-buttons'>
         <button
-        onClick={moreAnsweredQuestionsClick}
+        onClick={() => moreAnsweredQuestionsClick(true)}
         type='button'>MORE ANSWERED QUESTIONS</button>
         <button type='button'>ADD A QUESTION +</button>
       </div>
     </div>
   );
 }
+
+export default QuestionList;

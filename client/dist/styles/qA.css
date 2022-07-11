@@ -1,37 +1,3 @@
-/*
-  Josh's Custom CSS Reset
-  https://www.joshwcomeau.com/css/custom-css-reset/
-*/
-*, *::before, *::after {
-  box-sizing: border-box;
-  color: rgb(80, 79, 79);
-}
-* {
-  margin: 0;
-}
-html, body {
-  height: 100%;
-  font-family: 'PT Sans', sans-serif;
-}
-body {
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-}
-img, picture, video, canvas, svg {
-  display: block;
-  max-width: 100%;
-}
-input, button, textarea, select {
-  font: inherit;
-}
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
-#root, #__next {
-  isolation: isolate;
-}
-
-
 
 /**************** BEGINNING OF Q/A PORTION **************** */
 #q-container {
@@ -45,19 +11,19 @@ p, h1, h2, h3, h4, h5, h6 {
   row-gap: 5px;
   width: 70%;
   height: 500px;
-  background-color: rgb(157, 159, 19); /* For Dev */
+  background-color: whitesmoke; /* For Dev */
 }
 #q-title {
   grid-column: 1 /span 2;
   font-size: .75em;
   grid-row: 1;
-  background-color: aqua; /* For Dev */
+  background-color: whitesmoke; /* For Dev */
   margin: 5px 0px;
 }
 #q-nav {
   grid-column: 1 / span 4;
   grid-row: 2;
-  background-color: white; /* For Dev */
+  background-color: whitesmoke; /* For Dev */
   border: 1px solid black;;
   /* insert background image search mag glass */
 }
@@ -73,13 +39,14 @@ p, h1, h2, h3, h4, h5, h6 {
 #q-list {
   grid-column: 1 / span 4;
   grid-row: 3 / span 10;
-  background-color: maroon; /* For Dev */
+  background-color: whitesmoke;  /* For Dev */
 }
 #q-buttons {
   display: flex;
   grid-column: 1 / span 2;
   grid-row: 13 / span 2;
-  background-color: rgb(156, 38, 202); /* For Dev */
+  min-width: 400px;
+  background-color: whitesmoke; /* For Dev */
 }
 #q-buttons > button {
   display: flex;
@@ -92,10 +59,10 @@ p, h1, h2, h3, h4, h5, h6 {
 .question {
   display: grid;
   grid-template-columns: 5fr 1.25fr 1.75fr;  /*last three frames for the help and answer link*/
-  background-color: yellow; /* For Dev */
+  background-color: whitesmoke; /* For Dev */
 }
 .question > span {
-  background-color: white; /* For Dev */
+  background-color: whitesmoke; /* For Dev */
 }
 
 #q-text{
@@ -121,5 +88,3 @@ p, h1, h2, h3, h4, h5, h6 {
 
 
 /**************** END OF Q/A PORTION **************** */
-
-
