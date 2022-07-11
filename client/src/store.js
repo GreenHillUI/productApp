@@ -5,9 +5,9 @@ import rootReducer from './reducers/main';
 
 // const store = Redux.legacy_createStore(rootReducer);
 
-var initialState = { //ADD to the initial state with any data you should be mounting/starting the program with
-  qExpanded: false,  //this state will have to be imported and addressed in a reducer and container file
-}
+const initialState = { //ADD to the initial state with any data you should be mounting/starting the program with
+  qExpanded: false //this state will have to be imported and addressed in a reducer and container file
+};
 
 
 const store = createStore(

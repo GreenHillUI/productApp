@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
-import QuestionList from '../components/QuestionList';  //import the component
-import expandQuestions from '../actions/QListAction.js';
+import QuestionList from '../components/QuestionList'; //import the component
+import expandQuestions from '../actions/QListAction'; //and the action
 
 //Need to import the component and action associated with the prop
 
 //Using connect to map both the state and the dispatch to props
-const mapStateToProps = (store) => ( {qExpanded: store.qExpanded} );  //connects the prop to the state saved in the store
-const mapDispatchToProps = (dispatch) => ({                           //links the event handler to the store via dispatch
+const mapStateToProps = (store) => ({ qExpanded: store.qExpanded }); //connects the prop to the state saved in the store
+const mapDispatchToProps = (dispatch) => ({ //links the event handler to the store via dispatch
   moreAnsweredQuestionsClick: () => dispatch(expandQuestions(true))
 });
 const QListContainer = connect(mapStateToProps, mapDispatchToProps)(QuestionList);
