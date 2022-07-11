@@ -24,6 +24,9 @@
         "max-len": "off",
         "eol-last":"off",
         "spaced-comment":"off",
-        "comma-dangle":"off"
+        "comma-dangle":"off",
+        "no-multiple-empty-lines": "off",
+        "jsx-quotes": "off",
+        "no-console": "off"
     }
 }
