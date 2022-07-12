@@ -9,10 +9,10 @@ class Overview extends React.Component {
     constructor(props){
         super(props);
         
-        
+    
 
         //Using preset state info until controller interaction is set up. 
-        this.state = {
+        /*this.state = {
             //Simulated GET from /reviews/meta/?product_id=:product_id. Ratings obecject necessary for star rating, leaving it all in because I don't know what I'll need later. Since star ratings are shared it may be good to modularize handling their calculation and even rendering.
             reviewMetaData: {
                 "product_id": "40345",
@@ -34,12 +34,7 @@ class Overview extends React.Component {
                     }
                 }
             },
-        }
-
-      
-        
-        
-        
+        } */
     }
 
     //Finds and returns average of reviews
@@ -89,7 +84,7 @@ class Overview extends React.Component {
         .then(response => {
             this.setState({styles: response.data.results})
         })
-    
+
     }
     
 

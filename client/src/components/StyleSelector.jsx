@@ -7,23 +7,16 @@ class StyleSelector extends React.Component {
         super(props)
         this.state = {            
         }
-        this.setDefaultStyle = this.setDefaultStyle.bind(this);
+        
+        if(this.props.styles !== undefined) {
+            
+        }
         this.setStyle = this.setStyle.bind(this);
     }
 
-    setDefaultStyle() {
-        let styles = this.props.styles;
-        if(styles) {
-            let defaultStyle = this.props.styles.filter((style) => { return style["default?"] === true})
-            this.setState({selectedStyle: defaultStyle})
-            }
-       
-    }
 
-    componentDidMount() {
-        this.setDefaultStyle();
-        console.log(this.props)
-    }
+
+
     
     setStyle(style)  {
             this.setState({selectedStyle: style})
@@ -34,6 +27,8 @@ class StyleSelector extends React.Component {
 
     render() {
         let styles = this.props.styles;
+
+
         
         return(
             <div>
