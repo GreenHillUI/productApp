@@ -19,7 +19,7 @@ class AddToCart extends React.Component {
           if(skuList[key].quantity !== 0) {
             //console.log(sku.quantity);
               optionList.push(
-                  <option value={skuList[key].size}>{skuList[key].size}</option>
+                  <option data-key={key} value={skuList[key].size}>{skuList[key].size}</option>
                   )
                 }
             }
@@ -27,7 +27,9 @@ class AddToCart extends React.Component {
     }
 
     handleChange(event) {
-        console.log(event.target.value)
+        console.log(event.target)
+    
+     
     }
 
 
@@ -54,7 +56,8 @@ const AddToCartContainer = connect(
     }),
 
     (dispatch) => ({
-        setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style})
+        setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style}),
+        setSelectedSku: (sku) => dispatch({ type: 'SETSELECTEDSKU', selectedSku: sku})
     })
 )(AddToCart)
 
