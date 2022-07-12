@@ -1,5 +1,5 @@
-require( 'dotenv' ).config();
-const controllers = require('../server/controllers.js');
+require('dotenv').config();
+const controllers = require('../server/controllers');
 
 controllers.get('products')
-  .then(a=>console.log(a));
+  .then((a) => console.log(a));
