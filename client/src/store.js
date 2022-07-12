@@ -2,7 +2,6 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import axios from 'axios';
 import rootReducer from './reducers/main';
-const { get } = require('../../server/controllers');
 // const store = Redux.legacy_createStore(rootReducer);
 
 debugger;

@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
 const express = require('express');
 
-const path = require('path');
 
 const app = express();
 
