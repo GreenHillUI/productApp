@@ -18,7 +18,7 @@ class Overview extends React.Component {
                 "product_id": "40345",
                 "ratings": {
                     "1": "2",
-                    "2": "2",
+                    "2": "2",X
                     "3": "6",
                     "4": "2",
                     "5": "21"
