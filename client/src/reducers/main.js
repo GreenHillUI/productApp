@@ -8,7 +8,7 @@ import productReducer from './overViewReducer';
 const rootReducer = combineReducers({
   qExpanded: qExpandReducer,
   qModal: qModalReducer,
-  products: productReducer
+  products: productReducer,
   //state1: stateReducer1,
   //state2: stateReducer2,
   //etc
