@@ -23,6 +23,6 @@ module.exports.get = (endpoint, config = {}) => {
   return axios.get(url, config)
     .then((res) => res.data)
     .catch(() => {
-      throw new Error(`error making get request to API using endpoint ${endpoint}`);
+      console.error(new Error(`failed to make get request to API using endpoint ${endpoint}`));
     });
 };
