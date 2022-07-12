@@ -1,9 +1,9 @@
-import { join } from 'path';
-import axios from 'axios';
+const axios = require('axios');
+const path = require('path');
+// require('dotenv').config();
 
-require('dotenv').config();
 
-const api = join('https://app-hrsei-api.herokuapp.com/api/fec2/', process.env.CAMPUS_CODE);
+const api = path.join('https://app-hrsei-api.herokuapp.com/api/fec2/', process.env.CAMPUS_CODE);
 
 /**
  * Makes a get request to the API using the endpoint specified
@@ -11,8 +11,8 @@ const api = join('https://app-hrsei-api.herokuapp.com/api/fec2/', process.env.CA
  * @param config [optional] additional parameters to send with the request
  * @returns A thenable promise to use
  */
-export default function get(endpoint, config = {}) {
-  const url = new URL(join(api, endpoint)).href;
+module.exports.get = function get(endpoint, config = {}) {
+  const url = new URL(path.join(api, endpoint)).href;
 
   // adding Authorization here hides the key from the client
   const options = config;
@@ -25,5 +25,5 @@ export default function get(endpoint, config = {}) {
     .catch(() => {
       throw new Error('error making get request to API');
     });
-}
+};
 

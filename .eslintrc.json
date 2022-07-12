@@ -20,18 +20,19 @@
     ],
     "rules": {
         // Turn on/off rules here as needed
-
         "no-multiple-empty-lines":"off",
         "no-console":"off",
         "quotes": "off",
         "max-len": "off",
         "eol-last":"off",
-
         "linebreak-style":"off",
-        "no-multiple-empty-lines":"off",
         "default-param-last":"off",
-        "react/prop-types":"off"
+        "react/prop-types":"off",
         "spaced-comment":"off",
-        "comma-dangle":"off"
+        "comma-dangle":"off",
+        "jsx-quotes": "off",
+        "padded-blocks":"off",
+        "no-trailing-spaces":"off",
+        "no-debugger":"off"
     }
 }
