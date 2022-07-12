@@ -1,8 +1,10 @@
 const express = require('express');
+const routes = require('./routes');
 
 const app = express();
 
 app.use(express.static('client/dist'));
+app.use(routes);
 
 const port = 3000;
 

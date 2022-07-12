@@ -1,7 +1,19 @@
 // eslint-disable-next-line no-unused-vars, import/no-unresolved
-const express = require('express');
+const routes = require('express').Router();
+const controllers = require('./controllers');
 
-const route = express.Route();
+routes.get('/products', (req, res) => {
+  controllers.get(req.path)
+    .then((productData) => {
+      res.status(200).send(productData);
+    });
+});
 
+routes.get('/products:id', (req, res) => {
+  controllers.get(req.path)
+    .then((productData) => {
+      res.status(200).send(productData);
+    });
+});
 
-export default route;
+module.exports = routes;
