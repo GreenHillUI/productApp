@@ -1,46 +1,37 @@
 import React from 'react'
 import StyleBubble from './StyleBubble'
+import {FaCheckCircle} from 'react-icons/fa'
 
 
 class StyleSelector extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {            
-        }
-        
-        if(this.props.styles !== undefined) {
-            
-        }
-        this.setStyle = this.setStyle.bind(this);
-    }
+    // constructor(props) {
+    //     super(props)
+      
+    // }
 
-
-
-
-    
-    setStyle(style)  {
-            this.setState({selectedStyle: style})
-    
-    }
-
-    
-
+   
     render() {
         let styles = this.props.styles;
-
-
-        
+        let selectedStyle = this.props.selectedStyle;
         return(
             <div>
                 Available Styles: {styles ? styles.length :  `Loading`}
-  
-       {styles ? styles.map((style) => { return <StyleBubble key={style.style_id} style={style} styleClick={this.setStyle} /> }) : `Loading` }
- 
-            </div>
+                   {styles ? styles.map((style) => {
+                     if (selectedStyle.style_id === style.style_id ) {
+                         return (
+                            <div>
+                                <FaCheckCircle />
+                                <StyleBubble key={style.style_id} style={style} styleClick={this.setStyle} />
+                            </div>
 
+                            
+                         ) }return <StyleBubble key={style.style_id} style={style} styleClick={this.setStyle} /> }) : `Loading` }
+                   
+             </div>
         )
-    }
-    
+    } 
+  
 }
 
 export default StyleSelector;
+

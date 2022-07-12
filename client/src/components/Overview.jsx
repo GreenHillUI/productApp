@@ -1,97 +1,82 @@
-import React from "react";
 import axios from 'axios';
+import React from "react";
+import {connect} from 'react-redux'
 import StyleSelector from "./StyleSelector.jsx"
+
 import {FaFacebookSquare, FaInstagram, FaPinterest, FaTwitter} from 'react-icons/fa' ;
 import {BsStar, BsStarHalf, BsStarFill} from 'react-icons/bs' ;
 
 
 class Overview extends React.Component {
-    constructor(props){
-        super(props);
-        
-    
-
-        //Using preset state info until controller interaction is set up. 
-        /*this.state = {
-            //Simulated GET from /reviews/meta/?product_id=:product_id. Ratings obecject necessary for star rating, leaving it all in because I don't know what I'll need later. Since star ratings are shared it may be good to modularize handling their calculation and even rendering.
-            reviewMetaData: {
-                "product_id": "40345",
-                "ratings": {
-                    "1": "2",
-                    "2": "2",X
-                    "3": "6",
-                    "4": "2",
-                    "5": "21"
-                },
-                "recommended": {
-                    "false": "5",
-                    "true": "28"
-                },
-                "characteristics": {
-                    "Quality": {
-                        "id": 135223,
-                        "value": "3.8636363636363636"
-                    }
-                }
-            },
-        } */
+    constructor(props) {
+        super(props); 
     }
 
     //Finds and returns average of reviews
     //TODO: Handle edge case for no reviews in accordance with business docs
     //Terminate repeating decimal
-    reviewAverage() {
-        var total = 0;
-        var weightedSum = 0;
-        let ratings = this.state.reviewMetaData.ratings;
-        for (var i = 1; i < 6; i++ ) {
-            total += parseInt(ratings[i]);
-            weightedSum += i * ratings[i]
-        }
-        return (weightedSum / total)
-    }
+    // reviewAverage() {
+    //     var total = 0;
+    //     var weightedSum = 0;
+    //     let ratings = this.state.reviewMetaData.ratings;
+    //     for (var i = 1; i < 6; i++ ) {
+    //         total += parseInt(ratings[i]);
+    //         weightedSum += i * ratings[i]
+    //     }
+    //     return (weightedSum / total)
+    // }
 
-    
-
-    generateStars(reviewAverage) {
-        let filledStars = Math.trunc(reviewAverage);
-        let filledRemainder = reviewAverage % 1;
-        let emptyStars = 5 - filledStars;
-        let starBar = [];
-        for (var i = 0; i < filledStars; i++) {
-            starBar.push(<BsStarFill/>)
-        } 
+    // generateStars(reviewAverage) {
+    //     let filledStars = Math.trunc(reviewAverage);
+    //     let filledRemainder = reviewAverage % 1;
+    //     let emptyStars = 5 - filledStars;
+    //     let starBar = [];
+    //     for (var i = 0; i < filledStars; i++) {
+    //         starBar.push(<BsStarFill/>)
+    //     } 
         
-        if (filledRemainder >= 0.5) {
-            starBar.push(<BsStarHalf/>)
-        }
+    //     if (filledRemainder >= 0.5) {
+    //         starBar.push(<BsStarHalf/>)
+    //     }
         
-        for (var i = 0; i < emptyStars; i++) {
-            starBar.push(<BsStar/>)
-        } 
+    //     for (var i = 0; i < emptyStars; i++) {
+    //         starBar.push(<BsStar/>)
+    //     } 
 
-        return starBar;
-    }
+    //     return starBar;
+    // }
 
     componentDidMount() {
         axios.get('/products/40348')
         .then(response => {
-            this.setState({productInfo: response.data})
+            console.log(response.data)
+           this.props.setProductInfo(response.data)
         })
-        .catch((err) => {console.log(`Error loading product info`)})
+        .catch((err) => {console.log(`Error loading product info`)}) 
         
         axios.get('/products/40348/styles')
         .then(response => {
-            this.setState({styles: response.data.results})
+            this.props.setStyles(response.data.results)
+            this.props.setSelectedStyle(this.setDefaultStyle(response.data.results));
         })
+        .catch((err) => console.log(err))
+        
 
     }
     
+    setDefaultStyle(styles) {
+        console.log(styles)
+         let result = styles.filter((style) => {
+            return style['default?'] === true;
+        })
+        console.log(`Result `, result)
+        return result;
+    }
 
 //Add section for product features if they exist
     render () {
-        let productInfo = this.state.productInfo;
-        let styles = this.state.styles;
+        let productInfo = this.props.productInfo;
+        let styles = this.props.styles;
        
         return (
             //Coming back to image gallery after writing a carousel
@@ -104,17 +89,33 @@ class Overview extends React.Component {
             <div><p>{productInfo ? productInfo.description : `Loading`} </p></div>
        
             <div>Styles:<br/>
-            
-            <StyleSelector styles={styles ? styles : undefined}/>
-                 <div>Review Score: {this.generateStars(this.reviewAverage())}</div>
+            <StyleSelector styles={styles} selectedStyle={this.props.selectedStyle} />
+          
+                 <div>Review Score: {/*this.generateStars(this.reviewAverage())*/}</div>
             </div>
-            <div>Price:HARDCODE </div>
+            <div>Price: {this.props.selectedStyle.sale_price ? `Was $${this.props.selectedStyle.original_price} Now: $${this.props.selectedStyle.sale_price}` : `$${this.props.selectedStyle.original_price}`}</div>
 
-            <div><FaFacebookSquare/> <FaInstagram/> <FaTwitter/> <FaPinterest/></div>
+            {/* {<div><FaFacebookSquare/> <FaInstagram/> <FaTwitter/> <FaPinterest/></div>} */}
             </div>
         )
     }
 
 }
 
-export default Overview;
+const OverviewContainer = connect(
+    // connects the props to the state saved in the store
+    (state) => ({
+      productInfo: state.productInfo,
+      styles: state.styles,
+      selectedStyle: state.selectedStyle
+    }),
+    // links the event handler to the store via dispatch
+    (dispatch) => ({
+      setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
+      setProductInfo: (info) => dispatch({type: 'SETPRODUCTINFO', productInfo: info }),
+      setSelectedStyle: (style) => dispatch({type: 'SETSELECTEDSTYLE', selectedStyle: style})
+    }),
+  )(Overview);
+  
+  export default OverviewContainer;
+  

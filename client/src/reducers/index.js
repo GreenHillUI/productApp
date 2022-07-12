@@ -4,7 +4,13 @@
  *  Add an object with a !unique! key to the exported object
  */
 import textReducer from './textReducer';
+import productInfoReducer from './productInfoReducer';
+import stylesReducer from './stylesReducer';
+import selectedStyleReducer from './selectedStyleReducer';
 
 export default {
   searchQuery: textReducer,
+  productInfo: productInfoReducer,
+  styles: stylesReducer,
+  selectedStyle: selectedStyleReducer,
 };
