@@ -1,5 +1,6 @@
 const path = require('path');
-require('dotenv').config();
+// const Dotenv = require('dotenv-webpack');
+const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -15,10 +16,16 @@ module.exports = {
       os: false
     }
   },
+  plugins: [
+    // new Dotenv(),
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
+    })
+  ], //rather than injecting helper functions for babel into each file, provides reference (reducing duplication)
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/, //check any files with these endings to transpile
+        test: /\.(js|jsx|.env)$/, //check any files with these endings to transpile
         exclude: /(node_modules|bower_components)/, //excludes these files from transpiler to imporve runtime
         use: {
           loader: 'babel-loader', //use updated version of babel loader
@@ -32,11 +39,11 @@ module.exports = {
                 }
               ]
             ]
-            // plugins: ['@babel/plugin-transform-runtime'] //rather than injecting helper functions for babel into each file, provides reference (reducing duplication)
           }
         }
       }
     ],
+
   //   devServer: {    ** combine with script::   "dev": "webpack-dev-server --hot --inline"
   //     contentBase: './src',      **and install::   npm --dev webpack-dev-server
   //     publicPath: '/output'
