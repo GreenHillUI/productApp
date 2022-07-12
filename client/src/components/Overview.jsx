@@ -2,15 +2,14 @@ import axios from 'axios';
 import React from "react";
 import {connect} from 'react-redux'
 import StyleSelector from "./StyleSelector.jsx"
+import AddToCart from './AddtoCart.jsx';
 
 import {FaFacebookSquare, FaInstagram, FaPinterest, FaTwitter} from 'react-icons/fa' ;
 import {BsStar, BsStarHalf, BsStarFill} from 'react-icons/bs' ;
 
 
 class Overview extends React.Component {
-    constructor(props) {
-        super(props); 
-    }
+ 
 
     //Finds and returns average of reviews
     //TODO: Handle edge case for no reviews in accordance with business docs
@@ -96,6 +95,7 @@ class Overview extends React.Component {
             <div>Price: {this.props.selectedStyle.sale_price ? `Was $${this.props.selectedStyle.original_price} Now: $${this.props.selectedStyle.sale_price}` : `$${this.props.selectedStyle.original_price}`}</div>
 
             {/* {<div><FaFacebookSquare/> <FaInstagram/> <FaTwitter/> <FaPinterest/></div>} */}
+            <AddToCart/>
             </div>
         )
     }
