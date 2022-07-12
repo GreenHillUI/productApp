@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import StyleBubble from './StyleBubble'
 import {FaCheckCircle} from 'react-icons/fa'
 
@@ -9,7 +10,11 @@ class StyleSelector extends React.Component {
       
     // }
 
-   
+   handleStyleClick(style) {
+    console.log(style)
+    this.props.setSelectedStyle([style])
+
+   }
     render() {
         let styles = this.props.styles;
         let selectedStyle = this.props.selectedStyle;
@@ -21,11 +26,11 @@ class StyleSelector extends React.Component {
                          return (
                             <div>
                                 <FaCheckCircle />
-                                <StyleBubble key={style.style_id} style={style} styleClick={this.setStyle} />
+                                <StyleBubble key={style.style_id} style={style}  />
                             </div>
 
                             
-                         ) }return <StyleBubble key={style.style_id} style={style} styleClick={this.setStyle} /> }) : `Loading` }
+                         ) }return <StyleBubble key={style.style_id} style={style} styleClick={this.handleStyleClick.bind(this)} /> }) : `Loading` }
                    
              </div>
         )
@@ -33,5 +38,16 @@ class StyleSelector extends React.Component {
   
 }
 
-export default StyleSelector;
 
+const StyleSelectorContainer = connect(
+    (state) => ({
+        styles: state.styles,
+        selectedStyle: state.selectedStyle
+    }),
+    
+    (dispatch) => ({
+        setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style})
+    })
+    )(StyleSelector)
+    
+    export default StyleSelectorContainer;
