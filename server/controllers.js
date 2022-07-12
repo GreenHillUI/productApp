@@ -1,7 +1,6 @@
+require('dotenv').config();
 const { join } = require('path');
 const axios = require('axios');
-
-require('dotenv').config();
 
 const api = join('https://app-hrsei-api.herokuapp.com/api/fec2/', process.env.CAMPUS_CODE);
 
