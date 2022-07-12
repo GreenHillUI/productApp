@@ -1,15 +1,15 @@
 import React from 'react';
-import Provider from 'react-redux';
+import * as ReactRedux from 'react-redux';
 
 import store from './store';
-import Search from './example/Search';
+import Overview from './components/Overview.jsx';
 
 function App() {
   return (
     <div>
-      <Provider store={store}>
-        <Search />
-      </Provider>
+      <ReactRedux.Provider store={store}>
+        <Overview />
+      </ReactRedux.Provider>
     </div>
   );
 }

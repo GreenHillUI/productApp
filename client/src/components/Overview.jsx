@@ -2,7 +2,7 @@ import React from "react";
 import axios from 'axios';
 import StyleSelector from "./StyleSelector.jsx"
 import {FaFacebookSquare, FaInstagram, FaPinterest, FaTwitter} from 'react-icons/fa' ;
-import {BsStar, BsStarHalf, BsStarFill, BsTelephoneInbound} from 'react-icons/bs' ;
+import {BsStar, BsStarHalf, BsStarFill} from 'react-icons/bs' ;
 
 
 class Overview extends React.Component {

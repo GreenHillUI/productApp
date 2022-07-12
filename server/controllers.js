@@ -1,6 +1,5 @@
-import { join } from 'path';
-import axios from 'axios';
-
+const {join} = require('path');
+const axios = require('axios');
 require('dotenv').config();
 
 const api = join('https://app-hrsei-api.herokuapp.com/api/fec2/', process.env.CAMPUS_CODE);
@@ -11,7 +10,7 @@ const api = join('https://app-hrsei-api.herokuapp.com/api/fec2/', process.env.CA
  * @param config [optional] additional parameters to send with the request
  * @returns A thenable promise to use
  */
-export default function get(endpoint, config = {}) {
+module.exports = function get(endpoint, config = {}) {
   const url = new URL(join(api, endpoint)).href;
 
   // adding Authorization here hides the key from the client
