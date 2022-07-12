@@ -1,5 +1,5 @@
-import axios from 'axios';
-import path from 'path';
+const axios = require('axios');
+const path = require('path');
 
 require('dotenv').config();
 
@@ -11,7 +11,7 @@ const api = path.join('https://app-hrsei-api.herokuapp.com/api/fec2/', process.e
  * @param config [optional] additional parameters to send with the request
  * @returns A thenable promise to use
  */
-export default function get(endpoint, config = {}) {
+module.exports.get = function get(endpoint, config = {}) {
   const url = new URL(path.join(api, endpoint)).href;
 
   // adding Authorization here hides the key from the client
@@ -25,5 +25,5 @@ export default function get(endpoint, config = {}) {
     .catch(() => {
       throw new Error('error making get request to API');
     });
-}
+};
 

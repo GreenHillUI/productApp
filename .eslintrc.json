@@ -32,6 +32,7 @@
         "comma-dangle":"off",
         "jsx-quotes": "off",
         "padded-blocks":"off",
-        "no-trailing-spaces":"off"
+        "no-trailing-spaces":"off",
+        "no-debugger":"off"
     }
 }

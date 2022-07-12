@@ -1,4 +1,5 @@
 const path = require('path');
+require('dotenv').config();
 
 module.exports = {
   mode: 'development',
@@ -9,13 +10,16 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'], //extensions do not need to be included while being
-    fallback: { os: false }
+    fallback: {
+      fs: false,
+      os: false
+    }
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/, //check any files with these endings to transpile
-        exclude: /(bower_components)/, //excludes these files from transpiler to imporve runtime
+        exclude: /(node_modules|bower_components)/, //excludes these files from transpiler to imporve runtime
         use: {
           loader: 'babel-loader', //use updated version of babel loader
           options: {
