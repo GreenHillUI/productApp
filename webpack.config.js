@@ -9,7 +9,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'], //extensions do not need to be included while being
-    fallback: { os: false }
+    fallback: {
+      fs: false,
+      os: false
+    }
   },
   module: {
     rules: [
