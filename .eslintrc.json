@@ -34,6 +34,6 @@
         "padded-blocks":"off",
         "no-trailing-spaces":"off",
         "no-debugger":"off"
-   
+
     }
 }

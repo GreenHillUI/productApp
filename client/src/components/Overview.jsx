@@ -23,11 +23,13 @@ class Overview extends React.Component {
       .then((response) => {
         console.log(JSON.stringify(response.data.id));
         const p_id = JSON.stringify(response.data.id);
-        axios.get(`/qa/questions/40348`)
+
+        axios.get(`/qa/questions/${p_id}`)
           .then((res) => {
             setProductQs(JSON.stringify(res.data));
           })
           .catch((err) => console.log(err));
+
         setProductInfo(response.data);
       })
       .catch(() => console.log(`Error loading product info`));
