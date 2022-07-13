@@ -39,5 +39,5 @@ const qListReducer = (state = {}, action) => {
 };
 
 
-module.exports.qListReducer = qListReducer;
+export default qListReducer;
 

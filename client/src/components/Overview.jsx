@@ -10,7 +10,6 @@ import AddToCart from './AddtoCart';
 function setDefaultStyle(styles) {
 
   const result = styles.filter((style) => style['default?'] === true);
-
   return result;
 }
 
@@ -22,8 +21,12 @@ class Overview extends React.Component {
     const { setStyles, setSelectedStyle, setProductInfo, setProductQs } = this.props;
     axios.get('/products/40348')
       .then((response) => {
-        axios.get(`/qa/questions/${response.data.id}`)
-          .then((res) => setProductQs(res.data))
+        console.log(JSON.stringify(response.data.id));
+        const p_id = JSON.stringify(response.data.id);
+        axios.get(`/qa/questions/40348`)
+          .then((res) => {
+            setProductQs(JSON.stringify(res.data));
+          })
           .catch((err) => console.log(err));
         setProductInfo(response.data);
       })

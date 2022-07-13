@@ -37,10 +37,10 @@ function QuestionList({ productQs, qFilter }) {
   }
 
   //if the user filter is > 2 chars, filter to Q's w/ a matching string in the review (Q or A)
-  debugger;
+
   const qList = (qFilter.length > 2 ? applyFilter(productQs, qFilter) : productQs);
   //Sorts the productQs by helpfulness rating, slice the amount to be shown
-  const qListSorted = qList.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, qExpandedBy);
+  // const qListSorted = qList.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, qExpandedBy) || null;
 
 
 
@@ -58,7 +58,7 @@ function QuestionList({ productQs, qFilter }) {
           <div id='q-list'>
             <Question />
             {/* show only the right amount(expandBy) of sorted q's} pass q to q */}
-            { qListSorted.map((q) => (<Question key={q.question_id} question={q} />))}
+            {/* { qListSorted.map((q) => (<Question key={q.question_id} question={q} />))} */}
           </div>
           <div id='q-buttons'>
             <button

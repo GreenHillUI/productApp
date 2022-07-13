@@ -30,10 +30,9 @@ app.get('/products/:id/styles', (req, res) => {
   });
 });
 
-app.get('/qa/questions/:product_id/:page/:count', (req, res) => {
+app.get('/qa/questions/:product_id', (req, res) => {
   controllers.get(req.path)
-    .then((styleData) => { res.status(200).send(styleData); })
-    .catch((err) => { console.log(err); });
+    .then((styleData) => { res.status(200).send(styleData); });
 });
 
 const port = 3000;
