@@ -33,17 +33,11 @@ class Overview extends React.Component {
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
-      
-
   }
-  
-
 
   //Add section for product features if they exist
   render() {
     const { productInfo, selectedStyle } = this.props;
-
-     
     return (
     //Coming back to image gallery after writing a carousel
       <div>
