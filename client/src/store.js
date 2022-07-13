@@ -1,6 +1,5 @@
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import axios from 'axios';
 import rootReducer from './reducers/main';
 // const store = Redux.legacy_createStore(rootReducer);
 
