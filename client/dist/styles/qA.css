@@ -59,7 +59,9 @@
 .question {
   display: grid;
   grid-template-columns: 5fr 1.25fr 1.75fr;  /*last three frames for the help and answer link*/
+  grid-template-rows: 1fr 2fr 1fr;
   background-color: yellow; /* For Dev */
+  height: auto;
 }
 .question > span {
   background-color: white; /* For Dev */
@@ -84,6 +86,16 @@
   font-weight: bold;
   background-color: inherit;
   float: right;
+}
+
+#q-a-load {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#temp-a {
+  grid-column: 1;
+  grid-row: 3;
 }
 
 

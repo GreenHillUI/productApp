@@ -1,17 +1,35 @@
 
-const qExpandReducer = (state = false, action) => {
-  if (action.type === 'Q_EXPAND') {
-    return action.qExpanded || false;
+const qListReducer = (state = {}, action) => {
+  switch (action.type) {
+    case "Q_MODAL":
+      return {
+        ...state,
+        qList: {
+          ...state.qList,
+          qModal: action.payload
+        }
+      };
+    case "Q_EXPAND":
+      return {
+        ...state,
+        qList: {
+          ...state.qList,
+          qExpanded: action.payload
+        }
+      };
+    case "SEARCH_ENTRY":
+      return {
+        ...state,
+        qList: {
+          ...state.qList,
+          qSearch: action.payload
+        }
+      };
+    default:
+      return state;
   }
-  return state;
 };
 
-const qModalReducer = (state = false, action) => {
-  if (action.type === 'Q_MODAL') {
-    return action.qModal;
-  }
-  return state;
-};
 
-module.exports.qExpandReducer = qExpandReducer;
-module.exports.qModalReducer = qModalReducer;
+module.exports.qListReducer = qListReducer;
+
