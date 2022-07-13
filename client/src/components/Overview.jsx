@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 //import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs' ;
 import StyleSelector from "./StyleSelector";
 import AddToCart from './AddtoCart';
-import StyleSelectorContainer from './StyleSelector';
+
 
 function setDefaultStyle(styles) {
-  console.log(styles);
+  //console.log(styles);
   const result = styles.filter((style) => style['default?'] === true);
   //console.log(`Result `, result)
   return result;
@@ -55,7 +55,7 @@ class Overview extends React.Component {
     const { setStyles, setSelectedStyle, setProductInfo } = this.props;
     axios.get('/products/40348')
       .then((response) => {
-        console.log(response.data);
+        //console.log(response.data);
         setProductInfo(response.data);
       })
       .catch(() => console.log(`Error loading product info`));
@@ -74,7 +74,7 @@ class Overview extends React.Component {
 
   //Add section for product features if they exist
   render() {
-    const { productInfo, styles, selectedStyle } = this.props;
+    const { productInfo, selectedStyle } = this.props;
 
      
     return (
@@ -92,12 +92,11 @@ class Overview extends React.Component {
             {productInfo ? productInfo.description : `Loading`} 
           </p>
         </div>
-        
+
         <div>
           Styles:
           <br />
-        
-        
+          <StyleSelector />
           <div>
             Review Score: 
             {/*this.generateStars(this.reviewAverage())*/}
@@ -108,7 +107,6 @@ class Overview extends React.Component {
           {selectedStyle.sale_price ? `Was $${selectedStyle.original_price} Now: $${selectedStyle.sale_price}` : `$${selectedStyle.original_price}`}
         </div>
 
-    
         <AddToCart />
       </div>
     );

@@ -2,51 +2,63 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 function makeSizeOptions(skuList) {
-  const optionList = [];
-  console.log(skuList);
-
+  let optionList = [];
+  if (skuList) {
+    optionList = Object.entries(skuList).map((sku) => {
+      if (sku[1].quantity > 0) {
+        return (<option key={sku[0]} value={sku[0]}>{sku[1].size}</option>);
+      }
+      
+    });
+ 
+    
+  }
+  optionList.unshift(<option value="Select Size">Select Size</option>);
   return optionList;
 }
 
-
-function handleChange(event) {
-  console.log(event.target);
-
-}
+function AddToCart(props) {
+  const { selectedStyle, selectedSku, setSelectedSku } = props;
 
 
-class AddToCart extends React.Component {
-// The first dropdown will list all of the available sizes for the currently selected style. 
-// Only sizes that are currently in stock for the style selected should be listed. Sizes not available should not appear within the list. If there is no remaining stock for the current style, the dropdown should become inactive and read “OUT OF STOCK”. 
-// When collapsed, the dropdown should show the currently selected size. 
-// By default, the dropdown should show “Select Size”. 
 
-  //Take the skus object from the selected style, 
-  //Check each sku for non-zero quantity,
-  //If Non-zero, wrap the size in option tags and push to result array, If zero ignore
-  //Return array of wrapped DOM elements
+  const sizeOptions = makeSizeOptions(selectedStyle.skus);
+
   
 
-  render() {
-    const { selectedStyle } = this.props;
-    const sizeOptions = makeSizeOptions(selectedStyle.skus);
-    //console.log(sizeOptions)
-    return (
-      <div>
-        <label htmlFor='size-select'>Size: </label>
-        <select id='size-select' onChange={handleChange}>{sizeOptions.length !== 0 ? sizeOptions : `Out of Stock`}</select>
-        <label htmlFor='qty-select'>Qty: </label>
-        <select id='qty-select'>PLACEHOLDER</select>
-        <button id='addToCart'>Add to Cart</button>            
-      </div>
-    );
+  function handleChange(event) {
+    const sku = Object.entries(selectedStyle.skus).filter((entry) => entry[0] === event.target.value);
+    console.log(` Selected Size: ${event.target.value}`, sku);
+    setSelectedSku(sku);
+  } 
+
+  function makeQuantityOptions(quantity) {
+    const quantityOptionList = [];
+    const max = quantity >= 15 ? 15 : quantity;
+    for (let i = 1; i <= max; i += 1) {
+      quantityOptionList.push(<option value={i}>{i}</option>);
+    }
+    return quantityOptionList;
   }
+
+  return (
+    <div>
+      <label htmlFor='size-select'>Size: </label>
+      <select id='size-select' onChange={handleChange}>{sizeOptions.length !== 0 ? sizeOptions : `Out of Stock`}</select>
+      <label htmlFor='qty-select'>Qty: </label>
+      <select id='qty-select'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity) : <option>Loading</option>}</select>
+      <button id='addToCart'>Add to Cart</button>            
+    </div>
+
+  );
+  
 }
 
 
 const AddToCartContainer = connect(
   (state) => ({
-    selectedStyle: state.selectedStyle
+    selectedStyle: state.selectedStyle,
+    selectedSku: state.selectedSku
   }),
 
   (dispatch) => ({

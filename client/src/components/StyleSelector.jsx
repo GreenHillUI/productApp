@@ -1,39 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { FaCheckCircle } from 'react-icons';
+import { FaCheckCircle } from 'react-icons/fa';
 import StyleBubble from './StyleBubble';
 
 
-class StyleSelector extends React.Component {
-  // constructor(props) {
-  //   super(props)
-    
-  // }
 
-  handleStyleClick(style) {
-    const { setSelectedStyle } = this.props;
-    console.log(style);
-    setSelectedStyle([style]);
-  }
 
-  render() {
-    const { styles, selectedStyle } = this.props;
+function StyleSelector(props) {
 
-    return (
+ 
+  const { styles, selectedStyle } = props;
+
+  if (styles.length > 0) {
+    const wrappedStyles = styles.map((style) => (
       <div>
+        {style.style_id === selectedStyle.style_id && <FaCheckCircle />}
+        <StyleBubble key={style.style_id} style={style} /> 
+      </div>
+    ));
+    return (
+      <div> 
         Available Styles: 
-        {styles ? styles.length : `Loading`}
-        {styles ? styles.map((style) => {
-          if (selectedStyle.style_id === style.style_id) { 
-            return (
-              <div>
-                <FaCheckCircle />
-                <StyleBubble key={style.style_id} style={style} />
-              </div>
-            );
-          }
-          return <StyleBubble key={style.style_id} style={style} styleClick={this.handleStyleClick} />;
-        }) : `Loading` }
+        {styles.length}
+        {wrappedStyles}
       </div>
     );
   } 
