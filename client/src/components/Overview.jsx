@@ -10,6 +10,7 @@ import AddToCart from './AddtoCart';
 function setDefaultStyle(styles) {
 
   const result = styles.filter((style) => style['default?'] === true);
+
   return result;
 }
 
@@ -18,17 +19,9 @@ class Overview extends React.Component {
 
 
   componentDidMount() {
-    const { setStyles, setSelectedStyle, setProductInfo, setProductQs } = this.props;
+    const { setStyles, setSelectedStyle, setProductInfo } = this.props;
     axios.get('/products/40348')
       .then((response) => {
-        console.log(JSON.stringify(response.data.id));
-        const p_id = JSON.stringify(response.data.id);
-
-        axios.get(`/qa/questions/${p_id}`)
-          .then((res) => {
-            setProductQs(JSON.stringify(res.data));
-          })
-          .catch((err) => console.log(err));
 
         setProductInfo(response.data);
       })
@@ -40,6 +33,7 @@ class Overview extends React.Component {
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
+
 
   }
 
@@ -98,9 +92,9 @@ const OverviewContainer = connect(
   (dispatch) => ({
     setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
-    setProductQs: (Qs) => dispatch({ type: 'SET_QUESTIONS', payload: Qs }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style })
   }),
 )(Overview);
 
 export default OverviewContainer;
+
