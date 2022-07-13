@@ -17,8 +17,6 @@ app.get('/products*', (req, res) => {
 
 const port = 3000;
 
-const controllers = require('./controllers');
-
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
