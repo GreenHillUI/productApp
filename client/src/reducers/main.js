@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import carouselReducer from './carouselReducer';
 import productInfoReducer from './productInfoReducer';
 import { qExpandReducer, qModalReducer } from './qListReducer';
 import selectedSkuReducer from './selectedSkuReducer';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   selectedStyle: selectedStyleReducer,
   productInfo: productInfoReducer,
   selectedSku: selectedSkuReducer,
+  displayImage: carouselReducer,
   //state1: stateReducer1,
   //state2: stateReducer2,
   //etc
