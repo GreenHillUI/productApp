@@ -1,4 +1,16 @@
+
 .style-bubble {
-    background-color: greenyellow;
-    border-radius: 40%;
+    border-radius: 100%;
+    max-width: 180px;
+}
+
+.style-thumbnail {
+    border-radius: 600px;
+    max-width: 180px;
+}
+
+
+#style-wrapper {
+    display: grid;
+    grid-template-columns: 200px 200px 200px 200px;    
 }
