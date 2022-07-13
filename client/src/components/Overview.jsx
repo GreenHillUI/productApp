@@ -19,10 +19,9 @@ class Overview extends React.Component {
 
 
   componentDidMount() {
-    const { setStyles, setSelectedStyle, setProductInfo } = this.props;
+    const { setStyles, setSelectedStyle, setProductInfo, setProductQs } = this.props;
     axios.get('/products/40348')
       .then((response) => {
-
         setProductInfo(response.data);
       })
       .catch(() => console.log(`Error loading product info`));
@@ -34,6 +33,12 @@ class Overview extends React.Component {
       })
       .catch((err) => console.log(err));
 
+    axios.get(`/qa/questions/?product_id=40348`)
+      .then((res) => {
+        console.log("QA: ", res.data);
+        setProductQs(res.data);
+      })
+      .catch((err) => { console.log(err); });
 
   }
 
@@ -92,9 +97,9 @@ const OverviewContainer = connect(
   (dispatch) => ({
     setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
+    setProductQs: (Qs) => dispatch({ type: 'SET_QUESTIONS', payload: Qs }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style })
   }),
 )(Overview);
 
 export default OverviewContainer;
-

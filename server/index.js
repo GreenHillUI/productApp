@@ -8,7 +8,6 @@ const app = express();
 app.use(express.static('client/dist'));
 
 app.get('/products*', (req, res) => {
-  console.log('help ', req.path);
   controllers.get(req.path)
     .then((products) => {
       res.status(200).send(products);
@@ -30,7 +29,7 @@ app.get('/products/:id/styles', (req, res) => {
   });
 });
 
-app.get('/qa/questions/:product_id', (req, res) => {
+app.get('/qa/questions*', (req, res) => {
   controllers.get(req.path)
     .then((styleData) => { res.status(200).send(styleData); });
 });
