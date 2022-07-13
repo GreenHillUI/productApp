@@ -33,6 +33,12 @@ class Overview extends React.Component {
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
+
+    axios.get('/reviews/meta', { params: { product_id: 40348 } })
+      .then((response) => {
+        setMetaData(response.data.ratings);
+      })
+      .catch((err) => console.log(err));
   }
 
   //Add section for product features if they exist
