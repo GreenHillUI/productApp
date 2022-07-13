@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
   selectedStyle: selectedStyleReducer,
   productInfo: productInfoReducer,
   selectedSku: selectedSkuReducer,
-  displayImage: carouselReducer,
+  displayIndex: carouselReducer,
   //state1: stateReducer1,
   //state2: stateReducer2,
   //etc
