@@ -6,9 +6,10 @@ import rootReducer from './reducers/main';
 
 const initialState = { //ADD to the initial state with any data you should be mounting/starting the program with
   qList: {
-    expandedBy: 2,
-    hasModal: false,
-    filter: '',
+    hasQModal: false,
+    qExpandedBy: 2,
+    qFilter: '',
+    productQs: {},
   }
 };
 

@@ -1,20 +1,19 @@
 /* eslint-disable no-var */
 import React from 'react';
-// import { Provider, useSelector, useDispatch } from 'react-redux';
-import { shallowEqual, useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Question from './Question';
 import QModal from './QModal';
-// import { createSelector } from 'reselect';
+// import { shallowEqual, createSelector } from 'reselect';
 
 
 
 
-function QuestionList({ product_id, productQs, qAnswers, qFilter }) {
+function QuestionList({ productQs, qFilter }) {
   //retrieve modal and extend locally
-  const expandedBy = useSelector((state) => state.qList.expandedBy);
-  const hasModal = useSelector((state) => state.qList.hasModal);
-
+  const qExpandedBy = useSelector((state) => state.qList.expandedBy);
+  const hasQModal = useSelector((state) => state.qList.hasModal);
   const dispatch = useDispatch(); //map handlers to reducers (add button, )
+
 
   // To Occur Once in the begging and be Saved: creates an object with a key for each q and a single string including every answer. For filtering by review.
 
@@ -38,14 +37,15 @@ function QuestionList({ product_id, productQs, qAnswers, qFilter }) {
   }
 
   //if the user filter is > 2 chars, filter to Q's w/ a matching string in the review (Q or A)
+  debugger;
   const qList = (qFilter.length > 2 ? applyFilter(productQs, qFilter) : productQs);
   //Sorts the productQs by helpfulness rating, slice the amount to be shown
-  const qListSorted = qList.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, expandedBy);
+  const qListSorted = qList.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, qExpandedBy);
 
 
 
   return (
-    hasModal
+    hasQModal
       ? (
         <QModal />
       )

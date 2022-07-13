@@ -6,7 +6,7 @@ const qListReducer = (state = {}, action) => {
         ...state,
         qList: {
           ...state.qList,
-          qModal: action.payload
+          hasQModal: action.payload
         }
       };
     case "Q_EXPAND":
@@ -14,7 +14,7 @@ const qListReducer = (state = {}, action) => {
         ...state,
         qList: {
           ...state.qList,
-          qExpanded: action.payload
+          qExpandedBy: action.payload
         }
       };
     case "SEARCH_ENTRY":
@@ -22,7 +22,15 @@ const qListReducer = (state = {}, action) => {
         ...state,
         qList: {
           ...state.qList,
-          qSearch: action.payload
+          qFilter: action.payload
+        }
+      };
+    case "SET_QUESTIONS":
+      return {
+        ...state,
+        qList: {
+          ...state.qList,
+          productQs: action.payload
         }
       };
     default:
