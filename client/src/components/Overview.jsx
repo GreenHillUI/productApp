@@ -2,27 +2,63 @@ import axios from 'axios';
 import React from "react";
 import { connect } from 'react-redux';
 //import { FaFacebookSquare, FaInstagram, FaPinterest, FaTwitter } from 'react-icons/fa' ;
-//import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs' ;
+import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs';
 import StyleSelector from "./StyleSelector";
 import AddToCart from './AddtoCart';
 
 
 function setDefaultStyle(styles) {
-
+  //console.log(styles);
   const result = styles.filter((style) => style['default?'] === true);
- 
   return result;
 }
 
+//Finds and returns average of reviews
+//TODO: Handle edge case for no reviews in accordance with business docs
+function reviewAverage(ratings) {
+  let total = 0;
+  let weightedSum = 0;
+  for (let i = 1; i < 6; i++) {
+    // eslint-disable-next-line radix
+    total += parseInt(ratings[i]);
+    weightedSum += i * ratings[i];
+  }
+  return (weightedSum / total);
+}
+
+function generateStars(average) {
+  const filledStars = Math.trunc(average);
+  const filledRemainder = average % 1;
+  const emptyStars = 5 - filledStars;
+  const starBar = [];
+  for (let i = 0; i < filledStars; i++) {
+    starBar.push(<BsStarFill />);
+  } 
+  
+  if (filledRemainder >= 0.5) {
+    starBar.push(<BsStarHalf />);
+  }
+  
+  for (let i = 0; i < emptyStars; i++) {
+    starBar.push(<BsStar />);
+  } 
+
+  return starBar;
+}
 class Overview extends React.Component {
  
 
 
+
+
+
   componentDidMount() {
-    const { setStyles, setSelectedStyle, setProductInfo, setMetaData } = this.props;
+    const {
+      setStyles, setSelectedStyle, setProductInfo, setMetaData
+    } = this.props;
     axios.get('/products/40348')
       .then((response) => {
-     
+        //console.log(response.data);
         setProductInfo(response.data);
       })
       .catch(() => console.log(`Error loading product info`));
@@ -33,17 +69,22 @@ class Overview extends React.Component {
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
-
+      
     axios.get('/reviews/meta', { params: { product_id: 40348 } })
       .then((response) => {
         setMetaData(response.data.ratings);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));  
   }
+  
+  
 
   //Add section for product features if they exist
   render() {
-    const { productInfo, selectedStyle } = this.props;
+    const { productInfo, selectedStyle, metaData } = this.props;
+
+
+     
     return (
     //Coming back to image gallery after writing a carousel
       <div>
@@ -66,6 +107,7 @@ class Overview extends React.Component {
           <StyleSelector />
           <div>
             Review Score: 
+            {metaData ? generateStars(reviewAverage(metaData)) : `Loading`}
             {/*this.generateStars(this.reviewAverage())*/}
           </div>
         </div>
