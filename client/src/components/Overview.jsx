@@ -46,11 +46,7 @@ function generateStars(average) {
   return starBar;
 }
 class Overview extends React.Component {
- 
-
-
-
-
+  
 
   componentDidMount() {
     const {
@@ -76,15 +72,11 @@ class Overview extends React.Component {
       })
       .catch((err) => console.log(err));  
   }
-  
-  
-
+    
   //Add section for product features if they exist
   render() {
     const { productInfo, selectedStyle, metaData } = this.props;
-
-
-     
+    
     return (
     //Coming back to image gallery after writing a carousel
       <div>
