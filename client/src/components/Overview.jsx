@@ -2,7 +2,7 @@ import axios from 'axios';
 import React from "react";
 import { connect } from 'react-redux';
 //import { FaFacebookSquare, FaInstagram, FaPinterest, FaTwitter } from 'react-icons/fa' ;
-//import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs' ;
+import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs';
 import StyleSelector from "./StyleSelector";
 import AddToCart from './AddtoCart';
 
@@ -14,45 +14,49 @@ function setDefaultStyle(styles) {
   return result;
 }
 
+//Finds and returns average of reviews
+//TODO: Handle edge case for no reviews in accordance with business docs
+function reviewAverage(ratings) {
+  let total = 0;
+  let weightedSum = 0;
+  for (let i = 1; i < 6; i++) {
+    // eslint-disable-next-line radix
+    total += parseInt(ratings[i]);
+    weightedSum += i * ratings[i];
+  }
+  return (weightedSum / total);
+}
+
+function generateStars(average) {
+  const filledStars = Math.trunc(average);
+  const filledRemainder = average % 1;
+  const emptyStars = 5 - filledStars;
+  const starBar = [];
+  for (let i = 0; i < filledStars; i++) {
+    starBar.push(<BsStarFill />);
+  } 
+  
+  if (filledRemainder >= 0.5) {
+    starBar.push(<BsStarHalf />);
+  }
+  
+  for (let i = 0; i < emptyStars; i++) {
+    starBar.push(<BsStar />);
+  } 
+
+  return starBar;
+}
 class Overview extends React.Component {
  
 
-  //Finds and returns average of reviews
-  //TODO: Handle edge case for no reviews in accordance with business docs
-  //Terminate repeating decimal
-  // reviewAverage() {
-  //   var total = 0;
-  //   var weightedSum = 0;
-  //   let ratings = this.state.reviewMetaData.ratings;
-  //   for (var i = 1; i < 6; i++ ) {
-  //     total += parseInt(ratings[i]);
-  //     weightedSum += i * ratings[i]
-  //   }
-  //   return (weightedSum / total)
-  // }
 
-  // generateStars(reviewAverage) {
-  //   let filledStars = Math.trunc(reviewAverage);
-  //   let filledRemainder = reviewAverage % 1;
-  //   let emptyStars = 5 - filledStars;
-  //   let starBar = [];
-  //   for (var i = 0; i < filledStars; i++) {
-  //     starBar.push(<BsStarFill/>)
-  //   } 
-    
-  //   if (filledRemainder >= 0.5) {
-  //     starBar.push(<BsStarHalf/>)
-  //   }
-    
-  //   for (var i = 0; i < emptyStars; i++) {
-  //     starBar.push(<BsStar/>)
-  //   } 
 
-  //   return starBar;
-  // }
+
 
   componentDidMount() {
-    const { setStyles, setSelectedStyle, setProductInfo, setMetaData } = this.props;
+    const {
+      setStyles, setSelectedStyle, setProductInfo, setMetaData
+    } = this.props;
     axios.get('/products/40348')
       .then((response) => {
         //console.log(response.data);
@@ -71,16 +75,18 @@ class Overview extends React.Component {
       .then((response) => {
         setMetaData(response.data.ratings);
       })
-      .catch((err) => console.log(err)); 
-      
-
+      .catch((err) => console.log(err));  
   }
   
-
+  
 
   //Add section for product features if they exist
   render() {
-    const { productInfo, selectedStyle } = this.props;
+    const { productInfo, selectedStyle, metaData } = this.props;
+
+    if (metaData) {
+      console.log(reviewAverage(metaData));
+    }
 
      
     return (
@@ -105,6 +111,7 @@ class Overview extends React.Component {
           <StyleSelector />
           <div>
             Review Score: 
+            {metaData ? generateStars(reviewAverage(metaData)) : `Loading`}
             {/*this.generateStars(this.reviewAverage())*/}
           </div>
         </div>
@@ -130,6 +137,7 @@ const OverviewContainer = connect(
   }),
   // links the event handler to the store via dispatch
   (dispatch) => ({
+    // eslint-disable-next-line object-shorthand
     setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
