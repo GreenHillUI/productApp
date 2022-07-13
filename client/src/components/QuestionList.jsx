@@ -18,21 +18,20 @@ function QuestionList({ productQs, qFilter }) {
 
   // To Occur Once in the begging and be Saved: creates an object with a key for each q and a single string including every answer. For filtering by review.
 
-  function pull() {
-    // console.log(JSON.stringify(response.data.id));
-    // const p_id = JSON.stringify(response.data.id);
-    // debugger;
-    axios.get(`/qa/questions/40348`)
-      .then((res) => {
-        console.log(JSON.stringify(res.data));
-      })
-      .catch((err) => console.log(err));
+  // function pull() {
+  //   // console.log(JSON.stringify(response.data.id));
+  //   // const p_id = JSON.stringify(response.data.id);
+  //   // debugger;
+  //   axios.get(`/qa/questions/40348`)
+  //     .then((res) => {
+  //       console.log(JSON.stringify(res.data));
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
-  }
-
-  if (productQs === undefined) {
-    pull();
-  }
+  // if (productQs === undefined) {
+  //   pull();
+  // }
 
   function applyFilter(Qs, filter) {
     //house an object that will have, for each question, a string of the Q and all As
