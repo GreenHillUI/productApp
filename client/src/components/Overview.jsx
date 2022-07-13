@@ -84,6 +84,7 @@ const OverviewContainer = connect(
   }),
   // links the event handler to the store via dispatch
   (dispatch) => ({
+    // eslint-disable-next-line object-shorthand
     setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style })
