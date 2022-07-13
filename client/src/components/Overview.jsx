@@ -67,6 +67,8 @@ class Overview extends React.Component {
       })
       .catch((err) => console.log(err));
       
+    axios.get('/reviews/meta', { params: { product_id: 40348 } }); 
+      
 
   }
   
