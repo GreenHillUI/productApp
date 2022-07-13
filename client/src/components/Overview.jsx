@@ -52,7 +52,7 @@ class Overview extends React.Component {
   // }
 
   componentDidMount() {
-    const { setStyles, setSelectedStyle, setProductInfo } = this.props;
+    const { setStyles, setSelectedStyle, setProductInfo, setMetaData } = this.props;
     axios.get('/products/40348')
       .then((response) => {
         //console.log(response.data);
@@ -67,7 +67,11 @@ class Overview extends React.Component {
       })
       .catch((err) => console.log(err));
       
-    axios.get('/reviews/meta', { params: { product_id: 40348 } }); 
+    axios.get('/reviews/meta', { params: { product_id: 40348 } })
+      .then((response) => {
+        setMetaData(response.data.ratings);
+      })
+      .catch((err) => console.log(err)); 
       
 
   }
@@ -121,13 +125,15 @@ const OverviewContainer = connect(
   (state) => ({
     productInfo: state.productInfo,
     styles: state.styles,
-    selectedStyle: state.selectedStyle
+    selectedStyle: state.selectedStyle,
+    metaData: state.metaData
   }),
   // links the event handler to the store via dispatch
   (dispatch) => ({
     setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
-    setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style })
+    setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
+    setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data })
   }),
 )(Overview);
   

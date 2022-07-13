@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import metaDataReducer from './metaDataReducer';
 import productInfoReducer from './productInfoReducer';
 import { qExpandReducer, qModalReducer } from './qListReducer';
 import selectedSkuReducer from './selectedSkuReducer';
@@ -17,6 +18,8 @@ const rootReducer = combineReducers({
   selectedStyle: selectedStyleReducer,
   productInfo: productInfoReducer,
   selectedSku: selectedSkuReducer,
+  metaData: metaDataReducer
+  
   //state1: stateReducer1,
   //state2: stateReducer2,
   //etc
