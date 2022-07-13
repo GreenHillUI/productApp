@@ -2,18 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-function StyleBubble(props) {
-  
-  const { style, setSelectedStyle } = props;
+function StyleBubble({ style, setSelectedStyle }) {
   
   function handleClick() {
-    console.log(style);
-    setSelectedStyle([style]);
-    
+    setSelectedStyle([style]); 
   }
 
 
-  if (style !== undefined) {
+  if (style) {
     return ( 
       <div className="style-bubble">
         <div>{style.name}</div>

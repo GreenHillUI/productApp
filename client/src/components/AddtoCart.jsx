@@ -17,34 +17,31 @@ function makeSizeOptions(skuList) {
   return optionList;
 }
 
-function AddToCart(props) {
-  const { selectedStyle, selectedSku, setSelectedSku } = props;
 
 
+function makeQuantityOptions(quantity) {
+  const quantityOptionList = [];
+  const max = quantity >= 15 ? 15 : quantity;
+  for (let i = 1; i <= max; i += 1) {
+    quantityOptionList.push(<option value={i}>{i}</option>);
+  }
+  return quantityOptionList;
+}
+
+
+function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
 
   const sizeOptions = makeSizeOptions(selectedStyle.skus);
-
-  
-
+    
   function handleChange(event) {
     const sku = Object.entries(selectedStyle.skus).filter((entry) => entry[0] === event.target.value);
-    console.log(` Selected Size: ${event.target.value}`, sku);
     setSelectedSku(sku);
   } 
-
-  function makeQuantityOptions(quantity) {
-    const quantityOptionList = [];
-    const max = quantity >= 15 ? 15 : quantity;
-    for (let i = 1; i <= max; i += 1) {
-      quantityOptionList.push(<option value={i}>{i}</option>);
-    }
-    return quantityOptionList;
-  }
 
   return (
     <div>
       <label htmlFor='size-select'>Size: </label>
-      <select id='size-select' onChange={handleChange}>{sizeOptions.length !== 0 ? sizeOptions : `Out of Stock`}</select>
+      <select id='size-select' onChange={handleChange}>{sizeOptions.length ? sizeOptions : `Out of Stock`}</select>
       <label htmlFor='qty-select'>Qty: </label>
       <select id='qty-select'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity) : <option>Loading</option>}</select>
       <button id='addToCart'>Add to Cart</button>            
@@ -62,7 +59,7 @@ const AddToCartContainer = connect(
   }),
 
   (dispatch) => ({
-    setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
+    //Sets Slected SKU based on Size Selector 
     setSelectedSku: (sku) => dispatch({ type: 'SETSELECTEDSKU', selectedSku: sku })
   })
 )(AddToCart);

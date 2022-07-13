@@ -8,54 +8,21 @@ import AddToCart from './AddtoCart';
 
 
 function setDefaultStyle(styles) {
-  //console.log(styles);
+
   const result = styles.filter((style) => style['default?'] === true);
-  //console.log(`Result `, result)
+ 
   return result;
 }
 
 class Overview extends React.Component {
  
 
-  //Finds and returns average of reviews
-  //TODO: Handle edge case for no reviews in accordance with business docs
-  //Terminate repeating decimal
-  // reviewAverage() {
-  //   var total = 0;
-  //   var weightedSum = 0;
-  //   let ratings = this.state.reviewMetaData.ratings;
-  //   for (var i = 1; i < 6; i++ ) {
-  //     total += parseInt(ratings[i]);
-  //     weightedSum += i * ratings[i]
-  //   }
-  //   return (weightedSum / total)
-  // }
-
-  // generateStars(reviewAverage) {
-  //   let filledStars = Math.trunc(reviewAverage);
-  //   let filledRemainder = reviewAverage % 1;
-  //   let emptyStars = 5 - filledStars;
-  //   let starBar = [];
-  //   for (var i = 0; i < filledStars; i++) {
-  //     starBar.push(<BsStarFill/>)
-  //   } 
-    
-  //   if (filledRemainder >= 0.5) {
-  //     starBar.push(<BsStarHalf/>)
-  //   }
-    
-  //   for (var i = 0; i < emptyStars; i++) {
-  //     starBar.push(<BsStar/>)
-  //   } 
-
-  //   return starBar;
-  // }
 
   componentDidMount() {
     const { setStyles, setSelectedStyle, setProductInfo } = this.props;
     axios.get('/products/40348')
       .then((response) => {
-        //console.log(response.data);
+     
         setProductInfo(response.data);
       })
       .catch(() => console.log(`Error loading product info`));
