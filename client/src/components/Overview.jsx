@@ -38,9 +38,6 @@ function generateStars(average) {
   } 
 
   return starBar;
-  const result = styles.filter((style) => style['default?'] === true);
-
-  return result;
 }
 
 function Overview({ productInfo, selectedStyle, metaData }) {
