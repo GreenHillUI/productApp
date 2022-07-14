@@ -30,8 +30,8 @@ app.get('/products/:id/styles', (req, res) => {
 });
 
 app.get('/qa/questions*', (req, res) => {
-  controllers.get(req.path)
-    .then((styleData) => { res.status(200).send(styleData); });
+  controllers.get(req.path, { params: req.query })
+    .then((questions) => res.status(200).send(questions));
 });
 
 const port = 3000;

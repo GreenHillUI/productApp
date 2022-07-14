@@ -33,9 +33,13 @@ class Overview extends React.Component {
       })
       .catch((err) => console.log(err));
 
-    axios.get(`/qa/questions/?product_id=40348`)
+    const p_id = 40348;
+    const config = { params: { product_id: p_id }
+      // headers: { Authorization: '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' }
+    };
+
+    axios.get(`/qa/questions/`, config)
       .then((res) => {
-        console.log("QA: ", res.data);
         setProductQs(res.data);
       })
       .catch((err) => { console.log(err); });
