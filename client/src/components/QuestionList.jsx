@@ -44,7 +44,7 @@ function QuestionList({ productQs, qFilter }) {
     //Sorts the productQs by helpfulness rating, slice the amount to be shown
     qListSorted = qList.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, qExpandedBy);
     qListSorted.map((q) => (<Question key={q.question_id} question={q} />));
-    debugger;
+
   }
 
   return (
@@ -59,7 +59,7 @@ function QuestionList({ productQs, qFilter }) {
             <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
           </div>
           <div id='q-list'>
-            {qListSorted}
+            {/* {qListSorted} */}
           </div>
           <div id='q-buttons'>
             <button

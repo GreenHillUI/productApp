@@ -40,7 +40,6 @@ class Overview extends React.Component {
 
     axios.get(`/qa/questions/`, config)
       .then((res) => {
-        debugger;
         setProductQs(res.data);
       })
       .catch((err) => { console.log(err); });
