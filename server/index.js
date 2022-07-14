@@ -15,6 +15,13 @@ app.get('/products*', (req, res) => {
 });
 
 
+app.get('/reviews/meta', (req, res) => {
+  const config = { params: req.query };
+  controllers.get(req.path, config).then((metaData) => {
+    res.status(200).send(metaData);
+  });
+});
+
 app.get('/products/:id', (req, res) => {
   controllers.get(req.path).then((productData) => {
     res.status(200).send(productData);
