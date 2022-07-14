@@ -1,18 +1,15 @@
 import React from 'react';
 import Overview from './Overview';
 import QListContainer from '../containers/QListContainer';
-
-//NOTE: Should only have containers rendered inside, using QuestionList
-//component temporarily, will change either when done with CSS or when container is built
+import RelatedProducts from './RelatedProducts';
 
 function App() {
   return (
-    <div>
-      <div>
-        <Overview />
-        <QListContainer />
-      </div>
-    </div>
+    <>
+      <Overview />
+      <RelatedProducts />
+      <QListContainer />
+    </>
   );
 }
 
