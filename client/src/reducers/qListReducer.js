@@ -4,34 +4,22 @@ const qListReducer = (state = {}, action) => {
     case "Q_MODAL":
       return {
         ...state,
-        qList: {
-          ...state.qList,
-          hasQModal: action.payload
-        }
+        hasQModal: action.payload
       };
     case "Q_EXPAND":
       return {
         ...state,
-        qList: {
-          ...state.qList,
-          qExpandedBy: action.payload
-        }
+        qExpandedBy: action.payload
       };
     case "SEARCH_ENTRY":
       return {
         ...state,
-        qList: {
-          ...state.qList,
-          qFilter: action.payload
-        }
+        qFilter: action.payload
       };
     case "SET_QUESTIONS":
       return {
         ...state,
-        qList: {
-          ...state.qList,
-          productQs: action.payload
-        }
+        productQs: action.payload
       };
     default:
       return state;
