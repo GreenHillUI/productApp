@@ -11,7 +11,7 @@ function setDefaultStyle(styles) {
 
 class Setter extends React.Component {
   componentDidMount() {
-    const { setProductInfo, setStyles, setSelectedStyle, setMetaData } = this.props;
+    const { setProductInfo, setStyles, setSelectedStyle, setMetaData, setProductQs } = this.props;
 
     axios.get('/products/40348')
       .then((response) => {
@@ -26,12 +26,21 @@ class Setter extends React.Component {
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
-    
+
     axios.get('/reviews/meta', { params: { product_id: 40348 } })
       .then((response) => {
         setMetaData(response.data.ratings);
       })
-      .catch((err) => console.log(err));  
+      .catch((err) => console.log(err));
+
+    const p_id = 40348;
+    const config = { params: { product_id: p_id} };
+
+    axios.get('/qa/questions/', config)
+      .then((res) => {
+        setProductQs(res.data);
+      })
+      .catch((err) => { console.log(err); });
   }
 
   render() { return (null); }
@@ -49,7 +58,8 @@ const SetterContainer = connect(
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
     setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
-    setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data })
+    setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data }),
+    setProductQs: (Qs) => dispatch({ type: 'SET_QUESTIONS', payload: Qs }),
   })
 )(Setter);
 export default SetterContainer;
