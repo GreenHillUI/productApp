@@ -1,55 +1,57 @@
 
 #carousel {
-    width: 1000px;
-    height: 220px;
-    background-color: blue;
-    position: relative;
-    padding: 10px 100px  
-  }
-  
-  .carousel img {
-      width: 100px;
-      height: 100px;
-      display: block;
-      object-fit: cover;
-  }
-  
-  .thumbView {
-      width: 770px;
-      height: 110px;
-      overflow: hidden; 
-  }
-  
-  .thumbView ul {
-    list-style-type: none;
-    height:400px;
-    margin: 0;
-    padding: 0; 
-  }
-  
-  .thumbView li {
-    padding: 2px;
-    display: inline-block;
-  };
-
-  
-  .slide {
-    max-height: 500px;
-    max-width: 500px;
+  width: 860x;
+  height: 220px;
+  background-color: blue;
+  padding: inherit;  
 }
 
-
-
-.thumbnail-bar{
-    display: flex;
-    justify-content: space-between;
-    max-height: 80px;
-    max-width: 80px;
+.carousel img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    object-fit: cover;
 }
+
+.thumbView {
+    width: 2000px;
+    height: 110px;
+    overflow: hidden; 
+}
+
+.thumbView ul {
+  list-style-type: none;
+  height:110px;
+  width: 1200px;
+  margin: 0;
+  padding: 0; 
+  overflow: hidden;
+}
+
+.thumbView li {
+  padding: 2px;
+  display: inline-block;
+  transform: translate(-0px);
+};
+
+
+.slide {
+  max-height: 500px;
+  max-width: 500px;
+  padding:inherit;
+}
+
 
 
 #slideView img {
-    height: 500px;
-    width: 600px;
-    object-fit: cover;
+  height: 600px;
+  width: 650px;
+  object-fit: cover;
+  transform: translate(115px);
+}
+
+#gallery{
+width: 1000px;
+background-color: grey;
+padding: 50px;
 }

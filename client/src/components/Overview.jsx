@@ -38,7 +38,6 @@ class Overview extends React.Component {
   }
   
 
-
   //Add section for product features if they exist
   render() {
     const { productInfo, selectedStyle } = this.props;

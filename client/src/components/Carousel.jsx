@@ -67,16 +67,3 @@ const CarouselContainer = connect(
 )(Carousel);
 
 export default CarouselContainer;
-
-// (
-//   <div>
-//       <div class="Display"> 
-//         {displaySlides ? displaySlides[displayIndex] : <div> Loading </div>}
-//       </div>
-//     <div className="Container">
-//         <FaArrowCircleLeft id="leftArrow" onClick={handleLeftArrowClick} />  
-//         <FaArrowCircleRight id="rightArrow" onClick={handleRightArrowClick} />
-//         <div className='thumbnail-bar'>{displayThumbs}</div>
-//     </div> 
-//   </div>
-// );
