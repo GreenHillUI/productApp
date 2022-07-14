@@ -48,14 +48,14 @@ class Overview extends React.Component {
     //Coming back to image gallery after writing a carousel
       <div>
           
-        <h2>{productInfo ? productInfo.category : `Loading`}</h2>
-        <h1>
+        <h2 id='product-category'>{productInfo ? productInfo.category : `Loading`}</h2>
+        <h1 id='product-name'>
           {productInfo ? productInfo.name : `Loading`} 
         </h1>
         <div><Carousel /></div> 
-        <div>{productInfo ? productInfo.slogan : `Loading`}</div>
+        <div id='product-slogan'>{productInfo ? productInfo.slogan : `Loading`}</div>
         <div>
-          <p>
+          <p id='product-description'>
             {productInfo ? productInfo.description : `Loading`} 
           </p>
         </div>

@@ -39,13 +39,13 @@ function Carousel({
 
   return (
     <div>
-      <div className="Container">
-        <div className="Display"> 
+        <div id="Display"> 
           {displaySlides ? displaySlides[displayIndex] : <div> Loading </div>}
-          <FaArrowCircleLeft onClick={handleLeftArrowClick} />
-          <FaArrowCircleRight onClick={handleRightArrowClick} />
         </div>
-          <div className='thumbnail-bar'>{/*displayThumbs*/}</div>
+      <div className="Container">
+          <FaArrowCircleLeft id="leftArrow" onClick={handleLeftArrowClick} />  
+          <FaArrowCircleRight id="rightArrow" onClick={handleRightArrowClick} />
+          <div className='thumbnail-bar'>{displayThumbs}</div>
       </div> 
     </div>
   );
