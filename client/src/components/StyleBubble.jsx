@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 
 
 function StyleBubble({ style, setSelectedStyle }) {
-  
+
   function handleClick() {
-    setSelectedStyle([style]); 
+    setSelectedStyle([style]);
   }
 
 
   if (style) {
-    return ( 
+    return (
       <div className="style-bubble">
         <div>{style.name}</div>
         <img className="style-thumbnail" src={style.photos[0].thumbnail_url} onClick={handleClick} alt={`A thumbnail of ${style}`} />

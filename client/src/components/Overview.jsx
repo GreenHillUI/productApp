@@ -38,7 +38,11 @@ function generateStars(average) {
   } 
 
   return starBar;
+  const result = styles.filter((style) => style['default?'] === true);
+
+  return result;
 }
+
 function Overview({ productInfo, selectedStyle, metaData }) {
   
   //Add section for product features if they exist 
@@ -92,9 +96,10 @@ const OverviewContainer = connect(
     setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
-    setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data })
+    setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data }),
+    setProductQs: (Qs) => dispatch({ type: 'SET_QUESTIONS', payload: Qs }),
+    setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style })
   }),
 )(Overview);
-  
+
 export default OverviewContainer;
-  
