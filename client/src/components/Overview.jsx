@@ -34,9 +34,7 @@ class Overview extends React.Component {
       .catch((err) => console.log(err));
 
     const p_id = 40348;
-    const config = { params: { product_id: p_id }
-      // headers: { Authorization: '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' }
-    };
+    const config = { params: { product_id: p_id } };
 
     axios.get(`/qa/questions/`, config)
       .then((res) => {

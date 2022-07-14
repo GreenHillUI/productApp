@@ -22,7 +22,11 @@ function QuestionList({ productQs, qFilter }) {
   //if the user filter is > 2 chars, filter to Q's w/ a matching string in the review (Q or A)
   if (productQs.results !== undefined) {
     qListSorted = sortQtoAs(productQs, qFilter, qExpandedBy);
-    qListSorted = qListSorted.map((q) => (<li><Question key={q.question_id} question={q} /></li>));
+    qListSorted = qListSorted.map((q) => (
+      <li key={q.question_id}>
+        <Question question={q} />
+      </li>
+    ));
   }
 
   return (
@@ -36,9 +40,9 @@ function QuestionList({ productQs, qFilter }) {
           <div id='q-nav'>
             <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
           </div>
-          <div id='q-list'>
+          <ul id='q-list'>
             {qListSorted}
-          </div>
+          </ul>
           <div id='q-buttons'>
             <button
               onClick={() => dispatch({ type: "Q_EXPAND", payload: true })}
