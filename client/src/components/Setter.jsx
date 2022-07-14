@@ -16,7 +16,8 @@ class Setter extends React.Component {
       setStyles,
       setSelectedStyle,
       setMetaData,
-      setRelatedProducts
+      setRelatedProducts,
+      setProductQs
     } = this.props;
 
     axios.get('/products/40348')
@@ -32,7 +33,7 @@ class Setter extends React.Component {
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
-    
+
     axios.get('/reviews/meta', { params: { product_id: 40348 } })
       .then((response) => {
         setMetaData(response.data.ratings);
@@ -51,6 +52,14 @@ class Setter extends React.Component {
       .then((responses) => {
         setRelatedProducts(responses.map((res) => res.data));
       });
+
+    const config = { params: { product_id: 40348 } };
+
+    axios.get('/qa/questions/', config)
+      .then((res) => {
+        setProductQs(res.data);
+      })
+      .catch((err) => { console.log(err); });
   }
 
   render() { return (null); }
@@ -70,6 +79,7 @@ const SetterContainer = connect(
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
     setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data }),
     setRelatedProducts: (products) => dispatch({ type: 'SETRELATEDPRODUCTS', products }),
+    setProductQs: (Qs) => dispatch({ type: 'SET_QUESTIONS', payload: Qs }),
   })
 )(Setter);
 export default SetterContainer;
