@@ -1,0 +1,33 @@
+
+#carousel {
+    width: 1000px;
+    height: 400px;
+    background-color: blue;
+    position: relative;
+    padding: 10px 100px  
+  }
+  
+  .carousel img {
+      width: 100px;
+      height: 100px;
+      display: block;
+      object-fit: cover;
+  }
+  
+  .gallery {
+      width: 770px;
+      height: 110px;
+      overflow: hidden; 
+  }
+  
+  .gallery ul {
+    list-style-type: none;
+    height:400px;
+    margin: 0;
+    padding: 0; 
+  }
+  
+  .gallery li {
+    padding: 2px;
+    display: inline-block;
+  };
