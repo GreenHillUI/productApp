@@ -11,7 +11,13 @@ function setDefaultStyle(styles) {
 
 class Setter extends React.Component {
   componentDidMount() {
-    const { setProductInfo, setStyles, setSelectedStyle, setMetaData } = this.props;
+    const {
+      setProductInfo,
+      setStyles,
+      setSelectedStyle,
+      setMetaData,
+      setRelatedProducts
+    } = this.props;
 
     axios.get('/products/40348')
       .then((response) => {
@@ -31,7 +37,12 @@ class Setter extends React.Component {
       .then((response) => {
         setMetaData(response.data.ratings);
       })
-      .catch((err) => console.log(err));  
+      .catch((err) => console.log(err));
+    
+    axios.get('/products/40348/related')
+      .then((res) => {
+        setRelatedProducts(res.data);
+      });
   }
 
   render() { return (null); }
@@ -47,9 +58,10 @@ const SetterContainer = connect(
 
   (dispatch) => ({
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
-    setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
+    setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
-    setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data })
+    setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data }),
+    setRelatedProducts: (products) => dispatch({ type: 'SETRELATEDPRODUCTS', products }),
   })
 )(Setter);
 export default SetterContainer;
