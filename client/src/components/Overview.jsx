@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 //import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs' ;
 import StyleSelector from "./StyleSelector";
 import AddToCart from './AddtoCart';
-import Carousel from './Carousel';
+import Gallery from './Gallery';
 
 function setDefaultStyle(styles) {
 
@@ -51,7 +51,7 @@ class Overview extends React.Component {
         <h1 id='product-name'>
           {productInfo ? productInfo.name : `Loading`} 
         </h1>
-        <div><Carousel /></div> 
+        <div><Gallery /></div> 
         <div id='product-slogan'>{productInfo ? productInfo.slogan : `Loading`}</div>
         <div>
           <p id='product-description'>

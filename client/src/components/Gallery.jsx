@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-function Carousel({
+function Gallery({
   selectedStyle, displayIndex, incrementDisplayIndex, decrementDisplayIndex
 }) {
   let displaySlides = [];
@@ -51,7 +51,7 @@ function Carousel({
   );
 }
 
-const CarouselContainer = connect(
+const GalleryContainer = connect(
   (state) => ({
     selectedStyle: state.selectedStyle,
     displayIndex: state.displayIndex
@@ -62,6 +62,6 @@ const CarouselContainer = connect(
     incrementDisplayIndex: (num) => dispatch({ type: `INCREMENT`, displayIndex: num }),
     decrementDisplayIndex: (num) => dispatch({ type: `DECREMENT`, displayIndex: num })
   })
-)(Carousel);
+)(Gallery);
 
-export default CarouselContainer;
+export default GalleryContainer;
