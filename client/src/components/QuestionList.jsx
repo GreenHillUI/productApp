@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Question from './Question';
 import QModal from './QModal';
-import { reviewFilter, sortQtoAs } from './helperFunctions';
+import { sortQtoAs } from './QAhelperFunctions';
 // import { shallowEqual, createSelector } from 'reselect';
 
 
