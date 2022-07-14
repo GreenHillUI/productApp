@@ -2,23 +2,20 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-
+function setDefaultStyle(styles) {
+  //console.log(styles);
+  const result = styles.filter((style) => style['default?'] === true);
+  return result;
+}
 //A component to simulate arbitrary user clicks on products
 
-function Setter({
-  setProductInfo, setSelectedStyle, setMetaData, setStyles
-}) {
-  
-  function setDefaultStyle(styles) {
-    //console.log(styles);
-    const result = styles.filter((style) => style['default?'] === true);
-    return result;
-  }
-    
-  function handleClick() {
+class Setter extends React.Component {
+  componentDidMount() {
+    const { setProductInfo, setStyles, setSelectedStyle, setMetaData } = this.props;
+
     axios.get('/products/40348')
       .then((response) => {
-        //console.log(response.data);
+      //console.log(response.data);
         setProductInfo(response.data);
       })
       .catch(() => console.log(`Error loading product info`));
@@ -29,7 +26,7 @@ function Setter({
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
-      
+    
     axios.get('/reviews/meta', { params: { product_id: 40348 } })
       .then((response) => {
         setMetaData(response.data.ratings);
@@ -37,9 +34,7 @@ function Setter({
       .catch((err) => console.log(err));  
   }
 
-  return ( 
-    <button onClick={handleClick}>Set State</button>
-  );
+  render() { return (null); }
 }
 
 const SetterContainer = connect(
