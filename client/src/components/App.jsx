@@ -1,6 +1,7 @@
 import React from 'react';
 import Overview from './Overview';
 import QListContainer from '../containers/QListContainer';
+import RelatedProducts from './RelatedProducts';
 
 import Setter from './Setter';
 
@@ -9,13 +10,12 @@ import Setter from './Setter';
 
 function App() {
   return (
-    <div>
-      <div>
-        <Setter />
-        <Overview />
-        <QListContainer />
-      </div>
-    </div>
+    <>
+      <Setter />
+      <Overview />
+      <RelatedProducts />
+      <QListContainer />
+    </>
   );
 }
 

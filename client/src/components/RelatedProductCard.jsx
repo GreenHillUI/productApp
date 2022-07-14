@@ -6,10 +6,10 @@ import React from "react";
  * @param {props} product Product object retrieved from API to be rendered
  * @returns list item containing product card
  */
-function RelatedProductsComponent({ productName }) {
+function RelatedProductsComponent({ product }) {
   return (
     <li>
-      {productName}
+      {product.name}
     </li>
   );
 }

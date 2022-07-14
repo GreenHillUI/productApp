@@ -11,7 +11,14 @@ function setDefaultStyle(styles) {
 
 class Setter extends React.Component {
   componentDidMount() {
-    const { setProductInfo, setStyles, setSelectedStyle, setMetaData, setProductQs } = this.props;
+    const {
+      setProductInfo,
+      setStyles,
+      setSelectedStyle,
+      setMetaData,
+      setRelatedProducts,
+      setProductQs
+    } = this.props;
 
     axios.get('/products/40348')
       .then((response) => {
@@ -32,9 +39,21 @@ class Setter extends React.Component {
         setMetaData(response.data.ratings);
       })
       .catch((err) => console.log(err));
+    
+    axios.get('/products/40348/related')
+      .then(({ data }) => {
+        // the API sometimes returns duplicate IDs, so it is
+        // neccessary to filter out the duplicates
+        const uniqueIDs = data.filter((id, i) => data.indexOf(id) === i);
 
-    const p_id = 40348;
-    const config = { params: { product_id: p_id} };
+        const productInfoRequests = uniqueIDs.map((id) => axios.get(`/products/${id}`));
+        return Promise.all(productInfoRequests);
+      })
+      .then((responses) => {
+        setRelatedProducts(responses.map((res) => res.data));
+      });
+
+    const config = { params: { product_id: 40348 } };
 
     axios.get('/qa/questions/', config)
       .then((res) => {
@@ -56,9 +75,10 @@ const SetterContainer = connect(
 
   (dispatch) => ({
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
-    setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles: styles }),
+    setStyles: (styles) => dispatch({ type: 'SETALLSTYLES', styles }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
     setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data }),
+    setRelatedProducts: (products) => dispatch({ type: 'SETRELATEDPRODUCTS', products }),
     setProductQs: (Qs) => dispatch({ type: 'SET_QUESTIONS', payload: Qs }),
   })
 )(Setter);
