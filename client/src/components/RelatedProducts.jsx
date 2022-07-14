@@ -19,10 +19,10 @@ function RelatedProductsComponent({ related }) {
   return (
     <div id="related-items">
       <ul className="product-carrousel">
-        {related.map((product) => <Card key={product.name} productName={product} />)}
+        {related.map((product) => <Card key={product.id} product={product} />)}
       </ul>
       <ul className='product-carrousel'>
-        {outfit.map((product) => <Card key={product.name} productName={product} />)}
+        {outfit.map((product) => <Card key={product.id} product={product} />)}
       </ul>
     </div>
   );

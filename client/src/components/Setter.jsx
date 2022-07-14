@@ -40,8 +40,16 @@ class Setter extends React.Component {
       .catch((err) => console.log(err));
     
     axios.get('/products/40348/related')
-      .then((res) => {
-        setRelatedProducts(res.data);
+      .then(({ data }) => {
+        // the API sometimes returns duplicate IDs, so it is
+        // neccessary to filter out the duplicates
+        const uniqueIDs = data.filter((id, i) => data.indexOf(id) === i);
+
+        const productInfoRequests = uniqueIDs.map((id) => axios.get(`/products/${id}`));
+        return Promise.all(productInfoRequests);
+      })
+      .then((responses) => {
+        setRelatedProducts(responses.map((res) => res.data));
       });
   }
 
