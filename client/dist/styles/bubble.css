@@ -14,29 +14,3 @@
     display: grid;
     grid-template-columns: 200px 200px 200px 200px;    
 }
-
-.slide {
-    max-height: 500px;
-    max-width: 500px;
-}
-
-#Display{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.thumbnail-bar{
-    display: flex;
-    justify-content: space-between;
-    max-height: 80px;
-    max-width: 80px;
-}
-
-.gallery-thumbnail{
-    max-height: 200px;
-}
-
-#leftArrow{
-    offset: 200px
-}

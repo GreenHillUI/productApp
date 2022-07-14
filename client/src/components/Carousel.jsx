@@ -18,7 +18,7 @@ function Carousel({
   }
 
   function makeThumbnailBar(image) {
-    return ((<img className='gallery-thumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} />))
+    return ((<li><img className='gallery-thumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
   }
 
   if (pictureData) {
@@ -38,15 +38,17 @@ function Carousel({
   }
 
   return (
-    <div>
-        <div id="Display"> 
-          {displaySlides ? displaySlides[displayIndex] : <div> Loading </div>}
+    <div id='gallery'>
+      <div id='slideView'>{displaySlides[displayIndex]}</div>
+      <div id='carousel' className='carousel'>
+        <div className='thumbView'>
+          <ul>
+            {displayThumbs}
+          </ul>
         </div>
-      <div className="Container">
-          <FaArrowCircleLeft id="leftArrow" onClick={handleLeftArrowClick} />  
-          <FaArrowCircleRight id="rightArrow" onClick={handleRightArrowClick} />
-          <div className='thumbnail-bar'>{displayThumbs}</div>
-      </div> 
+        <button className="Arrow" onClick={handleLeftArrowClick} >PREV</button>
+        <button className="Arrow" onClick={handleRightArrowClick}>NEXT</button>
+      </div>
     </div>
   );
 }
@@ -65,3 +67,16 @@ const CarouselContainer = connect(
 )(Carousel);
 
 export default CarouselContainer;
+
+// (
+//   <div>
+//       <div class="Display"> 
+//         {displaySlides ? displaySlides[displayIndex] : <div> Loading </div>}
+//       </div>
+//     <div className="Container">
+//         <FaArrowCircleLeft id="leftArrow" onClick={handleLeftArrowClick} />  
+//         <FaArrowCircleRight id="rightArrow" onClick={handleRightArrowClick} />
+//         <div className='thumbnail-bar'>{displayThumbs}</div>
+//     </div> 
+//   </div>
+// );
