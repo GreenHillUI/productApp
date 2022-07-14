@@ -8,10 +8,10 @@ function makeSizeOptions(skuList) {
       if (sku[1].quantity > 0) {
         return (<option key={sku[0]} value={sku[0]}>{sku[1].size}</option>);
       }
-      
+
     });
- 
-    
+
+
   }
   optionList.unshift(<option value="Select Size">Select Size</option>);
   return optionList;
@@ -32,11 +32,11 @@ function makeQuantityOptions(quantity) {
 function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
 
   const sizeOptions = makeSizeOptions(selectedStyle.skus);
-    
+
   function handleChange(event) {
     const sku = Object.entries(selectedStyle.skus).filter((entry) => entry[0] === event.target.value);
     setSelectedSku(sku);
-  } 
+  }
 
   return (
     <div>
@@ -44,11 +44,11 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
       <select id='size-select' onChange={handleChange}>{sizeOptions.length ? sizeOptions : `Out of Stock`}</select>
       <label htmlFor='qty-select'>Qty: </label>
       <select id='qty-select'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity) : <option>Loading</option>}</select>
-      <button id='addToCart'>Add to Cart</button>            
+      <button id='addToCart'>Add to Cart</button>
     </div>
 
   );
-  
+
 }
 
 
@@ -59,7 +59,7 @@ const AddToCartContainer = connect(
   }),
 
   (dispatch) => ({
-    //Sets Slected SKU based on Size Selector 
+    //Sets Slected SKU based on Size Selector
     setSelectedSku: (sku) => dispatch({ type: 'SETSELECTEDSKU', selectedSku: sku })
   })
 )(AddToCart);

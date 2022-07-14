@@ -11,7 +11,7 @@
   row-gap: 5px;
   width: 70%;
   height: 500px;
-  background-color: rgb(157, 159, 19); /* For Dev */
+  background-color: white; /* For Dev */
 }
 #q-title {
   grid-column: 1 /span 2;
@@ -39,14 +39,14 @@
 #q-list {
   grid-column: 1 / span 4;
   grid-row: 3 / span 10;
-  background-color: maroon; /* For Dev */
+  background-color: white;/* For Dev */
 }
 #q-buttons {
   display: flex;
   grid-column: 1 / span 2;
   grid-row: 13 / span 2;
   min-width: 400px;
-  background-color: rgb(156, 38, 202); /* For Dev */
+  background-color: white; /* For Dev */
 }
 #q-buttons > button {
   display: flex;
@@ -59,7 +59,9 @@
 .question {
   display: grid;
   grid-template-columns: 5fr 1.25fr 1.75fr;  /*last three frames for the help and answer link*/
-  background-color: yellow; /* For Dev */
+  grid-template-rows: 1fr 2fr 1fr;
+  background-color: white; /* For Dev */
+  height: auto;
 }
 .question > span {
   background-color: white; /* For Dev */
@@ -82,8 +84,18 @@
   padding: 2px;
   border-style: none;
   font-weight: bold;
-  background-color: inherit;
+  background-color: white;
   float: right;
+}
+
+#a-load {
+  grid-column: 1;
+  grid-row: 3;
+}
+
+#temp-a {
+  grid-column: 1;
+  grid-row: 2;
 }
 
 

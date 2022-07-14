@@ -5,8 +5,12 @@ import rootReducer from './reducers/main';
 
 
 const initialState = { //ADD to the initial state with any data you should be mounting/starting the program with
-  qExpanded: false, //this state will have to be imported and addressed in a reducer and container file
-  qModal: false,
+  qList: {
+    hasQModal: false,
+    qExpandedBy: 2,
+    qFilter: '',
+    productQs: {},
+  }
 };
 
 //Thunk allows us to dispatch actions asynchronously (think API requests) by making it so that our actions
