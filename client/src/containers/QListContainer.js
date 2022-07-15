@@ -10,8 +10,10 @@ import { expandQuestions, showQModal } from '../actions/QListAction'; //and the 
 
 
 const mapStateToProps = (store) => ({
-  qExpanded: store.qExpanded, //map the boolean values for expansion and modal window for answers
-  qModal: store.qModal
+  qExpandedBy: store.qList.qExpandedBy,
+  hasQModal: store.qList.qModal,
+  qFilter: store.qList.qFilter,
+  productQs: store.qList.productQs,
 });//connects the prop to the state saved in the store
 
 

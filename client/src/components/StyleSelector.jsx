@@ -8,7 +8,7 @@ import StyleBubble from './StyleBubble';
 
 function StyleSelector(props) {
 
- 
+
   const { styles, selectedStyle } = props;
 
   if (styles.length > 0) {
@@ -23,8 +23,8 @@ function StyleSelector(props) {
         {wrappedStyles}
       </div>
     );
-  } 
-  
+  }
+
 }
 
 
@@ -33,10 +33,10 @@ const StyleSelectorContainer = connect(
     styles: state.styles,
     selectedStyle: state.selectedStyle
   }),
-  
+
   (dispatch) => ({
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style })
   })
 )(StyleSelector);
-  
+
 export default StyleSelectorContainer;

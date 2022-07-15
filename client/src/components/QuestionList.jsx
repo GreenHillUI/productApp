@@ -1,13 +1,32 @@
+/* eslint-disable no-var */
 import React from 'react';
-// import { Provider, useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import Question from './Question';
 import QModal from './QModal';
+import { sortQtoAs } from './QAhelperFunctions';
+// import { shallowEqual, createSelector } from 'reselect';
 
-function QuestionList({
-  qModal, /*qExpanded,*/ moreAnsweredQuestionsClick, onAddAnswerClick
-}) {
+
+
+
+function QuestionList({ productQs, qFilter }) {
+  //retrieve modal and extend locally
+  const qExpandedBy = useSelector((state) => state.qList.expandedBy);
+  const hasQModal = useSelector((state) => state.qList.hasModal);
+  const dispatch = useDispatch(); //map handlers to reducers (add button, )
+
+  //default header to use while loading
+  var qListSorted = <h3>PLEASE WAIT... PRODUCTS LOADING</h3>;
+
+
+  //if the user filter is > 2 chars, filter to Q's w/ a matching string in the review (Q or A)
+  if (productQs.results !== undefined) {
+    qListSorted = sortQtoAs(productQs, qFilter, qExpandedBy);
+    qListSorted = qListSorted.map((q) => (<li><Question key={q.question_id} question={q} /></li>));
+  }
+
   return (
-    qModal
+    hasQModal
       ? (
         <QModal />
       )
@@ -15,20 +34,20 @@ function QuestionList({
         <div id='q-container'>
           <span id='q-title'>QUESTIONS & ANSWERS</span>
           <div id='q-nav'>
-            <input id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
+            <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
           </div>
           <div id='q-list'>
-            <Question />
+            {qListSorted}
           </div>
           <div id='q-buttons'>
             <button
-              onClick={() => moreAnsweredQuestionsClick(true)}
+              onClick={() => dispatch({ type: "Q_EXPAND", payload: true })}
               type='button'
             >
               MORE ANSWERED QUESTIONS
             </button>
             <button
-              onClick={() => onAddAnswerClick(true)}
+              onClick={() => dispatch({ type: 'Q_MODAL', payload: true })}
               type='button'
             >
               ADD A QUESTION +
