@@ -11,9 +11,9 @@ function StyleBubble({ style, setSelectedStyle }) {
 
   if (style) {
     return (
-      <div className="style-bubble">
-        <div>{style.name}</div>
-        <img className="style-thumbnail" src={style.photos[0].thumbnail_url} onClick={handleClick} alt={`A thumbnail of ${style}`} />
+      <div className="styleBubble">
+        <div className='styleBubbleName'>{style.name}</div>
+        <img className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={handleClick} alt={`A thumbnail of ${style}`} />
       </div>
     );
   }
