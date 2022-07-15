@@ -1,49 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+
 function Gallery({
-  selectedStyle, displayIndex, incrementDisplayIndex, decrementDisplayIndex
+  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex
 }) {
   let displaySlides = [];
   let displayThumbs = [];
   const pictureData = selectedStyle.photos;
   
-  function makeSlide(image) {
-    return (<img className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />);
-  }
-  
-  function makeThumbnailBar(image) {
-    return ((<li><img className='galleryThumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
+  function scrollThumbnails() {
+    const thumbElement = document.querySelector('.galleryThumbView li');
+    thumbElement.style.marginLeft = thumbElement.scrollWidth * displayIndex * -1 + 'px';
   }
   
   function handleLeftArrowClick() {
-    const thumbElement = document.querySelector('.galleryThumbView li');
     if (displayIndex !== 0) {
       decrementDisplayIndex(displayIndex--);
     }
-    thumbElement.style.marginLeft = thumbElement.scrollWidth * displayIndex * -1 + 'px';
-    console.log(`Index: ${displayIndex} Pixel Math: ${-104 * displayIndex}, ThumbElementMarginLeft: ${thumbElement.style.marginLeft}`);   
+    scrollThumbnails();
   }
 
   function handleRightArrowClick() {
-    const thumbElement = document.querySelector('.galleryThumbView li');
     if (displayIndex !== selectedStyle.photos.length - 1) {
       incrementDisplayIndex(displayIndex++);
     }
-    thumbElement.style.marginLeft = thumbElement.scrollWidth * displayIndex * -1 + 'px';
-    console.log(`Index: ${displayIndex} Pixel Math: ${-104 * displayIndex}`);
+    scrollThumbnails();
   }
-  
+  function handleThumbnailClick(event) {
+    setDisplayIndex(event.target.dataset.index)
+  }
   if (pictureData) {
-    displaySlides = pictureData.map(makeSlide);
-    displayThumbs = pictureData.map(makeThumbnailBar);
+    displaySlides = pictureData.map((image) => (<img className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
+    displayThumbs = pictureData.map((image, index) => (<li><img onClick={handleThumbnailClick} data-index={index} className='galleryThumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
   } 
 
   return (
     <div id='gallery'>
       <div id='gallerySlideView'>
-        {displaySlides[displayIndex]}
-        
+        {displaySlides[displayIndex]}  
       </div>
       <div id='galleryCarousel' className='galleryCarousel'>
         <div className='galleryThumbView'>

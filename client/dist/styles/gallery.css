@@ -29,8 +29,8 @@
   /*Wrapper for the image carousel*/
   
   .galleryCarousel img {
-      width: 100px;
-      height: 100px;
+      width: 55px;
+      height: 55px;
       display: block;
       object-fit: cover;
       
@@ -38,7 +38,7 @@
   
   /* Div of viewable thumbnails. If each thumbnail is 100px + 4 total px of padding = 728px total */
   .galleryThumbView {
-      width: 728px;
+      width: 413px;
       height: 110px;
       overflow: hidden;
       white-space: nowrap;
