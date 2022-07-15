@@ -32,7 +32,7 @@ function Gallery({
     setDisplayIndex(event.target.dataset.index);
   }
   if (pictureData) {
-    displaySlides = pictureData.map((image) => (<img className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
+    displaySlides = pictureData.map((image, index) => (<img key={`gallerySlide ${index}`} className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
     displayThumbs = pictureData.map((image, index) => (<li><img onClick={handleThumbnailClick} data-index={index} className='galleryThumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
   } 
 
@@ -47,10 +47,8 @@ function Gallery({
           <ul>
             {displayThumbs}
           </ul>
-        </div>
-        
-          
-        <button type='button' className='thumbArrow' onClick={handleRightArrowClick}>Forward</button>
+        </div>                
+        {displayIndex === displaySlides.length - 1 ? null : <button type='button' className='thumbArrow' onClick={handleRightArrowClick}>Forward</button>}
       </div>
     </div>
   );
