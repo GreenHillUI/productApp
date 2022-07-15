@@ -1,7 +1,15 @@
-ul.product-carrousel {
+#related-items {
+  margin: 15px 100px;
+}
+
+.product-carrousel {
+  padding: 20px;
+
   overflow: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+
+  border: 2px solid black;
 }
 .product-carrousel li {
   display: inline-block;
