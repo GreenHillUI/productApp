@@ -12,7 +12,6 @@ import relatedProductsReducer from './relatedProductsReducer';
 
 const rootReducer = combineReducers({
   metaData: metaDataReducer,
- 
   qList: qListReducer,
   styles: stylesReducer,
   selectedStyle: selectedStyleReducer,

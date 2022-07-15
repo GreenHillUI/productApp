@@ -11,12 +11,12 @@ import { expandQuestions, showQModal } from '../actions/QListAction'; //and the 
 
 const mapStateToProps = (store) => ({
   qExpandedBy: store.qList.qExpandedBy,
-  hasQModal: store.qList.qModal,
+  qModal: store.qList.qModal,
   qFilter: store.qList.qFilter,
   productQs: store.qList.productQs,
 });//connects the prop to the state saved in the store
 
-
+//makes it so you can change state depending on inputs   event handler => action/reducer => store
 const mapDispatchToProps = (dispatch) => ({
   moreAnsweredQuestionsClick: () => dispatch(expandQuestions(true)), //link more question button event
   onAddAnswerClick: () => dispatch(showQModal(true)), //link add answer event

@@ -2,15 +2,16 @@
 /**************** BEGINNING OF Q/A PORTION **************** */
 #q-container {
   min-width: 720px; /* For Dev */
+  max-width: 1000px;
   /* padding: 0px 60px; */
   margin: 70px auto; /* For Dev */
   /* margin-left: 30px; For Dev */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1.75fr 10fr 2fr;
+  grid-template-rows: 1fr 1.75fr 10fr minmax(50px, 60px);
   row-gap: 10px;
   width: 80%;
-  height: 500px;
+  max-height: 1000px;
   background-color: white; /* For Dev */
 }
 #q-title {
@@ -65,7 +66,7 @@
   height: auto;
   min-height: 100px;
   line-height: 1.25;
-  margin: 5px 0;
+  margin-top: 15px;
 }
 .question > span {
   background-color: white; /* For Dev */
@@ -85,7 +86,7 @@
   font-size: 70%;
 }
 
-.q-links > button {
+.q-links > button, .q-links > span {
   padding: 2px;
   border-style: none;
   font-weight: bold;
@@ -107,10 +108,12 @@
   grid-column: 1 /span 2;
   grid-row: 3;
   max-width: 127px;
+  min-height: 30px;
   font-size: 0.5em;
   border: none;
   background-color: white;
   font-weight: bold;
+
 }
 .a-list {
   grid-column: 1 / span 3;
@@ -166,16 +169,16 @@ a-link
 
 /**************** START OF Q MODAL PORTION **************** */
 
-.qModal {
+#qModal {
   position: fixed;
   top: 10%;
   padding: 40px 50px;
   border-radius: 8px;
   background-color: white;
   z-index: 60000;
-  width: 400px;
+  width: 600px;
   min-height: 100px;
-  display: none;
+  display: block;
   left: 50%;
   margin-left: -200px;
   max-height: 80%;
