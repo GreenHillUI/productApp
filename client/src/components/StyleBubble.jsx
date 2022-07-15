@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-function StyleBubble({ style, setSelectedStyle }) {
+function StyleBubble({ style, selectedStyle, setSelectedStyle }) {
 
   function handleClick() {
     setSelectedStyle([style]);
@@ -12,8 +12,8 @@ function StyleBubble({ style, setSelectedStyle }) {
   if (style) {
     return (
       <div className="styleBubble">
-        <div className='styleBubbleName'>{style.name}</div>
-        <img className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={handleClick} alt={`A thumbnail of ${style}`} />
+        {selectedStyle.style_id === style.style_id ? <div className='styleBubbleName'>{style.name}</div> : null }
+         <img className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={handleClick} alt={`A thumbnail of ${style}`} />
       </div>
     );
   }

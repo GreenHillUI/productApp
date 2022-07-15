@@ -53,10 +53,9 @@ function Overview({ productInfo, selectedStyle, metaData }) {
       <Gallery /> 
       <div className='overviewProductSlogan'>{productInfo ? productInfo.slogan : `Loading`}</div>
       <div className='overviewProductInfo'>
-        <p>
+        <p className="overviewProductDescription">
           {productInfo ? productInfo.description : `Loading`}
         </p>
-       
       </div>
       <StyleSelector />
       <div className='reviewStars'>
@@ -65,7 +64,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
       </div>
 
      
-      <div>
+      <div className='overviewPrice'>
         Price:
         {selectedStyle.sale_price ? `Was $${selectedStyle.original_price} Now: $${selectedStyle.sale_price}` : `$${selectedStyle.original_price}`}
       </div>
