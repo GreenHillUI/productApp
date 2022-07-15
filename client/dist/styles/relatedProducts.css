@@ -1,5 +1,10 @@
+ul.product-carrousel {
+  overflow: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
 .product-carrousel li {
-  /* display: inline-block; */
+  display: inline-block;
   width: 200px;
   /* float: left; */
 }
