@@ -14,6 +14,13 @@ app.get('/products*', (req, res) => {
     });
 });
 
+app.get('/reviews', (req, res) => {
+  controllers.get(req.path)
+    .then((reviews) => {
+      res.status(200).send(reviews);
+    })
+    .catch();
+});
 
 app.get('/reviews/meta', (req, res) => {
   const config = { params: req.query };
@@ -28,7 +35,6 @@ app.get('/products/:id', (req, res) => {
   });
 
 });
-
 
 app.get('/products/:id/styles', (req, res) => {
   controllers.get(req.path).then((styleData) => {

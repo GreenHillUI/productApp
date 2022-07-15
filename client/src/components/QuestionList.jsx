@@ -9,10 +9,9 @@ import { sortQtoAs } from './QAhelperFunctions';
 
 
 
-function QuestionList({ productQs, qFilter }) {
+function QuestionList({ productQs, qFilter, qExpandedBy }) {
   //retrieve modal and extend locally
-  const qExpandedBy = useSelector((state) => state.qList.expandedBy);
-  const hasQModal = useSelector((state) => state.qList.hasModal);
+  const qModal = useSelector((state) => state.qList.qModal);
   const dispatch = useDispatch(); //map handlers to reducers (add button, )
 
   //default header to use while loading
@@ -22,39 +21,32 @@ function QuestionList({ productQs, qFilter }) {
   //if the user filter is > 2 chars, filter to Q's w/ a matching string in the review (Q or A)
   if (productQs.results !== undefined) {
     qListSorted = sortQtoAs(productQs, qFilter, qExpandedBy);
-    qListSorted = qListSorted.map((q) => (<li><Question key={q.question_id} question={q} /></li>));
+    qListSorted = qListSorted.map((q) => (
+      <li key={q.question_id}>
+        <Question question={q} />
+      </li>
+    ));
   }
 
   return (
-    hasQModal
-      ? (
-        <QModal />
-      )
-      : (
-        <div id='q-container'>
-          <span id='q-title'>QUESTIONS & ANSWERS</span>
-          <div id='q-nav'>
-            <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
-          </div>
-          <div id='q-list'>
-            {qListSorted}
-          </div>
-          <div id='q-buttons'>
-            <button
-              onClick={() => dispatch({ type: "Q_EXPAND", payload: true })}
-              type='button'
-            >
-              MORE ANSWERED QUESTIONS
-            </button>
-            <button
-              onClick={() => dispatch({ type: 'Q_MODAL', payload: true })}
-              type='button'
-            >
-              ADD A QUESTION +
-            </button>
-          </div>
-        </div>
-      )
+    <div id='q-container'>
+      { qModal && <QModal /> }
+      <span id='q-title'>QUESTIONS & ANSWERS</span>
+      <div id='q-nav'>
+        <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
+      </div>
+      <ul id='q-list'>
+        {qListSorted}
+      </ul>
+      <div id='q-buttons'>
+        <button onClick={() => dispatch({ type: "Q_EXPAND", payload: !qExpandedBy })} type='button'>
+          {qExpandedBy ? 'COLLAPSE QUESTIONS' : ' MORE ANSWERED QUESTIONS'}
+        </button>
+        <button onClick={() => dispatch({ type: 'Q_MODAL', payload: true })} type='button'>
+          ADD A QUESTION +
+        </button>
+      </div>
+    </div>
   );
 }
 

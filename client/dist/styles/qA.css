@@ -2,22 +2,23 @@
 /**************** BEGINNING OF Q/A PORTION **************** */
 #q-container {
   min-width: 720px; /* For Dev */
+  max-width: 1000px;
   /* padding: 0px 60px; */
-  margin-top: 70px; /* For Dev */
+  margin: 70px auto; /* For Dev */
   /* margin-left: 30px; For Dev */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1.75fr repeat(12, 1fr);
-  row-gap: 5px;
-  width: 70%;
-  height: 500px;
+  grid-template-rows: 1fr 1.75fr 10fr minmax(50px, 60px);
+  row-gap: 10px;
+  width: 80%;
+  max-height: 1000px;
   background-color: white; /* For Dev */
 }
 #q-title {
   grid-column: 1 /span 2;
   font-size: .75em;
   grid-row: 1;
-  background-color: aqua; /* For Dev */
+  background-color: white; /* For Dev */
   margin: 5px 0px;
 }
 #q-nav {
@@ -38,13 +39,14 @@
 }
 #q-list {
   grid-column: 1 / span 4;
-  grid-row: 3 / span 10;
+  grid-row: 3;
   background-color: white;/* For Dev */
+  padding-left: 0;
 }
 #q-buttons {
   display: flex;
   grid-column: 1 / span 2;
-  grid-row: 13 / span 2;
+  grid-row: 4;
   min-width: 400px;
   background-color: white; /* For Dev */
 }
@@ -58,29 +60,33 @@
 }
 .question {
   display: grid;
-  grid-template-columns: 5fr 1.25fr 1.75fr;  /*last three frames for the help and answer link*/
-  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-columns: minmax(15px, 20px) 5fr 1fr minmax(160px, 185px);  /*last three frames for the help and answer link*/
+  grid-template-rows: max-content max-content .85fr;
   background-color: white; /* For Dev */
   height: auto;
+  min-height: 100px;
+  line-height: 1.25;
+  margin-top: 15px;
 }
 .question > span {
   background-color: white; /* For Dev */
 }
 
-#q-text{
-  grid-row: 1 / span 2 ;
+.q-text{
+  grid-row: 1;
+  grid-column: 2 / span 2;
   font-weight: 600;
   font-size: .9em;
 }
 
-#q-links {
+.q-links {
   grid-row: 1;
-  grid-column: 3;
+  grid-column: 4;
   min-width: 165px;
   font-size: 70%;
 }
 
-#q-links > button {
+.q-links > button, .q-links > span {
   padding: 2px;
   border-style: none;
   font-weight: bold;
@@ -88,31 +94,91 @@
   float: right;
 }
 
-#a-load {
-  grid-column: 1;
-  grid-row: 3;
-}
 
-#temp-a {
-  grid-column: 1;
-  grid-row: 2;
+#q-list > li {
+  list-style: none;
 }
-
 
 /**************** END OF Q/A LIST PORTION **************** */
 
+/**************** END OF Q/A QUESTION PORTION **************** */
+
+
+.a-load {
+  grid-column: 1 /span 2;
+  grid-row: 3;
+  max-width: 127px;
+  min-height: 30px;
+  font-size: 0.5em;
+  border: none;
+  background-color: white;
+  font-weight: bold;
+
+}
+.a-list {
+  grid-column: 1 / span 3;
+  grid-row: 2;
+  padding-left: 0;
+}
+/**************** END OF Q/A QUESTION PORTION **************** */
+
+/**************** END OF Q/A ANSWER PORTION **************** */
+
+.a-list > li {
+  list-style: none;
+  grid-column: 1 / span 3;
+  margin: 5px 0px;
+  display: inline-block;
+  line-height: 1;
+}
+
+.answer {
+  display: grid;
+  grid-template-columns: minmax(15px, 20px) repeat(6, 1fr);  /*last three frames for the help and answer link*/
+  grid-template-rows: .2fr .5fr;
+}
+
+.a-icon {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.a-meta{
+  padding-top: 5px;
+  display: inline-flexbox;
+  grid-column: 2 / span 3;
+  grid-row: 2;
+  font-size: .6em;
+  word-spacing: 1.5px;
+}
+.a-meta > button {
+  padding: 2px;
+  border-style: none;
+  font-weight: bold;
+  background-color: white;
+}
+.a-text {
+  margin-top: 1px;
+  grid-column: 2 / span 6;
+  font-size: .8em;
+}
+
+a-link
+/**************** END OF Q/A ANSWER PORTION **************** */
+
+
 /**************** START OF Q MODAL PORTION **************** */
 
-.qModal {
+#qModal {
   position: fixed;
   top: 10%;
   padding: 40px 50px;
   border-radius: 8px;
   background-color: white;
   z-index: 60000;
-  width: 400px;
+  width: 600px;
   min-height: 100px;
-  display: none;
+  display: block;
   left: 50%;
   margin-left: -200px;
   max-height: 80%;

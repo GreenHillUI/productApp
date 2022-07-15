@@ -27,34 +27,34 @@ function generateStars(average) {
   const starBar = [];
   for (let i = 0; i < filledStars; i++) {
     starBar.push(<BsStarFill />);
-  } 
-  
+  }
+
   if (filledRemainder >= 0.5) {
     starBar.push(<BsStarHalf />);
   }
-  
+
   for (let i = 0; i < emptyStars; i++) {
     starBar.push(<BsStar />);
-  } 
+  }
 
   return starBar;
 }
 
 function Overview({ productInfo, selectedStyle, metaData }) {
-  
-  //Add section for product features if they exist 
+
+  //Add section for product features if they exist
   return (
     //Coming back to image gallery after writing a carousel
     <div>
       <h2>{productInfo ? productInfo.category : `Loading`}</h2>
       <h1>
-        {productInfo ? productInfo.name : `Loading`} 
+        {productInfo ? productInfo.name : `Loading`}
       </h1>
       <div><Gallery /> </div> 
       <div>{productInfo ? productInfo.slogan : `Loading`}</div>
       <div>
         <p>
-          {productInfo ? productInfo.description : `Loading`} 
+          {productInfo ? productInfo.description : `Loading`}
         </p>
       </div>
 
@@ -63,13 +63,13 @@ function Overview({ productInfo, selectedStyle, metaData }) {
         <br />
         <StyleSelector />
         <div>
-          Review Score: 
+          Review Score:
           {metaData ? generateStars(reviewAverage(metaData)) : `Loading`}
           {/*this.generateStars(this.reviewAverage())*/}
         </div>
       </div>
       <div>
-        Price: 
+        Price:
         {selectedStyle.sale_price ? `Was $${selectedStyle.original_price} Now: $${selectedStyle.sale_price}` : `$${selectedStyle.original_price}`}
       </div>
       <AddToCart />
@@ -94,7 +94,7 @@ const OverviewContainer = connect(
     setProductInfo: (info) => dispatch({ type: 'SETPRODUCTINFO', productInfo: info }),
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
     setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data }),
-    
+
   }),
 )(Overview);
 

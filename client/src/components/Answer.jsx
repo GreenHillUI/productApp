@@ -1,27 +1,34 @@
-import React from 'react';
+import { useState, React } from 'react';
 
-export default function Answer(q_ID) {
-
-  const answers =
-   //if getting questions of product in props
-  //gets a list of answers that contain the current filter, then maps their IDs
-  const relevant = qAnswers.filter((a) => (a.body.indexOf(qFilter) !== -1)).map((a) => (a.answer_id));
-  //Sorts the questions by helpfulness rating
-  const sorted = questions.results.sort((a, b) => (a.question_helpfulness - b.question_helpfulness));
-  //Filters the sorted list to only Qs whose answers
-  const filtered = (filter === '' ? sorted : sorted.filter((q) => ())
+export default function Answer({ answer }) {
 
 
+  const [likes, setLikes] = useState(answer.helpfulness);
+  const [clicked, setClicked] = useState(false);
+  const [reported, report] = useState(false);
 
+  const like = () => {
+    setLikes(likes + 1);
+    setClicked(true);
+  };
+
+  const likeButton = clicked
+    ? <span id='a-h'> Helpful? Yes ({likes}) | </span>
+    : <button onClick={like} type='button' id='a-h'>  Helpful? Yes ({likes}) | </button>;
+
+  const reportButton = reported
+    ? <span id='a-report'>Reported!</span>
+    : <button onClick={() => report(true)} type='button' id='a-report'>Report</button>;
 
   return (
     <div className='answer'>
-      <span id='a-text'>A: Just like this</span>
-
-      <span id='a-links'>
-        <button type='button' id='a-a'>Add Answer</button>
-        <button type='button' id='a-h'>Helpful? Yes (0) |</button>
-      </span>
+      <span className='a.icon'><b>A:</b></span>
+      <span className='a-text'>{answer.body}</span>
+      <div className='a-meta'>
+        <span className='a-user-date'>by: ${answer.answerer_name} date |</span>
+        {likeButton}
+        {reportButton}
+      </div>
     </div>
   );
 }
