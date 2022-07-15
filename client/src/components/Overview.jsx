@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs';
 import StyleSelector from "./StyleSelector";
 import AddToCart from './AddtoCart';
-
+import Gallery from './Gallery';
 
 
 //Finds and returns average of reviews
@@ -50,7 +50,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
       <h1>
         {productInfo ? productInfo.name : `Loading`} 
       </h1>
-      <div>***IMAGE GALLERY PLACEHOLDER*** </div> 
+      <div><Gallery /> </div> 
       <div>{productInfo ? productInfo.slogan : `Loading`}</div>
       <div>
         <p>

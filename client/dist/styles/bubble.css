@@ -1,0 +1,17 @@
+#style-wrapper {
+    display: grid;
+    grid-template-columns: 145px 145px 145px 145px;    
+}
+
+.style-thumbnail {
+    border-radius: 100px;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 1.2mm solid green;
+    opacity: 0.5;
+}
+
+#styleCheck {
+    transform: translate(95px, 45px)
+}

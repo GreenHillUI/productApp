@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import galleryReducer from './galleryReducer';
 import metaDataReducer from './metaDataReducer';
 import productInfoReducer from './productInfoReducer';
 import qListReducer from './qListReducer';
@@ -11,12 +12,15 @@ import stylesReducer from './stylesReducer';
 
 const rootReducer = combineReducers({
   metaData: metaDataReducer,
- 
   qList: qListReducer,
   styles: stylesReducer,
   selectedStyle: selectedStyleReducer,
   productInfo: productInfoReducer,
   selectedSku: selectedSkuReducer,
+  displayIndex: galleryReducer,
+  //state1: stateReducer1,
+  //state2: stateReducer2,
+  //etc
 });
 
 export default rootReducer; //exporting to redux store (store.js)
