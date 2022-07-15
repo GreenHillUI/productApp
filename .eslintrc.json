@@ -33,7 +33,7 @@
         "jsx-quotes": "off",
         "padded-blocks":"off",
         "no-trailing-spaces":"off",
-        "no-debugger":"off"
-
+        "no-debugger":"off",
+        "no-plusplus": "off"
     }
 }
