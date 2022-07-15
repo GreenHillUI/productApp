@@ -9,7 +9,11 @@ import React from "react";
 function RelatedProductsComponent({ product }) {
   return (
     <li>
-      {product.name}
+      <img src={product.img} alt={`A thumbnail of ${product.name}`} width="500" height="600" />
+      <h2>{`category: ${product.category}`}</h2>
+      <h1>{`name: ${product.name}`}</h1>
+      <h1>{`$${product.price}`}</h1>
+      <p>Star rating</p>
     </li>
   );
 }
