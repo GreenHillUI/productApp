@@ -12,7 +12,6 @@ function StyleBubble({ style, selectedStyle, setSelectedStyle }) {
   if (style) {
     return (
       <div className="styleBubble">
-        {selectedStyle.style_id === style.style_id ? <div className='styleBubbleName'>{style.name}</div> : null }
          <img className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={handleClick} alt={`A thumbnail of ${style}`} />
       </div>
     );
@@ -31,3 +30,4 @@ const StyleBubbleContainer = connect(
 
 )(StyleBubble);
 export default StyleBubbleContainer;
+
