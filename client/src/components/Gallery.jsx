@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { MdArrowForwardIos, MdArrowBackIos } from 'react-icons/md';
 
 
 function Gallery({
@@ -42,13 +43,14 @@ function Gallery({
         {displaySlides[displayIndex]}  
       </div>
       <div id='galleryCarousel' className='galleryCarousel'>
-        {displayIndex === 0 ? null : <button type='button' className='thumbArrow' onClick={handleLeftArrowClick}>Back</button>}
+               {displayIndex === 0 ? null : <MdArrowBackIos className='thumbArrow' onClick={handleLeftArrowClick} />}
         <div className='galleryThumbView'>
           <ul>
             {displayThumbs}
           </ul>
-        </div>                
-        {displayIndex === displaySlides.length - 1 ? null : <button type='button' className='thumbArrow' onClick={handleRightArrowClick}>Forward</button>}
+        </div>
+             
+        {displayIndex === displaySlides.length - 1 ? null : <MdArrowForwardIos className='thumbArrow' onClick={handleRightArrowClick} />}
       </div>
     </div>
   );
