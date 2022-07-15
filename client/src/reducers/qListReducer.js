@@ -4,7 +4,7 @@ const qListReducer = (state = {}, action) => {
     case "Q_MODAL":
       return {
         ...state,
-        hasQModal: action.payload
+        qModal: action.payload
       };
     case "Q_EXPAND":
       return {
@@ -19,7 +19,8 @@ const qListReducer = (state = {}, action) => {
     case "SET_QUESTIONS":
       return {
         ...state,
-        productQs: action.payload
+        productQs: action.payload,
+        qExpandedBy: false
       };
     default:
       return state;

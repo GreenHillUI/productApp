@@ -1,7 +1,24 @@
-import React from 'react';
-
+import { useState, React } from 'react';
 
 export default function Answer({ answer }) {
+
+
+  const [likes, setLikes] = useState(answer.helpfulness);
+  const [clicked, setClicked] = useState(false);
+  const [reported, report] = useState(false);
+
+  const like = () => {
+    setLikes(likes + 1);
+    setClicked(true);
+  };
+
+  const likeButton = clicked
+    ? <span id='a-h'> Helpful? Yes ({likes}) | </span>
+    : <button onClick={like} type='button' id='a-h'>  Helpful? Yes ({likes}) | </button>;
+
+  const reportButton = reported
+    ? <span id='a-report'>Reported!</span>
+    : <button onClick={() => report(true)} type='button' id='a-report'>Report</button>;
 
   return (
     <div className='answer'>
@@ -9,8 +26,8 @@ export default function Answer({ answer }) {
       <span className='a-text'>{answer.body}</span>
       <div className='a-meta'>
         <span className='a-user-date'>by: ${answer.answerer_name} date |</span>
-        <button type='button' id='a-h'> Helpful? Yes (0) |</button>
-        <button type='button' id='a-report'>Report</button>
+        {likeButton}
+        {reportButton}
       </div>
     </div>
   );

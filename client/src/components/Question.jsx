@@ -1,9 +1,21 @@
-import React from 'react';
+import { React, useState} from 'react';
 import _ from 'underscore';
 import { useSelector } from 'react-redux';
 import Answer from './Answer';
 
 export default function Question({ question }) {
+
+  const [likes, setLikes] = useState(question.question_helpfulness);
+  const [clicked, setClicked] = useState(false);
+
+  const like = () => {
+    setLikes(likes + 1);
+    setClicked(true);
+  };
+
+  const likeButton = clicked
+    ? <span id='q-s'> Helpful? Yes ({likes}) | </span>
+    : <button onClick={like} type='button' id='q-h'>  Helpful? Yes ({likes}) | </button>;
 
   const aFilter = useSelector((state) => (state.qList.qFilter));
 
@@ -19,7 +31,7 @@ export default function Question({ question }) {
       <span className='q-text'>{question.question_body}</span>
       <span className='q-links'>
         <button type='button' id='q-a'>Add Answer</button>
-        <button type='button' id='q-h'>Helpful? Yes ({question.question_helpfulness}) |</button>
+        {likeButton}
       </span>
       <ul className='a-list'>
         { answers.map((a) => (

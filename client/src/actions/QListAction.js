@@ -1,14 +1,14 @@
 const expandQuestions = (bool) => (
   {
     type: 'Q_EXPAND',
-    qExpanded: bool
+    payload: bool
   }
 );
 
 const showQModal = (bool) => (
   {
     type: 'Q_MODAL',
-    qModal: bool
+    payload: bool
   }
 );
 
