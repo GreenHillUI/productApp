@@ -9,7 +9,6 @@ function ReviewsList() {
   // if there are <3 reviews remaining, "More Reviews" button is not shown
 
   return (
-
     <>
 
       {/* This div houses all reviews to be shown */}

@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable indent */
+
 import React from 'react';
 import ReviewsList from './ReviewsList';
 // Don't have to import the server/index.js?
@@ -8,31 +10,34 @@ import ReviewsList from './ReviewsList';
 // bring all reviews here to have data to go through
 
 // functions needed
-  // componentDidMount?
+  // componentDidMount? Or alternative?
 
   // calculate review to the nearest half star
     // IMPORT Andrew's star function
 
 
-  // calculate percentage of reviews recommend product
-  // eslint-disable-next-line no-unused-vars
-  function getPercentageRecommended(ratingsArray) {
+// calculate percentage of reviews recommend product
+// function getPercentageRecommended(results) {
+  // create new array of only 'true' values from results
+  // const trues = results.filter(
+  //   (resultItem.recommend) => (resultItem.recommend === true)
+  //     );
 
-  }
+  // return the Length of array of trues divided by original array length
+  // return Math.ceil(trues.length / ratingsArray.length) * 100;
+// }
+
 
   // get average review value
-  // eslint-disable-next-line no-unused-vars
-  function getAverageReview(ratingsArray) {
+function getAverageReview(results) {
+  const reviewTotal = results.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    0
+  );
 
-    const reviewTotal = ratingsArray.reduce(
-      (previousValue, currentValue) => previousValue + currentValue,
-      0
-    );
-
-    const { length } = ratingsArray;
-
-    return (reviewTotal / length);
-  }
+  const { length } = results;
+  return (reviewTotal / length);
+}
 
   // sort option event handler
 
@@ -43,17 +48,17 @@ import ReviewsList from './ReviewsList';
     // results length
     // rating numbers
     // recommended
+    // username
+    // date
 
 // props to pass down?
   // individual review for ReviewsList
 
 
-// eslint-disable-next-line no-unused-vars
 function Ratings({ page, count, results }) {
 
   return (
-
-    <div className="rr-container">
+    <div id="ratings-reviews-container">
 
       {/* Big Rating and star count */}
       {/* Use generateStars function from Overview */}
@@ -88,8 +93,7 @@ function Ratings({ page, count, results }) {
       <ReviewsList />
 
     </div>
-
   );
-}
+};
 
 export default Ratings;
