@@ -9,11 +9,11 @@ function Gallery({
   const pictureData = selectedStyle.photos;
   
   function makeSlide(image) {
-    return (<img className='slide' src={image.url} alt={`${selectedStyle.name} style`} />);
+    return (<img className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />);
   }
   
   function makeThumbnailBar(image) {
-    return ((<li><img className='gallery-thumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
+    return ((<li><img className='galleryThumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
   }
   
   function handleLeftArrowClick() {
@@ -35,14 +35,14 @@ function Gallery({
 
   return (
     <div id='gallery'>
-      <div id='slideView'>{displaySlides[displayIndex]}</div>
-      <div id='carousel' className='carousel'>
-        <div className='thumbView'>
+      <div id='gallerySlideView'>{displaySlides[displayIndex]}</div>
+      <div id='galleryCarousel' className='galleryCarousel'>
+        <div className='galleryThumbView'>
           <ul>
             {displayThumbs}
           </ul>
         </div>
-        <div id='buttonContainer'>
+        <div id='galleryButtonContainer'>
           <button type='button' className='thumbArrow' onClick={handleLeftArrowClick}>PREV</button>
           <button type='button' className='thumbArrow' onClick={handleRightArrowClick}>NEXT</button>
         </div>

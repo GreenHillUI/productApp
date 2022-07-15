@@ -13,13 +13,13 @@ function StyleSelector(props) {
 
   if (styles.length > 0) {
     const wrappedStyles = styles.map((style) => (
-      <div className="bubbleWrapper">
+      <div className="styleBubbleWrapper">
         {style.style_id === selectedStyle.style_id ? <FaCheckCircle id="styleCheck" /> : null }
         <StyleBubble key={style.style_id} style={style} /> 
       </div>
     ));
     return (
-      <div id='style-wrapper'>
+      <div id='styleWrapper'>
         {wrappedStyles}
       </div>
     );

@@ -1,9 +1,9 @@
-#style-wrapper {
+#styleWrapper {
     display: grid;
     grid-template-columns: 145px 145px 145px 145px;    
 }
 
-.style-thumbnail {
+.styleThumbnail {
     border-radius: 100px;
     width: 120px;
     height: 120px;

@@ -1,0 +1,64 @@
+/* Wrapper for the entire Image Gallery Component */
+#gallery {
+width: 1000px;
+background-color: grey;
+padding: 50px;
+}
+
+/*The selected image*/
+#gallerySlideView img {
+  height: 600px;
+  width: 650px;
+  object-fit: cover;
+  transform: translate(115px);
+  cursor: zoom-in;
+  
+}
+
+.gallerySlide{
+  max-height: 500px;
+  max-width: 500px;
+  padding:inherit;
+  }
+
+/*Wrapper for the image carousel*/
+#galleryCarousel {
+  width: 860x;
+  height: 220px;
+  background-color: blue;
+  padding: inherit;  
+}
+
+.galleryCarousel img {
+    width: 100px;
+    height: 100px;
+    display: block;
+    object-fit: cover;
+    
+}
+
+/* Div of viewable thumbnails. If each thumbnail is 100px + 4 total px of padding = 728px total */
+.galleryThumbView {
+    width: 728px;
+    height: 110px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/*The container for the list of thumbnails*/
+.galleryThumbView ul {
+  height:110px;
+  width: 1200px;
+  margin: 0px;
+  padding: 0px; 
+  list-style-type: none;
+  overflow: hidden;
+}
+
+/* Spacing and scrolling for individual thumnails iterate by -104px to scroll right */
+.galleryThumbView li {
+  padding: 2px;
+  display: inline-block;
+  transform: translate(-0px);
+};
+
