@@ -1,14 +1,18 @@
 import React from 'react';
-import Reviews from './Reviews';
+import ReviewsList from './ReviewsList';
 
 function Ratings() {
 
   return (
     <div>
 
+      {/* Big Rating and star count */}
+      {/* Use generateStars function from Overview */}
+      <h1> 3.5 For Now </h1>
+
+      {/* Individual product score and data */}
       <div>
-        {/* Individual product score and data */}
-        {/* Use reviewAverage and generateStars functions from Overview */}
+
         <div> XXX % of reviews recommend this product</div>
 
         {/* Stars breakdown */}
@@ -17,7 +21,7 @@ function Ratings() {
           4 stars
           3 stars
           2 stars
-          1 star
+          1 stars
         </div>
 
         {/* Size Sliding Scale */}
@@ -32,8 +36,7 @@ function Ratings() {
 
       </div>
 
-
-      <Reviews />
+      <ReviewsList />
 
     </div>
   );
