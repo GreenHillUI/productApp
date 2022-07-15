@@ -1,6 +1,9 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-function QModal({ submitForm }) {
+function QModal({ product }) {
+  // const qModal = useSelector((state) => state.qList.mo)
+  const dispatch = useDispatch();
 
   function onSubmitClickVal() {
     return submitForm({
@@ -11,9 +14,12 @@ function QModal({ submitForm }) {
   }
 
   return (
-    <div id='qModal'>
-      <h3> Ask Your Question</h3>
-      <h2>About the [Product Name Here]</h2>
+    <div id='qModal.on'>
+      <button onClick={() => dispatch({ type: 'Q_MODAL', payload: false })} type='button'>
+        CLOSE WINDOW
+      </button>
+      <h2> Ask Your Question</h2>
+      <h4> About the {product || 'Thingamajig'} </h4>
       <form className='modal'>
         <label htmlFor='your' value='*'>
           <input id='newQA' type='text-area' name='your' placeholder='Your Question: ' />

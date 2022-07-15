@@ -21,7 +21,7 @@ const reviewFilter = function (Qs, filter) {
   return Qs.results.filter((q) => (combinedQAObj[q.question_id].indexOf(filter) !== -1));
 };
 
-module.exports.sortQtoAs = function (Qs, qFilter = '', expandBy) {
+module.exports.sortQtoAs = function (Qs, qFilter = '', expand) {
   //verifying the filter is > 2 characters and performing filter
   if (qFilter && qFilter.length > 2) {
     Qs = reviewFilter(Qs, qFilter);
@@ -29,6 +29,6 @@ module.exports.sortQtoAs = function (Qs, qFilter = '', expandBy) {
     //otherwise, create an array (not object) of Qs
     Qs = _.map(Qs.results);
   }
+  return (expand ? Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)) : Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, 3));
   //sort by helpfulness, and then slice off whatever Qs not supposed to be displayed
-  return Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, expandBy);
 };

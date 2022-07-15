@@ -11,7 +11,6 @@ import stylesReducer from './stylesReducer';
 
 const rootReducer = combineReducers({
   metaData: metaDataReducer,
- 
   qList: qListReducer,
   styles: stylesReducer,
   selectedStyle: selectedStyleReducer,
