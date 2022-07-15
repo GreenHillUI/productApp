@@ -17,15 +17,21 @@ function Gallery({
   }
   
   function handleLeftArrowClick() {
+    const thumbElement = document.querySelector('.galleryThumbView li');
     if (displayIndex !== 0) {
       decrementDisplayIndex(displayIndex--);
-    }    
+    }
+    thumbElement.style.marginLeft = thumbElement.scrollWidth * displayIndex * -1 + 'px';
+    console.log(`Index: ${displayIndex} Pixel Math: ${-104 * displayIndex}, ThumbElementMarginLeft: ${thumbElement.style.marginLeft}`);   
   }
 
   function handleRightArrowClick() {
+    const thumbElement = document.querySelector('.galleryThumbView li');
     if (displayIndex !== selectedStyle.photos.length - 1) {
       incrementDisplayIndex(displayIndex++);
     }
+    thumbElement.style.marginLeft = thumbElement.scrollWidth * displayIndex * -1 + 'px';
+    console.log(`Index: ${displayIndex} Pixel Math: ${-104 * displayIndex}`);
   }
   
   if (pictureData) {
@@ -35,7 +41,10 @@ function Gallery({
 
   return (
     <div id='gallery'>
-      <div id='gallerySlideView'>{displaySlides[displayIndex]}</div>
+      <div id='gallerySlideView'>
+        {displaySlides[displayIndex]}
+        
+      </div>
       <div id='galleryCarousel' className='galleryCarousel'>
         <div className='galleryThumbView'>
           <ul>
