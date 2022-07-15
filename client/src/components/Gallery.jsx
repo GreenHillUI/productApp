@@ -26,9 +26,10 @@ function Gallery({
       incrementDisplayIndex(displayIndex++);
     }
     scrollThumbnails();
+   
   }
   function handleThumbnailClick(event) {
-    setDisplayIndex(event.target.dataset.index)
+    setDisplayIndex(event.target.dataset.index);
   }
   if (pictureData) {
     displaySlides = pictureData.map((image) => (<img className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
@@ -41,15 +42,15 @@ function Gallery({
         {displaySlides[displayIndex]}  
       </div>
       <div id='galleryCarousel' className='galleryCarousel'>
+        {displayIndex === 0 ? null : <button type='button' className='thumbArrow' onClick={handleLeftArrowClick}>Back</button>}
         <div className='galleryThumbView'>
           <ul>
             {displayThumbs}
           </ul>
         </div>
-        <div id='galleryButtonContainer'>
-          <button type='button' className='thumbArrow' onClick={handleLeftArrowClick}>PREV</button>
-          <button type='button' className='thumbArrow' onClick={handleRightArrowClick}>NEXT</button>
-        </div>
+        
+          
+        <button type='button' className='thumbArrow' onClick={handleRightArrowClick}>Forward</button>
       </div>
     </div>
   );
