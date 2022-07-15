@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { MdArrowForwardIos, MdArrowBackIos } from 'react-icons/md';
+import { IconContext } from 'react-icons';
 
 
 function Gallery({
@@ -9,7 +10,8 @@ function Gallery({
   let displaySlides = [];
   let displayThumbs = [];
   const pictureData = selectedStyle.photos;
-  
+  const arrowStyle = { fill: 'aliceblue', height: '4em', width: '4em' };
+
   function scrollThumbnails() {
     const thumbElement = document.querySelector('.galleryThumbView li');
     thumbElement.style.marginLeft = thumbElement.scrollWidth * displayIndex * -1 + 'px';
@@ -33,26 +35,30 @@ function Gallery({
     setDisplayIndex(event.target.dataset.index);
   }
   if (pictureData) {
-    displaySlides = pictureData.map((image, index) => (<img key={`gallerySlide ${index}`} className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
-    displayThumbs = pictureData.map((image, index) => (<li><img onClick={handleThumbnailClick} data-index={index} className='galleryThumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
+    displaySlides = pictureData.map((image, index) => (<img key={index + selectedStyle.style_id} className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
+    displayThumbs = pictureData.map((image, index) => (<li><img key={index + selectedStyle.style_id} onClick={handleThumbnailClick} data-index={index} className='galleryThumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
   } 
-
+  
   return (
     <div id='gallery'>
       <div id='gallerySlideView'>
         {displaySlides[displayIndex]}  
       </div>
-      <div id='galleryCarousel' className='galleryCarousel'>
-               {displayIndex === 0 ? null : <MdArrowBackIos className='thumbArrow' onClick={handleLeftArrowClick} />}
-        <div className='galleryThumbView'>
-          <ul>
-            {displayThumbs}
-          </ul>
+      
+      <IconContext.Provider value={{ className: 'cartIcon' }}>
+        <div id='galleryCarousel' className='galleryCarousel'>
+          {displayIndex === 0 ? null : <MdArrowBackIos style={arrowStyle} className='thumbArrow' onClick={handleLeftArrowClick} />}
+          <div className='galleryThumbView'>
+            <ul>
+              {displayThumbs}
+            </ul>
+          </div>
+          {displayIndex === displaySlides.length - 1 ? null : <MdArrowForwardIos style={arrowStyle} className='thumbArrow' onClick={handleRightArrowClick} />}
         </div>
-             
-        {displayIndex === displaySlides.length - 1 ? null : <MdArrowForwardIos className='thumbArrow' onClick={handleRightArrowClick} />}
-      </div>
+      </IconContext.Provider>
+      
     </div>
+    
   );
 }
 
