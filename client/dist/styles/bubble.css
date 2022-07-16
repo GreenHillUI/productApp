@@ -1,0 +1,41 @@
+#styleSelector {
+    display: grid;
+    width: 800px;
+    height: 200px;
+    grid-template-rows: repeat(2, auto);
+    justify-content: center;
+    grid-row-start: 2;
+    grid-column-start: 2;
+}
+
+.styleThumbnail {
+    border-radius: 100px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 1.2mm solid green;
+    opacity: 0.5;
+}
+
+#styleCheck {
+    transform: translate(58px, -72px)
+}
+
+
+.stylesContainer {
+    display: grid;
+    grid-template-columns: 110px 110px 110px 110px;    
+    grid-row-start: 2;
+}
+
+.overviewSelectedStyle {
+    justify-self: center;
+}
+
+
+#overview {
+ display: grid;
+ grid-row-template: repeat(2, auto);
+ grid-column-template: repeat(2,auto);
+   
+}

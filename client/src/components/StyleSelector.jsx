@@ -12,17 +12,18 @@ function StyleSelector(props) {
   const { styles, selectedStyle } = props;
 
   if (styles.length > 0) {
-    const wrappedStyles = styles.map((style) => (
-      <div>
-        {style.style_id === selectedStyle.style_id ? <FaCheckCircle /> : null }
-        <StyleBubble key={style.style_id} style={style} />
+    const wrappedStyles = styles.map((style, index) => (
+      <div key={style.style_id + index} className="styleBubbleWrapper">
+        <StyleBubble key={style.style_id + style} style={style} /> 
+        {style.style_id === selectedStyle.style_id ? <FaCheckCircle id="styleCheck" /> : null }
       </div>
     ));
     return (
-      <div>
-        Available Styles:
-        {styles.length}
+      <div id='styleSelector'> 
+        <div class='overviewSelectedStyle'>Selected Style: {selectedStyle.name}</div>
+        <div className='stylesContainer'>
         {wrappedStyles}
+        </div>
       </div>
     );
   }

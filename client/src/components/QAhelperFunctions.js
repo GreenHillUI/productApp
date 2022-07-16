@@ -2,8 +2,11 @@
 const _ = require('underscore');
 //combines the text of the Q and its A's together, then filters them based on the search bar entry
 
-const reviewFilter = function (Qs, filter) {
+module.exports.reviewFilter = function (Qs, filter) {
   //An object with the the Q ids for keys, and a single string of the Q/A text as a value
+  if (Qs === undefined) {
+    return [];
+  }
   const combinedQAObj = {};
   //iterate through each q for the given Product
   Qs.results.forEach((q) => {
@@ -32,3 +35,4 @@ module.exports.sortQtoAs = function (Qs, qFilter = '', expand) {
   return (expand ? Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)) : Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, 3));
   //sort by helpfulness, and then slice off whatever Qs not supposed to be displayed
 };
+
