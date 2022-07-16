@@ -14,7 +14,7 @@ function RelatedProductsComponent({ product }) {
       <h2>{`category: ${product.category}`}</h2>
       <h1>{`name: ${product.name}`}</h1>
       <h1>{`$${product.price}`}</h1>
-      <Stars />
+      <Stars rating={product.ratings} />
     </li>
   );
 }
