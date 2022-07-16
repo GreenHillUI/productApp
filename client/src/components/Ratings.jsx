@@ -1,78 +1,48 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable indent */
-
 import React from 'react';
 import { connect } from 'react-redux';
+import _ from 'underscore';
 import ReviewsList from './ReviewsList';
 
-// Don't have to import the server/index.js?
-
-
-
-// bring all reviews here to have data to go through
-
-// functions needed
-  // componentDidMount? Or alternative?
-
-  // calculate review to the nearest half star
-    // IMPORT Andrew's star function
-
-
-// calculate percentage of reviews recommend product
-// function getPercentageRecommended(results) {
-  // create new array of only 'true' values from results
-  // const trues = results.filter(
-  //   (resultItem.recommend) => (resultItem.recommend === true)
-  //     );
-
-  // return the Length of array of trues divided by original array length
-  // return Math.ceil(trues.length / ratingsArray.length) * 100;
-// }
-
-
-  // get average review value
-function getAverageReview(results) {
-  const reviewTotal = results.reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-    0
+function getPercentageRecommended(results) {
+  const copy = results.map((result) => result.recommend);
+  const trues = copy.filter(
+    (resultItem) => (resultItem === true)
   );
-
-  const { length } = results;
-  return (reviewTotal / length);
+  return Math.ceil(trues.length / results.length) * 100;
 }
 
-  // sort option event handler
-
-  // click handler for "More Reviews"
-
-// data needed
-  // results array from product review obj
-    // results length
-    // rating numbers
-    // recommended
-    // username
-    // date
-
-// props to pass down?
-  // reviews for ReviewsList
-
+function averageToNearestTenth(array) {
+  const reviewVals = array.map(
+    (value) => value.rating
+  );
+  const reviewTotal = _.reduce(
+    reviewVals,
+    (previousValue, currentValue) => previousValue + currentValue,
+    0,
+  );
+  const number = (reviewTotal / array.length);
+  const whole = Math.floor(number);
+  const decimal = Math.trunc(((number % 1) * 10)) / 10;
+  return whole + decimal;
+}
 
 function Ratings({ results, setReviews }) {
-console.log("RESULTS, ", results);
   return (
     <div id="ratings-reviews-container">
 
       <div>Ratings And Reviews</div>
-      {/* Big Rating and star count */}
-      {/* Use generateStars function from Overview */}
-      <h1 className="big-num"> 3.5 HardCode </h1>
 
-      {/* Individual product score and data */}
+      <h1 className="big-review-num">
+        {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
+      </h1>
+
       <div>
+        <div>
+          {getPercentageRecommended(results)
+            ? `${getPercentageRecommended(results)}% of reviews recommend this product`
+            : "Loading..."}
+        </div>
 
-        <div> XXX % of reviews recommend this product</div>
-
-        {/* Stars breakdown */}
         <div>
           <div>5 stars</div>
           <div>4 stars</div>
@@ -81,20 +51,21 @@ console.log("RESULTS, ", results);
           <div>1 stars</div>
         </div>
 
-        {/* Size Sliding Scale */}
         <div>
           Size
         </div>
 
-        {/* Comfort Sliding Scale */}
         <div>
           Comfort
         </div>
 
       </div>
 
-      <ReviewsList />
-
+      <ReviewsList
+        id={results.id}
+        results={results}
+        setReviews={setReviews}
+      />
     </div>
   );
 }
