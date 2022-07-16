@@ -2,7 +2,9 @@
 /* eslint-disable indent */
 
 import React from 'react';
+import { connect } from 'react-redux';
 import ReviewsList from './ReviewsList';
+
 // Don't have to import the server/index.js?
 
 
@@ -52,14 +54,15 @@ function getAverageReview(results) {
     // date
 
 // props to pass down?
-  // individual review for ReviewsList
+  // reviews for ReviewsList
 
 
-function Ratings({ page, count, results }) {
-
+function Ratings({ results, setReviews }) {
+console.log("RESULTS, ", results);
   return (
     <div id="ratings-reviews-container">
 
+      <div>Ratings And Reviews</div>
       {/* Big Rating and star count */}
       {/* Use generateStars function from Overview */}
       <h1 className="big-num"> 3.5 HardCode </h1>
@@ -94,6 +97,15 @@ function Ratings({ page, count, results }) {
 
     </div>
   );
-};
+}
 
-export default Ratings;
+const RatingsContainer = connect(
+  (state) => ({
+    results: state.reviews,
+  }),
+  (dispatch) => ({
+    setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews })
+  })
+)(Ratings);
+
+export default RatingsContainer;
