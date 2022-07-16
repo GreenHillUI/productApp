@@ -45,7 +45,7 @@ class Setter extends React.Component {
       })
       .catch((err) => console.log(err));
 
-    axios.get('/reviews?product_id=66642')
+    axios.get('/reviews?product_id=40348')
       .then((response) => {
         setReviews(response.data.results);
       })
