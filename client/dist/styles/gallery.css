@@ -21,6 +21,7 @@
     display: grid;
     grid-template-columns: repeat(3, auto);
     justify-self: center;
+    transform: translate(0px, -62px)
   }
   
   .gallerySlide{
@@ -61,6 +62,7 @@
   .galleryThumbView li {
     padding: 2px;
     display: inline-block;
+    transition: 1s;
     transform: translate(-0px);
-    opacity: 0.4;
+    opacity: 0.85;
   };

@@ -45,30 +45,26 @@ function Overview({ productInfo, selectedStyle, metaData }) {
   //Add section for product features if they exist
   return (
     //Coming back to image gallery after writing a carousel
-    <div>
-      <h2>{productInfo ? productInfo.category : `Loading`}</h2>
-      <h1>
+    <div id='overview'>
+      <h2 className='overviewProductCategory'>{productInfo ? productInfo.category : `Loading`}</h2>
+      <h1 className='overviewProductName'>
         {productInfo ? productInfo.name : `Loading`}
       </h1>
-      <div><Gallery /> </div> 
-      <div>{productInfo ? productInfo.slogan : `Loading`}</div>
-      <div>
-        <p>
+      <Gallery /> 
+      <div className='overviewProductSlogan'>{productInfo ? productInfo.slogan : `Loading`}</div>
+      <div className='overviewProductInfo'>
+        <p className="overviewProductDescription">
           {productInfo ? productInfo.description : `Loading`}
         </p>
       </div>
-
-      <div>
-        Styles:
-        <br />
-        <StyleSelector />
-        <div>
-          Review Score:
-          {metaData ? generateStars(reviewAverage(metaData)) : `Loading`}
-          {/*this.generateStars(this.reviewAverage())*/}
-        </div>
+      <StyleSelector />
+      <div id='overviewStars'>
+        Review Score:
+        {metaData ? generateStars(reviewAverage(metaData)) : `Loading`}
       </div>
-      <div>
+
+     
+      <div className='overviewPrice'>
         Price:
         {selectedStyle.sale_price ? `Was $${selectedStyle.original_price} Now: $${selectedStyle.sale_price}` : `$${selectedStyle.original_price}`}
       </div>

@@ -13,7 +13,7 @@ function makeSizeOptions(skuList) {
 
 
   }
-  optionList.unshift(<option value="Select Size">Select Size</option>);
+  optionList.unshift(<option value=''>Select Size</option>);
   return optionList;
 }
 
@@ -25,6 +25,7 @@ function makeQuantityOptions(quantity) {
   for (let i = 1; i <= max; i += 1) {
     quantityOptionList.push(<option value={i}>{i}</option>);
   }
+ 
   return quantityOptionList;
 }
 
@@ -33,18 +34,22 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
 
   const sizeOptions = makeSizeOptions(selectedStyle.skus);
 
-  function handleChange(event) {
+  function handleSizeChange(event) {
     const sku = Object.entries(selectedStyle.skus).filter((entry) => entry[0] === event.target.value);
     setSelectedSku(sku);
   }
 
+
+
   return (
-    <div>
-      <label htmlFor='size-select'>Size: </label>
-      <select id='size-select' onChange={handleChange}>{sizeOptions.length ? sizeOptions : `Out of Stock`}</select>
-      <label htmlFor='qty-select'>Qty: </label>
-      <select id='qty-select'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity) : <option>Loading</option>}</select>
-      <button id='addToCart'>Add to Cart</button>
+    <div id='addToCartContainer'>
+      <form className='addToCartForm' action='/'>
+        <label htmlFor='sizeSelect'>Size: </label>
+        <select id='sizeSelect' onChange={handleSizeChange} required>{sizeOptions.length ? sizeOptions : `Out of Stock`}</select>
+        <label htmlFor='quantitySelect'>Qty: </label>
+        <select id='quantitySelect'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity) : <option>-</option>}</select>
+        <input type='submit' value='Add To Cart' />
+      </form>
     </div>
 
   );
