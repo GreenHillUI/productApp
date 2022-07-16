@@ -21,6 +21,7 @@
     display: grid;
     grid-template-columns: repeat(3, auto);
     justify-self: center;
+    transform: translate(0px, -62px)
   }
   
   .gallerySlide{
@@ -62,5 +63,5 @@
     padding: 2px;
     display: inline-block;
     transform: translate(-0px);
-    opacity: 0.4;
+    opacity: 0.85;
   };

@@ -58,7 +58,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
         </p>
       </div>
       <StyleSelector />
-      <div className='reviewStars'>
+      <div id='overviewStars'>
         Review Score:
         {metaData ? generateStars(reviewAverage(metaData)) : `Loading`}
       </div>

@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 
-function StyleBubble({ style, selectedStyle, setSelectedStyle }) {
+function StyleBubble({ style, setSelectedStyle, setSelectedSku }) {
 
   function handleClick() {
     setSelectedStyle([style]);
+    setSelectedSku([]);
   }
 
 
@@ -25,7 +26,8 @@ const StyleBubbleContainer = connect(
     selectedStyle: state.selectedStyle
   }),
   (dispatch) => ({
-    setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style })
+    setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
+    setSelectedSku: (sku) => dispatch({ type: 'SETSELECTEDSKU', selectedSku: sku })
   })
 
 )(StyleBubble);
