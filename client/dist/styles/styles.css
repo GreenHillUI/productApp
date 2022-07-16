@@ -5,6 +5,8 @@
   http://meyerweb.com/eric/tools/css/reset/ 
 */
 
+/**************** BEGINNING OF CSS RESET **************** */
+
 *, *::before, *::after {
   box-sizing: border-box;
   color: rgb(80, 79, 79);
@@ -30,6 +32,9 @@ img, picture, video, canvas, svg {
   display: block;
   max-width: 100%;
 }
+input, button, textarea, select {
+  font: inherit;
+}
 p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
@@ -37,7 +42,10 @@ ol, ul {
 	list-style: none;
 }
 
-/**************** BEGINNING OF STARS PORTION **************** */
+/**************** END OF CSS RESET **************** */
+
+/**************** BEGINNING OF STARS **************** */
+
 .stars {
   display: inline-block;
   margin: 25px;
@@ -59,3 +67,5 @@ ol, ul {
   white-space: nowrap;
   width: 100%;
 }
+
+/**************** END OF STARS **************** */
