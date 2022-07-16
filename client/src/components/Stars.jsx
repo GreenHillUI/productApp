@@ -1,5 +1,5 @@
 import React from 'react';
-import { ImStarFull, ImStarEmpty } from 'react-icons/im';
+import { IoStarOutline, IoStarSharp } from 'react-icons/io5';
 
 function reviewAverage(ratings) {
   let total = 0;
@@ -13,14 +13,21 @@ function reviewAverage(ratings) {
 
 function calcWidth(ratings) {
   let width = 5;
-  if (Array.isArray(ratings)) {
+  if (typeof ratings === 'object') {
     // get weighted average from many reviews
     width = reviewAverage(ratings);
   } else if (typeof ratings === 'number') {
     width = ratings;
   }
-  // converts star rating to a percentage, needed for css styling
-  width = Math.round(width * 4) * 5; 
+
+  // stars are rendered by hiding a % of 5 stars, so is
+  // neccessary to convert star rating to a percentage
+  width = Math.round(width * 4) * 5;
+  if (width % 20 < 10) {
+    width += 3;
+  } else if (width % 20 > 10) {
+    width -= 3;
+  }
 
   return { width: `${width}%` };
 }
@@ -29,18 +36,18 @@ function Stars({ rating }) {
   return (
     <div className='stars'>
       <div className='empty-stars'>
-        <ImStarEmpty />
-        <ImStarEmpty />
-        <ImStarEmpty />
-        <ImStarEmpty />
-        <ImStarEmpty />
+        <IoStarOutline />
+        <IoStarOutline />
+        <IoStarOutline />
+        <IoStarOutline />
+        <IoStarOutline />
       </div>
       <div className='star-rating' style={calcWidth(rating)}>
-        <ImStarFull />
-        <ImStarFull />
-        <ImStarFull />
-        <ImStarFull />
-        <ImStarFull />
+        <IoStarSharp />
+        <IoStarSharp />
+        <IoStarSharp />
+        <IoStarSharp />
+        <IoStarSharp />
       </div>
     </div>
   );
