@@ -1,8 +1,11 @@
 #styleSelector {
     display: grid;
     width: 800px;
+    height: 200px;
     grid-template-rows: repeat(2, auto);
     justify-content: center;
+    grid-row-start: 2;
+    grid-column-start: 2;
 }
 
 .styleThumbnail {
@@ -27,4 +30,12 @@
 
 .overviewSelectedStyle {
     justify-self: center;
+}
+
+
+#overview {
+ display: grid;
+ grid-row-template: repeat(2, auto);
+ grid-column-template: repeat(2,auto);
+   
 }
