@@ -5,6 +5,8 @@ const controllers = require('./controllers');
 
 const app = express();
 
+app.use(express.json());
+
 app.use(express.static('client/dist'));
 
 app.get('/products*', (req, res) => {
@@ -42,10 +44,20 @@ app.get('/products/:id/styles', (req, res) => {
   });
 });
 
-app.get('/qa/questions*', (req, res) => {
+
+
+app.get('/qa/questions', (req, res) => {
   controllers.get(req.path, { params: req.query })
     .then((questions) => res.status(200).send(questions));
 });
+
+//ALL PUT REQUESTS
+app.put('/', (req, res) => {
+  // 2nd arg
+  controllers.put(req.path, req.body.data)
+    .then((questions) => res.status(200).send(questions));
+});
+
 
 const port = 3000;
 

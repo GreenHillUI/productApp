@@ -8,7 +8,7 @@
   /* margin-left: 30px; For Dev */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr 1.75fr 10fr minmax(50px, 60px);
+  grid-template-rows: 1fr minmax(50px, 60px) 10fr minmax(50px, 60px);
   row-gap: 10px;
   width: 80%;
   max-height: 1000px;
@@ -37,11 +37,19 @@
   font-size: .9em;
   border: none;
 }
-#q-list {
+#q-list-col {
   grid-column: 1 / span 4;
   grid-row: 3;
   background-color: white;/* For Dev */
   padding-left: 0;
+}
+#q-list-exp {
+  grid-column: 1 / span 4;
+  grid-row: 3;
+  background-color: white;/* For Dev */
+  padding-left: 0;
+  max-height: 500px;
+  overflow: scroll;
 }
 #q-buttons {
   display: flex;

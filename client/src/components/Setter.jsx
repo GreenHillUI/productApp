@@ -43,7 +43,7 @@ class Setter extends React.Component {
         setMetaData(response.data.ratings);
       })
       .catch((err) => console.log(err));
-    
+
     axios.get('/products/40348/related')
       .then(({ data }) => {
         const uniqueIDs = data.filter((id, i) => data.indexOf(id) === i);
@@ -88,7 +88,7 @@ class Setter extends React.Component {
         setRelatedProducts(products);
       });
 
-    const config = { params: { product_id: 40348 } };
+    const config = { params: { product_id: 40348, count: 20 } };
 
     axios.get('/qa/questions/', config)
       .then((res) => {

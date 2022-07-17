@@ -22,7 +22,7 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
   if (productQs.results !== undefined) {
     qListSorted = sortQtoAs(productQs, qFilter, qExpandedBy);
     qListSorted = qListSorted.map((q) => (
-      <li key={q.question_id}>
+      <li className='question-li' key={q.question_id}>
         <Question question={q} />
       </li>
     ));
@@ -35,7 +35,7 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
       <div id='q-nav'>
         <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
       </div>
-      <ul id='q-list'>
+      <ul id={qExpandedBy ? 'q-list-exp' : 'q-list-col'}>
         {qListSorted}
       </ul>
       <div id='q-buttons'>
