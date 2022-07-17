@@ -24,7 +24,6 @@ module.exports.get = (endpoint, config = {}) => {
   options.headers.Authorization = process.env.GITHUB_API_KEY;
 
   // return a promise for the requested object
-  console.log(config)
   return axios.get(url, config)
     .then((res) => res.data)
     .catch(() => {
