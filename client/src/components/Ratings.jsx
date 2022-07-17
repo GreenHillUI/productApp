@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable indent */
 
 import React from 'react';
@@ -11,28 +10,26 @@ function getPercentageRecommended(results) {
   const copy = results.map((result) => result.recommend);
   const trues = copy.filter(
     (resultItem) => (resultItem === true)
-      );
+  );
   return Math.ceil(trues.length / results.length) * 100;
 }
 
 
-  // get average value from array of integers rounded to the nearest tenth
-  function averageToNearestTenth(array) {
-
-    const reviewVals = array.map(
+// get average value from array of integers rounded to the nearest tenth
+function averageToNearestTenth(array) {
+  const reviewVals = array.map(
     (value) => value.rating
-    );
-
-    const reviewTotal = _.reduce(
-      reviewVals,
-      (previousValue, currentValue) => previousValue + currentValue,
-      0,
-    );
-    const number = (reviewTotal / array.length);
-    const whole = Math.floor(number); // gets integer
-    const decimal = Math.trunc(((number % 1) * 10)) / 10; // gets tenths
-    return whole + decimal; // returns number rounded to tenths
-  }
+  );
+  const reviewTotal = _.reduce(
+    reviewVals,
+    (previousValue, currentValue) => previousValue + currentValue,
+    0,
+  );
+  const number = (reviewTotal / array.length);
+  const whole = Math.floor(number); // gets integer
+  const decimal = Math.trunc(((number % 1) * 10)) / 10; // gets tenths
+  return whole + decimal; // returns number rounded to tenths
+}
 
 
 
@@ -70,8 +67,8 @@ function Ratings({ results, setReviews }) {
 
         <div>
           {getPercentageRecommended(results)
-          ? `${getPercentageRecommended(results)}% of reviews recommend this product`
-          : "Loading..."}
+            ? `${getPercentageRecommended(results)}% of reviews recommend this product`
+            : "Loading..."}
         </div>
 
         {/* Stars breakdown */}
