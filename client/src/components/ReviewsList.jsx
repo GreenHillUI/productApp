@@ -1,7 +1,7 @@
 import React from 'react';
 import Review from './Review';
 
-function ReviewsList() {
+function ReviewsList({ results }) {
 
   // have state hook for how many reviews to show
   // when button is clicked, it uses counter += 2 to show 2 more
@@ -14,7 +14,12 @@ function ReviewsList() {
       {/* This div houses all reviews to be shown */}
       <div>
         {/* loop through reviews? */}
-        <Review />
+        {results.map((review) => (
+          <Review
+            id={review.review_id}
+            review={review}
+          />
+        ))}
       </div>
 
       {/* Buttons to show more or add reviews */}
