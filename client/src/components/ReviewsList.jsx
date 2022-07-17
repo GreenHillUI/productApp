@@ -12,6 +12,9 @@ function ReviewsList({ results }) {
     <div>
       {/* This div houses all reviews to be shown */}
       <div>
+        {`${results.length} reviews, sorted by...`}
+      </div>
+      <div>
         {/* loop through reviews? */}
         {results.map((review) => (
           <Review
@@ -22,8 +25,8 @@ function ReviewsList({ results }) {
       </div>
 
       {/* Buttons to show more or add reviews */}
-      <button type="button"> More Reviews </button>
-      <button type="button"> Add A Review + </button>
+      <button className='review-button' type="button"> More Reviews </button>
+      <button className='review-button' type="button"> Add A Review + </button>
     </div>
   );
 }

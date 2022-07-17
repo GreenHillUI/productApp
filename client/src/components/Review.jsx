@@ -6,6 +6,7 @@ function Review({ review }) {
   return (
 
     <div className="review">
+      <br />
 
       <Stars rating={review.rating} />
 
@@ -36,7 +37,7 @@ function Review({ review }) {
         {review.response ? `${review.response}` : ''}
       </div>
 
-      {`Helpful? Yes ${review.helpfulness}`}
+      {`Helpful? Yes ${review.helpfulness} | `}
 
       <div> Report </div>
 
