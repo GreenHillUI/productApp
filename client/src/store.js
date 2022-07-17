@@ -1,8 +1,8 @@
-import axios from 'axios';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 
 import reducers from './reducers';
+import relatedProductsAction from './actions/RelatedProductsAction';
 
 // ADD to the initial state with any data you should be mounting/starting the program with
 const initialState = {
@@ -23,5 +23,7 @@ const store = createStore(
   initialState,
   applyMiddleware(thunk)
 );
+
+store.dispatch(relatedProductsAction);
 
 export default store;
