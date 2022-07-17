@@ -5,16 +5,24 @@ function Review({ review }) {
 
   return (
 
+    <div className="review">
 
-    <div className="rr-review-box">
+      <Stars rating={review.rating} />
+
+      <div className="review-name-date">
+        {`${review.reviewer_name},
+          ${new Date(review.date).toLocaleDateString(
+          'en-us',
+          { year: "numeric", month: "long", day: "numeric" }
+        )}`}
+      </div>
+
+
 
       <br />
-
-      <div> Stars </div>
-      {/* <Stars rating={review.rating} /> */}
-
-      <div> Username - Date </div>
-      {`${review.reviewer_name}, ${review.date}`}
+      {review.summary}
+      <br />
+      {review.body}
 
 
       <div> Recommended (w/Checkmark) </div>
@@ -31,7 +39,6 @@ function Review({ review }) {
       {`Helpful? Yes ${review.helpfulness}`}
 
       <div> Report </div>
-
 
     </div>
   );

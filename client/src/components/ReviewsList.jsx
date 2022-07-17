@@ -9,8 +9,7 @@ function ReviewsList({ results }) {
   // if there are <3 reviews remaining, "More Reviews" button is not shown
 
   return (
-    <>
-
+    <div>
       {/* This div houses all reviews to be shown */}
       <div>
         {/* loop through reviews? */}
@@ -25,8 +24,7 @@ function ReviewsList({ results }) {
       {/* Buttons to show more or add reviews */}
       <button type="button"> More Reviews </button>
       <button type="button"> Add A Review + </button>
-
-    </>
+    </div>
   );
 }
 

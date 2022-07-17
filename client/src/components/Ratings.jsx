@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import _ from 'underscore';
 import ReviewsList from './ReviewsList';
+import Stars from './Stars';
 
 function getPercentageRecommended(results) {
   const copy = results.map((result) => result.recommend);
@@ -10,33 +11,29 @@ function getPercentageRecommended(results) {
   );
   return Math.ceil(trues.length / results.length) * 100;
 }
-function averageToNearestTenth(array) {
-  const reviewVals = array.map(
-    (value) => value.rating
-  );
-  const reviewTotal = _.reduce(
-    reviewVals,
-    (previousValue, currentValue) => previousValue + currentValue,
+
+function averageToNearestTenth(ratings) {
+  const total = ratings.reduce(
+    (sum, item) => sum + item.rating,
     0,
   );
-  return (reviewTotal / array.length).toFixed(1);
+  return (total / ratings.length).toFixed(1);
 }
 
 function Ratings({ results, setReviews }) {
   return (
-    <div id="ratings-reviews-container">
+    <div id="ratings-reviews">
 
-      <div>Ratings And Reviews</div>
       {/* Use generateStars function from Overview */}
-      <h1 className="big-review-num">
-        {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
-      </h1>
+      <div>Ratings And Reviews</div>
 
+      <div className="review-summary">
 
-      <h1 className="big-review-num">
-        {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
-      </h1>
-      <div>
+        <h1 id="big-review-num">
+          {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
+          <Stars rating={averageToNearestTenth(results)} />
+        </h1>
+
         <div>
           {getPercentageRecommended(results)
             ? `${getPercentageRecommended(results)}% of reviews recommend this product`
@@ -61,11 +58,13 @@ function Ratings({ results, setReviews }) {
 
       </div>
 
-      <ReviewsList
-        id={results.id}
-        results={results}
-        setReviews={setReviews}
-      />
+      <div className="reviews-list">
+        <ReviewsList
+          id={results.id}
+          results={results}
+          setReviews={setReviews}
+        />
+      </div>
 
     </div>
   );
