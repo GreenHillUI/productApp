@@ -1,4 +1,5 @@
 import React from "react";
+import Stars from './Stars';
 
 /**
  * Renders a card with information about a product
@@ -13,7 +14,7 @@ function RelatedProductsComponent({ product }) {
       <h2>{`category: ${product.category}`}</h2>
       <h1>{`name: ${product.name}`}</h1>
       <h1>{`$${product.price}`}</h1>
-      <p>Star rating</p>
+      <Stars rating={product.ratings} />
     </li>
   );
 }
