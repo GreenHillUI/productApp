@@ -10,7 +10,7 @@ function Gallery({
   let displaySlides = [];
   let displayThumbs = [];
   const pictureData = selectedStyle.photos;
-  const arrowStyle = { fill: 'aliceblue', height: '4em', width: '4em' };
+  const arrowStyle = { fill: 'aliceblue', height: '1.5em', width: '1.5em' };
 
   function scrollThumbnails() {
     const thumbElement = document.querySelector('.galleryThumbView li');
@@ -32,7 +32,8 @@ function Gallery({
    
   }
   function handleThumbnailClick(event) {
-    setDisplayIndex(event.target.dataset.index);
+    setDisplayIndex(parseInt(event.target.dataset.index));
+    scrollThumbnails();
   }
   if (pictureData) {
     displaySlides = pictureData.map((image, index) => (<img key={index + selectedStyle.style_id} className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
@@ -44,8 +45,7 @@ function Gallery({
       <div id='gallerySlideView'>
         {displaySlides[displayIndex]}  
       </div>
-      
-      <IconContext.Provider value={{ className: 'cartIcon' }}>
+      <IconContext.Provider value={{ className: 'thumbArrow' }}>
         <div id='galleryCarousel' className='galleryCarousel'>
           {displayIndex === 0 ? null : <MdArrowBackIos style={arrowStyle} className='thumbArrow' onClick={handleLeftArrowClick} />}
           <div className='galleryThumbView'>

@@ -48,6 +48,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
         <select id='sizeSelect' onChange={handleSizeChange} required>{sizeOptions.length ? sizeOptions : `Out of Stock`}</select>
         <label htmlFor='quantitySelect'>Qty: </label>
         <select id='quantitySelect'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity) : <option>-</option>}</select>
+        <br/>
         <input type='submit' value='Add To Cart' />
       </form>
     </div>
