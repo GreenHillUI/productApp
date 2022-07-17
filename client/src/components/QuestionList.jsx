@@ -30,7 +30,7 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
 
   return (
     <div id='q-container'>
-      { qModal && <QModal /> }
+      { qModal && <QModal pID={productQs.product_id} /> }
       <span id='q-title'>QUESTIONS & ANSWERS</span>
       <div id='q-nav'>
         <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />

@@ -88,7 +88,7 @@ class Setter extends React.Component {
         setRelatedProducts(products);
       });
 
-    const config = { params: { product_id: 40348, count: 20 } };
+    const config = { params: { product_id: 40348, count: 100 } };
 
     axios.get('/qa/questions/', config)
       .then((res) => {
