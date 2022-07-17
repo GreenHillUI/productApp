@@ -1,23 +1,23 @@
-import { createStore, applyMiddleware } from 'redux';
+import axios from 'axios';
+import { combineReducers, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import rootReducer from './reducers/main';
-// const store = Redux.legacy_createStore(rootReducer);
 
+import reducers from './reducers';
 
-const initialState = { //ADD to the initial state with any data you should be mounting/starting the program with
+// ADD to the initial state with any data you should be mounting/starting the program with
+const initialState = {
   qList: {
     qModal: false,
     qExpandedBy: false,
     qFilter: '',
     productQs: {},
   }
-
 };
 
-//Thunk allows us to dispatch actions asynchronously (think API requests) by making it so that our actions
-//can return functions instead of objects (which can invoke dispatch themselves)
+// Thunk allows us to dispatch actions asynchronously (think API requests) by making it so that our
+// actions can return functions instead of objects (which can invoke dispatch themselves)
 
-
+const rootReducer = combineReducers(reducers);
 const store = createStore(
   rootReducer,
   initialState,

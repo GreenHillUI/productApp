@@ -12,11 +12,11 @@ import Setter from './Setter';
 function App() {
   return (
     <>
-      <Setter />
-      <Overview />
+      {/* <Setter />
+      <Overview /> */}
       <RelatedProducts />
-      <QListContainer />
-      <Ratings />
+      {/* <QListContainer />
+      <Ratings /> */}
     </>
   );
 }

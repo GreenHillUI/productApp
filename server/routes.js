@@ -37,6 +37,7 @@ routes.get('/products', (req, res) => {
  * /a/products/40348/related
  */
 routes.get('/products/:product_id/:info(styles|related)?', (req, res) => {
+  console.log(req.path);
   apiGetRequest(req, res, req.path);
 });
 
