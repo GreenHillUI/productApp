@@ -47,7 +47,6 @@ app.get('/products/:id/styles', (req, res) => {
 
 
 app.get('/qa/questions', (req, res) => {
-  debugger;
   controllers.get(req.path, { params: req.query })
     .then((questions) => res.status(200).send(questions));
 });
@@ -55,7 +54,6 @@ app.get('/qa/questions', (req, res) => {
 //ALL PUT REQUESTS
 app.put('/', (req, res) => {
   // 2nd arg
-  console.log(req.body.data);
   controllers.put(req.path, req.body.data)
     .then((questions) => res.status(200).send(questions));
 });
