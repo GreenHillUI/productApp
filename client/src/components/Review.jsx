@@ -1,4 +1,5 @@
 import React from 'react';
+import Stars from './Stars';
 
 function Review({ review }) {
 
@@ -10,7 +11,7 @@ function Review({ review }) {
       <br />
 
       <div> Stars </div>
-      {`${review.rating} stars`}
+      {/* <Stars rating={review.rating} /> */}
 
       <div> Username - Date </div>
       {`${review.reviewer_name}, ${review.date}`}
