@@ -5,40 +5,43 @@ import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs';
 import StyleSelector from "./StyleSelector";
 import AddToCart from './AddtoCart';
 import Gallery from './Gallery';
+import Stars from './Stars';
+
+
 
 
 //Finds and returns average of reviews
 //TODO: Handle edge case for no reviews in accordance with business docs
-function reviewAverage(ratings) {
-  let total = 0;
-  let weightedSum = 0;
-  for (let i = 1; i < 6; i++) {
-    // eslint-disable-next-line radix
-    total += parseInt(ratings[i]);
-    weightedSum += i * ratings[i];
-  }
-  return (weightedSum / total);
-}
+// function reviewAverage(ratings) {
+//   let total = 0;
+//   let weightedSum = 0;
+//   for (let i = 1; i < 6; i++) {
+//     // eslint-disable-next-line radix
+//     total += parseInt(ratings[i]);
+//     weightedSum += i * ratings[i];
+//   }
+//   return (weightedSum / total);
+// }
 
-function generateStars(average) {
-  const filledStars = Math.trunc(average);
-  const filledRemainder = average % 1;
-  const emptyStars = 5 - filledStars;
-  const starBar = [];
-  for (let i = 0; i < filledStars; i++) {
-    starBar.push(<BsStarFill />);
-  }
+// function generateStars(average) {
+//   const filledStars = Math.trunc(average);
+//   const filledRemainder = average % 1;
+//   const emptyStars = 5 - filledStars;
+//   const starBar = [];
+//   for (let i = 0; i < filledStars; i++) {
+//     starBar.push(<BsStarFill />);
+//   }
 
-  if (filledRemainder >= 0.5) {
-    starBar.push(<BsStarHalf />);
-  }
+//   if (filledRemainder >= 0.5) {
+//     starBar.push(<BsStarHalf />);
+//   }
 
-  for (let i = 0; i < emptyStars; i++) {
-    starBar.push(<BsStar />);
-  }
+//   for (let i = 0; i < emptyStars; i++) {
+//     starBar.push(<BsStar />);
+//   }
 
-  return starBar;
-}
+//   return starBar;
+// }
 
 function Overview({ productInfo, selectedStyle, metaData }) {
 
@@ -59,8 +62,8 @@ function Overview({ productInfo, selectedStyle, metaData }) {
       </div>
       <StyleSelector />
       <div id='overviewStars'>
-        Review Score:
-        {metaData ? generateStars(reviewAverage(metaData)) : `Loading`}
+        Review Score: {Stars(metaData)}
+       
       </div>
 
      
