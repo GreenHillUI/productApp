@@ -36,8 +36,8 @@ function Gallery({
     scrollThumbnails();
   }
   if (pictureData) {
-    displaySlides = pictureData.map((image, index) => (<img key={index + selectedStyle.style_id} className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
-    displayThumbs = pictureData.map((image, index) => (<li><img key={index + selectedStyle.style_id} onClick={handleThumbnailClick} data-index={index} className='galleryThumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
+    displaySlides = pictureData.map((image, index) => (<img key={index + selectedStyle.photos[index].url} className='gallerySlide' src={image.url} alt={`${selectedStyle.name} style`} />));
+    displayThumbs = pictureData.map((image, index) => (<li key={index + selectedStyle.photos[index].thumbnail_url}><img key={index + selectedStyle.style_id} onClick={handleThumbnailClick} data-index={index} className='galleryThumbnail' src={image.thumbnail_url} alt={`${selectedStyle.name} style`} /></li>));
   } 
   
   return (
@@ -47,13 +47,13 @@ function Gallery({
       </div>
       <IconContext.Provider value={{ className: 'thumbArrow' }}>
         <div id='galleryCarousel' className='galleryCarousel'>
-          {displayIndex === 0 ? null : <MdArrowBackIos style={arrowStyle} onClick={handleLeftArrowClick} />}
+          {displayIndex === 0 ? null : <MdArrowBackIos key={`galleryArrowBack`} style={arrowStyle} onClick={handleLeftArrowClick} />}
           <div className='galleryThumbView'>
             <ul>
               {displayThumbs}
             </ul>
           </div>
-          {displayIndex === displaySlides.length - 1 ? null : <MdArrowForwardIos style={arrowStyle} className='thumbArrow' onClick={handleRightArrowClick} />}
+          {displayIndex === displaySlides.length - 1 ? null : <MdArrowForwardIos key={`galleryArrowForward`} style={arrowStyle} className='thumbArrow' onClick={handleRightArrowClick} />}
         </div>
       </IconContext.Provider>
       

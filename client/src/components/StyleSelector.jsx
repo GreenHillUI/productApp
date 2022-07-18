@@ -20,7 +20,7 @@ function StyleSelector(props) {
     ));
     return (
       <div id='styleSelector'> 
-        <div class='overviewSelectedStyle'>Selected Style: {selectedStyle.name}</div>
+        <div className='overviewSelectedStyle'>Selected Style: {selectedStyle.name}</div>
         <div className='stylesContainer'>
         {wrappedStyles}
         </div>

@@ -11,19 +11,18 @@ function makeSizeOptions(skuList) {
 
     });
 
-
   }
-  optionList.unshift(<option value=''>Select Size</option>);
+  optionList.unshift(<option key={`selectSizeDefault`} value=''>Select Size</option>);
   return optionList;
 }
 
 
 
-function makeQuantityOptions(quantity) {
+function makeQuantityOptions(quantity, sku) {
   const quantityOptionList = [];
   const max = quantity >= 15 ? 15 : quantity;
   for (let i = 1; i <= max; i += 1) {
-    quantityOptionList.push(<option value={i}>{i}</option>);
+    quantityOptionList.push(<option key={`${sku}${i}`} value={i}>{i}</option>);
   }
  
   return quantityOptionList;
@@ -47,7 +46,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
         <label htmlFor='sizeSelect'>Size: </label>
         <select id='sizeSelect' onChange={handleSizeChange} required>{sizeOptions.length ? sizeOptions : `Out of Stock`}</select>
         <label htmlFor='quantitySelect'>Qty: </label>
-        <select id='quantitySelect'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity) : <option>-</option>}</select>
+        <select id='quantitySelect'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity, selectedSku) : <option>-</option>}</select>
         <br/>
         <input type='submit' value='Add To Cart' />
       </form>

@@ -63,7 +63,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
       <StyleSelector />
       <div id='overviewStars'>
         Review Score: <Stars rating={metaData} />
-       
+
       </div>
 
      
