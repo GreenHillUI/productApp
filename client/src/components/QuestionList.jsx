@@ -58,12 +58,8 @@ const mapStateToProps = (store) => ({
 });//connects the prop to the state saved in the store
 
 //makes it so you can change state depending on inputs   event handler => action/reducer => store
-const mapDispatchToProps = (dispatch) => ({
-  moreAnsweredQuestionsClick: () => dispatch(expandQuestions(true)), //link more question button event
-  onAddAnswerClick: () => dispatch(showQModal(true)), //link add answer event
-});
 
 
-const QuestionListContainer = connect(mapStateToProps, mapDispatchToProps)(QuestionList);
+const QuestionListContainer = connect(mapStateToProps, null)(QuestionList);
 
 export default QuestionListContainer;
