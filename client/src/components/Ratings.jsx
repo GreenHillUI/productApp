@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import ReviewsList from './ReviewsList';
@@ -13,7 +15,6 @@ function getPercentageRecommended(results) {
   return Math.ceil(trues.length / results.length) * 100;
 }
 
-
 // accepts an array of review objects, extracts .rating, and returns the average rounded
 function averageToNearestTenth(ratings) {
   const total = ratings.reduce(
@@ -23,15 +24,20 @@ function averageToNearestTenth(ratings) {
   return (total / ratings.length).toFixed(1);
 }
 
-
 // accepts results and which star rating to analyze. outputs xml and styling for progress bar
 function addStarAndBar(results, stars) {
+  let totalStars = 0;
 
-  // eslint-disable-next-line no-var, no-unused-vars
-  var percentageOfMax = 50;
+  results.forEach((review) => {
+    if (review.rating === stars) {
+      totalStars++;
+    }
+  });
 
-  // eslint-disable-next-line no-var, no-unused-vars, prefer-const
-  let progressStyleObj = {
+  const percentageOfMax = (totalStars / results.length) * 200;
+
+  // object for adjusting how much of bar is filled based on reviews for each star
+  const progressStyleObj = {
     position: 'absolute', height: 5, left: 75, width: percentageOfMax, background: 'green'
   };
 
@@ -72,7 +78,7 @@ function Ratings({ results, setReviews }) {
             ? `${getPercentageRecommended(results)}% of reviews recommend this product`
             : "Loading..."}
         </div>
-
+        <br />
         <div>
           {/* Bar rating for each star value */}
           {addStarAndBar(results, 5)}
