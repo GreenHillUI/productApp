@@ -71,7 +71,6 @@ module.exports.post = (endpoint, config) => {
   }
 
   const options = { headers: { Authorization: process.env.GITHUB_API_KEY } };
-  console.log(body);
   // return a promise for the requested object
   return axios.post(url, body, options)
     .then((res) => res.body)

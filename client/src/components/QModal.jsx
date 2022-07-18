@@ -8,10 +8,6 @@ function QModal({ pID }) {
 
   function onSubmitClickVal() {
 
-    console.log(document.getElementById('newQA').value);
-    console.log(document.getElementById('nick').value);
-    console.log(document.getElementById('email').value);
-
     return postQ({
       body: document.getElementById('newQA').value,
       name: document.getElementById('nick').value,
