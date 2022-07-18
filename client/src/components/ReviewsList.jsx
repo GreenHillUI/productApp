@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Review from './Review';
 
 function ReviewsList({ results }) {
 
-  // have state hook for how many reviews to show
-  // when button is clicked, it uses counter += 2 to show 2 more
-
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    console.log(count);
-  });
-
-
+  // Incomplete mapReviews for DRYness
+  // accepts an array of reviews and maps them into individual reviews
+  function mapReviews(reviewsArray) {
+    reviewsArray.map(
+      (review) => (
+        <Review
+          id={review.review_id}
+          review={review}
+        />
+      )
+    );
+  }
 
   return (
     <div className="reviews-list">

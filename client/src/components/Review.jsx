@@ -1,4 +1,5 @@
 import React from 'react';
+import { FcCheckmark } from 'react-icons/fc';
 import Stars from './Stars';
 
 function Review({ review }) {
@@ -25,16 +26,19 @@ function Review({ review }) {
       <br />
       {review.body}
 
-
-      <div> Recommended (w/Checkmark) </div>
       <div id="review-recommended">
-        {review.recommend ? 'I recommend this product' : ''}
+        {review.recommend
+          ? (
+            <>
+              <FcCheckmark style={{ position: 'absolute' }} />
+              <div>I recommend this product</div>
+            </>
+          )
+          : ''}
       </div>
 
-
-      <div> Response </div>
       <div id="review-response">
-        {review.response ? `${review.response}` : ''}
+        {review.response ? `Response: <br>${review.response}` : ''}
       </div>
 
       {`Helpful? Yes ${review.helpfulness} | `}

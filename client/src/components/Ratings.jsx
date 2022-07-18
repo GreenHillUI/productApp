@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import _ from 'underscore';
 import ReviewsList from './ReviewsList';
 import Stars from './Stars';
 
+// accepts an array of review objects, extracts .recommend, and returns an integer
 function getPercentageRecommended(results) {
   const copy = results.map((result) => result.recommend);
   const trues = copy.filter(
@@ -12,6 +12,7 @@ function getPercentageRecommended(results) {
   return Math.ceil(trues.length / results.length) * 100;
 }
 
+// accepts an array of review objects, extracts .rating, and returns the average rounded
 function averageToNearestTenth(ratings) {
   const total = ratings.reduce(
     (sum, item) => sum + item.rating,
@@ -58,13 +59,11 @@ function Ratings({ results, setReviews }) {
 
       </div>
 
-      <div className="reviews-list">
-        <ReviewsList
-          id={results.id}
-          results={results}
-          setReviews={setReviews}
-        />
-      </div>
+      <ReviewsList
+        id={results.id}
+        results={results}
+        setReviews={setReviews}
+      />
 
     </div>
   );
