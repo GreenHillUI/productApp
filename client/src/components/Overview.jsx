@@ -6,6 +6,14 @@ import AddToCart from './AddtoCart';
 import Gallery from './Gallery';
 import Stars from './Stars';
 
+
+function getTotalReviews(ratings) {
+  let total = 0;
+  Object.keys(ratings).forEach((i) => {
+    total += Number(ratings[i]);
+  });
+  return total;
+}
 function Overview({ productInfo, selectedStyle, metaData }) {
 
   //Add section for product features if they exist
@@ -25,14 +33,31 @@ function Overview({ productInfo, selectedStyle, metaData }) {
       </div>
       <StyleSelector />
       <div id='overviewStars'>
-        Review Score: <Stars rating={metaData} />
-
+        Review Score: 
+        <Stars rating={metaData} />
+        <div id='overviewReadAll'>
+          Read all 
+          {getTotalReviews(metaData)} 
+          Reviews 
+        </div>
       </div>
 
      
       <div className='overviewPrice'>
         
-        Price: { selectedStyle.sale_price ? <div> <s>${selectedStyle.original_price}</s> ${selectedStyle.sale_price}!! </div> : `$${selectedStyle.original_price}` }
+        Price: 
+        { selectedStyle.sale_price 
+          ? (
+            <div> 
+              <s>
+                $
+                {selectedStyle.original_price}
+              </s>
+              $
+              {selectedStyle.sale_price}
+              !!
+            </div>     
+          ) : `$${selectedStyle.original_price}` }
       </div>
       <AddToCart />
     </div>
