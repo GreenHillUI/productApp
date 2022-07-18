@@ -21,8 +21,13 @@
 }
 
 .review {
-  border: 1px solid black;
+  border-bottom: 2px solid black;
   padding: 4px;
   width: 500px;
   word-wrap: break-word;
+}
+
+.review-button {
+  height: 30px;
+  width: 120px;
 }
