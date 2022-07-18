@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ReviewsList from './ReviewsList';
 import Stars from './Stars';
 
+
 // accepts an array of review objects, extracts .recommend, and returns an integer
 function getPercentageRecommended(results) {
   const copy = results.map((result) => result.recommend);
@@ -11,6 +12,7 @@ function getPercentageRecommended(results) {
   );
   return Math.ceil(trues.length / results.length) * 100;
 }
+
 
 // accepts an array of review objects, extracts .rating, and returns the average rounded
 function averageToNearestTenth(ratings) {
@@ -21,6 +23,36 @@ function averageToNearestTenth(ratings) {
   return (total / ratings.length).toFixed(1);
 }
 
+
+// accepts results and which star rating to analyze. outputs xml and styling for progress bar
+function addStarAndBar(results, stars) {
+
+  // eslint-disable-next-line no-var, no-unused-vars
+  var percentageOfMax = 50;
+
+  // eslint-disable-next-line no-var, no-unused-vars, prefer-const
+  let progressStyleObj = {
+    position: 'absolute', height: 5, left: 75, width: percentageOfMax, background: 'green'
+  };
+
+  return (
+    <div>
+      <div style={{ position: 'absolute' }}>{`${stars} stars`}</div>
+
+      {/* background bar */}
+      <div style={{
+        position: 'absolute', height: 5, left: 75, width: 200, background: 'gray'
+      }}
+      />
+
+      {/* progress bar */}
+      <div style={progressStyleObj} />
+      <br />
+    </div>
+  );
+}
+
+// Main function
 function Ratings({ results, setReviews }) {
   return (
     <div id="ratings-reviews">
@@ -42,11 +74,12 @@ function Ratings({ results, setReviews }) {
         </div>
 
         <div>
-          <div>5 stars</div>
-          <div>4 stars</div>
-          <div>3 stars</div>
-          <div>2 stars</div>
-          <div>1 stars</div>
+          {/* Bar rating for each star value */}
+          {addStarAndBar(results, 5)}
+          {addStarAndBar(results, 4)}
+          {addStarAndBar(results, 3)}
+          {addStarAndBar(results, 2)}
+          {addStarAndBar(results, 1)}
         </div>
 
         <div>

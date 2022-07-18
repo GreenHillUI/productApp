@@ -29,7 +29,7 @@ function Review({ review }) {
           ? (
             <>
               <FcCheckmark style={{ position: 'absolute' }} />
-              <div>I recommend this product</div>
+              <div style={{ position: 'relative', left: 20 }}>I recommend this product</div>
             </>
           )
           : ''}
