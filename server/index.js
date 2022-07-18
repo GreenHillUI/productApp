@@ -14,16 +14,17 @@ app.get('/products*', (req, res) => {
     });
 });
 
-// app.get('/reviews*', (req, res) => {
-//   controllers.get(req.path)
-//     .then((reviews) => {
-//       res.status(200).send(reviews);
-//     })
-//     .catch();
-// });
+app.get('/reviews/meta', (req, res) => {
+  const config = { params: req.query };
+  // const config = { params: { product_id: 40348, count: 100, sort: 'newest' } };
+  controllers.get(req.path, config).then((metaData) => {
+    res.status(200).send(metaData);
+  });
+});
 
 app.get('/reviews', (req, res) => {
-  const config = { params: req.query };
+  // const config = { params: req.query };
+  const config = { params: { product_id: 40348, count: 100, sort: 'newest' } };
   controllers.get(req.path, config).then((metaData) => {
     res.status(200).send(metaData);
   });
