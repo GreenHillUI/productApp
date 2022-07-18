@@ -7,11 +7,14 @@ function QModal({ product }) {
 
   function onSubmitClickVal() {
     return submitForm({
-      question: document.getElementById('#newQA'),
-      nickname: document.getElementById('#nick'),
+      body: document.getElementById('#newQA'),
+      name: document.getElementById('#nick'),
       email: document.getElementById('#email'),
+      product_id: product.product_id
     });
   }
+
+
 
   return (
     <div id='qModal.on'>

@@ -1,4 +1,5 @@
 import { useState, React } from 'react';
+import { markA } from './QAhelp/QArequests';
 
 export default function Answer({ answer }) {
 
@@ -10,6 +11,7 @@ export default function Answer({ answer }) {
   const like = () => {
     setLikes(likes + 1);
     setClicked(true);
+    markA(answer.id);
   };
 
   const likeButton = clicked
