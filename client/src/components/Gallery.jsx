@@ -47,7 +47,7 @@ function Gallery({
       </div>
       <IconContext.Provider value={{ className: 'thumbArrow' }}>
         <div id='galleryCarousel' className='galleryCarousel'>
-          {displayIndex === 0 ? null : <MdArrowBackIos style={arrowStyle} className='thumbArrow' onClick={handleLeftArrowClick} />}
+          {displayIndex === 0 ? null : <MdArrowBackIos style={arrowStyle} onClick={handleLeftArrowClick} />}
           <div className='galleryThumbView'>
             <ul>
               {displayThumbs}

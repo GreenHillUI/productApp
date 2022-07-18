@@ -62,14 +62,14 @@ function Overview({ productInfo, selectedStyle, metaData }) {
       </div>
       <StyleSelector />
       <div id='overviewStars'>
-        Review Score: {Stars(metaData)}
+        Review Score: <Stars rating={metaData} />
        
       </div>
 
      
       <div className='overviewPrice'>
-        Price:
-        {selectedStyle.sale_price ? `Was $${selectedStyle.original_price} Now: $${selectedStyle.sale_price}` : `$${selectedStyle.original_price}`}
+        
+        Price: { selectedStyle.sale_price ? <div> <s>${selectedStyle.original_price}</s> ${selectedStyle.sale_price}!! </div> : `$${selectedStyle.original_price}` }
       </div>
       <AddToCart />
     </div>

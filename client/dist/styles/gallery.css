@@ -19,15 +19,17 @@
    
   #galleryCarousel {
     display: grid;
-    grid-template-columns: repeat(3, auto);
-    justify-self: center;
+    grid-template-columns: 20% 28% 20%;
+    grid-template-rows: 100%
+    width: auto;
+    justify-items: center;
+    align-items: center;
     transform: translate(0px, -62px)
   }
   
   .gallerySlide{
     max-height: 800px;
     max-width: 800px;
-    padding:inherit;
     }
   
   /*Wrapper for the image carousel*/
