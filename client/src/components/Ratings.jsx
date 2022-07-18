@@ -1,75 +1,46 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable indent */
-
 import React from 'react';
+import { connect } from 'react-redux';
 import ReviewsList from './ReviewsList';
-// Don't have to import the server/index.js?
+import Stars from './Stars';
 
-
-
-// bring all reviews here to have data to go through
-
-// functions needed
-  // componentDidMount? Or alternative?
-
-  // calculate review to the nearest half star
-    // IMPORT Andrew's star function
-
-
-// calculate percentage of reviews recommend product
-// function getPercentageRecommended(results) {
-  // create new array of only 'true' values from results
-  // const trues = results.filter(
-  //   (resultItem.recommend) => (resultItem.recommend === true)
-  //     );
-
-  // return the Length of array of trues divided by original array length
-  // return Math.ceil(trues.length / ratingsArray.length) * 100;
-// }
-
-
-  // get average review value
-function getAverageReview(results) {
-  const reviewTotal = results.reduce(
-    (previousValue, currentValue) => previousValue + currentValue,
-    0
+// accepts an array of review objects, extracts .recommend, and returns an integer
+function getPercentageRecommended(results) {
+  const copy = results.map((result) => result.recommend);
+  const trues = copy.filter(
+    (resultItem) => (resultItem === true)
   );
-
-  const { length } = results;
-  return (reviewTotal / length);
+  return Math.ceil(trues.length / results.length) * 100;
 }
 
-  // sort option event handler
+// accepts an array of review objects, extracts .rating, and returns the average rounded
+function averageToNearestTenth(ratings) {
+  const total = ratings.reduce(
+    (sum, item) => sum + item.rating,
+    0,
+  );
+  return (total / ratings.length).toFixed(1);
+}
 
-  // click handler for "More Reviews"
-
-// data needed
-  // results array from product review obj
-    // results length
-    // rating numbers
-    // recommended
-    // username
-    // date
-
-// props to pass down?
-  // individual review for ReviewsList
-
-
-function Ratings({ page, count, results }) {
-
+function Ratings({ results, setReviews }) {
   return (
-    <div id="ratings-reviews-container">
+    <div id="ratings-reviews">
 
-      {/* Big Rating and star count */}
       {/* Use generateStars function from Overview */}
-      <h1 className="big-num"> 3.5 HardCode </h1>
+      <div>Ratings And Reviews</div>
 
-      {/* Individual product score and data */}
-      <div>
+      <div className="review-summary">
 
-        <div> XXX % of reviews recommend this product</div>
+        <h1 id="big-review-num">
+          {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
+          <Stars rating={averageToNearestTenth(results)} />
+        </h1>
 
-        {/* Stars breakdown */}
+        <div>
+          {getPercentageRecommended(results)
+            ? `${getPercentageRecommended(results)}% of reviews recommend this product`
+            : "Loading..."}
+        </div>
+
         <div>
           <div>5 stars</div>
           <div>4 stars</div>
@@ -78,22 +49,33 @@ function Ratings({ page, count, results }) {
           <div>1 stars</div>
         </div>
 
-        {/* Size Sliding Scale */}
         <div>
           Size
         </div>
 
-        {/* Comfort Sliding Scale */}
         <div>
           Comfort
         </div>
 
       </div>
 
-      <ReviewsList />
+      <ReviewsList
+        id={results.id}
+        results={results}
+        setReviews={setReviews}
+      />
 
     </div>
   );
-};
+}
 
-export default Ratings;
+const RatingsContainer = connect(
+  (state) => ({
+    results: state.reviews,
+  }),
+  (dispatch) => ({
+    setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews })
+  })
+)(Ratings);
+
+export default RatingsContainer;

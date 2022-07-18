@@ -1,0 +1,28 @@
+.review-name-date {
+  float: right;
+}
+
+#ratings-reviews {
+  display: inline-block;
+}
+
+#big-review-num {
+  size: 48px;
+}
+
+.review-summary {
+  float: left;
+  padding: 20px;
+}
+
+.reviews-list {
+  float: right;
+  padding: 20px;
+}
+
+.review {
+  border: 1px solid black;
+  padding: 4px;
+  width: 500px;
+  word-wrap: break-word;
+}
