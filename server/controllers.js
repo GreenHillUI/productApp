@@ -75,6 +75,6 @@ module.exports.post = (endpoint, config) => {
   return axios.post(url, body, options)
     .then((res) => res.body)
     .catch((err) => {
-      console.log(err.toJSON());
+      console.error(err.toJSON());
     });
 };

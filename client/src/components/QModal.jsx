@@ -26,18 +26,24 @@ function QModal({ pID }) {
         CLOSE WINDOW
       </button>
       <h2> Ask Your Question</h2>
-      <h4> About the {pName} </h4>
+      <h4>
+        About the
+        {pName}
+      </h4>
       <form className='modal' onSubmit={onSubmitClickVal}>
-        <label htmlFor='your'>Question*
+        <label htmlFor='your'>
+          Question*
           <input id='newQA' type='text-area' name='your' placeholder='Your Question: ' />
         </label>
-        <label htmlFor='nickname'>NickName*
+        <label htmlFor='nickname'>
+          NickName*
           <input name='nickname' id='nick' placeholder='Example: jackson11!' />
           <span>
             For privacy reasons, do not use your full name or email address.
           </span>
         </label>
-        <label htmlFor='email'>Email*
+        <label htmlFor='email'>
+          Email*
           <input name='email' id='email' placeholder='Why did you like the product or not?' />
           <span>
             For authentication reasons, you will not be emailed.

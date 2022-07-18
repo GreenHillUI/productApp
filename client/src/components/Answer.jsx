@@ -15,8 +15,12 @@ export default function Answer({ answer }) {
   };
 
   const likeButton = clicked
-    ? <span id='a-h'> Helpful? Yes ({likes}) | </span>
-    : <button onClick={like} type='button' id='a-h'>  Helpful? Yes ({likes}) | </button>;
+    ? <span id='a-h'>
+        Helpful? Yes ({likes}) |
+      </span>
+    : <button onClick={like} type='button' id='a-h'>
+        Helpful? Yes ({likes}) |
+      </button>;
 
   const reportButton = reported
     ? <span id='a-report'>Reported!</span>
@@ -27,7 +31,11 @@ export default function Answer({ answer }) {
       <span className='a.icon'><b>A:</b></span>
       <span className='a-text'>{answer.body}</span>
       <div className='a-meta'>
-        <span className='a-user-date'>by: ${answer.answerer_name} date |</span>
+        <span className='a-user-date'>
+          by: $
+          {answer.answerer_name}
+          date |
+        </span>
         {likeButton}
         {reportButton}
       </div>
