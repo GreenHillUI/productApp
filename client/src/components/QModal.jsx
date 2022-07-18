@@ -1,23 +1,21 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { postQ } from './QAhelp/QArequests';
 
 function QModal({ pID }) {
   // const qModal = useSelector((state) => state.qList.mo)
   const dispatch = useDispatch();
-
-  function onSubmitClickVal() {
-
-    console.log(document.getElementById('newQA').value);
-    console.log(document.getElementById('nick').value);
-    console.log(document.getElementById('email').value);
-
-    return postQ({
+  const pName = useSelector((state) => state.productInfo.name);
+  function onSubmitClickVal(e) {
+    e.preventDefault();
+    postQ({
       body: document.getElementById('newQA').value,
       name: document.getElementById('nick').value,
       email: document.getElementById('email').value,
       product_id: pID
     });
+    alert('Form Submitted!');
+    dispatch({ type: 'Q_MODAL', payload: false });
   }
 
 
@@ -28,24 +26,30 @@ function QModal({ pID }) {
         CLOSE WINDOW
       </button>
       <h2> Ask Your Question</h2>
-      <h4> About the {pID || 'Thingamajig'} </h4>
-      <form className='modal'>
-        <label htmlFor='your'>Question*
+      <h4>
+        About the
+        {pName}
+      </h4>
+      <form className='modal' onSubmit={onSubmitClickVal}>
+        <label htmlFor='your'>
+          Question*
           <input id='newQA' type='text-area' name='your' placeholder='Your Question: ' />
         </label>
-        <label htmlFor='nickname'>NickName*
+        <label htmlFor='nickname'>
+          NickName*
           <input name='nickname' id='nick' placeholder='Example: jackson11!' />
           <span>
             For privacy reasons, do not use your full name or email address.
           </span>
         </label>
-        <label htmlFor='email'>Email*
+        <label htmlFor='email'>
+          Email*
           <input name='email' id='email' placeholder='Why did you like the product or not?' />
           <span>
             For authentication reasons, you will not be emailed.
           </span>
         </label>
-        <button type='button' onClick={onSubmitClickVal}>Submit</button>
+        <button type='submit'>Submit</button>
       </form>
     </div>
   );

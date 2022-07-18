@@ -60,6 +60,13 @@ app.put('/', (req, res) => {
 });
 
 
+//ALL POST REQUESTS
+app.post('/', (req, res) => {
+  // 2nd arg
+  controllers.post(req.path, req.body.data)
+    .then((questions) => res.status(200).send(questions));
+});
+
 const port = 3000;
 
 app.listen(port, () => {
