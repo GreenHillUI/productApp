@@ -64,7 +64,7 @@ routes.get('/reviews/:product_id/:meta(meta)?', (req, res) => {
 /**
  * PATHS
  * /a/questions/40348
- * /a/answers/40348/answers
+ * /a/answers/40348
  * 
  * QUERY PARAMETERS
  * page (default 1)
