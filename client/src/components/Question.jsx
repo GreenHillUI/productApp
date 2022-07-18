@@ -1,6 +1,3 @@
-/* eslint-disable react/jsx-indent */
-/* eslint-disable react/jsx-wrap-multilines */
-/* eslint-disable react/jsx-one-expression-per-line */
 import { React, useState} from 'react';
 import _ from 'underscore';
 import { useSelector } from 'react-redux';
@@ -24,7 +21,9 @@ export default function Question({ question }) {
   };
 
   const likeButton = clicked
-    ? <span id='q-s'> Helpful? Yes ({likes}) | </span>
+    ? <span id='q-s'>
+        Helpful? Yes ({likes}) |
+      </span>
     : <button onClick={like} type='button' id='q-h'>
         Helpful? Yes ({likes}) |
       </button>;
