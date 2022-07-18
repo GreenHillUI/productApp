@@ -1,4 +1,8 @@
-import { React, useState} from 'react';
+/* eslint-disable vars-on-top */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable no-var */
+import { React, useState } from 'react';
 import _ from 'underscore';
 import { useSelector } from 'react-redux';
 import Answer from './Answer';

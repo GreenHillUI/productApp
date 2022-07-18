@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-one-expression-per-line */
 import { useState, React } from 'react';
 import { markA } from './QAhelp/QArequests';
 
