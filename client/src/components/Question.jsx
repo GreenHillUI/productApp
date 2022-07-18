@@ -1,4 +1,8 @@
-import { React, useState} from 'react';
+/* eslint-disable vars-on-top */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable no-var */
+import { React, useState } from 'react';
 import _ from 'underscore';
 import { useSelector } from 'react-redux';
 import Answer from './Answer';
@@ -21,8 +25,12 @@ export default function Question({ question }) {
   };
 
   const likeButton = clicked
-    ? <span id='q-s'> Helpful? Yes ({likes}) | </span>
-    : <button onClick={like} type='button' id='q-h'>  Helpful? Yes ({likes}) | </button>;
+    ? <span id='q-s'>
+        Helpful? Yes ({likes}) |
+      </span>
+    : <button onClick={like} type='button' id='q-h'>
+        Helpful? Yes ({likes}) |
+      </button>;
 
   var aFilter = useSelector((state) => (state.qList.qFilter));
   aFilter = aFilter.length > 3 ? aFilter : '';

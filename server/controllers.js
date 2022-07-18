@@ -56,3 +56,25 @@ module.exports.put = (endpoint, config) => {
     });
 };
 
+module.exports.post = (endpoint, config) => {
+
+  var { body, route, type } = config;
+
+  //FOR REVIEWS
+  // var url = new URL(join(api, route[0], param[0], route[1])).href;
+
+  //FOR QUESTIONS
+  //(type 'q')
+  var url = new URL(join(api, route[0])).href;
+  if (type === 'a') { // 'qa/questions',    ID #    ,  'answers'
+    url = new URL(join(api, route[0], body.product_id, route[1])).href;
+  }
+
+  const options = { headers: { Authorization: process.env.GITHUB_API_KEY } };
+  // return a promise for the requested object
+  return axios.post(url, body, options)
+    .then((res) => res.body)
+    .catch((err) => {
+      console.error(err.toJSON());
+    });
+};
