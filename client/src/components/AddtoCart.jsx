@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 function makeSizeOptions(skuList) {
   let optionList = [];
   if (skuList) {
-    optionList = Object.entries(skuList).map((sku) => {
-      if (sku[1].quantity > 0) {
-        return (<option key={sku[0]} value={sku[0]}>{sku[1].size}</option>);
-      }
-
-    });
+    optionList = Object.entries(skuList)
+      .filter((entry) => entry[1].quantity > 0)
+      .map(([key, value]) => (
+        <option key={key} value={key}>{value.size}</option>
+      ));
 
   }
-  optionList.unshift(<option key={`selectSizeDefault`} value=''>Select Size</option>);
+  if (optionList.length === 0) {
+    optionList.unshift(<option key='OutOfStock' value={null}> Out of Stock</option>);
+  }
+  optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
   return optionList;
 }
 
@@ -39,19 +41,32 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
   }
 
 
-
   return (
     <div id='addToCartContainer'>
       <form className='addToCartForm' action='/'>
-        <label htmlFor='sizeSelect'>Size: </label>
-        <select id='sizeSelect' onChange={handleSizeChange} required>{sizeOptions.length ? sizeOptions : `Out of Stock`}</select>
-        <label htmlFor='quantitySelect'>Qty: </label>
-        <select id='quantitySelect'>{selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity, selectedSku) : <option>-</option>}</select>
-        <br/>
-        <input type='submit' value='Add To Cart' />
+        <label htmlFor='sizeSelect'>
+          Size: 
+          <select 
+            id='sizeSelect' 
+            onChange={handleSizeChange} 
+            required
+          >
+            {sizeOptions.length ? sizeOptions : `Out of Stock`}
+          </select>
+        </label>
+        <label htmlFor='quantitySelect'>
+          Qty: 
+          <select id='quantitySelect'>
+            {selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity, selectedSku) : <option>-</option>}
+          </select>
+        </label>
+        <br />
+        { sizeOptions.length 
+          ? <input type='submit' value='Add To Cart' /> 
+          : <input type='submit' value='Add To Cart' disabled /> }
       </form>
     </div>
-
+    //I feel there's a better way to write the add button conditional above, but not sure.
   );
 
 }
@@ -65,7 +80,8 @@ const AddToCartContainer = connect(
 
   (dispatch) => ({
     //Sets Slected SKU based on Size Selector
-    setSelectedSku: (sku) => dispatch({ type: 'SETSELECTEDSKU', selectedSku: sku })
+    setSelectedSku: (sku) => dispatch({ type: 'SETSELECTEDSKU', selectedSku: sku }),
+    setQuantity: (qty) => dispatch({ type: 'SETQUANTITY', quantity: qty })
   })
 )(AddToCart);
 

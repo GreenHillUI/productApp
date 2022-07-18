@@ -4,6 +4,7 @@
   background-color: grey;
   padding: 50px;
   display: grid;
+  grid-row-start: 1;
   }
   
   /*The selected image*/
@@ -19,11 +20,11 @@
    
   #galleryCarousel {
     display: grid;
-    grid-template-columns: 20% 28% 20%;
-    grid-template-rows: 100%
+    grid-template-columns: 25px 413px 30px;
+    grid-template-rows: 100%;
     width: auto;
-    justify-items: center;
     align-items: center;
+    justify-self: center;
     transform: translate(0px, -62px)
   }
   

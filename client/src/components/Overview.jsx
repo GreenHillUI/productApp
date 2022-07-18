@@ -20,31 +20,21 @@ function Overview({ productInfo, selectedStyle, metaData }) {
   return (
     //Coming back to image gallery after writing a carousel
     <div id='overview'>
-      <h2 className='overviewProductCategory'>{productInfo ? productInfo.category : `Loading`}</h2>
+      <div id='overviewStars'>
+        Review Score: 
+        <Stars rating={metaData} />  
+        <div id='overviewReadAll'>
+          {`  Read all  ${getTotalReviews(metaData)}  `}
+          reviews 
+        </div>
+      </div>
+      <h2 className='overviewProductCategory'>
+        {productInfo ? productInfo.category : `Loading`}
+      </h2>
       <h1 className='overviewProductName'>
         {productInfo ? productInfo.name : `Loading`}
       </h1>
-      <Gallery /> 
-      <div className='overviewProductSlogan'>{productInfo ? productInfo.slogan : `Loading`}</div>
-      <div className='overviewProductInfo'>
-        <p className="overviewProductDescription">
-          {productInfo ? productInfo.description : `Loading`}
-        </p>
-      </div>
-      <StyleSelector />
-      <div id='overviewStars'>
-        Review Score: 
-        <Stars rating={metaData} />
-        <div id='overviewReadAll'>
-          Read all 
-          {getTotalReviews(metaData)} 
-          Reviews 
-        </div>
-      </div>
-
-     
       <div className='overviewPrice'>
-        
         Price: 
         { selectedStyle.sale_price 
           ? (
@@ -60,6 +50,17 @@ function Overview({ productInfo, selectedStyle, metaData }) {
           ) : `$${selectedStyle.original_price}` }
       </div>
       <AddToCart />
+      <Gallery /> 
+      
+      <div className='overviewProductSlogan'>
+        {productInfo ? productInfo.slogan : `Loading`}
+      </div>
+      <div className='overviewProductInfo'>
+        <p className="overviewProductDescription">
+          {productInfo ? productInfo.description : `Loading`}
+        </p>
+      </div>
+      <StyleSelector />
     </div>
   );
 }
