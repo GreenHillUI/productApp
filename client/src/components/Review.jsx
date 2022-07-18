@@ -19,8 +19,6 @@ function Review({ review }) {
         )}`}
       </div>
 
-
-
       <br />
       {review.summary}
       <br />
