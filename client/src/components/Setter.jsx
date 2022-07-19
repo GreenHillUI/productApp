@@ -15,7 +15,7 @@ class Setter extends React.Component {
       setStyles,
       setSelectedStyle,
       setMetaData,
-      setProductQs
+      setProductQs,
     } = this.props;
 
     axios.get('/a/products/40348')
@@ -37,7 +37,7 @@ class Setter extends React.Component {
       })
       .catch((err) => console.log(err));
 
-    axios.get('/a/questions/40349')
+    axios.get('/a/questions/40349', { params: { count: 100 } })
       .then((res) => {
         setProductQs(res.data);
       })
@@ -61,6 +61,7 @@ const SetterContainer = connect(
     setSelectedStyle: (style) => dispatch({ type: 'SETSELECTEDSTYLE', selectedStyle: style }),
     setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data }),
     setProductQs: (Qs) => dispatch({ type: 'SET_QUESTIONS', payload: Qs }),
+    setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews }),
   })
 )(Setter);
 export default SetterContainer;

@@ -4,6 +4,7 @@
   background-color: grey;
   padding: 50px;
   display: grid;
+  grid-row-start: 1;
   }
   
   /*The selected image*/
@@ -19,7 +20,10 @@
    
   #galleryCarousel {
     display: grid;
-    grid-template-columns: repeat(3, auto);
+    grid-template-columns: 25px 413px 30px;
+    grid-template-rows: 100%;
+    width: auto;
+    align-items: center;
     justify-self: center;
     transform: translate(0px, -62px)
   }
@@ -27,7 +31,6 @@
   .gallerySlide{
     max-height: 800px;
     max-width: 800px;
-    padding:inherit;
     }
   
   /*Wrapper for the image carousel*/
@@ -43,14 +46,14 @@
   /* Div of viewable thumbnails. If each thumbnail is 100px + 4 total px of padding = 728px total */
   .galleryThumbView {
       width: 413px;
-      height: 110px;
+      height: 60px;
       overflow: hidden;
       white-space: nowrap;
   }
   
   /*The container for the list of thumbnails*/
   .galleryThumbView ul {
-    height:110px;
+    height:60px;
     width: 1200px;
     margin: 0px;
     padding: 0px; 

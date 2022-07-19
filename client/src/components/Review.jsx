@@ -1,23 +1,49 @@
 import React from 'react';
+import { FcCheckmark } from 'react-icons/fc';
+import Stars from './Stars';
 
-function Review() {
+function Review({ review }) {
 
   return (
-    <div className="rr-review-box">
+
+    <div className="review">
+      <br />
+
+      <Stars rating={review.rating} />
+
+      <div className="review-name-date">
+        {`${review.reviewer_name},
+          ${new Date(review.date).toLocaleDateString(
+          'en-us',
+          { year: "numeric", month: "long", day: "numeric" }
+        )}`}
+      </div>
 
 
-      <div> Stars </div>
 
-      <div> Username - Date </div>
+      <br />
+      {review.summary}
+      <br />
+      {review.body}
 
-      <div> Recommended (Checkmark) </div>
+      <div id="review-recommended">
+        {review.recommend
+          ? (
+            <>
+              <FcCheckmark style={{ position: 'absolute' }} />
+              <div>I recommend this product</div>
+            </>
+          )
+          : ''}
+      </div>
 
-      <div> Response </div>
+      <div id="review-response">
+        {review.response ? `Response: <br>${review.response}` : ''}
+      </div>
 
-      <div> Was this review helpful? </div>
+      {`Helpful? Yes ${review.helpfulness} | `}
 
       <div> Report </div>
-
 
     </div>
   );

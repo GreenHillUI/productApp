@@ -1,6 +1,6 @@
 /* eslint-disable no-var */
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { connect, useSelector, useDispatch } from 'react-redux';
 import Question from './Question';
 import QModal from './QModal';
 import { sortQtoAs } from './QAhelperFunctions';
@@ -22,7 +22,7 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
   if (productQs.results !== undefined) {
     qListSorted = sortQtoAs(productQs, qFilter, qExpandedBy);
     qListSorted = qListSorted.map((q) => (
-      <li key={q.question_id}>
+      <li className='question-li' key={q.question_id}>
         <Question question={q} />
       </li>
     ));
@@ -30,12 +30,12 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
 
   return (
     <div id='q-container'>
-      { qModal && <QModal /> }
+      { qModal && <QModal pID={productQs.product_id} /> }
       <span id='q-title'>QUESTIONS & ANSWERS</span>
       <div id='q-nav'>
         <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
       </div>
-      <ul id='q-list'>
+      <ul id={qExpandedBy ? 'q-list-exp' : 'q-list-col'}>
         {qListSorted}
       </ul>
       <div id='q-buttons'>
@@ -50,4 +50,16 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
   );
 }
 
-export default QuestionList;
+const mapStateToProps = (store) => ({
+  qExpandedBy: store.qList.qExpandedBy,
+  qModal: store.qList.qModal,
+  qFilter: store.qList.qFilter,
+  productQs: store.qList.productQs,
+});//connects the prop to the state saved in the store
+
+//makes it so you can change state depending on inputs   event handler => action/reducer => store
+
+
+const QuestionListContainer = connect(mapStateToProps, null)(QuestionList);
+
+export default QuestionListContainer;

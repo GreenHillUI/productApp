@@ -2,7 +2,7 @@
 const _ = require('underscore');
 //combines the text of the Q and its A's together, then filters them based on the search bar entry
 
-module.exports.reviewFilter = function (Qs, filter) {
+const reviewFilter = function (Qs, filter) {
   //An object with the the Q ids for keys, and a single string of the Q/A text as a value
   if (Qs === undefined) {
     return [];
@@ -20,8 +20,8 @@ module.exports.reviewFilter = function (Qs, filter) {
       //Store joined Q/A texts string aside Q_id in the Obj
     combinedQAObj[id] = q.question_body + answers.join('');
   });
-  //use the combined strings for each question to filter out the qs by search term
-  return Qs.results.filter((q) => (combinedQAObj[q.question_id].indexOf(filter) !== -1));
+  //use the combined strings for each question to filter out the qs by search term (case insentitive - touppercase)
+  return Qs.results.filter((q) => (combinedQAObj[q.question_id].toUpperCase().indexOf(filter.toUpperCase()) !== -1));
 };
 
 module.exports.sortQtoAs = function (Qs, qFilter = '', expand) {
@@ -32,7 +32,8 @@ module.exports.sortQtoAs = function (Qs, qFilter = '', expand) {
     //otherwise, create an array (not object) of Qs
     Qs = _.map(Qs.results);
   }
-  return (expand ? Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)) : Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, 3));
+  return (expand ? Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)) : Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, 4));
   //sort by helpfulness, and then slice off whatever Qs not supposed to be displayed
 };
 
+module.exports.reviewFilter = reviewFilter;
