@@ -55,7 +55,7 @@ function Gallery({
           onClick={handleThumbnailClick}  
           key={selectedStyle.style_id + selectedStyle.photos.thumbnail_url} 
           data-index={index} 
-          className='galleryThumbnail' 
+          className={`galleryThumbnail${index === displayIndex ? ' active' : ''}`} 
           src={image.thumbnail_url} 
           alt={`${selectedStyle.name} style`} 
         />

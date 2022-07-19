@@ -25,33 +25,33 @@ class Setter extends React.Component {
       setReviews,
     } = this.props;
 
-    axios.get('/products/40348')
+    axios.get('/products/40344')
       .then((response) => {
       //console.log(response.data);
         setProductInfo(response.data);
       })
       .catch(() => console.log(`Error loading product info`));
 
-    axios.get('/products/40348/styles')
+    axios.get('/products/40344/styles')
       .then((response) => {
         setStyles(response.data.results);
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
 
-    axios.get('/reviews/meta', { params: { product_id: 40348 } })
+    axios.get('/reviews/meta', { params: { product_id: 40344 } })
       .then((response) => {
         setMetaData(response.data.ratings);
       })
       .catch((err) => console.log(err));
 
-    axios.get('/reviews?product_id=40348')
+    axios.get('/reviews?product_id=40344')
       .then((response) => {
         setReviews(response.data.results);
       })
       .catch();
 
-    axios.get('/products/40348/related')
+    axios.get('/products/40344/related')
       .then(({ data }) => {
         const uniqueIDs = data.filter((id, i) => data.indexOf(id) === i);
 
@@ -95,7 +95,7 @@ class Setter extends React.Component {
         setRelatedProducts(products);
       });
 
-    const config = { params: { product_id: 40348, count: 100 } };
+    const config = { params: { product_id: 40344, count: 100 } };
 
     axios.get('/qa/questions/', config)
       .then((res) => {
