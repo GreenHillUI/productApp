@@ -36,7 +36,6 @@ function apiPutRequest(req, res, path) {
 routes.get('/products', (req, res) => {
   apiGetRequest(req, res, req.path);
 });
-
 /**
  * PATHS
  * /a/products/40348
@@ -108,7 +107,8 @@ routes.get('/questions/:product_id', (req, res) => {
 });
 routes.post('/questions/:product_id', (req, res) => {
   const path = '/qa/questions';
-  req.body.product_id = req.params.product_id;
+  console.log(req.body);
+  req.body.product_id = Number(req.params.product_id);
 
   apiPostRequest(req, res, path);
 });
@@ -118,7 +118,7 @@ routes.post('/questions/:product_id', (req, res) => {
  * /a/questions/40349/report
  */
 routes.put('/questions/:product_id/:action(helpful|report)', (req, res) => {
-  const path = '/qa/questions';
+  const path = `/qa${req.path}`;
   apiPutRequest(req, res, path);
 });
 
