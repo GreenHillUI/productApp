@@ -4,6 +4,7 @@ import { connect, useSelector, useDispatch } from 'react-redux';
 import Question from './Question';
 import QModal from './QModal';
 import { sortQtoAs } from './QAhelperFunctions';
+
 // import { shallowEqual, createSelector } from 'reselect';
 
 
@@ -12,6 +13,7 @@ import { sortQtoAs } from './QAhelperFunctions';
 function QuestionList({ productQs, qFilter, qExpandedBy }) {
   //retrieve modal and extend locally
   const qModal = useSelector((state) => state.qList.qModal);
+  const aModal = useSelector((state) => state.qList.aModal);
   const dispatch = useDispatch(); //map handlers to reducers (add button, )
 
   //default header to use while loading
@@ -31,6 +33,7 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
   return (
     <div id='q-container'>
       { qModal && <QModal pID={productQs.product_id} /> }
+      { aModal && <QModal pID={productQs.product_id} /> }
       <span id='q-title'>QUESTIONS & ANSWERS</span>
       <div id='q-nav'>
         <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />

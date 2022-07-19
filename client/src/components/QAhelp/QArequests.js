@@ -3,10 +3,8 @@ const axios = require('axios');
 
 module.exports.getQ = (pID) => {
 
-  axios.get('/qa/questions/', config)
-    .then((res) => {
-      setProductQs(res.data);
-    })
+  axios.get('/qa/questions/', { params: { product_id: pID, count: 100 } })
+    .then((res) => res.data)
     .catch((err) => { console.log(err); });
 
 };
@@ -28,11 +26,12 @@ module.exports.postQ = (qObj) => {
     .catch((err) => console.log(err, 'unsucessful post req'));
 };
 
-module.exports.postA = (pObj, aObj) => {
+module.exports.postA = (aObj) => {
+
 
   const config = {
     data: {
-      body: qObj,
+      body: aObj,
       route: ['/qa/questions', '/answers'],
       type: 'a'
     }
