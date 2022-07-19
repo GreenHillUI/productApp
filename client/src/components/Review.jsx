@@ -5,6 +5,7 @@ import Stars from './Stars';
 function Review({ review }) {
 
 
+  // eslint-disable-next-line no-unused-vars
   function splitLines(reviewBody) {
     const { body } = review;
     const firstLine = `${body.slice(0, 60)}...`;
@@ -12,8 +13,8 @@ function Review({ review }) {
 
     if (body.length > 60) {
       return (
-        <div>
-          <div style={{ 'font-weight': 'bold' }}>{firstLine}</div>
+        <div id="review-title">
+          <div style={{ fontWeight: 'bold' }}>{firstLine}</div>
           <br />
           {remaining}
         </div>
@@ -21,7 +22,7 @@ function Review({ review }) {
     }
 
     return (
-      <div style={{ 'font-weight': 'bold' }}>
+      <div id="review-title" style={{ fontWeight: 'bold' }}>
         {body}
       </div>
     );
@@ -33,11 +34,9 @@ function Review({ review }) {
     <div className="review">
       <br />
       <Stars rating={review.rating} />
-      <br />
 
       <div
         className="review-name-date"
-        // style={{ top: 8 }}
       >
         {`${review.reviewer_name},
           ${new Date(review.date).toLocaleDateString(
@@ -46,34 +45,54 @@ function Review({ review }) {
         )}`}
       </div>
 
+      <div>
+        {splitLines(review.summary)}
+      </div>
+
+      <div style={{ bottom: 8, top: 8 }}>
+        {review.body}
+      </div>
       <br />
-      {splitLines(review.summary)}
-      <br />
-      <br />
-      {review.body}
-      <br />
+
       <div id="review-recommended">
         {review.recommend
           ? (
             <div style={{
-              padding: 14,
+              padding: 8,
+
             }}
             >
               <FcCheckmark style={{ position: 'relative' }} />
-              <div style={{ position: 'relative', left: 20, bottom: 18 }}>I recommend this product</div>
+              <div style={{ position: 'relative', left: 24, bottom: 18 }}>I recommend this product</div>
             </div>
           )
           : ''}
       </div>
 
-      <div id="review-response">
+      <div
+        id="review-response"
+        style={{ background: '#D3D3D3' }}
+      >
         {review.response ? `Response: <br>${review.response}` : ''}
       </div>
 
       <br />
-      {`Helpful? Yes ${review.helpfulness} | `}
 
-      <div> Report </div>
+      <div>
+        <div
+          style={{ position: 'relative' }}
+        >
+          {`Helpful? Yes ${review.helpfulness} |`}
+        </div>
+
+        <div
+          style={{ position: 'relative', left: 110, bottom: 16 }}
+        >
+          Report
+        </div>
+
+        <br />
+      </div>
 
     </div>
   );

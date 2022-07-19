@@ -1,15 +1,17 @@
 .review-name-date {
   float: right;
+
 }
 
 #ratings-reviews {
-  /* width: 900px; */
-  /* margin: auto; */
-  display: inline-block;
+  width: 1000px;
+  margin: auto;
+  /* display: inline-block; */
 }
 
 #big-review-num {
-  size: 48px;
+  size: 120px;
+  height: 120px;
 }
 
 .review-summary {
@@ -21,8 +23,9 @@
   float: right;
   padding: 20px;
   border: 20px;
-  height: 575px;
+  height: 600px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .review {
@@ -36,3 +39,10 @@
   height: 30px;
   width: 120px;
 }
+
+#review-title {
+  /* font-weight: bold; */
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+

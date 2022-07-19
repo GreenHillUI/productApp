@@ -53,16 +53,16 @@ function addStarAndBar(results, stars) {
 
   // object for adjusting how much of bar is filled based on reviews for each star
   const progressStyleObj = {
-    position: 'absolute', height: 5, left: 75, width: percentageOfMax, background: 'green'
+    position: 'absolute', height: 6, left: 75, width: percentageOfMax, background: 'green'
   };
 
   return (
-    <div>
-      <div style={{ position: 'absolute' }}>{`${stars} stars`}</div>
+    <div style={{ position: 'absolute' }}>
+      <div>{`${stars} stars`}</div>
 
       {/* background bar */}
       <div style={{
-        position: 'absolute', height: 5, left: 75, width: 200, background: '#D3D3D3'
+        position: 'absolute', height: 6, left: 75, width: 200, background: '#D3D3D3',
       }}
       />
 
@@ -95,7 +95,7 @@ function Ratings({ results, setReviews, sort }) {
 
       <div className="review-summary">
 
-        <div id="big-review-num">
+        <div id="big-review-num" style={{ font: 36, size: 48 }}>
           {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
           <Stars rating={averageToNearestTenth(results)} />
         </div>
@@ -149,8 +149,8 @@ const RatingsContainer = connect(
   }),
   (dispatch) => ({
     setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews }),
-    sort: (sortMethod) => dispatch((dis) => sortReviews(dis, sortMethod))
-    // , filterReviews: (reviews) => dispatch({ type: "FILTERREVIEWS", reviews })
+    sort: (sortMethod) => dispatch((dis) => sortReviews(dis, sortMethod)),
+    // filter: (reviews) => dispatch({ type: "FILTERREVIEWS", reviews })
   })
 )(Ratings);
 

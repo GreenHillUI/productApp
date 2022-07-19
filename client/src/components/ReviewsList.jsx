@@ -5,20 +5,6 @@ function ReviewsList({ results, sort }) {
 
   const [count, setCount] = useState(0);
 
-  // Incomplete mapReviews for DRYness
-  // accepts an array of reviews and maps them into individual reviews
-  // NON-Functional WIP
-  function mapReviews(reviewsArray) {
-    reviewsArray.map(
-      (review) => (
-        <Review
-          id={review.review_id}
-          review={review}
-        />
-      )
-    );
-  }
-
   function handleOptionChange(event) {
     console.log(event.target.value);
     sort(event.target.value);
@@ -28,12 +14,12 @@ function ReviewsList({ results, sort }) {
     <div className="reviews-list">
       {/* This div houses all reviews to be shown */}
       <div>
-        <div>{`${results.length} reviews, sorted by...`}</div>
+        <div>{`${results.length} reviews, sorted by`}</div>
 
         <select
           style={{
             position: 'relative',
-            left: 150,
+            left: 130,
             bottom: 18,
             background: 'transparent',
             border: 'none',
