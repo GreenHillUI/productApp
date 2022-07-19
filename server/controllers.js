@@ -6,74 +6,47 @@ const axios = require('axios');
 
 const api = join('https://app-hrsei-api.herokuapp.com/api/fec2/', process.env.CAMPUS_CODE);
 
+function authorize(config = {}) {
+  const options = config;
+  options.headers = config.headers || {};
+  options.headers.Authorization = process.env.GITHUB_API_KEY;
+  return options;
+}
+
 /**
  * Makes a get request to the API using the endpoint specified
  * @param endpoint destination in the API for the request
  * @param config [optional] additional parameters to send with the request
  * @returns A thenable promise to use
  */
-
-
-
-module.exports.get = (endpoint, config = {}) => {
+module.exports.get = (endpoint, config) => {
   const url = new URL(join(api, endpoint)).href;
 
-  // adding Authorization here hides the key from the client
-  const options = config;
-  options.headers = config.headers || {};
-  options.headers.Authorization = process.env.GITHUB_API_KEY;
+  const options = authorize(config);
 
-  // return a promise for the requested object
-  return axios.get(url, config)
-    .then((res) => res.data)
-    .catch(() => {
-      console.error(new Error(`failed to make get request to API using endpoint ${endpoint}`));
+  return axios.get(url, options)
+    .catch((err) => {
+      console.error(err.toJSON());
     });
 };
 
-module.exports.put = (endpoint, config) => {
+module.exports.put = (endpoint, data, config) => {
+  const url = new URL(join(api, endpoint)).href;
 
-  var route = config.routing;
-  var param = config.param;
+  const options = authorize(config);
 
-
-  //FOR REVIEWS
-  var url = new URL(join(api, route[0], param[0], route[1])).href;
-
-  //FOR QUESTIONS
-  if (route.length > 2) {
-    url = new URL(join(api, route[0], route[1], param[0], route[2])).href;
-  }
-
-  const options = { params: param[1] };
-  options.headers = { Authorization: process.env.GITHUB_API_KEY };
-
-  // return a promise for the requested object
-  return axios.put(url, param[1], options)
-    .then((res) => console.log('success'))
+  return axios.put(url, data, options)
     .catch((err) => {
       console.log(err.toJSON());
     });
 };
 
-module.exports.post = (endpoint, config) => {
+module.exports.post = (endpoint, data, config) => {
+  const url = new URL(join(api, endpoint)).href;
 
-  var { body, route, type } = config;
+  const options = authorize(config);
 
-  //FOR REVIEWS
-  // var url = new URL(join(api, route[0], param[0], route[1])).href;
-  console.log(body);
-  //FOR QUESTIONS
-  //(type 'q')
-  var url = new URL(join(api, route[0])).href;
-  if (type === 'a') { // 'qa/questions',    ID #    ,  'answers'
-    url = new URL(join(api, route[0], body.question_id.toString(), route[1])).href;
-  }
-
-  const options = { headers: { Authorization: process.env.GITHUB_API_KEY } };
-  // return a promise for the requested object
-  return axios.post(url, body, options)
-    .then((res) => res.body)
+  return axios.post(url, data, options)
     .catch((err) => {
       console.error(err.toJSON());
     });

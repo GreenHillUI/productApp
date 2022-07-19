@@ -1,8 +1,8 @@
-export default (state = [], action) => {
+export default (products = [], action) => {
   switch (action.type) {
-    case 'SETRELATEDPRODUCTS':
-      return action.products;
+    case 'ADDRELATEDPRODUCT':
+      return products.concat(action.product);
     default:
-      return state;
+      return products;
   }
 };

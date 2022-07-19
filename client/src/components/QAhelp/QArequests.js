@@ -1,87 +1,34 @@
 /* eslint-disable camelcase */
 const axios = require('axios');
 
-module.exports.getQ = (pID) => {
-
-  axios.get('/qa/questions/', { params: { product_id: pID, count: 100 } })
+module.exports.getQ = (qID) => {
+  axios.get(`a/questions/${qID}?count=${100}`)
     .then((res) => res.data)
-    .catch((err) => { console.log(err); });
-
+    .catch((err) => console.error(err));
 };
-
 module.exports.postQ = (qObj) => {
-
-  qObj.product_id = Number(qObj.product_id);
-
-  const config = {
-    data: {
-      body: qObj,
-      route: ['/qa/questions'],
-      type: 'q'
-    }
-  };
-
-  axios.post('/', config)
+  axios.post(`/a/questions/${qObj.product_id}`, qObj)
     .then((res) => res)
-    .catch((err) => console.log(err, 'unsucessful post req'));
+    .catch((err) => console.error(err, 'unsucessful post req'));
+};
+module.exports.markQ = (qID) => {
+  axios.put(`/a/questions/${qID}/helpful`)
+    .then((res) => res)
+    .catch((err) => console.error(err, 'unsucessful put req'));
 };
 
 module.exports.postA = (aObj) => {
-
-
-  const config = {
-    data: {
-      body: aObj,
-      route: ['/qa/questions', '/answers'],
-      type: 'a'
-    }
-  };
-
-  axios.post('/', config)
+  axios.post(`/a/answers/${aObj.question_id}`, aObj)
     .then((res) => res)
     .catch((err) => console.log(err, 'unsucessful post req'));
 };
-
-module.exports.markQ = (qID) => {
-
-  const config = {
-    data: {
-      routing: ['qa', 'questions', 'helpful'],
-      param: [qID.toString(), { question_id: qID.toString() }]
-    }
-  };
-
-  axios.put(`/`, config)
-    .then((res) => res)
-    .catch((err) => console.log(err, 'unsucessful put req'));
-};
-
 module.exports.markA = (aID) => {
-
-  const config = {
-    data: {
-      routing: ['qa', 'answers', 'helpful'],
-      param: [aID.toString(), { answer_id: aID.toString() }]
-    }
-  };
-
-  axios.put(`/`, config)
+  axios.put(`/a/answers/${aID}/helpful`)
     .then((res) => res)
-    .catch((err) => console.log(err, 'unsucessful put req'));
+    .catch((err) => console.error(err, 'unsucessful post req'));
 };
-
-
-
 module.exports.repA = (aID) => {
-
-  const config = {
-    data: {
-      routing: ['qa', 'answers', 'report'],
-      param: [aID.toString(), { answer_id: aID.toString() }]
-    }
-  };
-
-  axios.put('/', config)
+  axios.put(`/a/answers/${aID}/report`)
     .then((res) => res)
     .catch((err) => console.log(err, 'unsucessful put req'));
 };
