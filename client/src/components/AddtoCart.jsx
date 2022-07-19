@@ -62,8 +62,8 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
         </label>
         <br />
         { sizeOptions.length 
-          ? <input type='submit' value='Add To Cart' /> 
-          : <input type='submit' value='Add To Cart' disabled /> }
+          ? <input  id='addToCartButton' type='submit' value='Add To Cart' /> 
+          : <input id='addToCartButton' type='button' value='Add To Cart' disabled /> }
       </form>
     </div>
     //I feel there's a better way to write the add button conditional above, but not sure.
