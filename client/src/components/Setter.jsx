@@ -112,7 +112,7 @@ const SetterContainer = connect(
     productInfo: state.productInfo,
     styles: state.styles,
     selectedStyle: state.selectedStyle,
-    metaData: state.metaData
+    metaData: state.metaData,
   }),
 
   (dispatch) => ({

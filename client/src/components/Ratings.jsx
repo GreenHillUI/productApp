@@ -3,8 +3,18 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import ReviewsList from './ReviewsList';
 import Stars from './Stars';
+
+
+function sortReviews(dispatch, sortMethod) {
+  axios.get(`/reviews?product_id=40348&sort=${sortMethod}`)
+    .then((response) => {
+      dispatch({ type: "SETREVIEWS", reviews: response.data.results });
+    })
+    .catch();
+}
 
 // accepts an array of review objects, extracts .recommend, and returns an integer
 function getPercentageRecommended(results) {
@@ -76,7 +86,7 @@ function addStarAndBar(results, stars) {
 
 
 // Main function
-function Ratings({ results, setReviews }) {
+function Ratings({ results, setReviews, sort }) {
   return (
     <div id="ratings-reviews">
 
@@ -126,6 +136,7 @@ function Ratings({ results, setReviews }) {
         id={results.id}
         results={results}
         setReviews={setReviews}
+        sort={sort}
       />
 
     </div>
@@ -137,13 +148,15 @@ const RatingsContainer = connect(
     results: state.reviews,
   }),
   (dispatch) => ({
-    setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews })
+    setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews }),
+    sort: (sortMethod) => dispatch((dis) => sortReviews(dis, sortMethod))
+    // , filterReviews: (reviews) => dispatch({ type: "FILTERREVIEWS", reviews })
   })
 )(Ratings);
 
-export {
-  getPercentageRecommended,
-  // averageToNearestTenth,
-};
+// export {
+//   getPercentageRecommended,
+// averageToNearestTenth,
+// };
 
 export default RatingsContainer;

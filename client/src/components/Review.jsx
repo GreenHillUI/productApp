@@ -30,13 +30,15 @@ function Review({ review }) {
 
   return (
 
-
     <div className="review">
       <br />
-
       <Stars rating={review.rating} />
+      <br />
 
-      <div className="review-name-date">
+      <div
+        className="review-name-date"
+        // style={{ top: 8 }}
+      >
         {`${review.reviewer_name},
           ${new Date(review.date).toLocaleDateString(
           'en-us',
@@ -45,19 +47,18 @@ function Review({ review }) {
       </div>
 
       <br />
-      {review.summary}
+      {splitLines(review.summary)}
       <br />
-      {splitLines(review.body)}
+      <br />
+      {review.body}
       <br />
       <div id="review-recommended">
         {review.recommend
           ? (
             <div style={{
               padding: 14,
-              background: '#D3D3D3',
             }}
             >
-              <br />
               <FcCheckmark style={{ position: 'relative' }} />
               <div style={{ position: 'relative', left: 20, bottom: 18 }}>I recommend this product</div>
             </div>

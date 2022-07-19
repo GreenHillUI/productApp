@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Review from './Review';
 
-function ReviewsList({ results }) {
+function ReviewsList({ results, sort }) {
 
   const [count, setCount] = useState(0);
 
@@ -21,6 +21,7 @@ function ReviewsList({ results }) {
 
   function handleOptionChange(event) {
     console.log(event.target.value);
+    sort(event.target.value);
   }
 
   return (
@@ -50,12 +51,14 @@ function ReviewsList({ results }) {
         {!count
           ? results.slice(0, 2).map((review) => (
             <Review
+              key={review.review_id}
               id={review.review_id}
               review={review}
             />
           ))
           : results.map((review) => (
             <Review
+              key={review.review_id}
               id={review.review_id}
               review={review}
             />

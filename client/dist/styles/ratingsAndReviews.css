@@ -3,6 +3,8 @@
 }
 
 #ratings-reviews {
+  /* width: 900px; */
+  /* margin: auto; */
   display: inline-block;
 }
 
@@ -18,7 +20,8 @@
 .reviews-list {
   float: right;
   padding: 20px;
-  height: 600px;
+  border: 20px;
+  height: 575px;
   overflow-y: scroll;
 }
 
