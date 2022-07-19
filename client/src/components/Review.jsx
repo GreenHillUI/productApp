@@ -13,7 +13,7 @@ function Review({ review }) {
     if (body.length > 60) {
       return (
         <div>
-          <div>{firstLine}</div>
+          <div style={{ 'font-weight': 'bold' }}>{firstLine}</div>
           <br />
           {remaining}
         </div>
@@ -21,7 +21,7 @@ function Review({ review }) {
     }
 
     return (
-      <div>
+      <div style={{ 'font-weight': 'bold' }}>
         {body}
       </div>
     );
@@ -48,14 +48,19 @@ function Review({ review }) {
       {review.summary}
       <br />
       {splitLines(review.body)}
-
+      <br />
       <div id="review-recommended">
         {review.recommend
           ? (
-            <>
+            <div style={{
+              padding: 14,
+              background: '#D3D3D3',
+            }}
+            >
+              <br />
               <FcCheckmark style={{ position: 'relative' }} />
-              <div style={{ position: 'relative', left: 20 }}>I recommend this product</div>
-            </>
+              <div style={{ position: 'relative', left: 20, bottom: 18 }}>I recommend this product</div>
+            </div>
           )
           : ''}
       </div>
@@ -64,6 +69,7 @@ function Review({ review }) {
         {review.response ? `Response: <br>${review.response}` : ''}
       </div>
 
+      <br />
       {`Helpful? Yes ${review.helpfulness} | `}
 
       <div> Report </div>

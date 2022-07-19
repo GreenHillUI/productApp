@@ -7,6 +7,7 @@ function ReviewsList({ results }) {
 
   // Incomplete mapReviews for DRYness
   // accepts an array of reviews and maps them into individual reviews
+  // NON-Functional WIP
   function mapReviews(reviewsArray) {
     reviewsArray.map(
       (review) => (
@@ -18,11 +19,31 @@ function ReviewsList({ results }) {
     );
   }
 
+  function handleOptionChange(event) {
+    console.log(event.target.value);
+  }
+
   return (
     <div className="reviews-list">
       {/* This div houses all reviews to be shown */}
       <div>
-        {`${results.length} reviews, sorted by...`}
+        <div>{`${results.length} reviews, sorted by...`}</div>
+
+        <select
+          style={{
+            position: 'relative',
+            left: 150,
+            bottom: 18,
+            background: 'transparent',
+            border: 'none',
+          }}
+          onChange={handleOptionChange}
+        >
+          <option value="relevant">Relevant</option>
+          <option value="helpful">Helpful</option>
+          <option value="newest">Newest</option>
+        </select>
+
       </div>
       <div>
         {/* loop through reviews? */}

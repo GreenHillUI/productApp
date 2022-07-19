@@ -1,4 +1,5 @@
-/* eslint-disable indent */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -21,6 +22,11 @@ function averageToNearestTenth(ratings) {
     0,
   );
   return (total / ratings.length).toFixed(1);
+}
+
+// WIP to filter by rating
+function filterByRating(stars) {
+  console.log(`You clicked to filter ${stars} stars!`);
 }
 
 // accepts results and which star rating to analyze. outputs xml and styling for progress bar
@@ -46,14 +52,14 @@ function addStarAndBar(results, stars) {
 
       {/* background bar */}
       <div style={{
-        position: 'absolute', height: 5, left: 75, width: 200, background: 'gray'
+        position: 'absolute', height: 5, left: 75, width: 200, background: '#D3D3D3'
       }}
       />
 
       {/* progress bar */}
       <div style={progressStyleObj} />
 
-      {/* add totalStars num to end of div */}
+      {/* add totalStars num to end of div WIP*/}
       {/* <div
         style={{
         position: 'relative', height: 5, right: 25, width: 225
@@ -66,6 +72,8 @@ function addStarAndBar(results, stars) {
     </div>
   );
 }
+
+
 
 // Main function
 function Ratings({ results, setReviews }) {
@@ -91,15 +99,15 @@ function Ratings({ results, setReviews }) {
         <br />
 
         <div>
-          {addStarAndBar(results, 5)}
+          <div onClick={() => filterByRating(5)}>{addStarAndBar(results, 5)}</div>
           <br />
-          {addStarAndBar(results, 4)}
+          <div onClick={() => filterByRating(4)}>{addStarAndBar(results, 4)}</div>
           <br />
-          {addStarAndBar(results, 3)}
+          <div onClick={() => filterByRating(3)}>{addStarAndBar(results, 3)}</div>
           <br />
-          {addStarAndBar(results, 2)}
+          <div onClick={() => filterByRating(2)}>{addStarAndBar(results, 2)}</div>
           <br />
-          {addStarAndBar(results, 1)}
+          <div onClick={() => filterByRating(1)}>{addStarAndBar(results, 1)}</div>
         </div>
 
         <div>
@@ -132,5 +140,10 @@ const RatingsContainer = connect(
     setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews })
   })
 )(Ratings);
+
+export {
+  getPercentageRecommended,
+  // averageToNearestTenth,
+};
 
 export default RatingsContainer;
