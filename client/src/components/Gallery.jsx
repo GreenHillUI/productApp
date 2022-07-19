@@ -5,7 +5,7 @@ import { MdArrowForwardIos, MdArrowBackIos } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 
 const arrowClass = { className: 'thumbArrow' };
-const arrowStyle = { fill: 'green', height: '1.5em', width: '1.5em' };
+const arrowStyle = { fill: 'black', height: '1.5em', width: '1.5em' };
 
 function Gallery({
   selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex
@@ -73,7 +73,7 @@ function Gallery({
           {displayIndex === 0
             ? null
             : (
-              <button type='button' onClick={handleLeftArrowClick}>
+              <button className='arrowButton' type='button' onClick={handleLeftArrowClick}>
                 <MdArrowBackIos 
                   key='galleryArrowBack' 
                   style={arrowStyle} 
@@ -88,7 +88,7 @@ function Gallery({
           {displayIndex === displaySlides.length - 1 
             ? null
             : (
-              <button type='button' onClick={handleRightArrowClick}>
+              <button className='arrowButton' type='button' onClick={handleRightArrowClick}>
                 <MdArrowForwardIos 
                   key='galleryArrowForward' 
                   style={arrowStyle} 

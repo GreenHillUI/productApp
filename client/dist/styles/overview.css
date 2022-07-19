@@ -1,6 +1,7 @@
 #overview {
   display: grid;
-  grid-template-columns: repeat(2, 650px)
+  grid-template-columns: repeat(2, 650px);
+  justify-content: center;
 }
 
 #overviewStars {
@@ -60,3 +61,16 @@
   align-content: baseline;
   transform: translateY(20px)
 }
+
+#overviewFeatures{
+  justify-self: center;
+  list-style-type: disclosure-closed;
+  transform: translateX(-100px);
+  font-weight: bold;
+}
+
+
+#overviewFeatures li {
+ padding: 6px;
+}
+  

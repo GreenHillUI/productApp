@@ -54,6 +54,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
         <AddToCart />
       </div>
       <Gallery /> 
+  
       <div id='overviewTextBlurb'>
         <div className='overviewProductSlogan'>
           {productInfo ? productInfo.slogan : `Loading`}
@@ -63,8 +64,26 @@ function Overview({ productInfo, selectedStyle, metaData }) {
             {productInfo ? productInfo.description : `Loading`}
           </p>
         </div>
-
+        
       </div>
+      <ul id='overviewFeatures'> 
+        Features:
+        { productInfo.features 
+          ? productInfo.features
+            .map((feature) => 
+              <li>
+                <div className='overviewFeatureName'>
+                  {feature.feature}:
+                </div>
+                <div className='overviewFeatureValue'>
+                  {feature.value}
+                </div> 
+              </li>) 
+          : `Loading` }
+
+
+      </ul>
+
       
     </div>
   );
