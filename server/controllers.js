@@ -50,7 +50,7 @@ module.exports.put = (endpoint, config) => {
 
   // return a promise for the requested object
   return axios.put(url, param[1], options)
-    .then((res) => res.data)
+    .then((res) => console.log('success'))
     .catch((err) => {
       console.log(err.toJSON());
     });
@@ -62,12 +62,12 @@ module.exports.post = (endpoint, config) => {
 
   //FOR REVIEWS
   // var url = new URL(join(api, route[0], param[0], route[1])).href;
-
+  console.log(body);
   //FOR QUESTIONS
   //(type 'q')
   var url = new URL(join(api, route[0])).href;
   if (type === 'a') { // 'qa/questions',    ID #    ,  'answers'
-    url = new URL(join(api, route[0], body.product_id, route[1])).href;
+    url = new URL(join(api, route[0], body.question_id.toString(), route[1])).href;
   }
 
   const options = { headers: { Authorization: process.env.GITHUB_API_KEY } };

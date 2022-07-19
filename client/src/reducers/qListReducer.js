@@ -6,6 +6,12 @@ const qListReducer = (state = {}, action) => {
         ...state,
         qModal: action.payload
       };
+    case "A_MODAL":
+      return {
+        ...state,
+        aModal: action.payload.on,
+        aModalQ: action.payload.q
+      };
     case "Q_EXPAND":
       return {
         ...state,
