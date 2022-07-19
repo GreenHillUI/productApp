@@ -1,8 +1,9 @@
 /* Wrapper for the entire Image Gallery Component */
 #gallery {
-  width: 1000px;
+ 
   background-color: grey;
-  padding: 50px;
+  padding: 0px;
+  width: 600px;
   display: grid;
   grid-row-start: 1;
   }
@@ -12,20 +13,17 @@
     height: 600px;
     width: 650px;
     object-fit: cover;
-    transform: translate(115px);
-    cursor: zoom-in;
-    
+    cursor: zoom-in;    
   }
   
    
   #galleryCarousel {
-    display: grid;
-    grid-template-columns: 25px 413px 30px;
-    grid-template-rows: 100%;
+    display: flex;
     width: auto;
+    height: 0px;
     align-items: center;
     justify-self: center;
-    transform: translate(0px, -62px)
+    transform: translate(0px, -24px)
   }
   
   .gallerySlide{
@@ -36,16 +34,16 @@
   /*Wrapper for the image carousel*/
   
   .galleryCarousel img {
-      width: 55px;
-      height: 55px;
+      width: 45px;
+      height: 45px;
       display: block;
       object-fit: cover;
-      
+      border: solid 0.13em
   }
   
   /* Div of viewable thumbnails. If each thumbnail is 100px + 4 total px of padding = 728px total */
   .galleryThumbView {
-      width: 413px;
+      width: 371px;
       height: 60px;
       overflow: hidden;
       white-space: nowrap;
@@ -63,7 +61,7 @@
   
   /* Spacing and scrolling for individual thumnails iterate by -104px to scroll right, or use the scrollWidth property like a software developer */
   .galleryThumbView li {
-    padding: 2px;
+    padding: 4px;
     display: inline-block;
     transition: 1s;
     transform: translate(-0px);

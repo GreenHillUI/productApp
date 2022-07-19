@@ -15,7 +15,6 @@ function Gallery({
   const pictureData = selectedStyle.photos;
 
 
-
   function scrollThumbnails() {
     const thumbElement = document.querySelector('.galleryThumbView li');
     thumbElement.style.marginLeft = `${thumbElement.scrollWidth * displayIndex * -1}px`;
@@ -47,12 +46,13 @@ function Gallery({
       />
     ));
     displayThumbs = pictureData.map((image, index) => (
+      
  
       <li 
-        onClick={handleThumbnailClick} 
         key={selectedStyle.photos[index].thumbnail_url}
       >
-        <img 
+        <img
+          onClick={handleThumbnailClick}  
           key={selectedStyle.style_id + selectedStyle.photos.thumbnail_url} 
           data-index={index} 
           className='galleryThumbnail' 
@@ -78,7 +78,7 @@ function Gallery({
                 style={arrowStyle} 
                 onClick={handleLeftArrowClick}
               />
-            )} 
+            )}
           <div className='galleryThumbView'>
             <ul>
               {displayThumbs}
@@ -96,9 +96,7 @@ function Gallery({
             )}
         </div>
       </IconContext.Provider>
-      
-    </div>
-    
+    </div> 
   );
 }
 

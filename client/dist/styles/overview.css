@@ -1,8 +1,25 @@
 #overview {
   display: grid;
-  grid-template-columns: repeat(2, auto)
+  grid-template-columns: repeat(2, 650px)
 }
 
 #overviewStars {
   display: flex;
+  font-size: .8em;
+}
+
+
+#overviewTextBlurb{
+  width: 650px;
+}
+
+.overviewProductCategory{
+  font-size: 2em
+}
+.overviewProductName{
+  font-size: 3em;
+  font-weight: bold;
+}
+.overviewPrice{
+  font-size: 1.5em
 }
