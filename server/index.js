@@ -26,7 +26,7 @@ app.get('/reviews/meta', (req, res) => {
 
 app.get('/reviews', (req, res) => {
   // const config = { params: req.query };
-  const config = { params: { product_id: 40348, count: 100, sort: 'newest' } };
+  const config = { params: { product_id: 40348, count: 100, sort: 'relevant' } };
   controllers.get(req.path, config).then((metaData) => {
     res.status(200).send(metaData);
   });
