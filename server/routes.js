@@ -153,7 +153,7 @@ routes.post('/answers/:question_id', (req, res) => {
  * /a/answers/573569/report
  */
 routes.put('/answers/:answer_id/:action(helpful|report)', (req, res) => {
-  const path = `/qa${req.path}`;
+  const path = `/qa/answers/${req.params.answer_id}/${req.params.action}`;
   apiPutRequest(req, res, path);
 });
 

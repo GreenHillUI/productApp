@@ -44,7 +44,7 @@ class Setter extends React.Component {
       })
       .catch((err) => console.error('help', err));
 
-    axios.get('/a/questions/40349', { params: { count: 100 } })
+    axios.get(`/a/questions/40348?count=${100}`)
       .then((res) => {
         setProductQs(res.data);
       })

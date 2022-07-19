@@ -37,7 +37,6 @@ module.exports.put = (endpoint, data, config) => {
   const options = authorize(config);
 
   return axios.put(url, data, options)
-    .then((res) => res.data)
     .catch((err) => {
       console.log(err.toJSON());
     });
