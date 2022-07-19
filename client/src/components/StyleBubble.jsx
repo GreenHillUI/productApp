@@ -13,7 +13,7 @@ function StyleBubble({ style, setSelectedStyle, setSelectedSku }) {
   if (style) {
     return (
       <div className="styleBubble">
-         <img className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={handleClick} alt={`A thumbnail of ${style}`} />
+        <img className="styleThumbnail" src={style.photos[0].thumbnail_url} onClick={handleClick} alt={`A thumbnail of ${style}`} />
       </div>
     );
   }
