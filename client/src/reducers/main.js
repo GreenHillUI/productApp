@@ -3,6 +3,7 @@ import galleryReducer from './galleryReducer';
 import metaDataReducer from './metaDataReducer';
 import productInfoReducer from './productInfoReducer';
 import qListReducer from './qListReducer';
+import quantityReducer from './quantityReducer';
 import selectedSkuReducer from './selectedSkuReducer';
 import selectedStyleReducer from './selectedStyleReducer';
 import stylesReducer from './stylesReducer';
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   productInfo: productInfoReducer,
   selectedSku: selectedSkuReducer,
   displayIndex: galleryReducer,
+  quantity: quantityReducer,
   //state1: stateReducer1,
   //state2: stateReducer2,
   //etc

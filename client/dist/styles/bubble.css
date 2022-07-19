@@ -33,9 +33,3 @@
 }
 
 
-#overview {
- display: grid;
- grid-row-template: repeat(2, auto);
- grid-column-template: repeat(2,auto);
-   
-}
