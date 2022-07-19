@@ -12,6 +12,18 @@ function apiGetRequest(req, res, path) {
       res.send(data);
     });
 }
+function apiPostRequest(req, res, path) {
+  controllers.post(path, req.body)
+    .then(() => {
+      res.sendStatus(201);
+    });
+}
+function apiPutRequest(req, res, path) {
+  controllers.put(path, req.body)
+    .then(() => {
+      res.sendStatus(204);
+    });
+}
 
 // Use of Query Parameters
 // =============================================================
@@ -22,7 +34,7 @@ function apiGetRequest(req, res, path) {
  * PATH
  * /a/products
  * 
- * QUERY PARAMETERS (only applicable for generic product request)
+ * QUERY PARAMETERS
  * page (default 1)
  * count (default 5)
  */
@@ -58,13 +70,36 @@ routes.get('/reviews/:product_id/:meta(meta)?', (req, res) => {
   
   apiGetRequest(req, res, path);
 });
-// TODO:
-// POST and PUT routes for /reviews
+/**
+ * PATHS
+ * /a/reviews/40348
+ * 
+ * BODY PARAMETERS
+ * rating           (int)
+ * summary          (text)
+ * body             (text)
+ * recommend        (bool)
+ * name             (text)
+ * email            (text)
+ * photos           ([text])
+ * characteristics  (object)
+ */
+routes.post('/reviews/:product_id', (req, res) => {
+  req.body.product_id = req.params.product_id;
+  apiPostRequest(req, res, '/reviews');
+});
+/**
+ * PATHS
+ * /a/reviews/123456/helpful
+ * /a/reviews/123456/report
+ */
+routes.put('/reviews/:review_id/:action(helpful|report)', (req, res) => {
+  apiPutRequest(req, res, req.path);
+});
 
 /**
  * PATHS
- * /a/questions/40348
- * /a/answers/40348
+ * /a/questions/40349
  * 
  * QUERY PARAMETERS
  * page (default 1)
@@ -76,14 +111,60 @@ routes.get('/questions/:product_id', (req, res) => {
 
   apiGetRequest(req, res, path);
 });
+routes.post('/questions/:product_id', (req, res) => {
+  const path = '/qa/questions';
+  req.body.product_id = req.params.product_id;
+
+  apiPostRequest(req, res, path);
+});
+/**
+ * PATHS
+ * /a/questions/40349/helpful
+ * /a/questions/40349/report
+ */
+routes.put('/questions/:product_id/:action(helpful|report)', (req, res) => {
+  const path = '/qa/questions';
+  apiPutRequest(req, res, path);
+});
+
+/**
+ * PATHS
+ * /a/answers/40349
+ * 
+ * QUERY PARAMETERS
+ * page (default 1)
+ * count (default 5)
+ */
 routes.get('/answers/:question_id', (req, res) => {
   const path = `/qa/questions/${req.params.question_id}/answers`;
   apiGetRequest(req, res, path);
 });
-// TODO:
-// POST and PUT routes for /qa
+/**
+ * /a/answers/40349
+ * 
+ * BODY PARAMETERS
+ * body    (text)
+ * name    (text)
+ * email   (text)
+ * photos  ([text])
+ */
+routes.post('/answers/:question_id', (req, res) => {
+  const path = `/qa/questions/${req.params.question_id}/answers`;
+  apiPostRequest(req, res, path);
+});
+/**
+ * PATHS
+ * /a/answers/573569/helpful
+ * /a/answers/573569/report
+ */
+routes.put('/answers/:answer_id/:action(helpful|report)', (req, res) => {
+  const path = `/qa${req.path}`;
+  apiPutRequest(req, res, path);
+});
+
 
 // TODO:
 // GET and POST for /cart
+
 
 module.exports = routes;
