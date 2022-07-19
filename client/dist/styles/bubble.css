@@ -2,34 +2,38 @@
     display: grid;
     width: 800px;
     height: 200px;
-    grid-template-rows: repeat(2, auto);
-    justify-content: center;
-    grid-row-start: 2;
-    grid-column-start: 2;
+    grid-template-rows: repeat(2, 40px);
+    justify-content: left;
+    grid-row-start: 1;
 }
 
 .styleThumbnail {
     border-radius: 100px;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     object-fit: cover;
-    border: 1.2mm solid green;
+    border: 0.15em solid black;
     opacity: 0.5;
 }
 
 #styleCheck {
-    transform: translate(58px, -72px)
+    transform: translate(54px, -60px)
 }
 
 
 .stylesContainer {
     display: grid;
-    grid-template-columns: 110px 110px 110px 110px;    
+    grid-template-columns: 90px 90px 90px 90px;    
     grid-row-start: 2;
 }
 
 .overviewSelectedStyle {
-    justify-self: center;
+    height: 20px;
+    font-style: italic;
+    font-weight: bold;
+    justify-self: left;
 }
 
-
+.styleBubbleWrapper{
+   height: 20px;
+}
