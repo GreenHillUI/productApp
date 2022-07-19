@@ -4,9 +4,13 @@ const controllers = require('./controllers');
 
 const routes = Router();
 
+// if you need to change the sent response, the axios response schema
+// can be found here: https://axios-http.com/docs/res_schema
+// in short, you can use { data, status, statusText, headers, config, request }
+// in the parameter list to destructure the response object
 function apiGetRequest(req, res, path) {
   controllers.get(path, { params: req.query })
-    .then((data) => {
+    .then(({ data }) => {
       res.status(200);
       res.type('application/json');
       res.send(data);
@@ -14,14 +18,16 @@ function apiGetRequest(req, res, path) {
 }
 function apiPostRequest(req, res, path) {
   controllers.post(path, req.body)
-    .then(() => {
-      res.sendStatus(201);
+    .then(({ data }) => {
+      res.status(201);
+      res.send(data);
     });
 }
 function apiPutRequest(req, res, path) {
   controllers.put(path, req.body)
-    .then(() => {
-      res.sendStatus(204);
+    .then(({ data }) => {
+      res.status(204);
+      res.send(data);
     });
 }
 

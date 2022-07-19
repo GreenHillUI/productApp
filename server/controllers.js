@@ -25,7 +25,6 @@ module.exports.get = (endpoint, config) => {
   const options = authorize(config);
 
   return axios.get(url, options)
-    .then((res) => res.data)
     .catch((err) => {
       console.error(err.toJSON());
     });
@@ -48,7 +47,6 @@ module.exports.post = (endpoint, data, config) => {
   const options = authorize(config);
 
   return axios.post(url, data, options)
-    .then((res) => res.body)
     .catch((err) => {
       console.error(err.toJSON());
     });
