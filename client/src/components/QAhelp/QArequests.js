@@ -1,18 +1,29 @@
 /* eslint-disable camelcase */
 const axios = require('axios');
 
+module.exports.getQ = (pID) => {
 
+  axios.get('/qa/questions/', config)
+    .then((res) => {
+      setProductQs(res.data);
+    })
+    .catch((err) => { console.log(err); });
 
+};
 
 module.exports.postQ = (qObj) => {
 
+  qObj.product_id = Number(qObj.product_id);
+
   const config = {
-    method: 'post',
-    data: qObj, //body, name, email, product_id
-    responseType: 'json',
+    data: {
+      body: qObj,
+      route: ['/qa/questions'],
+      type: 'q'
+    }
   };
 
-  axios('/qa/questions', config)
+  axios.post('/', config)
     .then((res) => res)
     .catch((err) => console.log(err, 'unsucessful post req'));
 };
@@ -20,16 +31,16 @@ module.exports.postQ = (qObj) => {
 module.exports.postA = (pObj, aObj) => {
 
   const config = {
-    method: 'post',
-    params: pObj, //question_id
-    data: aObj, //body, name, email, photos
-    responseType: 'json',
+    data: {
+      body: qObj,
+      route: ['/qa/questions', '/answers'],
+      type: 'a'
+    }
   };
 
-  axios('/qa/questions/:question_id/answers', config)
+  axios.post('/', config)
     .then((res) => res)
     .catch((err) => console.log(err, 'unsucessful post req'));
-
 };
 
 module.exports.markQ = (qID) => {

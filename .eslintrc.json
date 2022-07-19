@@ -20,6 +20,8 @@
     ],
     "rules": {
         // Turn on/off rules here as needed
+        "react/jsx-wrap-multilines":"off",
+        "react/jsx-one expression-per-line": "off",
         "no-multiple-empty-lines":"off",
         "no-console":"off",
         "quotes": "off",
