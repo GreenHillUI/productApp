@@ -55,7 +55,7 @@ function Gallery({
           onClick={handleThumbnailClick}  
           key={selectedStyle.style_id + selectedStyle.photos.thumbnail_url} 
           data-index={index} 
-          className={`galleryThumbnail${index === displayIndex ? ' active' : ''}`} 
+          className={`galleryThumbnail${index === displayIndex ? 'Active' : ''}`}
           src={image.thumbnail_url} 
           alt={`${selectedStyle.name} style`} 
         />
@@ -73,11 +73,12 @@ function Gallery({
           {displayIndex === 0
             ? null
             : (
-              <MdArrowBackIos 
-                key='galleryArrowBack' 
-                style={arrowStyle} 
-                onClick={handleLeftArrowClick}
-              />
+              <button type='button' onClick={handleLeftArrowClick}>
+                <MdArrowBackIos 
+                  key='galleryArrowBack' 
+                  style={arrowStyle} 
+                />
+              </button>
             )}
           <div className='galleryThumbView'>
             <ul>
@@ -87,12 +88,14 @@ function Gallery({
           {displayIndex === displaySlides.length - 1 
             ? null
             : (
-              <MdArrowForwardIos 
-                key='galleryArrowForward' 
-                style={arrowStyle} 
-                className='thumbArrow' 
-                onClick={handleRightArrowClick} 
-              />
+              <button type='button' onClick={handleRightArrowClick}>
+                <MdArrowForwardIos 
+                  key='galleryArrowForward' 
+                  style={arrowStyle} 
+                  className='thumbArrow' 
+                  onClick={handleRightArrowClick} 
+                />
+              </button>
             )}
         </div>
       </IconContext.Provider>

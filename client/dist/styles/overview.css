@@ -23,3 +23,12 @@
 .overviewPrice{
   font-size: 1.5em
 }
+
+#overviewTop{
+  margin-left: 1em;
+}
+
+.overviewProductSlogan{
+  font-size: 1.2em;
+  font-weight: bold;
+}

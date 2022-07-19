@@ -2,9 +2,10 @@
     display: grid;
     width: 800px;
     height: 200px;
-    grid-template-rows: 1em auto;
+    grid-template-rows: 1.5em auto;
     justify-content: left;
     grid-row-start: 1;
+    
 }
 
 .styleThumbnail {
@@ -14,6 +15,11 @@
     object-fit: cover;
     border: 0.15em solid black;
     opacity: 0.5;
+}
+
+.styleThumbnail:hover{
+    box-shadow: 0px 0px 0px 2px blue;
+    transition: all 0.2s;
 }
 
 #styleCheck {
@@ -36,4 +42,8 @@
 
 .styleBubbleWrapper{
    height: 20px;
+}
+
+.galleryThumbnailActive {
+    box-shadow: 0px 0px 4px 2px rgb(255, 166, 0);
 }
