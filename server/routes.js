@@ -25,11 +25,6 @@ function apiPutRequest(req, res, path) {
     });
 }
 
-// Use of Query Parameters
-// =============================================================
-// In an HTTP GET request, parameters are sent as a query string:
-// http://example.com/page?parameter=value&also=another
-
 /**
  * PATH
  * /a/products

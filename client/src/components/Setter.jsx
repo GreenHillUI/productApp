@@ -16,6 +16,7 @@ class Setter extends React.Component {
       setSelectedStyle,
       setMetaData,
       setProductQs,
+      setReviews,
     } = this.props;
 
     axios.get('/a/products/40348')
@@ -36,6 +37,12 @@ class Setter extends React.Component {
         setMetaData(response.data.ratings);
       })
       .catch((err) => console.log(err));
+    
+    axios.get('/a/reviews/40348')
+      .then((res) => {
+        setReviews(res.data.results);
+      })
+      .catch((err) => console.error('help', err));
 
     axios.get('/a/questions/40349', { params: { count: 100 } })
       .then((res) => {
