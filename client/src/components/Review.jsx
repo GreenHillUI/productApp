@@ -4,7 +4,32 @@ import Stars from './Stars';
 
 function Review({ review }) {
 
+
+  function splitLines(reviewBody) {
+    const { body } = review;
+    const firstLine = `${body.slice(0, 60)}...`;
+    const remaining = `...${body.slice(60)}`;
+
+    if (body.length > 60) {
+      return (
+        <div>
+          <div>{firstLine}</div>
+          <br />
+          {remaining}
+        </div>
+      );
+    }
+
+    return (
+      <div>
+        {body}
+      </div>
+    );
+  }
+
+
   return (
+
 
     <div className="review">
       <br />
@@ -22,13 +47,13 @@ function Review({ review }) {
       <br />
       {review.summary}
       <br />
-      {review.body}
+      {splitLines(review.body)}
 
       <div id="review-recommended">
         {review.recommend
           ? (
             <>
-              <FcCheckmark style={{ position: 'absolute' }} />
+              <FcCheckmark style={{ position: 'relative' }} />
               <div style={{ position: 'relative', left: 20 }}>I recommend this product</div>
             </>
           )

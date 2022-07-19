@@ -18,6 +18,8 @@
 .reviews-list {
   float: right;
   padding: 20px;
+  height: 400px;
+  overflow-y: scroll;
 }
 
 .review {

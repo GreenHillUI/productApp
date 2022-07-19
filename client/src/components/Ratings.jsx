@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import ReviewsList from './ReviewsList';
 import Stars from './Stars';
 
-
 // accepts an array of review objects, extracts .recommend, and returns an integer
 function getPercentageRecommended(results) {
   const copy = results.map((result) => result.recommend);
@@ -53,6 +52,16 @@ function addStarAndBar(results, stars) {
 
       {/* progress bar */}
       <div style={progressStyleObj} />
+
+      {/* add totalStars num to end of div */}
+      {/* <div
+        style={{
+        position: 'relative', height: 5, right: 25, width: 225
+      }}
+      >
+        {`${totalStars}`}
+      </div> */}
+
       <br />
     </div>
   );
@@ -68,31 +77,38 @@ function Ratings({ results, setReviews }) {
 
       <div className="review-summary">
 
-        <h1 id="big-review-num">
+        <div id="big-review-num">
           {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
           <Stars rating={averageToNearestTenth(results)} />
-        </h1>
+        </div>
 
         <div>
           {getPercentageRecommended(results)
             ? `${getPercentageRecommended(results)}% of reviews recommend this product`
             : "Loading..."}
         </div>
+
         <br />
+
         <div>
-          {/* Bar rating for each star value */}
           {addStarAndBar(results, 5)}
+          <br />
           {addStarAndBar(results, 4)}
+          <br />
           {addStarAndBar(results, 3)}
+          <br />
           {addStarAndBar(results, 2)}
+          <br />
           {addStarAndBar(results, 1)}
         </div>
 
         <div>
+          <br />
           Size
         </div>
 
         <div>
+          <br />
           Comfort
         </div>
 
