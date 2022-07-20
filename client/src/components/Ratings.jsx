@@ -9,7 +9,8 @@ import Stars from './Stars';
 
 
 function sortReviews(dispatch, sortMethod) {
-  axios.get(`/reviews?product_id=40348&sort=${sortMethod}`)
+  axios.get(`/reviews?product_id=40348&count=100&sort=${sortMethod}`)
+  //         /reviews/?count=100&product_id=40348&sort=newest
     .then((response) => {
       dispatch({ type: "SETREVIEWS", reviews: response.data.results });
     })
@@ -68,15 +69,6 @@ function addStarAndBar(results, stars) {
 
       {/* progress bar */}
       <div style={progressStyleObj} />
-
-      {/* add totalStars num to end of div WIP*/}
-      {/* <div
-        style={{
-        position: 'relative', height: 5, right: 25, width: 225
-      }}
-      >
-        {`${totalStars}`}
-      </div> */}
 
       <br />
     </div>

@@ -19,7 +19,7 @@ function ReviewsList({ results, sort }) {
         <select
           style={{
             position: 'relative',
-            left: 130,
+            left: 136,
             bottom: 18,
             background: 'transparent',
             border: 'none',
