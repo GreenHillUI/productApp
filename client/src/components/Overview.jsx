@@ -66,12 +66,12 @@ function Overview({ productInfo, selectedStyle, metaData }) {
         </div>
         
       </div>
-      <ul id='overviewFeatures'> 
+      <ul className='overviewFeatures'> 
         Features:
         { productInfo.features 
           ? productInfo.features
             .map((feature) => 
-              <li>
+              <li key={'feature'}>
                 <div className='overviewFeatureName'>
                   {feature.feature}:
                 </div>

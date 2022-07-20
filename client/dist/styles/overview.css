@@ -62,7 +62,7 @@
   transform: translateY(20px)
 }
 
-#overviewFeatures{
+.overviewFeatures{
   justify-self: center;
   list-style-type: disclosure-closed;
   transform: translateX(-100px);
