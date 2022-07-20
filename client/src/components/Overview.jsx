@@ -1,44 +1,20 @@
 import React from "react";
 import { connect } from 'react-redux';
 //import { FaFacebookSquare, FaInstagram, FaPinterest, FaTwitter } from 'react-icons/fa' ;
-import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs';
 import StyleSelector from "./StyleSelector";
 import AddToCart from './AddtoCart';
 import Gallery from './Gallery';
+import Stars from './Stars';
 
 
-//Finds and returns average of reviews
-//TODO: Handle edge case for no reviews in accordance with business docs
-function reviewAverage(ratings) {
+function getTotalReviews(ratings) {
   let total = 0;
-  let weightedSum = 0;
-  for (let i = 1; i < 6; i++) {
-    // eslint-disable-next-line radix
-    total += parseInt(ratings[i]);
-    weightedSum += i * ratings[i];
-  }
-  return (weightedSum / total);
+  Object.keys(ratings).forEach((i) => {
+    total += Number(ratings[i]);
+  });
+  return total;
 }
 
-function generateStars(average) {
-  const filledStars = Math.trunc(average);
-  const filledRemainder = average % 1;
-  const emptyStars = 5 - filledStars;
-  const starBar = [];
-  for (let i = 0; i < filledStars; i++) {
-    starBar.push(<BsStarFill />);
-  }
-
-  if (filledRemainder >= 0.5) {
-    starBar.push(<BsStarHalf />);
-  }
-
-  for (let i = 0; i < emptyStars; i++) {
-    starBar.push(<BsStar />);
-  }
-
-  return starBar;
-}
 
 function Overview({ productInfo, selectedStyle, metaData }) {
 
@@ -46,29 +22,69 @@ function Overview({ productInfo, selectedStyle, metaData }) {
   return (
     //Coming back to image gallery after writing a carousel
     <div id='overview'>
-      <h2 className='overviewProductCategory'>{productInfo ? productInfo.category : `Loading`}</h2>
-      <h1 className='overviewProductName'>
-        {productInfo ? productInfo.name : `Loading`}
-      </h1>
+      <div id='overviewTop'>
+        <div id='overviewStars'>
+          Review Score: 
+          <Stars rating={metaData} />  
+          <div id='overviewReadAll'>
+            {`  read all  ${getTotalReviews(metaData)} reviews  `}
+          </div>
+        </div>
+        <h2 className='overviewProductCategory'>
+          {productInfo ? productInfo.category : `Loading`}
+        </h2>
+        <h1 className='overviewProductName'>
+          {productInfo ? productInfo.name : `Loading`}
+        </h1>
+        <div className='overviewPrice'>
+          { selectedStyle.sale_price 
+            ? (
+              <div> 
+                <s>
+                  $
+                  {selectedStyle.original_price}
+                </s>
+                $
+                {selectedStyle.sale_price}
+                !!
+              </div>     
+            ) : `$${selectedStyle.original_price}` }
+        </div>
+        <StyleSelector />
+        <AddToCart />
+      </div>
       <Gallery /> 
-      <div className='overviewProductSlogan'>{productInfo ? productInfo.slogan : `Loading`}</div>
-      <div className='overviewProductInfo'>
-        <p className="overviewProductDescription">
-          {productInfo ? productInfo.description : `Loading`}
-        </p>
+  
+      <div id='overviewTextBlurb'>
+        <div className='overviewProductSlogan'>
+          {productInfo ? productInfo.slogan : `Loading`}
+        </div>
+        <div className='overviewProductInfo'>
+          <p className="overviewProductDescription">
+            {productInfo ? productInfo.description : `Loading`}
+          </p>
+        </div>
+        
       </div>
-      <StyleSelector />
-      <div id='overviewStars'>
-        Review Score:
-        {metaData ? generateStars(reviewAverage(metaData)) : `Loading`}
-      </div>
+      <ul id='overviewFeatures'> 
+        Features:
+        { productInfo.features 
+          ? productInfo.features
+            .map((feature) => 
+              <li>
+                <div className='overviewFeatureName'>
+                  {feature.feature}:
+                </div>
+                <div className='overviewFeatureValue'>
+                  {feature.value}
+                </div> 
+              </li>) 
+          : `Loading` }
 
-     
-      <div className='overviewPrice'>
-        Price:
-        {selectedStyle.sale_price ? `Was $${selectedStyle.original_price} Now: $${selectedStyle.sale_price}` : `$${selectedStyle.original_price}`}
-      </div>
-      <AddToCart />
+
+      </ul>
+
+      
     </div>
   );
 }
