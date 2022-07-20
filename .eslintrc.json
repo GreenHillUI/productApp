@@ -20,6 +20,8 @@
     ],
     "rules": {
         // Turn on/off rules here as needed
+        "react/jsx-wrap-multilines":"off",
+        "react/jsx-one expression-per-line": "off",
         "no-multiple-empty-lines":"off",
         "no-console":"off",
         "quotes": "off",
@@ -34,6 +36,10 @@
         "padded-blocks":"off",
         "no-trailing-spaces":"off",
         "no-debugger":"off",
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "radix": "off",
+        "react/jsx-no-bind": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off"
     }
 }

@@ -1,6 +1,10 @@
-import { React, useState} from 'react';
+/* eslint-disable vars-on-top */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable no-var */
+import { React, useState } from 'react';
 import _ from 'underscore';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Answer from './Answer';
 import { markQ } from './QAhelp/QArequests';
 
@@ -9,6 +13,8 @@ export default function Question({ question }) {
   const [likes, setLikes] = useState(question.question_helpfulness);
   const [clicked, setClicked] = useState(false);
   const [exp, setExp] = useState(false);
+
+  const dispatch = useDispatch();
 
   const like = () => {
     setLikes(likes + 1);
@@ -21,8 +27,12 @@ export default function Question({ question }) {
   };
 
   const likeButton = clicked
-    ? <span id='q-s'> Helpful? Yes ({likes}) | </span>
-    : <button onClick={like} type='button' id='q-h'>  Helpful? Yes ({likes}) | </button>;
+    ? <span id='q-s'>
+        Helpful? Yes ({likes}) |
+      </span>
+    : <button onClick={like} type='button' id='q-h'>
+        Helpful? Yes ({likes}) |
+      </button>;
 
   var aFilter = useSelector((state) => (state.qList.qFilter));
   aFilter = aFilter.length > 3 ? aFilter : '';
@@ -40,13 +50,19 @@ export default function Question({ question }) {
       <span className='q-icon'><b>Q:</b></span>
       <span className='q-text'>{question.question_body}</span>
       <span className='q-links'>
-        <button type='button' id='q-a'>Add Answer</button>
+        <button
+          type='button'
+          id='q-a'
+          onClick={() => dispatch({ type: "A_MODAL", payload: { on: true, q: question } })}
+        >
+          Add Answer
+        </button>
         {likeButton}
       </span>
       <ul className='a-list'>
         { answers.map((a) => (
           <li key={a.id}>
-            <Answer answer={a} />
+            <Answer answer={a} qID={question.question_id} />
           </li>
         )) }
       </ul>
