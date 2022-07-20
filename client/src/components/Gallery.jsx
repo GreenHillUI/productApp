@@ -5,7 +5,7 @@ import { MdArrowForwardIos, MdArrowBackIos } from 'react-icons/md';
 import { IconContext } from 'react-icons';
 
 const arrowClass = { className: 'thumbArrow' };
-const arrowStyle = { fill: 'green', height: '1.5em', width: '1.5em' };
+const arrowStyle = { fill: 'black', height: '1.5em', width: '1.5em' };
 
 function Gallery({
   selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex
@@ -13,7 +13,6 @@ function Gallery({
   let displaySlides = [];
   let displayThumbs = [];
   const pictureData = selectedStyle.photos;
-
 
 
   function scrollThumbnails() {
@@ -47,15 +46,16 @@ function Gallery({
       />
     ));
     displayThumbs = pictureData.map((image, index) => (
+      
  
       <li 
-        onClick={handleThumbnailClick} 
         key={selectedStyle.photos[index].thumbnail_url}
       >
-        <img 
+        <img
+          onClick={handleThumbnailClick}  
           key={selectedStyle.style_id + selectedStyle.photos.thumbnail_url} 
           data-index={index} 
-          className='galleryThumbnail' 
+          className={`galleryThumbnail${index === displayIndex ? 'Active' : ''}`}
           src={image.thumbnail_url} 
           alt={`${selectedStyle.name} style`} 
         />
@@ -73,12 +73,13 @@ function Gallery({
           {displayIndex === 0
             ? null
             : (
-              <MdArrowBackIos 
-                key='galleryArrowBack' 
-                style={arrowStyle} 
-                onClick={handleLeftArrowClick}
-              />
-            )} 
+              <button className='arrowButton' type='button' onClick={handleLeftArrowClick}>
+                <MdArrowBackIos 
+                  key='galleryArrowBack' 
+                  style={arrowStyle} 
+                />
+              </button>
+            )}
           <div className='galleryThumbView'>
             <ul>
               {displayThumbs}
@@ -87,18 +88,18 @@ function Gallery({
           {displayIndex === displaySlides.length - 1 
             ? null
             : (
-              <MdArrowForwardIos 
-                key='galleryArrowForward' 
-                style={arrowStyle} 
-                className='thumbArrow' 
-                onClick={handleRightArrowClick} 
-              />
+              <button className='arrowButton' type='button' onClick={handleRightArrowClick}>
+                <MdArrowForwardIos 
+                  key='galleryArrowForward' 
+                  style={arrowStyle} 
+                  className='thumbArrow' 
+                  onClick={handleRightArrowClick} 
+                />
+              </button>
             )}
         </div>
       </IconContext.Provider>
-      
-    </div>
-    
+    </div> 
   );
 }
 

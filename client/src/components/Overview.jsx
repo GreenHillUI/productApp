@@ -14,53 +14,77 @@ function getTotalReviews(ratings) {
   });
   return total;
 }
+
+
 function Overview({ productInfo, selectedStyle, metaData }) {
 
   //Add section for product features if they exist
   return (
     //Coming back to image gallery after writing a carousel
     <div id='overview'>
-      <div id='overviewStars'>
-        Review Score: 
-        <Stars rating={metaData} />  
-        <div id='overviewReadAll'>
-          {`  Read all  ${getTotalReviews(metaData)}  `}
-          reviews 
+      <div id='overviewTop'>
+        <div id='overviewStars'>
+          Review Score: 
+          <Stars rating={metaData} />  
+          <div id='overviewReadAll'>
+            {`  read all  ${getTotalReviews(metaData)} reviews  `}
+          </div>
         </div>
-      </div>
-      <h2 className='overviewProductCategory'>
-        {productInfo ? productInfo.category : `Loading`}
-      </h2>
-      <h1 className='overviewProductName'>
-        {productInfo ? productInfo.name : `Loading`}
-      </h1>
-      <div className='overviewPrice'>
-        Price: 
-        { selectedStyle.sale_price 
-          ? (
-            <div> 
-              <s>
+        <h2 className='overviewProductCategory'>
+          {productInfo ? productInfo.category : `Loading`}
+        </h2>
+        <h1 className='overviewProductName'>
+          {productInfo ? productInfo.name : `Loading`}
+        </h1>
+        <div className='overviewPrice'>
+          { selectedStyle.sale_price 
+            ? (
+              <div> 
+                <s>
+                  $
+                  {selectedStyle.original_price}
+                </s>
                 $
-                {selectedStyle.original_price}
-              </s>
-              $
-              {selectedStyle.sale_price}
-              !!
-            </div>     
-          ) : `$${selectedStyle.original_price}` }
+                {selectedStyle.sale_price}
+                !!
+              </div>     
+            ) : `$${selectedStyle.original_price}` }
+        </div>
+        <StyleSelector />
+        <AddToCart />
       </div>
-      <AddToCart />
       <Gallery /> 
+  
+      <div id='overviewTextBlurb'>
+        <div className='overviewProductSlogan'>
+          {productInfo ? productInfo.slogan : `Loading`}
+        </div>
+        <div className='overviewProductInfo'>
+          <p className="overviewProductDescription">
+            {productInfo ? productInfo.description : `Loading`}
+          </p>
+        </div>
+        
+      </div>
+      <ul id='overviewFeatures'> 
+        Features:
+        { productInfo.features 
+          ? productInfo.features
+            .map((feature) => 
+              <li>
+                <div className='overviewFeatureName'>
+                  {feature.feature}:
+                </div>
+                <div className='overviewFeatureValue'>
+                  {feature.value}
+                </div> 
+              </li>) 
+          : `Loading` }
+
+
+      </ul>
+
       
-      <div className='overviewProductSlogan'>
-        {productInfo ? productInfo.slogan : `Loading`}
-      </div>
-      <div className='overviewProductInfo'>
-        <p className="overviewProductDescription">
-          {productInfo ? productInfo.description : `Loading`}
-        </p>
-      </div>
-      <StyleSelector />
     </div>
   );
 }
