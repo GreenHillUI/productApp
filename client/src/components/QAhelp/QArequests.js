@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 const axios = require('axios');
 
-module.exports.getQ = (qID) => {
+module.exports.getQ = (qID) => (
   axios.get(`a/questions/${qID}?count=${100}`)
     .then((res) => res.data)
-    .catch((err) => console.error(err));
-};
+    .catch((err) => console.error(err))
+);
 module.exports.postQ = (qObj) => {
   axios.post(`/a/questions/${qObj.product_id}`, qObj)
     .then((res) => res)

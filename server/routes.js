@@ -113,7 +113,6 @@ routes.get('/questions/:product_id', (req, res) => {
 });
 routes.post('/questions/:product_id', (req, res) => {
   const path = '/qa/questions';
-  console.log(req.body);
   req.body.product_id = Number(req.params.product_id);
 
   apiPostRequest(req, res, path);
