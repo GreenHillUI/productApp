@@ -10,10 +10,10 @@ const routes = Router();
 // in the parameter list to destructure the response object
 function apiGetRequest(req, res, path) {
   controllers.get(path, { params: req.query })
-    .then(({ data }) => {
+    .then((apiResponse) => {
       res.status(200);
       res.type('application/json');
-      res.send(data);
+      res.send(apiResponse.data);
     })
     .catch((err) => console.error(err));
 }
