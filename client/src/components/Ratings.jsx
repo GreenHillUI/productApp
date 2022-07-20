@@ -9,7 +9,7 @@ import Stars from './Stars';
 
 
 function sortReviews(dispatch, sortMethod) {
-  axios.get(`/reviews?product_id=40348&sort=${sortMethod}`)
+  axios.get(`/a/reviews/40348?sort=${sortMethod}`)
     .then((response) => {
       dispatch({ type: "SETREVIEWS", reviews: response.data.results });
     })
