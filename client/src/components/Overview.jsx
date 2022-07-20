@@ -71,15 +71,15 @@ function Overview({ productInfo, selectedStyle, metaData }) {
         Features:
         { productInfo.features 
           ? productInfo.features
-            .map((feature) => 
-              <li key={feature.feature}>
-                <div className='overviewFeatureName'>
-                  {feature.feature}:
-                </div>
-                <div className='overviewFeatureValue'>
+            .map((feature) => <li key={feature.feature}>
+              <div className='overviewFeatureName'>
+                  {feature.feature}
+                :
+              </div>
+              <div className='overviewFeatureValue'>
                   {feature.value}
-                </div> 
-              </li>) 
+              </div> 
+            </li>) 
           : `Loading` }
       </ul>
     </div>
