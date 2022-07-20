@@ -1,5 +1,5 @@
 import React from "react";
-import Stars from './Stars';
+import Stars from '../Stars';
 
 /**
  * Renders a card with information about a product
