@@ -10,10 +10,12 @@ import Stars from '../Stars';
 function ProductsCardComponent({ product }) {
   return (
     <li>
-      <img src={product.img} alt={`A thumbnail of ${product.name}`} />
-      <h2>{`${product.category}`}</h2>
-      <h1>{`${product.name}`}</h1>
-      <h2>{`$${product.price}`}</h2>
+      <a href="#related-products">
+        <img src={product.img} alt={`A thumbnail of ${product.name}`} />
+      </a>
+      <h3>{`${product.category}`}</h3>
+      <h2>{`${product.name}`}</h2>
+      <h3>{`$${product.price}`}</h3>
       <Stars rating={product.ratings} />
     </li>
   );
