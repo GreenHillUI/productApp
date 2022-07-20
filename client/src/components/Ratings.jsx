@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom
+ */
+
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 
@@ -22,7 +26,7 @@ function getPercentageRecommended(results) {
   const trues = copy.filter(
     (resultItem) => (resultItem === true)
   );
-  return Math.ceil(trues.length / results.length) * 100;
+  return (trues.length / results.length) * 100;
 }
 
 // accepts an array of review objects, extracts .rating, and returns the average rounded
@@ -145,9 +149,9 @@ const RatingsContainer = connect(
   })
 )(Ratings);
 
-// export {
-//   getPercentageRecommended,
-// averageToNearestTenth,
-// };
+export {
+  getPercentageRecommended,
+  averageToNearestTenth,
+};
 
 export default RatingsContainer;
