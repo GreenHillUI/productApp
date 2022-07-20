@@ -14,21 +14,24 @@ function apiGetRequest(req, res, path) {
       res.status(200);
       res.type('application/json');
       res.send(data);
-    });
+    })
+    .catch((err) => console.error(err));
 }
 function apiPostRequest(req, res, path) {
   controllers.post(path, req.body)
     .then(({ data }) => {
       res.status(201);
       res.send(data);
-    });
+    })
+    .catch((err) => console.error(err));
 }
 function apiPutRequest(req, res, path) {
   controllers.put(path, req.body)
     .then(({ data }) => {
       res.status(204);
       res.send(data);
-    });
+    })
+    .catch((err) => console.error(err));
 }
 
 /**
