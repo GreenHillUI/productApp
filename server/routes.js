@@ -10,25 +10,28 @@ const routes = Router();
 // in the parameter list to destructure the response object
 function apiGetRequest(req, res, path) {
   controllers.get(path, { params: req.query })
-    .then(({ data }) => {
+    .then((apiResponse) => {
       res.status(200);
       res.type('application/json');
-      res.send(data);
-    });
+      res.send(apiResponse.data);
+    })
+    .catch((err) => console.error(err));
 }
 function apiPostRequest(req, res, path) {
   controllers.post(path, req.body)
     .then(({ data }) => {
       res.status(201);
       res.send(data);
-    });
+    })
+    .catch((err) => console.error(err));
 }
 function apiPutRequest(req, res, path) {
   controllers.put(path, req.body)
     .then(({ data }) => {
       res.status(204);
       res.send(data);
-    });
+    })
+    .catch((err) => console.error(err));
 }
 
 /**

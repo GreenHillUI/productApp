@@ -24,10 +24,7 @@ module.exports.get = (endpoint, config) => {
 
   const options = authorize(config);
 
-  return axios.get(url, options)
-    .catch((err) => {
-      console.error(err.toJSON());
-    });
+  return axios.get(url, options);
 };
 
 module.exports.put = (endpoint, data, config) => {
