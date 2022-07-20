@@ -4,14 +4,41 @@ import Stars from './Stars';
 
 function Review({ review }) {
 
+
+  function splitLines(reviewBody) {
+    const { body } = review;
+    const firstLine = `${body.slice(0, 60)}...`;
+    const remaining = `...${body.slice(60)}`;
+
+    if (body.length > 60) {
+      return (
+        <div>
+          <div style={{ 'font-weight': 'bold' }}>{firstLine}</div>
+          <br />
+          {remaining}
+        </div>
+      );
+    }
+
+    return (
+      <div style={{ 'font-weight': 'bold' }}>
+        {body}
+      </div>
+    );
+  }
+
+
   return (
 
     <div className="review">
       <br />
-
       <Stars rating={review.rating} />
+      <br />
 
-      <div className="review-name-date">
+      <div
+        className="review-name-date"
+        // style={{ top: 8 }}
+      >
         {`${review.reviewer_name},
           ${new Date(review.date).toLocaleDateString(
           'en-us',
@@ -19,20 +46,22 @@ function Review({ review }) {
         )}`}
       </div>
 
-
-
       <br />
-      {review.summary}
+      {splitLines(review.summary)}
+      <br />
       <br />
       {review.body}
-
+      <br />
       <div id="review-recommended">
         {review.recommend
           ? (
-            <>
-              <FcCheckmark style={{ position: 'absolute' }} />
-              <div>I recommend this product</div>
-            </>
+            <div style={{
+              padding: 14,
+            }}
+            >
+              <FcCheckmark style={{ position: 'relative' }} />
+              <div style={{ position: 'relative', left: 20, bottom: 18 }}>I recommend this product</div>
+            </div>
           )
           : ''}
       </div>
@@ -41,6 +70,7 @@ function Review({ review }) {
         {review.response ? `Response: <br>${review.response}` : ''}
       </div>
 
+      <br />
       {`Helpful? Yes ${review.helpfulness} | `}
 
       <div> Report </div>

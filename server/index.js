@@ -6,6 +6,7 @@ const app = express();
 app.use(express.json());
 
 app.use(express.static('client/dist'));
+
 app.use('/a', routes);
 
 const port = 3000;
