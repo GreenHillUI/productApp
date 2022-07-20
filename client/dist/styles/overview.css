@@ -73,4 +73,21 @@
 #overviewFeatures li {
  padding: 6px;
 }
+
+#socialMediaBar{
+  display: flex;
+  justify-content:  space-between;
+  height: 30px;
+  width: 95px;
+  transform: translate(120px, 10px);
+  box-shadow: 0px 0px 8px 2px black;
+ 
+  
+}
+
+.socialMediaButton{
+  padding: 2px;
+  background-color: transparent;
+
+}
   

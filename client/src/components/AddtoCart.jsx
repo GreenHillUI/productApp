@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import SocialMediaBar from './SocialMediaBar';
 
 function makeSizeOptions(skuList) {
   let optionList = [];
@@ -45,7 +46,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
     <div id='addToCartContainer'>
       <form className='addToCartForm' action='/'>
         <label htmlFor='sizeSelect'>
-          Size: : 
+          Size  
           <select 
             id='sizeSelect' 
             onChange={handleSizeChange} 
@@ -55,7 +56,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
           </select>
         </label>
         <label htmlFor='quantitySelect'>
-          Qty: : 
+          Qty 
           <select id='quantitySelect'>
             {selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity, selectedSku) : <option>-</option>}
           </select>
@@ -74,6 +75,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
               disabled 
           /> }
       </form>
+      <SocialMediaBar />
     </div>
     //I feel there's a better way to write the add button conditional above, but not sure.
   );

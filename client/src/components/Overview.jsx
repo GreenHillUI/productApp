@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
-//import { FaFacebookSquare, FaInstagram, FaPinterest, FaTwitter } from 'react-icons/fa' ;
 import StyleSelector from "./StyleSelector";
 import AddToCart from './AddtoCart';
 import Gallery from './Gallery';
 import Stars from './Stars';
+
 
 
 function getTotalReviews(ratings) {
@@ -22,6 +22,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
   return (
     //Coming back to image gallery after writing a carousel
     <div id='overview'>
+   
       <div id='overviewTop'>
         <div id='overviewStars'>
           Review Score: 
@@ -71,7 +72,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
         { productInfo.features 
           ? productInfo.features
             .map((feature) => 
-              <li key={'feature'}>
+              <li key={feature.feature}>
                 <div className='overviewFeatureName'>
                   {feature.feature}:
                 </div>
@@ -80,11 +81,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
                 </div> 
               </li>) 
           : `Loading` }
-
-
       </ul>
-
-      
     </div>
   );
 }
