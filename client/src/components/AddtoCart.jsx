@@ -14,8 +14,11 @@ function makeSizeOptions(skuList) {
   }
   if (optionList.length === 0) {
     optionList.unshift(<option key='OutOfStock' value={null}> Out of Stock</option>);
+  } else {
+    optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
+
   }
-  optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
+ 
   return optionList;
 }
 

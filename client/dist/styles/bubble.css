@@ -2,7 +2,7 @@
     display: grid;
     width: 800px;
     height: 200px;
-    grid-template-rows: 1.5em auto;
+    grid-template-rows: 1.5em 15em;
     justify-content: left;
     grid-row-start: 1;
     
