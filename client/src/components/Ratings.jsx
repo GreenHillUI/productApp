@@ -1,7 +1,20 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+
 import React from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import ReviewsList from './ReviewsList';
 import Stars from './Stars';
+
+
+function sortReviews(dispatch, sortMethod) {
+  axios.get(`/reviews?product_id=40348&sort=${sortMethod}`)
+    .then((response) => {
+      dispatch({ type: "SETREVIEWS", reviews: response.data.results });
+    })
+    .catch();
+}
 
 // accepts an array of review objects, extracts .recommend, and returns an integer
 function getPercentageRecommended(results) {
@@ -21,7 +34,59 @@ function averageToNearestTenth(ratings) {
   return (total / ratings.length).toFixed(1);
 }
 
-function Ratings({ results, setReviews }) {
+// WIP to filter by rating
+function filterByRating(stars) {
+  console.log(`You clicked to filter ${stars} stars!`);
+}
+
+// accepts results and which star rating to analyze. outputs xml and styling for progress bar
+function addStarAndBar(results, stars) {
+  let totalStars = 0;
+
+  results.forEach((review) => {
+    if (review.rating === stars) {
+      totalStars++;
+    }
+  });
+
+  const percentageOfMax = (totalStars / results.length) * 200;
+
+  // object for adjusting how much of bar is filled based on reviews for each star
+  const progressStyleObj = {
+    position: 'absolute', height: 5, left: 75, width: percentageOfMax, background: 'green'
+  };
+
+  return (
+    <div>
+      <div style={{ position: 'absolute' }}>{`${stars} stars`}</div>
+
+      {/* background bar */}
+      <div style={{
+        position: 'absolute', height: 5, left: 75, width: 200, background: '#D3D3D3'
+      }}
+      />
+
+      {/* progress bar */}
+      <div style={progressStyleObj} />
+
+      {/* add totalStars num to end of div WIP*/}
+      {/* <div
+        style={{
+        position: 'relative', height: 5, right: 25, width: 225
+      }}
+      >
+        {`${totalStars}`}
+      </div> */}
+
+      <br />
+    </div>
+  );
+}
+
+
+
+// Main function
+function Ratings({ results, setReviews, sort }) {
   return (
     <div id="ratings-reviews">
 
@@ -30,10 +95,10 @@ function Ratings({ results, setReviews }) {
 
       <div className="review-summary">
 
-        <h1 id="big-review-num">
+        <div id="big-review-num">
           {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
           <Stars rating={averageToNearestTenth(results)} />
-        </h1>
+        </div>
 
         <div>
           {getPercentageRecommended(results)
@@ -41,19 +106,27 @@ function Ratings({ results, setReviews }) {
             : "Loading..."}
         </div>
 
+        <br />
+
         <div>
-          <div>5 stars</div>
-          <div>4 stars</div>
-          <div>3 stars</div>
-          <div>2 stars</div>
-          <div>1 stars</div>
+          <div onClick={() => filterByRating(5)}>{addStarAndBar(results, 5)}</div>
+          <br />
+          <div onClick={() => filterByRating(4)}>{addStarAndBar(results, 4)}</div>
+          <br />
+          <div onClick={() => filterByRating(3)}>{addStarAndBar(results, 3)}</div>
+          <br />
+          <div onClick={() => filterByRating(2)}>{addStarAndBar(results, 2)}</div>
+          <br />
+          <div onClick={() => filterByRating(1)}>{addStarAndBar(results, 1)}</div>
         </div>
 
         <div>
+          <br />
           Size
         </div>
 
         <div>
+          <br />
           Comfort
         </div>
 
@@ -63,6 +136,7 @@ function Ratings({ results, setReviews }) {
         id={results.id}
         results={results}
         setReviews={setReviews}
+        sort={sort}
       />
 
     </div>
@@ -74,8 +148,15 @@ const RatingsContainer = connect(
     results: state.reviews,
   }),
   (dispatch) => ({
-    setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews })
+    setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews }),
+    sort: (sortMethod) => dispatch((dis) => sortReviews(dis, sortMethod))
+    // , filterReviews: (reviews) => dispatch({ type: "FILTERREVIEWS", reviews })
   })
 )(Ratings);
+
+// export {
+//   getPercentageRecommended,
+// averageToNearestTenth,
+// };
 
 export default RatingsContainer;
