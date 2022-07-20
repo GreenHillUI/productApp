@@ -45,25 +45,34 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
     <div id='addToCartContainer'>
       <form className='addToCartForm' action='/'>
         <label htmlFor='sizeSelect'>
-          Size: 
+          Size: : 
           <select 
             id='sizeSelect' 
             onChange={handleSizeChange} 
             required
           >
-            {sizeOptions.length ? sizeOptions : `Out of Stock`}
+            {sizeOptions.length === 1 ? `Out of Stock` : sizeOptions}
           </select>
         </label>
         <label htmlFor='quantitySelect'>
-          Qty: 
+          Qty: : 
           <select id='quantitySelect'>
             {selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity, selectedSku) : <option>-</option>}
           </select>
         </label>
         <br />
         { sizeOptions.length 
-          ? <input type='submit' value='Add To Cart' /> 
-          : <input type='submit' value='Add To Cart' disabled /> }
+          ? <input  
+              id='addToCartButton' 
+              type='submit' 
+              value='Add To Cart' 
+          /> 
+          : <input 
+              id='addToCartButton' 
+              type='button' 
+              value='Add To Cart' 
+              disabled 
+          /> }
       </form>
     </div>
     //I feel there's a better way to write the add button conditional above, but not sure.
