@@ -24,7 +24,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
     <div id='overview'>
       <div id='overviewTop'>
         <div id='overviewStars'>
-          Review Score: 
+          Review Score 
           <Stars rating={metaData} />  
           <div id='overviewReadAll'>
             {`  read all  ${getTotalReviews(metaData)} reviews  `}

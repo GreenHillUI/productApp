@@ -13,8 +13,11 @@ function makeSizeOptions(skuList) {
   }
   if (optionList.length === 0) {
     optionList.unshift(<option key='OutOfStock' value={null}> Out of Stock</option>);
+  } else {
+    optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
+
   }
-  optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
+ 
   return optionList;
 }
 
@@ -45,7 +48,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
     <div id='addToCartContainer'>
       <form className='addToCartForm' action='/'>
         <label htmlFor='sizeSelect'>
-          Size: : 
+          Size: 
           <select 
             id='sizeSelect' 
             onChange={handleSizeChange} 
@@ -55,7 +58,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
           </select>
         </label>
         <label htmlFor='quantitySelect'>
-          Qty: : 
+          Qty:  
           <select id='quantitySelect'>
             {selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity, selectedSku) : <option>-</option>}
           </select>

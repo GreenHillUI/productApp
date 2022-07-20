@@ -1,7 +1,7 @@
 #overview {
   display: grid;
-  grid-template-columns: repeat(2, 650px);
-  justify-content: center;
+  grid-template-columns: repeat(2, 700px);
+  justify-content: left;
 }
 
 #overviewStars {
@@ -22,7 +22,7 @@
   font-weight: bold;
 }
 .overviewPrice{
-  font-size: 1.5em
+  font-size: 1em
 }
 
 #overviewTop{
@@ -41,6 +41,7 @@
   grid-template-columns: 250px;
   padding: 10px;
   box-shadow: 0px 0px 8px 2px black;
+  transform: translateY(100px)
 }
 
 
@@ -65,7 +66,7 @@
 #overviewFeatures{
   justify-self: center;
   list-style-type: disclosure-closed;
-  transform: translateX(-100px);
+  transform: translate(-100px, 12px);
   font-weight: bold;
 }
 
