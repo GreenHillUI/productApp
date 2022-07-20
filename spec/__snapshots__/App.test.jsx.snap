@@ -1,0 +1,679 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component Snapshot test adding or verifying App Snapshot 1`] = `
+Array [
+  <div
+    id="overview"
+  >
+    <div
+      id="overviewStars"
+    >
+      Review Score:
+      <div
+        className="stars"
+      >
+        <div
+          className="empty-stars"
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+              fill="none"
+              strokeLinejoin="round"
+              strokeWidth="32"
+            />
+          </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+              fill="none"
+              strokeLinejoin="round"
+              strokeWidth="32"
+            />
+          </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+              fill="none"
+              strokeLinejoin="round"
+              strokeWidth="32"
+            />
+          </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+              fill="none"
+              strokeLinejoin="round"
+              strokeWidth="32"
+            />
+          </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+              fill="none"
+              strokeLinejoin="round"
+              strokeWidth="32"
+            />
+          </svg>
+        </div>
+        <div
+          className="star-rating"
+          style={
+            Object {
+              "width": "NaN%",
+            }
+          }
+        >
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+            />
+          </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+            />
+          </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+            />
+          </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+            />
+          </svg>
+          <svg
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": undefined,
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div
+        id="overviewReadAll"
+      >
+          Read all  0  
+        reviews
+      </div>
+    </div>
+    <h2
+      className="overviewProductCategory"
+    />
+    <h1
+      className="overviewProductName"
+    />
+    <div
+      className="overviewPrice"
+    >
+      Price:
+      $undefined
+    </div>
+    <div
+      id="addToCartContainer"
+    >
+      <form
+        action="/"
+        className="addToCartForm"
+      >
+        <label
+          htmlFor="sizeSelect"
+        >
+          Size:
+          <select
+            id="sizeSelect"
+            onChange={[Function]}
+            required={true}
+          >
+            <option
+              value=""
+            >
+              Select Size
+            </option>
+            <option
+              value={null}
+            >
+               Out of Stock
+            </option>
+          </select>
+        </label>
+        <label
+          htmlFor="quantitySelect"
+        >
+          Qty:
+          <select
+            id="quantitySelect"
+          >
+            <option>
+              -
+            </option>
+          </select>
+        </label>
+        <br />
+        <input
+          type="submit"
+          value="Add To Cart"
+        />
+      </form>
+    </div>
+    <div
+      id="gallery"
+    >
+      <div
+        id="gallerySlideView"
+      />
+      <div
+        className="galleryCarousel"
+        id="galleryCarousel"
+      >
+        <div
+          className="galleryThumbView"
+        >
+          <ul />
+        </div>
+        <svg
+          className="thumbArrow thumbArrow"
+          fill="currentColor"
+          height="1em"
+          onClick={[Function]}
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+              "fill": "green",
+              "height": "1.5em",
+              "width": "1.5em",
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 0h24v24H0V0z"
+            fill="none"
+          />
+          <path
+            d="M6.23 20.23L8 22l10-10L8 2 6.23 3.77 14.46 12z"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      className="overviewProductSlogan"
+    />
+    <div
+      className="overviewProductInfo"
+    >
+      <p
+        className="overviewProductDescription"
+      />
+    </div>
+  </div>,
+  <div
+    id="related-items"
+  >
+    <h1>
+      Related Products
+    </h1>
+    <ul
+      className="product-carrousel"
+    />
+    <h1>
+      Your Outfit
+    </h1>
+    <ul
+      className="product-carrousel"
+    />
+  </div>,
+  <div
+    id="q-container"
+  >
+    <span
+      id="q-title"
+    >
+      QUESTIONS & ANSWERS
+    </span>
+    <div
+      id="q-nav"
+    >
+      <input
+        id="q-search"
+        onChange={[Function]}
+        placeholder="HAVE A QUESTION? SEARCH FOR ANSWERS..."
+        type="text"
+      />
+    </div>
+    <ul
+      id="q-list-col"
+    >
+      <h3>
+        PLEASE WAIT... PRODUCTS LOADING
+      </h3>
+    </ul>
+    <div
+      id="q-buttons"
+    >
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+         MORE ANSWERED QUESTIONS
+      </button>
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        ADD A QUESTION +
+      </button>
+    </div>
+  </div>,
+  <div
+    id="ratings-reviews"
+  >
+    <div>
+      Ratings And Reviews
+    </div>
+    <div
+      className="review-summary"
+    >
+      <h1
+        id="big-review-num"
+      >
+        NaN
+        <div
+          className="stars"
+        >
+          <div
+            className="empty-stars"
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+                fill="none"
+                strokeLinejoin="round"
+                strokeWidth="32"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+                fill="none"
+                strokeLinejoin="round"
+                strokeWidth="32"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+                fill="none"
+                strokeLinejoin="round"
+                strokeWidth="32"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+                fill="none"
+                strokeLinejoin="round"
+                strokeWidth="32"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M480 208H308L256 48l-52 160H32l140 96-54 160 138-100 138 100-54-160z"
+                fill="none"
+                strokeLinejoin="round"
+                strokeWidth="32"
+              />
+            </svg>
+          </div>
+          <div
+            className="star-rating"
+            style={
+              Object {
+                "width": "103%",
+              }
+            }
+          >
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+              />
+            </svg>
+            <svg
+              fill="currentColor"
+              height="1em"
+              stroke="currentColor"
+              strokeWidth="0"
+              style={
+                Object {
+                  "color": undefined,
+                }
+              }
+              viewBox="0 0 512 512"
+              width="1em"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M496 203.3H312.36L256 32l-56.36 171.3H16l150.21 105.4-58.5 171.3L256 373.84 404.29 480l-58.61-171.3z"
+              />
+            </svg>
+          </div>
+        </div>
+      </h1>
+      <div>
+        Loading...
+      </div>
+      <div>
+        <div>
+          5 stars
+        </div>
+        <div>
+          4 stars
+        </div>
+        <div>
+          3 stars
+        </div>
+        <div>
+          2 stars
+        </div>
+        <div>
+          1 stars
+        </div>
+      </div>
+      <div>
+        Size
+      </div>
+      <div>
+        Comfort
+      </div>
+    </div>
+    <div
+      className="reviews-list"
+    >
+      <div>
+        0 reviews, sorted by...
+      </div>
+      <div />
+      <button
+        className="review-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Show More
+      </button>
+      <button
+        className="review-button"
+        type="button"
+      >
+         Add A Review + 
+      </button>
+    </div>
+  </div>,
+]
+`;

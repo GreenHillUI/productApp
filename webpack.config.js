@@ -20,7 +20,8 @@ module.exports = {
     // new Dotenv(),
     new webpack.ProvidePlugin({
       process: 'process/browser'
-    })
+    }),
+    ["@babel/plugin-syntax-jsx"]
   ], //rather than injecting helper functions for babel into each file, provides reference (reducing duplication)
   module: {
     rules: [
