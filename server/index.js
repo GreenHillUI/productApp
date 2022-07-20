@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.static('client/dist'));
 app.use('/a', routes);
 
-const port = 3000;
+const port = 9000;
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

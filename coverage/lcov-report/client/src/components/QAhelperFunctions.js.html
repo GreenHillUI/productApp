@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65% </span>
+                <span class="strong">95% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>13/20</span>
+                <span class='fraction'>19/20</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">18.18% </span>
+                <span class="strong">72.72% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/11</span>
+                <span class='fraction'>8/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>4/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70.58% </span>
+                <span class="strong">94.11% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>12/17</span>
+                <span class='fraction'>16/17</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -107,35 +107,35 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">16x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">96x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">78x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">64x</span>
+<span class="cline-any cline-yes">52x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">52x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">18x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -165,15 +165,15 @@ const reviewFilter = function (Qs, filter) {
   return Qs.results.filter((q) =&gt; (combinedQAObj[q.question_id].toUpperCase().indexOf(filter.toUpperCase()) !== -1));
 };
 &nbsp;
-module.exports.sortQtoAs = <span class="fstat-no" title="function not covered" >fu</span>nction (Qs, qFilter = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> expand) {
+module.exports.sortQtoAs = function (Qs, qFilter = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> expand) {
   //verifying the filter is &gt; 2 characters and performing filter
-<span class="cstat-no" title="statement not covered" >  if (qFilter &amp;&amp; qFilter.length &gt; 2) {</span>
-<span class="cstat-no" title="statement not covered" >    Qs = reviewFilter(Qs, qFilter);</span>
+  if (qFilter &amp;&amp; qFilter.length &gt; 2) {
+    Qs = reviewFilter(Qs, qFilter);
   } else {
     //otherwise, create an array (not object) of Qs
-<span class="cstat-no" title="statement not covered" >    Qs = _.map(Qs.results);</span>
+    Qs = _.map(Qs.results);
   }
-<span class="cstat-no" title="statement not covered" >  return (expand ? Qs.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; (<span class="cstat-no" title="statement not covered" >b.question_helpfulness - a.question_helpfulness)</span>) : Qs.sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; (<span class="cstat-no" title="statement not covered" >b.question_helpfulness - a.question_helpfulness)</span>).slice(0, 4));</span>
+  return (expand ? Qs.sort((a, b) =&gt; (b.question_helpfulness - a.question_helpfulness)) : Qs.sort((a, b) =&gt; (b.question_helpfulness - a.question_helpfulness)).slice(0, 4));
   //sort by helpfulness, and then slice off whatever Qs not supposed to be displayed
 };
 &nbsp;
@@ -184,7 +184,7 @@ module.exports.reviewFilter = reviewFilter;</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Jul 19 2022 17:12:24 GMT-0700 (Pacific Daylight Time)
+                at Tue Jul 19 2022 19:39:31 GMT-0700 (Pacific Daylight Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

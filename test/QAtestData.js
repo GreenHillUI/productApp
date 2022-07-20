@@ -7,6 +7,7 @@ module.exports.questionData = {
     question_id: 37,
     question_body: "Why is this product cheaper here than other sites?",
     question_date: "2018-10-18T00:00:00.000Z",
+    asker_name: 'Seller',
     question_helpfulness: 13,
     answers: {
       68: {
@@ -22,6 +23,7 @@ module.exports.questionData = {
   {
     question_id: 38,
     question_body: "Should this return?",
+    asker_name: 'Malachi',
     question_helpfulness: 45,
     answers: {
       70: {
@@ -99,7 +101,7 @@ module.exports.answerData = {
       answer_id: 5,
       body: "Something pretty durable but I can't be sure",
       date: "2018-01-04T00:00:00.000Z",
-      answerer_name: "metslover",
+      answerer_name: "Seller",
       helpfulness: 5,
       photos: [{
         id: 1,
