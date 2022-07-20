@@ -29,7 +29,7 @@ function QModal({ pID }) {
     //close window on submit
     alert(`${aModal ? 'Answer' : 'Question'} Submitted!`);
 
-    axios.get('/qa/questions/', { params: { product_id: pID, count: 100 } })
+    axios.get(`/a/questions/${pID}?count=${100}`)
       .then((res) => res.data)
       .catch((err) => { console.log(err); });
 
