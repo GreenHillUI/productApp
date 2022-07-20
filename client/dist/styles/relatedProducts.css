@@ -1,10 +1,8 @@
 #related-products {
-  margin: 15px 100px;
+  margin: 0;
 }
 
 .product-carrousel {
-  padding: 20px;
-
   overflow: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -13,11 +11,23 @@
 }
 .product-carrousel li {
   display: inline-block;
-  width: 200px;
-  /* float: left; */
+  margin: 10px;
+
+  width: 280px;
+  height: 420px;
+
+  border: solid 2px black;
 }
 
 #related-products img {
-  width: 50px;
-  height: 100px;
+  width: auto;
+  height: 70%;
+}
+#related-products h1 {
+  font-size: 15px;
+  font-weight: 600;
+}
+#related-products h2 {
+  text-transform: uppercase;
+  font-size: 10px;
 }

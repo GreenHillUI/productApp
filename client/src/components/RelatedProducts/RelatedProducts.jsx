@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import Card from './RelatedProductCard';
+import Card from './ProductCard';
 
 const outfit = [];
 
