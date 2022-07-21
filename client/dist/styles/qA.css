@@ -11,7 +11,7 @@
   grid-template-rows: 1fr minmax(50px, 60px) 10fr minmax(50px, 60px);
   row-gap: 10px;
   width: 80%;
-  max-height: 1000px;
+  max-height: 75%;
   background-color: white; /* For Dev */
 }
 
@@ -43,6 +43,7 @@
   grid-row: 3;
   background-color: white;/* For Dev */
   padding-left: 0;
+  max-height: 50%;
 }
 #q-list-exp {
   grid-column: 1 / span 4;
@@ -72,13 +73,26 @@
   grid-template-columns: minmax(15px, 20px) 5fr 1fr minmax(160px, 185px);  /*last three frames for the help and answer link*/
   grid-template-rows: max-content max-content .85fr;
   background-color: white; /* For Dev */
-  height: auto;
+  max-height: 250px;
   min-height: 100px;
   line-height: 1.25;
-  margin-top: 15px;
+  margin-top: 25px;
 }
+
+.question-exp {
+  display: grid;
+  grid-template-columns: minmax(15px, 20px) 5fr 1fr minmax(160px, 185px);  /*last three frames for the help and answer link*/
+  grid-template-rows: max-content minmax(100px, 200px) .85fr;
+  background-color: white; /* For Dev */
+  max-height: 250px;
+  min-height: 100px;
+  line-height: 1.25;
+  margin-top: 25px;
+}
+
 .question > span {
   background-color: white; /* For Dev */
+  max-height: 100%;
 }
 
 .q-text{
@@ -114,21 +128,32 @@
 
 
 .a-load {
-  grid-column: 1 /span 2;
+  grid-column: 1 / span 2;
   grid-row: 3;
+  max-height: 25%;
   max-width: 127px;
-  min-height: 30px;
-  font-size: 0.5em;
+  min-height: 25%;
+  font-size: .5em;
+  font-weight: bold;
   border: none;
   background-color: white;
-  font-weight: bold;
-
+  margin-top: 10px;
 }
 .a-list {
   grid-column: 1 / span 3;
   grid-row: 2;
   padding-left: 0;
 }
+
+.a-list-exp {
+  grid-column: 1 / span 3;
+  grid-row: 2;
+  padding-left: 0;
+  overflow: scroll;
+  height: 100%;
+}
+
+
 /**************** END OF Q/A QUESTION PORTION **************** */
 
 /**************** END OF Q/A ANSWER PORTION **************** */
@@ -139,6 +164,15 @@
   margin: 5px 0px;
   display: inline-block;
   line-height: 1;
+}
+
+.a-list-exp > li {
+  list-style: none;
+  width: 100%;
+  margin: 5px 0px;
+  display: inline-block;
+  line-height: 1;
+  min-height: 60px;
 }
 
 .answer {

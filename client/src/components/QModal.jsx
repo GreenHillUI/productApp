@@ -74,7 +74,7 @@ function QModal({ pID }) {
         <br />
         <label htmlFor='email'>
           Email*
-          <input name='email' id='email' type='email' placeholder='Why did you like the product or not?' maxLength='60' required />
+          <input name='email' id='email' type='email' placeholder='Example: Jackson@gmail.com' maxLength='60' required />
           <span>
             For authentication reasons, you will not be emailed.
           </span>
