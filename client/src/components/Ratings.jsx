@@ -90,10 +90,10 @@ function Ratings({ results, setReviews, sort }) {
 
       <div className="review-summary">
 
-        <div id="big-review-num" style={{ font: 36, size: 48 }}>
+        <h2 id="big-review-num" style={{ font: 36, size: 48 }}>
           {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
           <Stars rating={averageToNearestTenth(results)} />
-        </div>
+        </h2>
 
         <div>
           {getPercentageRecommended(results)
