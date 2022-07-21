@@ -8,7 +8,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import ReviewsList from './ReviewsList';
-import Stars from './Stars';
+import Stars from '../Stars';
 
 
 function sortReviews(dispatch, sortMethod) {

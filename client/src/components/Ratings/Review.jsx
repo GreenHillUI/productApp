@@ -1,6 +1,6 @@
 import React from 'react';
 import { FcCheckmark } from 'react-icons/fc';
-import Stars from './Stars';
+import Stars from '../Stars';
 
 function Review({ review }) {
 

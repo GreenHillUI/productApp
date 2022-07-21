@@ -10,6 +10,7 @@ function ReviewsList({ results, sort }) {
     sort(event.target.value);
   }
 
+
   return (
     <div className="reviews-list">
       {/* This div houses all reviews to be shown */}
@@ -62,7 +63,13 @@ function ReviewsList({ results, sort }) {
         </button>
       ) : '')}
 
-      <button className='review-button' type="button"> Add A Review + </button>
+      <button
+        className='review-button'
+        type="button"
+        onClick={() => addReviewModal()}
+      >
+        Add A Review +
+      </button>
 
     </div>
   );
