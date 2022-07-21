@@ -8,7 +8,7 @@ function makeSizeOptions(skuList) {
     optionList = Object.entries(skuList)
       .filter((entry) => entry[1].quantity > 0)
       .map(([key, value]) => (
-          <option key={key} value={key}>{value.size}</option>
+        <option key={key} value={key}>{value.size}</option>
       ));
   
   }
@@ -18,7 +18,6 @@ function makeSizeOptions(skuList) {
   optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
   return optionList;
 }
-  
   
   
 function makeQuantityOptions(quantity, sku) {
@@ -39,7 +38,6 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
     const sku = Object.entries(selectedStyle.skus).filter((entry) => entry[0] === event.target.value);
     setSelectedSku(sku);
   }
-
 
   return (
     <div id='addToCartContainer'>
@@ -75,7 +73,6 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
           /> }
       </form>
     </div>
-    //I feel there's a better way to write the add button conditional above, but not sure.
   );
 
 }
@@ -88,7 +85,6 @@ const AddToCartContainer = connect(
   }),
 
   (dispatch) => ({
-    //Sets Slected SKU based on Size Selector
     setSelectedSku: (sku) => dispatch({ type: 'SETSELECTEDSKU', selectedSku: sku }),
     setQuantity: (qty) => dispatch({ type: 'SETQUANTITY', quantity: qty })
   })
