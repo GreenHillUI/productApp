@@ -36,6 +36,26 @@ function Gallery({
     setDisplayIndex(parseInt(event.target.dataset.index));
     scrollThumbnails();
   }
+
+  const backArrowButton = (
+    <button className='arrowButton' type='button' onClick={handleLeftArrowClick}>
+      <MdArrowBackIos 
+        key='galleryArrowBack' 
+        style={arrowStyle} 
+      />
+    </button>
+  );
+
+  const forwardArrowButton = (
+    <button className='arrowButton' type='button' onClick={handleRightArrowClick}>
+      <MdArrowForwardIos 
+        key='galleryArrowForward' 
+        style={arrowStyle} 
+        className='thumbArrow' 
+        onClick={handleRightArrowClick} 
+      />
+    </button>
+  );
   if (pictureData) {
     displaySlides = pictureData.map((image, index) => (
       <img 
@@ -72,14 +92,7 @@ function Gallery({
         <div id='galleryCarousel' className='galleryCarousel'>
           {displayIndex === 0
             ? null
-            : (
-              <button className='arrowButton' type='button' onClick={handleLeftArrowClick}>
-                <MdArrowBackIos 
-                  key='galleryArrowBack' 
-                  style={arrowStyle} 
-                />
-              </button>
-            )}
+            : backArrowButton}
           <div className='galleryThumbView'>
             <ul>
               {displayThumbs}
@@ -87,16 +100,7 @@ function Gallery({
           </div>
           {displayIndex === displaySlides.length - 1 
             ? null
-            : (
-              <button className='arrowButton' type='button' onClick={handleRightArrowClick}>
-                <MdArrowForwardIos 
-                  key='galleryArrowForward' 
-                  style={arrowStyle} 
-                  className='thumbArrow' 
-                  onClick={handleRightArrowClick} 
-                />
-              </button>
-            )}
+            : forwardArrowButton}
         </div>
       </IconContext.Provider>
     </div> 
