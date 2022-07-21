@@ -227,7 +227,7 @@
   box-sizing: border-box;
 } */
 
-.qModal {
+#qModal {
   position: absolute;
   z-index: 300;
   background-color: bisque;
