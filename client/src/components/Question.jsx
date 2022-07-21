@@ -59,14 +59,14 @@ export default function Question({ question }) {
         </button>
         {likeButton}
       </span>
-      <ul className='a-list'>
+      <ul className={exp ? 'a-list-exp' : 'a-list'}>
         { answers.map((a) => (
           <li key={a.id}>
             <Answer answer={a} qID={question.question_id} />
           </li>
         )) }
       </ul>
-      <button onClick={expand} className='a-load' type='button'>LOAD MORE ANSWERS</button>
+      <button onClick={expand} className='a-load' type='button'>{exp ? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS'}</button>
     </div>
   );
 }
