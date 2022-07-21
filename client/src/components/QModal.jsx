@@ -47,9 +47,9 @@ function QModal({ pID }) {
       <button onClick={closeModal} type='button'>
         CLOSE WINDOW
       </button>
-      <h2>
+      <h1>
         { aModal ? 'Submit your Answer' : 'Ask Your Question' }
-      </h2>
+      </h1>
       <h4>
         {aModal ? `${pName}:${aModalQ.question_body}` : `About the ${pName}` }
       </h4>
