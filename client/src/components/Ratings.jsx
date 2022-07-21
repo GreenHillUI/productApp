@@ -3,7 +3,6 @@
  */
 
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 
 import React from 'react';
 import { connect } from 'react-redux';
@@ -20,7 +19,6 @@ function sortReviews(dispatch, sortMethod) {
     .catch();
 }
 
-// accepts an array of review objects, extracts .recommend, and returns an integer
 function getPercentageRecommended(results) {
   const copy = results.map((result) => result.recommend);
   const trues = copy.filter(
@@ -29,7 +27,6 @@ function getPercentageRecommended(results) {
   return (trues.length / results.length) * 100;
 }
 
-// accepts an array of review objects, extracts .rating, and returns the average rounded
 function averageToNearestTenth(ratings) {
   const total = ratings.reduce(
     (sum, item) => sum + item.rating,
@@ -43,7 +40,6 @@ function filterByRating(stars) {
   console.log(`You clicked to filter ${stars} stars!`);
 }
 
-// accepts results and which star rating to analyze. outputs xml and styling for progress bar
 function addStarAndBar(results, stars) {
   let totalStars = 0;
 
@@ -78,10 +74,27 @@ function addStarAndBar(results, stars) {
   );
 }
 
+// INCOMPLETE
+function characteristicsBars(data, characteristic) {
+
+  const char = data[characteristic];
+
+  console.log(`${characteristic}!`, char);
+
+  return (
+    <div style={{ padding: 20 }}>
+      <br />
+      {characteristic}
+    </div>
+  );
+}
+
 
 
 // Main function
-function Ratings({ results, setReviews, sort }) {
+function Ratings({ results, resultsMeta, setReviews, sort }) {
+
+  // console.log(resultsMeta);
   return (
     <div id="ratings-reviews">
 
@@ -115,14 +128,11 @@ function Ratings({ results, setReviews, sort }) {
           <div onClick={() => filterByRating(1)}>{addStarAndBar(results, 1)}</div>
         </div>
 
-        <div>
-          <br />
-          Size
-        </div>
-
-        <div>
-          <br />
-          Comfort
+        <div style={{ padding: 20 }}>
+          {characteristicsBars(resultsMeta, 'Size')}
+          {characteristicsBars(resultsMeta, 'Width')}
+          {characteristicsBars(resultsMeta, 'Comfort')}
+          {characteristicsBars(resultsMeta, 'Quality')}
         </div>
 
       </div>
@@ -141,6 +151,7 @@ function Ratings({ results, setReviews, sort }) {
 const RatingsContainer = connect(
   (state) => ({
     results: state.reviews,
+    resultsMeta: state.reviewsMeta
   }),
   (dispatch) => ({
     setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews }),

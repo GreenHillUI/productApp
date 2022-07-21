@@ -10,6 +10,7 @@ import selectedStyleReducer from './selectedStyleReducer';
 import stylesReducer from './stylesReducer';
 import relatedProductsReducer from './relatedProductsReducer';
 import reviewsReducer from './reviewsReducer';
+import reviewsMetaReducer from './reviewsMetaReducer';
 
 //IMPORT ALL REDUCERS AS THEY ARE CREATED AND ADD THEM TO THE ROOT REDUCER
 
@@ -24,6 +25,7 @@ const reducers = {
   quantity: quantityReducer,
   relatedProducts: relatedProductsReducer,
   reviews: reviewsReducer,
+  reviewsMeta: reviewsMetaReducer,
 };
 
 export default combineReducers(reducers);
