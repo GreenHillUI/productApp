@@ -10,6 +10,10 @@ function ReviewsList({ results, sort }) {
     sort(event.target.value);
   }
 
+  function addReviewModal() {
+    console.log("ADD A REVIEW BRO");
+  }
+
 
   return (
     <div className="reviews-list">
@@ -34,7 +38,6 @@ function ReviewsList({ results, sort }) {
 
       </div>
       <div>
-        {/* loop through reviews? */}
         {!count
           ? results.slice(0, 2).map((review) => (
             <Review
@@ -52,7 +55,6 @@ function ReviewsList({ results, sort }) {
           ))}
       </div>
 
-      {/* Buttons to show more or add reviews */}
       {(!count ? (
         <button
           className='review-button'

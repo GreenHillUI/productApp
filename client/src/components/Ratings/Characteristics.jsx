@@ -17,8 +17,8 @@ function characteristicsBars({ resultsMeta }) {
     bottom: 30,
   };
 
-  const charPaddingT = { padding: 10, paddingTop: 40 };
-  const charPaddingB = { padding: 10, paddingBottom: 10 };
+  const charPaddingT = { padding: 10, paddingTop: 20 };
+  const charPaddingB = { padding: 10, paddingBottom: 20 };
 
   if (resultsMeta.Size) {
 

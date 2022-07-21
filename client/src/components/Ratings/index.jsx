@@ -31,6 +31,7 @@ function getPercentageRecommended(results) {
 }
 
 function averageToNearestTenth(ratings) {
+
   const total = ratings.reduce(
     (sum, item) => sum + item.rating,
     0,
@@ -38,14 +39,10 @@ function averageToNearestTenth(ratings) {
   return (total / ratings.length).toFixed(1);
 }
 
-
-
 // WIP to filter by rating
 function filterByRating(stars) {
   console.log(`You clicked to filter ${stars} stars!`);
 }
-
-
 
 function addStarAndBar(results, stars) {
   let totalStars = 0;
@@ -58,7 +55,6 @@ function addStarAndBar(results, stars) {
 
   const percentageOfMax = (totalStars / results.length) * 200;
 
-  // object for adjusting how much of bar is filled based on reviews for each star
   const progressStyleObj = {
     position: 'absolute',
     height: 8,
