@@ -18,7 +18,7 @@ export default function Answer({ answer, qID }) {
 
   const reportA = () => {
     report(true);
-    repA(qID);
+    repA(answer.id);
   };
 
   const likeButton = clicked

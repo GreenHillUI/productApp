@@ -10,6 +10,7 @@ const initialState = {
     qExpandedBy: false,
     qFilter: '',
     productQs: {},
+    aModal: false
   }
 };
 
