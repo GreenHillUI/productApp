@@ -10,7 +10,7 @@
 }
 
 #big-review-num {
-  size: 120px;
+  font-size: 72px;
   height: 120px;
 }
 
@@ -23,8 +23,8 @@
   float: right;
   padding: 20px;
   border: 20px;
-  height: 600px;
-  overflow-y: scroll;
+  height: 800px;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
@@ -38,6 +38,7 @@
 .review-button {
   height: 30px;
   width: 120px;
+
 }
 
 #review-title {
@@ -47,7 +48,11 @@
 }
 
 .characteristics {
-  padding: 20px;
   padding-top: 10px;
-  margin: 10px;
+}
+
+#review-stars {
+  /* float: right; */
+  /* bottom: 30px; */
+  font-size: large;
 }

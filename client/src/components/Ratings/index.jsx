@@ -7,9 +7,10 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { BsFillTriangleFill } from 'react-icons/bs';
+// import { VscTriangleDown } from 'react-icons/vsc';
 import ReviewsList from './ReviewsList';
 import Stars from '../Stars';
+import Characteristics from './Characteristics';
 
 
 
@@ -59,16 +60,27 @@ function addStarAndBar(results, stars) {
 
   // object for adjusting how much of bar is filled based on reviews for each star
   const progressStyleObj = {
-    position: 'absolute', height: 6, left: 75, width: percentageOfMax, background: 'green'
+    position: 'absolute',
+    height: 8,
+    left: 75,
+    width: percentageOfMax,
+    background: 'green',
+    top: 4,
   };
 
   return (
     <div style={{ position: 'absolute' }}>
-      <div>{`${stars} stars`}</div>
+      <div style={{ float: 'left' }}>{`${stars} stars`}</div>
 
       {/* background bar */}
       <div style={{
-        position: 'absolute', height: 6, left: 75, width: 200, background: '#D3D3D3',
+        position: 'absolute',
+        height: 8,
+        left: 75,
+        width: 200,
+        background: '#D3D3D3',
+        float: 'right',
+        top: 4,
       }}
       />
 
@@ -85,60 +97,60 @@ function addStarAndBar(results, stars) {
 
 
 
-// INCOMPLETE
-function characteristicsBars(data) {
+// // INCOMPLETE CHARACTERISTICS - MOVED
+// function characteristicsBars(data) {
 
 
-  function getArrowPosition(value) {
-    return (value / 5) * 200;
-  }
+//   function getArrowPosition(value) {
+//     return (value / 5) * 264;
+//   }
 
-  if (data.Size) {
-
-
-    return [
-
-      <div
-        className="characteristics"
-        style={{ top: 20 }}
-      >
-        <div>Fit</div>
-
-        <div style={{
-          position: 'flex',
-          height: 6,
-          left: 100,
-          width: 200,
-          background: '#D3D3D3',
-          bottom: 30,
-        }}
-        />
-
-        <div>
-          <BsFillTriangleFill style={{ position: 'relative', left: getArrowPosition(data.Size.value) }} />
-        </div>
-
-        <div>
-          <div style={{ display: 'inline', float: 'left' }}>Runs Tight</div>
-          <div style={{ display: 'inline', float: 'right' }}>Runs Loose</div>
-        </div>
+//   if (data.Size) {
 
 
-      </div>,
+//     return [
+
+//       <div
+//         className="characteristics"
+//         style={{ padding: 10, top: 40 }}
+//       >
+//         <div style={{ bottom: 10 }}>Fit</div>
+
+//         <div style={{
+//           position: 'flex',
+//           height: 8,
+//           left: 100,
+//           width: 264,
+//           background: '#D3D3D3',
+//           bottom: 30,
+//         }}
+//         />
+
+//         <div>
+//           <VscTriangleDown style={{ position: 'relative', left: getArrowPosition(data.Size.value) }} />
+//         </div>
+
+//         <div>
+//           <div style={{ display: 'inline', float: 'left' }}>Runs Tight</div>
+//           <div style={{ display: 'inline', float: 'right' }}>Runs Loose</div>
+//         </div>
+
+
+//       </div>,
 
 
 
-      // <div className="characteristics">{`${data.Width.value} Width`}</div>,
+//       // <div className="characteristics">{`${data.Width.value} Width`}</div>,
 
-      // <div className="characteristics">{`${data.Comfort.value} Comfort`}</div>,
+//       // <div className="characteristics">{`${data.Comfort.value} Comfort`}</div>,
 
-      // <div className="characteristics">{`${data.Quality.value} Quality`}</div>,
+//       // <div className="characteristics">{`${data.Quality.value} Quality`}</div>,
 
-    ];
-  }
+//     ];
+//   }
 
-  return (<div> LOADING CHARS</div>);
-}
+//   return (<div> LOADING CHARS</div>);
+// }
 
 
 
@@ -158,9 +170,9 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
 
       <div className="review-summary">
 
-        <h2 id="big-review-num" style={{ font: 36, size: 48 }}>
-          {averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}
-          <Stars rating={averageToNearestTenth(results)} />
+        <h2 id="big-review-num">
+          <div style={{ float: 'left' }}>{averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}</div>
+          <div id="review-stars"><Stars rating={averageToNearestTenth(results)} /></div>
         </h2>
 
         <div>
@@ -172,20 +184,20 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
         <br />
 
         <div>
-          <div onClick={() => filterByRating(5)}>{addStarAndBar(results, 5)}</div>
+          <div onClick={() => filterByRating(5)} style={{ padding: 10 }}>{addStarAndBar(results, 5)}</div>
           <br />
-          <div onClick={() => filterByRating(4)}>{addStarAndBar(results, 4)}</div>
+          <div onClick={() => filterByRating(4)} style={{ padding: 10 }}>{addStarAndBar(results, 4)}</div>
           <br />
-          <div onClick={() => filterByRating(3)}>{addStarAndBar(results, 3)}</div>
+          <div onClick={() => filterByRating(3)} style={{ padding: 10 }}>{addStarAndBar(results, 3)}</div>
           <br />
-          <div onClick={() => filterByRating(2)}>{addStarAndBar(results, 2)}</div>
+          <div onClick={() => filterByRating(2)} style={{ padding: 10 }}>{addStarAndBar(results, 2)}</div>
           <br />
-          <div onClick={() => filterByRating(1)}>{addStarAndBar(results, 1)}</div>
+          <div onClick={() => filterByRating(1)} style={{ padding: 10 }}>{addStarAndBar(results, 1)}</div>
         </div>
 
-        <div style={{ padding: 20 }}>
-          {characteristicsBars(resultsMeta)}
-        </div>
+        <Characteristics
+          resultsMeta={resultsMeta}
+        />
 
       </div>
 
