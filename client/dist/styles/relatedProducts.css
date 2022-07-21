@@ -5,24 +5,28 @@
 /********************* START PRODUCT CARROUSEL *********************/
 
 .product-carrousel {
+  position: relative;
   overflow: hidden;
   white-space: nowrap;
-  position: relative;
 }
 
 .product-carrousel button {
   background-color: transparent;
-  cursor: pointer;
   position: absolute;
   top: 48%;
-  width: auto;
-  margin-top: -23px;
-  padding: 17px;
-  font-weight: bold;
-  font-size: 19px;
-  transition: 0.4s ease;
-  border-radius: 0 5px 5px 0;
+
+  font-size: 25px;
+
+  cursor: pointer;
   user-select: none;
+}
+
+.forward {
+  right: 0;
+}
+
+.product-carrousel ul {
+  transition: margin-left 1s;
 }
 
 /********************* END PRODUCT CARROUSEL *********************/
