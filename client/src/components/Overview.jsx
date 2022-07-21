@@ -5,7 +5,25 @@ import AddToCart from './AddtoCart';
 import Gallery from './Gallery';
 import Stars from './Stars';
 
+const backArrowButton = (
+  <button className='arrowButton' type='button' onClick={handleLeftArrowClick}>
+    <MdArrowBackIos 
+      key='galleryArrowBack' 
+      style={arrowStyle} 
+    />
+  </button>
+);
 
+const forwardArrowButton = (
+  <button className='arrowButton' type='button' onClick={handleRightArrowClick}>
+    <MdArrowForwardIos 
+      key='galleryArrowForward' 
+      style={arrowStyle} 
+      className='thumbArrow' 
+      onClick={handleRightArrowClick} 
+    />
+  </button>
+)
 
 function getTotalReviews(ratings) {
   let total = 0;
@@ -16,13 +34,16 @@ function getTotalReviews(ratings) {
 }
 
 
-function Overview({ productInfo, selectedStyle, metaData }) {
-
-  //Add section for product features if they exist
+function Overview({ productInfo, selectedStyle, metaData, displayIndex }) {
+ 
   return (
-    //Coming back to image gallery after writing a carousel
-    <div id='overview'>
-   
+    <div id='overviewContainer'>
+      
+           <div id='overviewModal'>
+           
+        {selectedStyle.photos ? <img src={selectedStyle.photos[displayIndex].url} /> : `MODAL` }
+      </div>
+      <div id='overviewProductInfo'>
       <div id='overviewTop'>
         <div id='overviewStars'>
           Review Score 
@@ -42,8 +63,7 @@ function Overview({ productInfo, selectedStyle, metaData }) {
             ? (
               <div> 
                 <s>
-                  $
-                  {selectedStyle.original_price}
+                  $ {selectedStyle.original_price}
                 </s>
                 $
                 {selectedStyle.sale_price}
@@ -65,7 +85,6 @@ function Overview({ productInfo, selectedStyle, metaData }) {
             {productInfo ? productInfo.description : `Loading`}
           </p>
         </div>
-        
       </div>
       <ul className='overviewFeatures'> 
         Features:
@@ -73,15 +92,15 @@ function Overview({ productInfo, selectedStyle, metaData }) {
           ? productInfo.features
             .map((feature) => <li key={feature.feature}>
               <div className='overviewFeatureName'>
-                  {feature.feature}
-                :
+                {feature.feature}:
               </div>
               <div className='overviewFeatureValue'>
-                  {feature.value}
+                {feature.value}
               </div> 
             </li>) 
           : `Loading` }
       </ul>
+      </div>
     </div>
   );
 }
@@ -94,7 +113,8 @@ const OverviewContainer = connect(
     productInfo: state.productInfo,
     styles: state.styles,
     selectedStyle: state.selectedStyle,
-    metaData: state.metaData
+    metaData: state.metaData,
+    displayIndex: state.displayIndex
   }),
   // links the event handler to the store via dispatch
   (dispatch) => ({
