@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-indent */
 /* eslint-disable react/jsx-one-expression-per-line */
 import { useState, React } from 'react';
+import { formatDistanceToNow, parseISO } from 'date-fns';
 import { markA, repA } from './QAhelp/QArequests';
 
-export default function Answer({ answer, qID }) {
+export default function Answer({ answer }) {
 
 
   const [likes, setLikes] = useState(answer.helpfulness);
@@ -20,6 +21,9 @@ export default function Answer({ answer, qID }) {
     report(true);
     repA(answer.id);
   };
+
+  const date = formatDistanceToNow(parseISO(answer.date), { addSuffix: true });
+
 
   const likeButton = clicked
     ? <span id='a-h'>
@@ -41,7 +45,7 @@ export default function Answer({ answer, qID }) {
         <span className='a-user-date'>
           by: $
           {answer.answerer_name}
-          date |
+          {` ${date}`} |
         </span>
         {likeButton}
         {reportButton}
