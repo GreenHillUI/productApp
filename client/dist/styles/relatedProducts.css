@@ -2,13 +2,33 @@
   padding: 0 10%;
 }
 
-.product-carrousel {
-  overflow: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
+/********************* START PRODUCT CARROUSEL *********************/
 
+.product-carrousel {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
 }
-.product-carrousel li {
+
+.product-carrousel button {
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 48%;
+  width: auto;
+  margin-top: -23px;
+  padding: 17px;
+  font-weight: bold;
+  font-size: 19px;
+  transition: 0.4s ease;
+  border-radius: 0 5px 5px 0;
+  user-select: none;
+}
+
+/********************* END PRODUCT CARROUSEL *********************/
+/********************* START PRODUCT CARD *********************/
+
+#related-products li {
   display: inline-block;
   position: relative;
   margin: 10px 20px;
@@ -56,3 +76,5 @@
 
   font-size: 22px;
 }
+
+/********************* END PRODUCT CARD *********************/

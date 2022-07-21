@@ -10,16 +10,20 @@ const outfit = [];
  */
 function RelatedProductsComponent({ related }) {
   return (
-    <div id="related-products">
-      <h1>Related Products</h1>
-      <ul className="product-carrousel">
-        {related.map((product) => <Card key={product.id} product={product} />)}
-      </ul>
+    <section id="related-products">
+      <div className="product-carrousel">
+        <h1>Related Products</h1>
+        <ul>
+          {related.map((product) => <Card key={product.id} product={product} />)}
+        </ul>
+        <button type="button" className="back">&#10094;</button>
+        <button type="button" className="foreward">&#10095;</button>
+      </div>
       <h1>Your Outfit</h1>
       <ul className='product-carrousel'>
         {outfit.map((product) => <Card key={product.id} product={product} />)}
       </ul>
-    </div>
+    </section>
   );
 }
 
