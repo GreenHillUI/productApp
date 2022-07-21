@@ -43,7 +43,7 @@ function QModal({ pID }) {
 
 
   return (
-    <div id='qModal.on'>
+    <div id='qModal'>
       <button onClick={closeModal} type='button'>
         CLOSE WINDOW
       </button>
@@ -51,7 +51,7 @@ function QModal({ pID }) {
         { aModal ? 'Submit your Answer' : 'Ask Your Question' }
       </h2>
       <h4>
-        {aModal ? `About the ${pName}` : `${pName}:${aModalQ}` }
+        {aModal ? `${pName}:${aModalQ.question_body}` : `About the ${pName}` }
       </h4>
       <form className='modal' onSubmit={onSubmitClickVal}>
         <span> (*) indicates required field</span>

@@ -206,13 +206,12 @@
   font-size: .8em;
 }
 
-a-link
 /**************** END OF Q/A ANSWER PORTION **************** */
 
 
 /**************** START OF Q MODAL PORTION **************** */
 
-#qModal {
+/* #qModal {
   position: fixed;
   top: 10%;
   padding: 40px 50px;
@@ -226,13 +225,25 @@ a-link
   margin-left: -200px;
   max-height: 80%;
   box-sizing: border-box;
+} */
+
+.qModal {
+  position: absolute;
+  z-index: 300;
+  background-color: bisque;
+  --darkreader-inline-bgcolor: #21211e;
+  border: 2px solid black;
+  border-radius: 15px;
+  padding: 10px;
+  align-self: center;
+  left: 25%;
+  width: 50%;
+  height: fit-content;
+  line-height: 1.5;
+  font-weight: bold;
 }
 
-.qModal.on {
-  display: block;
-}
-
-.qModal-js-overlay {
+/* .qModal-js-overlay {
   background: #444;
   opacity: .8;
   position: fixed;
@@ -260,4 +271,4 @@ a-link
   cursor: pointer;
   font-size: 12px;
   font-weight: bold;
-}
+} */
