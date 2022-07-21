@@ -1,44 +1,40 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+
 function makeSizeOptions(skuList) {
   let optionList = [];
   if (skuList) {
     optionList = Object.entries(skuList)
       .filter((entry) => entry[1].quantity > 0)
       .map(([key, value]) => (
-        <option key={key} value={key}>{value.size}</option>
+          <option key={key} value={key}>{value.size}</option>
       ));
-
+  
   }
   if (optionList.length === 0) {
-    optionList.push(<option key='OutOfStock' value=''>Out of Stock</option>);
-
-  } else {
-    optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
-
+    optionList.unshift(<option key='OutOfStock' value={null}> Out of Stock</option>);
   }
- 
+  optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
   return optionList;
 }
-
-
-
+  
+  
+  
 function makeQuantityOptions(quantity, sku) {
   const quantityOptionList = [];
   const max = quantity >= 15 ? 15 : quantity;
   for (let i = 1; i <= max; i += 1) {
     quantityOptionList.push(<option key={`${sku}${i}`} value={i}>{i}</option>);
   }
- 
+   
   return quantityOptionList;
 }
-
 
 function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
 
   const sizeOptions = makeSizeOptions(selectedStyle.skus);
-
+ 
   function handleSizeChange(event) {
     const sku = Object.entries(selectedStyle.skus).filter((entry) => entry[0] === event.target.value);
     setSelectedSku(sku);
@@ -99,3 +95,4 @@ const AddToCartContainer = connect(
 )(AddToCart);
 
 export default AddToCartContainer;
+

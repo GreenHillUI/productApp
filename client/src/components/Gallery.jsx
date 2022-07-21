@@ -8,7 +8,7 @@ const arrowClass = { className: 'thumbArrow' };
 const arrowStyle = { fill: 'black', height: '1.5em', width: '1.5em' };
 
 function Gallery({
-  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex
+  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex, setExpandedView
 }) {
   let displaySlides = [];
   let displayThumbs = [];
@@ -36,6 +36,9 @@ function Gallery({
     setDisplayIndex(parseInt(event.target.dataset.index));
     scrollThumbnails();
   }
+  function handleSlideClick() {
+    setExpandedView(true);
+  }
 
   const backArrowButton = (
     <button className='arrowButton' type='button' onClick={handleLeftArrowClick}>
@@ -59,6 +62,7 @@ function Gallery({
   if (pictureData) {
     displaySlides = pictureData.map((image, index) => (
       <img 
+        onClick={handleSlideClick}
         key={selectedStyle.photos[index].url} 
         className='gallerySlide' 
         src={image.url} 
@@ -66,8 +70,6 @@ function Gallery({
       />
     ));
     displayThumbs = pictureData.map((image, index) => (
-      
- 
       <li 
         key={selectedStyle.photos[index].thumbnail_url}
       >
@@ -84,12 +86,12 @@ function Gallery({
   } 
   
   return (
-    <div id='gallery'>
-      <div id='gallerySlideView'>
+    <div className='gallery'>
+      <div className='gallerySlideView'>
         {displaySlides[displayIndex]}  
       </div>
       <IconContext.Provider value={arrowClass}>
-        <div id='galleryCarousel' className='galleryCarousel'>
+        <div className='galleryCarousel'>
           {displayIndex === 0
             ? null
             : backArrowButton}
@@ -110,13 +112,15 @@ function Gallery({
 const GalleryContainer = connect(
   (state) => ({
     selectedStyle: state.selectedStyle,
-    displayIndex: state.displayIndex
+    displayIndex: state.displayIndex,
+    ExpandedView: state.ExpandedView
   }),
 
   (dispatch) => ({
     setDisplayIndex: (num) => dispatch({ type: `SETDISPLAYINDEX`, displayIndex: num }),
     incrementDisplayIndex: (num) => dispatch({ type: `INCREMENT`, displayIndex: num }),
-    decrementDisplayIndex: (num) => dispatch({ type: `DECREMENT`, displayIndex: num })
+    decrementDisplayIndex: (num) => dispatch({ type: `DECREMENT`, displayIndex: num }),
+    setExpandedView: (bool) => dispatch({ type: `SETEXPANDEDVIEW`, expandedView: bool })
   })
 )(Gallery);
 
