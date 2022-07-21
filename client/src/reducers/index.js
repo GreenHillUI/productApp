@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
 
+import expandedViewReducer from './expandedViewReducer';
 import galleryReducer from './galleryReducer';
 import metaDataReducer from './metaDataReducer';
 import productInfoReducer from './productInfoReducer';
@@ -15,6 +16,7 @@ import reviewsMetaReducer from './reviewsMetaReducer';
 //IMPORT ALL REDUCERS AS THEY ARE CREATED AND ADD THEM TO THE ROOT REDUCER
 
 const reducers = {
+  expandedView: expandedViewReducer,
   metaData: metaDataReducer,
   qList: qListReducer,
   styles: stylesReducer,

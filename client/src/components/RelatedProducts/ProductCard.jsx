@@ -7,16 +7,18 @@ import Stars from '../Stars';
  * @param {props} product Product object retrieved from API to be rendered
  * @returns list item containing product card
  */
-function RelatedProductsComponent({ product }) {
+function ProductsCardComponent({ product }) {
   return (
     <li>
-      <img src={product.img} alt={`A thumbnail of ${product.name}`} width="50" height="100" />
-      <h2>{`category: ${product.category}`}</h2>
-      <h1>{`name: ${product.name}`}</h1>
-      <h1>{`$${product.price}`}</h1>
+      <a href="#related-products">
+        <img src={product.img} alt={`A thumbnail of ${product.name}`} />
+      </a>
+      <h3>{`${product.category}`}</h3>
+      <h2>{`${product.name}`}</h2>
+      <h3>{`$${product.price}`}</h3>
       <Stars rating={product.ratings} />
     </li>
   );
 }
 
-export default RelatedProductsComponent;
+export default ProductsCardComponent;

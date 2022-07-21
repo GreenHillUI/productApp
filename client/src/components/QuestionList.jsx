@@ -21,6 +21,7 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
 
 
   //if the user filter is > 2 chars, filter to Q's w/ a matching string in the review (Q or A)
+
   if (productQs.results !== undefined) {
     qListSorted = sortQtoAs(productQs, qFilter, qExpandedBy);
     qListSorted = qListSorted.map((q) => (
@@ -34,6 +35,7 @@ function QuestionList({ productQs, qFilter, qExpandedBy }) {
     <div id='q-container'>
       { qModal && <QModal pID={productQs.product_id} /> }
       { aModal && <QModal pID={productQs.product_id} /> }
+      {(aModal || qModal) && <div id='modalBG' />}
       <span id='q-title'>QUESTIONS & ANSWERS</span>
       <div id='q-nav'>
         <input onChange={(e) => dispatch({ type: 'SEARCH_ENTRY', payload: e.target.value })} id='q-search' type='text' placeholder='HAVE A QUESTION? SEARCH FOR ANSWERS...' />
