@@ -5,10 +5,12 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 import React from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { BsFillTriangleFill } from 'react-icons/bs';
 import ReviewsList from './ReviewsList';
 import Stars from '../Stars';
+
 
 
 function sortReviews(dispatch, sortMethod) {
@@ -35,10 +37,14 @@ function averageToNearestTenth(ratings) {
   return (total / ratings.length).toFixed(1);
 }
 
+
+
 // WIP to filter by rating
 function filterByRating(stars) {
   console.log(`You clicked to filter ${stars} stars!`);
 }
+
+
 
 function addStarAndBar(results, stars) {
   let totalStars = 0;
@@ -74,27 +80,76 @@ function addStarAndBar(results, stars) {
   );
 }
 
+
+
+
+
+
 // INCOMPLETE
-function characteristicsBars(data, characteristic) {
+function characteristicsBars(data) {
 
-  const char = data[characteristic];
 
-  console.log(`${characteristic}!`, char);
+  function getArrowPosition(value) {
+    return (value / 5) * 200;
+  }
 
-  return (
-    <div style={{ padding: 20 }}>
-      <br />
-      {characteristic}
-    </div>
-  );
+  if (data.Size) {
+
+
+    return [
+
+      <div
+        className="characteristics"
+        style={{ top: 20 }}
+      >
+        <div>Fit</div>
+
+        <div style={{
+          position: 'flex',
+          height: 6,
+          left: 100,
+          width: 200,
+          background: '#D3D3D3',
+          bottom: 30,
+        }}
+        />
+
+        <div>
+          <BsFillTriangleFill style={{ position: 'relative', left: getArrowPosition(data.Size.value) }} />
+        </div>
+
+        <div>
+          <div style={{ display: 'inline', float: 'left' }}>Runs Tight</div>
+          <div style={{ display: 'inline', float: 'right' }}>Runs Loose</div>
+        </div>
+
+
+      </div>,
+
+
+
+      // <div className="characteristics">{`${data.Width.value} Width`}</div>,
+
+      // <div className="characteristics">{`${data.Comfort.value} Comfort`}</div>,
+
+      // <div className="characteristics">{`${data.Quality.value} Quality`}</div>,
+
+    ];
+  }
+
+  return (<div> LOADING CHARS</div>);
 }
+
+
+
+
 
 
 
 // Main function
 function Ratings({ results, resultsMeta, setReviews, sort }) {
 
-  // console.log(resultsMeta);
+  // console.log("resultsMeta ", resultsMeta);
   return (
     <div id="ratings-reviews">
 
@@ -129,10 +184,7 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
         </div>
 
         <div style={{ padding: 20 }}>
-          {characteristicsBars(resultsMeta, 'Size')}
-          {characteristicsBars(resultsMeta, 'Width')}
-          {characteristicsBars(resultsMeta, 'Comfort')}
-          {characteristicsBars(resultsMeta, 'Quality')}
+          {characteristicsBars(resultsMeta)}
         </div>
 
       </div>
