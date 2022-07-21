@@ -243,6 +243,17 @@
   font-weight: bold;
 }
 
+#modalBG {
+  height: 4000px;
+    width: 3000px;
+    z-index: 2;
+    position: absolute;
+    background-color: whitesmoke;
+    opacity: .9;
+    left: 0;
+    top: 0;
+}
+
 /* .qModal-js-overlay {
   background: #444;
   opacity: .8;
