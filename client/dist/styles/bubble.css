@@ -2,7 +2,7 @@
     display: grid;
     width: 800px;
     height: 200px;
-    grid-template-rows: 1.5em auto;
+    grid-template-rows: 1.5em 15em;
     justify-content: left;
     grid-row-start: 1;
     
@@ -18,9 +18,11 @@
 }
 
 .styleThumbnail:hover{
+    height: 74px;
+    width: 74px;
     box-shadow: 0px 0px 0px 2px blue;
     opacity: 0.8;
-    transition: all 0.2s;
+    transition: all 0.1s;
 }
 
 #styleCheck {
@@ -37,7 +39,7 @@
 .overviewSelectedStyle {
     height: 20px;
     font-style: italic;
-    font-weight: bold;
+    font-weight: lighter;
     justify-self: left;
 }
 
