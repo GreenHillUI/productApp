@@ -9,7 +9,9 @@ function setDefaultStyle(styles) {
 }
 
 class Setter extends React.Component {
-  componentDidMount() {
+  componentDidMount() { }
+
+  render() {
     const {
       productId,
       setProductInfo,
@@ -50,9 +52,10 @@ class Setter extends React.Component {
         setProductQs(res.data);
       })
       .catch((err) => { console.log(err); });
+      
+    return null;
   }
 
-  render() { return (null); }
 }
 
 const SetterContainer = connect(
