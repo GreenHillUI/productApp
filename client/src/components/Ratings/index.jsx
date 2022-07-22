@@ -87,6 +87,10 @@ function addStarAndBar(results, stars) {
 
       <div style={progressStyleObj} />
 
+      <div style={{ float: 'right' }}>
+        {totalStars}
+      </div>
+
       <br />
     </div>
   );
@@ -106,7 +110,7 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
 
         <h2 id="big-review-num">
           <div style={{ float: 'left' }}>{averageToNearestTenth(results) ? averageToNearestTenth(results) : ""}</div>
-          <div id="review-stars"><Stars rating={averageToNearestTenth(results)} /></div>
+          <div id="review-stars"><Stars rating={Math.round(averageToNearestTenth(results))} /></div>
         </h2>
 
         <div>
