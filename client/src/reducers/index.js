@@ -12,11 +12,11 @@ import stylesReducer from './stylesReducer';
 import relatedProductsReducer from './relatedProductsReducer';
 import reviewsReducer from './reviewsReducer';
 import productIdReducer from './productIdReducer';
+import reviewsMetaReducer from './reviewsMetaReducer';
 
 //IMPORT ALL REDUCERS AS THEY ARE CREATED AND ADD THEM TO THE ROOT REDUCER
 
 const reducers = {
-  productId: productIdReducer,
   expandedView: expandedViewReducer,
   metaData: metaDataReducer,
   qList: qListReducer,
@@ -28,6 +28,8 @@ const reducers = {
   quantity: quantityReducer,
   relatedProducts: relatedProductsReducer,
   reviews: reviewsReducer,
+  productId: productIdReducer,
+  reviewsMeta: reviewsMetaReducer,
 };
 
 export default combineReducers(reducers);
