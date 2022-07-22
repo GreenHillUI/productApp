@@ -3,6 +3,7 @@ import store from '../../store';
 import RelatedProductContianer from './RelatedProducts';
 
 // This file handles data initalization for the Related Products components
+let { productId } = store.getState();
 
 function getDefaultStyle(styles) {
   const defaultStyle = styles.filter((style) => style['default?'])[0];
@@ -34,7 +35,7 @@ function dispatchProduct(dispatch, responses) {
 
 // Atelier API data initialization
 const getRelatedProducts = (dispatch) => {
-  let api = axios.get('/a/products/40348/related')
+  let api = axios.get(`/a/products/${productId}/related`)
     .then(({ data }) => {
       const uniqueIDs = data.filter((id, i) => data.indexOf(id) === i);
 
@@ -53,6 +54,16 @@ const getRelatedProducts = (dispatch) => {
     .catch((err) => console.error(err.message));
 };
 
+
+function handleIdChange() {
+  const previousId = productId;
+  productId = store.getState().productId;
+  if (previousId !== productId) {
+    store.dispatch(getRelatedProducts);
+  }
+}
+store.subscribe(handleIdChange);
 store.dispatch(getRelatedProducts);
+
 
 export default RelatedProductContianer;
