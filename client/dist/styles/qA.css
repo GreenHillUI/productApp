@@ -15,7 +15,6 @@
 
 #q-title {
   grid-column: 1 /span 2;
-  font-size: .75em;
   grid-row: 1;
   background-color: white; /* For Dev */
   padding-top: 15px;
@@ -205,20 +204,94 @@
 
 
 #qModal {
+  display: grid;
+  grid-template-columns: 1fr 2fr 6fr 1fr;
+  grid-template-rows: max-content max-content max-content 8fr;
   position: absolute;
   z-index: 300;
   background-color: bisque;
-  --darkreader-inline-bgcolor: #21211e;
   border: 2px solid black;
-  border-radius: 15px;
+  border-radius: 10px;
   padding: 10px;
   align-self: center;
   left: 25%;
   width: 50%;
+  max-width: 550px;
   height: fit-content;
   line-height: 1.5;
   font-weight: bold;
 }
+
+#q-modal-title, #q-modal-subtitle, #q-sb-question {
+  grid-column: 1 / span 5;
+  margin: 0 auto;
+}
+
+#q-modal-title {
+  grid-row: 1;
+  font-size: 2.0em;
+}
+
+.q-text-area {
+  width: 80%;
+  height: 5em;
+}
+
+#close-modal {
+  grid-column: 5;
+  grid-row: 1;
+  border: 2px solid darkgray;
+  border-radius: 5px;
+  padding: 5px 5px;
+  font-size: 0.8em;
+  height: fit-content;
+}
+
+#q-modal-subtitle {
+  grid-row: 2;
+  font-size: 1.6em;
+}
+#q-sb-question {
+  grid-row: 3;
+  font-size: 1em;
+}
+#req-span {
+  position: relative;
+  top: 10px;
+  right: 10px;
+}
+
+.modal-form {
+  grid-column: 1 / span 5;
+  grid-row: 4;
+  font-size: .8em;
+}
+
+form > span {
+  margin-left: 10px;
+}
+
+.mod-input, .q-text-area {
+  margin-left: 10px;
+  font-size: 1em;
+  min-width: 300px;
+  border: 1px solid darkgray;
+  border-radius: 3px;}
+
+.mod-label {
+  font-size: 1.2em;
+}
+
+#modal-submit {
+  position:relative;
+  left:45%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid darkgray;
+  border-radius: 3px;
+}
+
+
 
 #modalBG {
   height: 4000px;
@@ -230,4 +303,5 @@
     left: 0;
     top: 0;
 }
+
 
