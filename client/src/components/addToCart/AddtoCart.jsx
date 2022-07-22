@@ -46,7 +46,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
     <div id='addToCartContainer'>
       <form className='addToCartForm' action='/'>
         <label htmlFor='sizeSelect'>
-          Size: 
+          Size:&nbsp;
           <select 
             id='sizeSelect' 
             onChange={handleSizeChange} 
@@ -56,7 +56,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
           </select>
         </label>
         <label htmlFor='quantitySelect'>
-          Qty:  
+          &nbsp;Qty:&nbsp;   
           <select id='quantitySelect'>
             {selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity, selectedSku) : <option>-</option>}
           </select>
