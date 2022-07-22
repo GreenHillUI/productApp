@@ -8,7 +8,7 @@ const arrowClass = { className: 'thumbArrow' };
 const arrowStyle = { fill: 'black', height: '1.5em', width: '1.5em' };
 
 function Gallery({
-  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex
+  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex, expandedView, setExpandedView
 }) {
   let displaySlides = [];
   let displayThumbs = [];
@@ -28,7 +28,7 @@ function Gallery({
   }
   function handleRightArrowClick() {
     if (displayIndex !== selectedStyle.photos.length - 1) {
-      incrementDisplayIndex(displayIndex++);
+      incrementDisplayIndex(displayIndex);
     }
     scrollThumbnails();  
   }
@@ -36,9 +36,33 @@ function Gallery({
     setDisplayIndex(parseInt(event.target.dataset.index));
     scrollThumbnails();
   }
+  function handleSlideClick() {
+    setExpandedView(true);
+  }
+
+  const backArrowButton = (
+    <button className='arrowButton' type='button' onClick={handleLeftArrowClick}>
+      <MdArrowBackIos 
+        key='galleryArrowBack' 
+        style={arrowStyle} 
+      />
+    </button>
+  );
+
+  const forwardArrowButton = (
+    <button className='arrowButton' type='button' onClick={handleRightArrowClick}>
+      <MdArrowForwardIos 
+        key='galleryArrowForward' 
+        style={arrowStyle} 
+        className='thumbArrow' 
+        onClick={handleRightArrowClick} 
+      />
+    </button>
+  );
   if (pictureData) {
     displaySlides = pictureData.map((image, index) => (
       <img 
+        onClick={handleSlideClick}
         key={selectedStyle.photos[index].url} 
         className='gallerySlide' 
         src={image.url} 
@@ -46,8 +70,6 @@ function Gallery({
       />
     ));
     displayThumbs = pictureData.map((image, index) => (
-      
- 
       <li 
         key={selectedStyle.photos[index].thumbnail_url}
       >
@@ -64,22 +86,15 @@ function Gallery({
   } 
   
   return (
-    <div id='gallery'>
-      <div id='gallerySlideView'>
+    <div className='gallery'>
+      <div className='gallerySlideView'>
         {displaySlides[displayIndex]}  
       </div>
       <IconContext.Provider value={arrowClass}>
-        <div id='galleryCarousel' className='galleryCarousel'>
+        <div className='galleryCarousel'>
           {displayIndex === 0
             ? null
-            : (
-              <button className='arrowButton' type='button' onClick={handleLeftArrowClick}>
-                <MdArrowBackIos 
-                  key='galleryArrowBack' 
-                  style={arrowStyle} 
-                />
-              </button>
-            )}
+            : backArrowButton}
           <div className='galleryThumbView'>
             <ul>
               {displayThumbs}
@@ -87,16 +102,7 @@ function Gallery({
           </div>
           {displayIndex === displaySlides.length - 1 
             ? null
-            : (
-              <button className='arrowButton' type='button' onClick={handleRightArrowClick}>
-                <MdArrowForwardIos 
-                  key='galleryArrowForward' 
-                  style={arrowStyle} 
-                  className='thumbArrow' 
-                  onClick={handleRightArrowClick} 
-                />
-              </button>
-            )}
+            : forwardArrowButton}
         </div>
       </IconContext.Provider>
     </div> 
@@ -106,13 +112,15 @@ function Gallery({
 const GalleryContainer = connect(
   (state) => ({
     selectedStyle: state.selectedStyle,
-    displayIndex: state.displayIndex
+    displayIndex: state.displayIndex,
+    expandedView: state.ExpandedView
   }),
 
   (dispatch) => ({
     setDisplayIndex: (num) => dispatch({ type: `SETDISPLAYINDEX`, displayIndex: num }),
     incrementDisplayIndex: (num) => dispatch({ type: `INCREMENT`, displayIndex: num }),
-    decrementDisplayIndex: (num) => dispatch({ type: `DECREMENT`, displayIndex: num })
+    decrementDisplayIndex: (num) => dispatch({ type: `DECREMENT`, displayIndex: num }),
+    setExpandedView: (bool) => dispatch({ type: `SETEXPANDEDVIEW`, expandedView: bool })
   })
 )(Gallery);
 

@@ -39,14 +39,22 @@ export default function Question({ question }) {
   //filter out related answers by text content then sort
   var answers = _.map(question.answers)
     .filter((a) => a.body.indexOf(aFilter) !== -1)
-    .sort((a, b) => (a.helpfulness - b.helpfulness));
+    .sort((a, b) => (b.helpfulness - a.helpfulness));
+
+  const loadAs = answers[2] && <button onClick={expand} className='a-load' type='button'>{exp ? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS'}</button>;
 
   if (!exp) {
     answers = answers.slice(0, 2);
   }
 
+  answers.map((a) => {
+    var cap = a.body.slice(0, 1).toUpperCase();
+    a.body = cap + a.body.slice(1);
+    return a;
+  });
+
   return (
-    <div className='question'>
+    <div className={exp ? 'question-exp' : 'question'}>
       <span className='q-icon'><b>Q:</b></span>
       <span className='q-text'>{question.question_body}</span>
       <span className='q-links'>
@@ -59,14 +67,14 @@ export default function Question({ question }) {
         </button>
         {likeButton}
       </span>
-      <ul className='a-list'>
+      <ul className={exp ? 'a-list-exp' : 'a-list'}>
         { answers.map((a) => (
           <li key={a.id}>
             <Answer answer={a} qID={question.question_id} />
           </li>
         )) }
       </ul>
-      <button onClick={expand} className='a-load' type='button'>LOAD MORE ANSWERS</button>
+      {loadAs}
     </div>
   );
 }

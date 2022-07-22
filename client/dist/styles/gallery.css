@@ -1,15 +1,14 @@
 /* Wrapper for the entire Image Gallery Component */
-#gallery {
- 
+.gallery {
   background-color: grey;
   padding: 0px;
-  width: 600px;
+  width: 650px;
   display: grid;
   grid-row-start: 1;
   }
   
   /*The selected image*/
-  #gallerySlideView img {
+  .gallerySlideView img {
     height: 600px;
     width: 650px;
     object-fit: cover;
@@ -17,7 +16,7 @@
   }
   
    
-  #galleryCarousel {
+  .galleryCarousel {
     display: flex;
     width: auto;
     height: 0px;
@@ -40,7 +39,11 @@
       object-fit: cover;
       border: solid 0.13em
   }
-  
+.galleryCarousel img:hover {
+  width: 50px;
+  height: 50px;
+  transition: 0.1s;
+}
   /* Div of viewable thumbnails. If each thumbnail is 100px + 4 total px of padding = 728px total */
   .galleryThumbView {
       width: 371px;

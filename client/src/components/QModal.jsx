@@ -43,45 +43,51 @@ function QModal({ pID }) {
 
 
   return (
-    <div id='qModal.on'>
-      <button onClick={closeModal} type='button'>
-        CLOSE WINDOW
+    <div id='qModal'>
+      <button id='close-modal' onClick={closeModal} type='button'>
+        CLOSE
       </button>
-      <h2>
+      <h1 id='q-modal-title'>
         { aModal ? 'Submit your Answer' : 'Ask Your Question' }
-      </h2>
-      <h4>
-        {aModal ? `About the ${pName}` : `${pName}:${aModalQ}` }
+      </h1>
+      <h4 id='q-modal-subtitle'>
+        {aModal ? `${pName}: ` : `About the ${pName}` }
       </h4>
-      <form className='modal' onSubmit={onSubmitClickVal}>
-        <span> (*) indicates required field</span>
+      {aModal && <h2 id='q-sb-question'>{aModalQ.question_body}</h2>}
+      <form className='modal-form' onSubmit={onSubmitClickVal}>
+        <span id='req-span'> ( * ) indicates required field</span>
         <br />
         <br />
-        <label htmlFor='newQA'>
+        <label className='mod-label' htmlFor='newQA'>
           { aModal ? 'Your Answer *' : 'Your Question *' }
-          <textarea rows='2' col='500' id='newQA' type='' maxLength='1000' name='newQA' placeholder='Your Question: ' required />
+          <br />
+          <textarea className='q-text-area' rows='2' col='500' id='newQA' type='' maxLength='1000' name='newQA' placeholder={aModal ? 'Give us your two cents.. ' : 'What do you want to know about the product? '} required />
         </label>
         <br />
         <br />
-        <label htmlFor='nick'>
-          NickName*
-          <input name='nick' id='nick' placeholder='Example: jackson11!' maxLength='60' required />
-          <span>
-            For privacy reasons, do not use your full name or email address.
-          </span>
+        <label className='mod-label' htmlFor='nick'>
+          NickName *
+          <br />
+          <input className='mod-input' name='nick' id='nick' placeholder='Ex: jackson11!' maxLength='60' required />
+          <br />
         </label>
+        <span>
+          For privacy reasons, do not use your full name or email address.
+        </span>
         <br />
         <br />
-        <label htmlFor='email'>
-          Email*
-          <input name='email' id='email' type='email' placeholder='Why did you like the product or not?' maxLength='60' required />
-          <span>
-            For authentication reasons, you will not be emailed.
-          </span>
+        <label className='mod-label' htmlFor='email'>
+          Email *
+          <br />
+          <input className='mod-input' name='email' id='email' type='email' placeholder='Ex: Jackson@gmail.com' maxLength='60' required />
+          <br />
         </label>
+        <span>
+          For authentication reasons, you will not be emailed.
+        </span>
         <br />
         <br />
-        <button type='submit'>Submit</button>
+        <button id='modal-submit' type='submit'>Submit</button>
       </form>
     </div>
   );

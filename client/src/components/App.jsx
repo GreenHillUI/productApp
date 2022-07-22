@@ -1,5 +1,5 @@
 import React from 'react';
-import Overview from './Overview';
+import Overview from './overview/Overview';
 import QuestionList from './QuestionList';
 import RelatedProducts from './RelatedProducts';
 import Ratings from './Ratings';

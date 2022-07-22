@@ -29,9 +29,21 @@ module.exports.sortQtoAs = function (Qs, qFilter = '', expand) {
   if (qFilter && qFilter.length > 2) {
     Qs = reviewFilter(Qs, qFilter);
   } else {
-    //otherwise, create an array (not object) of Qs
     Qs = _.map(Qs.results);
   }
+  Qs.map((q) => {
+    var cap = q.question_body.slice(0, 1).toUpperCase();
+    q.question_body = cap + q.question_body.slice(1);
+    return q;
+  });
+  const uniq = [];
+  Qs = Qs.filter((q) => {
+    if (!uniq.includes(q.question_body) && q.question_body.length > 10) {
+      uniq.push(q.question_body);
+      return true;
+    }
+    return false;
+  });
   return (expand ? Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)) : Qs.sort((a, b) => (b.question_helpfulness - a.question_helpfulness)).slice(0, 4));
   //sort by helpfulness, and then slice off whatever Qs not supposed to be displayed
 };
