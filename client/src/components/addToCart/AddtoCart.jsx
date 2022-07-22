@@ -13,9 +13,12 @@ function makeSizeOptions(skuList) {
   
   }
   if (optionList.length === 0) {
-    optionList.unshift(<option key='OutOfStock' value={null}> Out of Stock</option>);
+    optionList.push(<option key='OutOfStock' value=''>Out of Stock</option>);
+
+  } else {
+    optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
+
   }
-  optionList.unshift(<option key='selectSizeDefault' value=''>Select Size</option>);
   return optionList;
 }
   
@@ -59,7 +62,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
           </select>
         </label>
         <br />
-        { sizeOptions.length 
+        { sizeOptions.length > 1
           ? <input  
               id='addToCartButton' 
               type='submit' 
@@ -68,7 +71,7 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
           : <input 
               id='addToCartButton' 
               type='button' 
-              value='Add To Cart' 
+              value='Out Of Stock' 
               disabled 
           /> }
       </form>

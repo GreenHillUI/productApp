@@ -8,7 +8,7 @@ const arrowClass = { className: 'thumbArrow' };
 const arrowStyle = { fill: 'black', height: '1.5em', width: '1.5em' };
 
 function Gallery({
-  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex, setExpandedView
+  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex, expandedView, setExpandedView
 }) {
   let displaySlides = [];
   let displayThumbs = [];
@@ -28,7 +28,7 @@ function Gallery({
   }
   function handleRightArrowClick() {
     if (displayIndex !== selectedStyle.photos.length - 1) {
-      incrementDisplayIndex(displayIndex++);
+      incrementDisplayIndex(displayIndex);
     }
     scrollThumbnails();  
   }
@@ -113,7 +113,7 @@ const GalleryContainer = connect(
   (state) => ({
     selectedStyle: state.selectedStyle,
     displayIndex: state.displayIndex,
-    ExpandedView: state.ExpandedView
+    expandedView: state.ExpandedView
   }),
 
   (dispatch) => ({
