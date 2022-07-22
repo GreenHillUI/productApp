@@ -62,14 +62,31 @@ function QModal({ pID }) {
           <label className='mod-label' htmlFor='newQA'>
             { aModal ? 'Your Answer *' : 'Your Question *' }
             <br />
-            <textarea className='q-text-area' rows='2' col='500' id='newQA' type='' maxLength='1000' name='newQA' placeholder={aModal ? 'Give us your two cents.. ' : 'What do you want to know about the product? '} required />
+            <textarea
+              className='q-text-area'
+              rows='2'
+              col='500'
+              id='newQA'
+              type=''
+              maxLength='1000'
+              name='newQA'
+              placeholder={aModal ? 'Give us your two cents.. ' : 'What do you want to know about the product? '}
+              required
+            />
           </label>
           <br />
           <br />
           <label className='mod-label' htmlFor='nick'>
             NickName *
             <br />
-            <input className='mod-input' name='nick' id='nick' placeholder='Ex: jackson11!' maxLength='60' required />
+            <input
+              className='mod-input'
+              name='nick'
+              id='nick'
+              placeholder='Ex: jackson11!'
+              maxLength='60'
+              required
+            />
             <br />
           </label>
           <span>
@@ -80,7 +97,15 @@ function QModal({ pID }) {
           <label className='mod-label' htmlFor='email'>
             Email *
             <br />
-            <input className='mod-input' name='email' id='email' type='email' placeholder='Ex: Jackson@gmail.com' maxLength='60' required />
+            <input
+              className='mod-input'
+              name='email'
+              id='email'
+              type='email'
+              placeholder='Ex: Jackson@gmail.com'
+              maxLength='60'
+              required
+            />
             <br />
           </label>
           <span>
