@@ -26,7 +26,7 @@ function getPercentageRecommended(results) {
   const trues = copy.filter(
     (resultItem) => (resultItem === true)
   );
-  return (trues.length / results.length) * 100;
+  return ((trues.length / results.length) * 100).toFixed(1);
 }
 
 function averageToNearestTenth(ratings) {
@@ -74,7 +74,6 @@ function addStarAndBar(results, stars) {
     <div style={{ position: 'absolute' }}>
       <div style={{ float: 'left' }}>{`${stars} stars`}</div>
 
-      {/* background bar */}
       <div style={{
         position: 'absolute',
         height: 8,
@@ -86,7 +85,6 @@ function addStarAndBar(results, stars) {
       }}
       />
 
-      {/* progress bar */}
       <div style={progressStyleObj} />
 
       <br />
