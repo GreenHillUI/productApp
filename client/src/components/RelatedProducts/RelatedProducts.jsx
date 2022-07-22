@@ -14,14 +14,14 @@ function RelatedProductsComponent({ related }) {
       <h1>Related Products</h1>
       <div className="product-carrousel">
 
-        <ul style={{ 'margin-left': -offset }}>
+        <ul className="hide-before hide-after" style={{ 'margin-left': -offset }}>
           {related.map((product) => <Card key={product.id} product={product} />)}
         </ul>
 
         <button
           type="button"
           className="back"
-          onClick={() => setOffset(offset + 400)}
+          onClick={() => setOffset(offset - 400)}
         >
           &#10094;
         </button>
@@ -29,7 +29,7 @@ function RelatedProductsComponent({ related }) {
         <button
           type="button"
           className="forward"
-          onClick={() => setOffset(offset - 400)}
+          onClick={() => setOffset(offset + 400)}
         >
           &#10095;
         </button>

@@ -14,6 +14,7 @@
   background-color: transparent;
   position: absolute;
   top: 48%;
+  z-index: 2;
 
   font-size: 25px;
 
@@ -30,6 +31,28 @@
 }
 
 /********************* END PRODUCT CARROUSEL *********************/
+/********************* START CARROUSEL BUTTONS *********************/
+
+.product-carrousel .hide-before::before,
+.product-carrousel .hide-after::after {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 10em;
+  content: "";
+}
+
+.product-carrousel .hide-before::before {
+  background: linear-gradient(to right, white 25px, transparent);
+  left: 0;
+  content: "❮";
+}
+.product-carrousel .hide-after::after {
+  background: linear-gradient(to left, white 25px, transparent);
+  right: 0;
+}
+
+/********************* END CARROUSEL BUTTONS *********************/
 /********************* START PRODUCT CARD *********************/
 
 #related-products li {
@@ -43,7 +66,12 @@
 
   border: solid 2px rgb(130, 130, 130);
 }
-
+#related-products li:first-child {
+  margin-left: 0;
+}
+#related-products li:last-child {
+  margin-right: 0;
+}
 #related-products a {
   display: block;
   background-color: rgb(235, 235, 235);
@@ -56,7 +84,6 @@
   object-fit: cover;
 }
 #related-products h1 {
-  margin-left: 11px;
   margin-bottom: 15px;
   text-transform: uppercase;
   font-size: 18px;
