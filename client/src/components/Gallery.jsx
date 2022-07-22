@@ -8,7 +8,7 @@ const arrowClass = { className: 'thumbArrow' };
 const arrowStyle = { fill: 'black', height: '1.5em', width: '1.5em' };
 
 function Gallery({
-  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex, expandedView, setExpandedView
+  selectedStyle, displayIndex, setDisplayIndex, incrementDisplayIndex, decrementDisplayIndex, setExpandedView
 }) {
   let displaySlides = [];
   let displayThumbs = [];
