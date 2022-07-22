@@ -41,7 +41,9 @@ export default function Question({ question }) {
     .filter((a) => a.body.indexOf(aFilter) !== -1)
     .sort((a, b) => (b.helpfulness - a.helpfulness));
 
-  const loadAs = answers[2] && <button onClick={expand} className='a-load' type='button'>{exp ? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS'}</button>;
+  const moreAs = answers[2] !== undefined;
+
+  const loadAs = moreAs && <button onClick={expand} className='a-load' type='button'>{exp ? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS'}</button>;
 
   if (!exp) {
     answers = answers.slice(0, 2);

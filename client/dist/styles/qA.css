@@ -63,11 +63,10 @@
 }
 .question, .question-exp {
   display: grid;
-  grid-template-columns: minmax(15px, 20px) 5fr 1fr minmax(160px, 185px);  /*last three frames for the help and answer link*/
-  grid-template-rows: max-content max-content .85fr;
-  background-color: white; /* For Dev */
+  grid-template-columns: minmax(15px, 20px) 5fr 1fr minmax(160px, 185px);
+  grid-template-rows: minmax(20px, 25px) max-content min-content;
+  background-color: white;
   max-height: 250px;
-  min-height: 100px;
   line-height: 1.25;
   margin-top: 25px;
 }
@@ -77,7 +76,7 @@
 }
 
 .question-exp {
-  grid-template-rows: max-content minmax(100px, 200px) .85fr;
+  grid-template-rows: minmax(20px, 25px) minmax(100px, 200px) .85fr;
 }
 
 .question > span {
@@ -201,25 +200,36 @@
 
 /**************** START OF Q MODAL PORTION **************** */
 
-
+.box-shadow {
+  z-index: 299;
+  background: #ccc;
+  box-shadow: 4px 3px 8px 1px #969696;
+  border-radius: 10px;
+  -webkit-box-shadow: 4px 3px 8px 1px #969696;
+  width: 50%;
+  max-width: 550px;
+  height: fit-content;
+  position: absolute;
+  left: 25%;
+}
 
 #qModal {
   display: grid;
   grid-template-columns: 1fr 2fr 6fr 1fr;
   grid-template-rows: max-content max-content max-content 8fr;
-  position: absolute;
   z-index: 300;
   background-color: bisque;
   border: 2px solid black;
   border-radius: 10px;
   padding: 10px;
   align-self: center;
-  left: 25%;
-  width: 50%;
+  width: 100%;
   max-width: 550px;
-  height: fit-content;
+  height: 100%;
   line-height: 1.5;
   font-weight: bold;
+  position: relative;
+  left: 2px;
 }
 
 #q-modal-title, #q-modal-subtitle, #q-sb-question {
@@ -274,6 +284,8 @@ form > span {
 .mod-input, .q-text-area {
   margin-left: 10px;
   font-size: 1em;
+  font-family: 'PT serif';
+  font-weight: bold;
   min-width: 300px;
   border: 1px solid darkgray;
   border-radius: 3px;}
@@ -283,12 +295,12 @@ form > span {
 }
 
 #modal-submit {
-  position:relative;
-  left:45%;
+  position: relative;
+  left: 45%;
   padding: 10px;
   font-size: 1em;
-  border: 1px solid darkgray;
-  border-radius: 3px;
+  border: 2px solid darkgray;
+  border-radius: 5px;
 }
 
 
