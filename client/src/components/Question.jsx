@@ -47,6 +47,12 @@ export default function Question({ question }) {
     answers = answers.slice(0, 2);
   }
 
+  answers.map((a) => {
+    var cap = a.body.slice(0, 1).toUpperCase();
+    a.body = cap + a.body.slice(1);
+    return a;
+  });
+
   return (
     <div className={exp ? 'question-exp' : 'question'}>
       <span className='q-icon'><b>Q:</b></span>
