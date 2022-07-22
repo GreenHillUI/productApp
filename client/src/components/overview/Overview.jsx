@@ -11,6 +11,7 @@ import Stars from '../Stars';
 import { getTotalReviews, handleAllReviewsClick } from './overviewhelpers';
 
 const iconClass = { className: 'closeIcon' };
+
 function Overview({
   productInfo, selectedStyle, metaData, expandedView, setExpandedView
 }) {
@@ -25,7 +26,8 @@ function Overview({
     <button 
       className='overviewModalClose' 
       type='button' 
-      onClick={handleModalClose}>
+      onClick={handleModalClose}
+    >
       <AiOutlineClose style={closeIconStyle} />
     </button>
   );
