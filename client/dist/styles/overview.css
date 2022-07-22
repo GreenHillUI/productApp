@@ -1,6 +1,7 @@
 #overviewProductInfo {
   display: grid;
   grid-template-columns: repeat(2, 700px);
+  grid-template-rows: 600px 200px;
   justify-content: left;
 }
 
@@ -11,6 +12,7 @@
 
 
 #overviewTextBlurb{
+  transform: translateY(20px);
   width: 650px;
 }
 
@@ -57,6 +59,7 @@
 }
 #addToCartButton{
   padding: 6px;
+  width: 100%;
   box-shadow: 0px 0px 8px 2px black;
   grid-row-start: 2;
   align-content: baseline;
@@ -115,7 +118,7 @@
   width: 50px;
 }
 
-.overviewModalView{
+.overviewModalView {
   display: grid;
   align-items: center;
   width: 1100px;
@@ -125,7 +128,7 @@
   width: 20px;
   height: 20px;
   background: transparent;
-  transform: translate(200px, 100px)
+  transform: translate(420px, 00px)
 }
 
 #overviewReadAll{
@@ -139,4 +142,13 @@
 
 #overviewStars{
   font-size: 1.1em;
+}
+
+.overviewModalView .gallery{
+  transform: translate(20px, -00px)
+}
+
+.overviewModalView .gallerySlideView img {
+  width: 1100px;
+  height: 1100px;
 }
