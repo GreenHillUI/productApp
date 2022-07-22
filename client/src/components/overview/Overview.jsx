@@ -38,7 +38,7 @@ function Overview({
         && <div id='overviewModal'>
           {modalCloseButton}
           <div className="overviewModalView">
-            <Gallery derp={'derperino'} />
+            <Gallery />
           </div>
         </div>}
       </IconContext.Provider>
