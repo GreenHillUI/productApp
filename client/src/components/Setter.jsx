@@ -11,6 +11,7 @@ function setDefaultStyle(styles) {
 class Setter extends React.Component {
   componentDidMount() {
     const {
+      productId,
       setProductInfo,
       setStyles,
       setSelectedStyle,
@@ -19,32 +20,32 @@ class Setter extends React.Component {
       setReviews,
     } = this.props;
 
-    axios.get('/a/products/40348')
+    axios.get(`/a/products/${productId}`)
       .then((response) => {
         setProductInfo(response.data);
       })
-      .catch(() => console.log(`Error loading product info`));
+      .catch(() => console.log('Error loading product info'));
 
-    axios.get('/a/products/40348/styles')
+    axios.get(`/a/products/${productId}/styles`)
       .then((response) => {
         setStyles(response.data.results);
         setSelectedStyle(setDefaultStyle(response.data.results));
       })
       .catch((err) => console.log(err));
 
-    axios.get('/a/reviews/40348/meta')
+    axios.get(`/a/reviews/${productId}/meta`)
       .then((response) => {
         setMetaData(response.data.ratings);
       })
       .catch((err) => console.log(err));
     
-    axios.get('/a/reviews/40348')
+    axios.get(`/a/reviews/${productId}`)
       .then((res) => {
         setReviews(res.data.results);
       })
       .catch((err) => console.error('help', err));
 
-    axios.get(`/a/questions/40348?count=${100}`)
+    axios.get(`/a/questions/${productId}?count=${100}`)
       .then((res) => {
         setProductQs(res.data);
       })
@@ -56,10 +57,7 @@ class Setter extends React.Component {
 
 const SetterContainer = connect(
   (state) => ({
-    productInfo: state.productInfo,
-    styles: state.styles,
-    selectedStyle: state.selectedStyle,
-    metaData: state.metaData,
+    productId: state.productId,
   }),
 
   (dispatch) => ({

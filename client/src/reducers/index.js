@@ -11,10 +11,12 @@ import selectedStyleReducer from './selectedStyleReducer';
 import stylesReducer from './stylesReducer';
 import relatedProductsReducer from './relatedProductsReducer';
 import reviewsReducer from './reviewsReducer';
+import productIdReducer from './productIdReducer';
 
 //IMPORT ALL REDUCERS AS THEY ARE CREATED AND ADD THEM TO THE ROOT REDUCER
 
 const reducers = {
+  productId: productIdReducer,
   expandedView: expandedViewReducer,
   metaData: metaDataReducer,
   qList: qListReducer,
