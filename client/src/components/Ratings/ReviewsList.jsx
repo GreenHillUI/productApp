@@ -5,30 +5,21 @@ function ReviewsList({ results, sort }) {
 
   const [count, setCount] = useState(0);
 
-  // Incomplete mapReviews for DRYness
-  // accepts an array of reviews and maps them into individual reviews
-  // NON-Functional WIP
-  function mapReviews(reviewsArray) {
-    reviewsArray.map(
-      (review) => (
-        <Review
-          id={review.review_id}
-          review={review}
-        />
-      )
-    );
-  }
-
   function handleOptionChange(event) {
     console.log(event.target.value);
     sort(event.target.value);
   }
 
+  function addReviewModal() {
+    console.log("ADD A REVIEW BRO");
+  }
+
+
   return (
     <div className="reviews-list">
       {/* This div houses all reviews to be shown */}
       <div>
-        <div>{`${results.length} reviews, sorted by...`}</div>
+        <div>{`${results.length} reviews, sorted by`}</div>
 
         <select
           style={{
@@ -47,7 +38,6 @@ function ReviewsList({ results, sort }) {
 
       </div>
       <div>
-        {/* loop through reviews? */}
         {!count
           ? results.slice(0, 2).map((review) => (
             <Review
@@ -65,7 +55,6 @@ function ReviewsList({ results, sort }) {
           ))}
       </div>
 
-      {/* Buttons to show more or add reviews */}
       {(!count ? (
         <button
           className='review-button'
@@ -76,7 +65,13 @@ function ReviewsList({ results, sort }) {
         </button>
       ) : '')}
 
-      <button className='review-button' type="button"> Add A Review + </button>
+      <button
+        className='review-button'
+        type="button"
+        onClick={() => addReviewModal()}
+      >
+        Add A Review +
+      </button>
 
     </div>
   );
