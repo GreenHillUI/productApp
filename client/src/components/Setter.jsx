@@ -17,6 +17,7 @@ class Setter extends React.Component {
       setMetaData,
       setProductQs,
       setReviews,
+      setMetaCharacteristics,
     } = this.props;
 
     axios.get('/a/products/40348')
@@ -35,9 +36,10 @@ class Setter extends React.Component {
     axios.get('/a/reviews/40348/meta')
       .then((response) => {
         setMetaData(response.data.ratings);
+        setMetaCharacteristics(response.data.characteristics);
       })
       .catch((err) => console.log(err));
-    
+
     axios.get('/a/reviews/40348')
       .then((res) => {
         setReviews(res.data.results);
@@ -69,6 +71,7 @@ const SetterContainer = connect(
     setMetaData: (data) => dispatch({ type: 'SETMETADATA', metaData: data }),
     setProductQs: (Qs) => dispatch({ type: 'SET_QUESTIONS', payload: Qs }),
     setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews }),
+    setMetaCharacteristics: (characteristics) => dispatch({ type: "SETCHARACTERISTICS", characteristics }),
   })
 )(Setter);
 export default SetterContainer;
