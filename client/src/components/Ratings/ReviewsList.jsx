@@ -17,7 +17,6 @@ function ReviewsList({ results, sort }) {
 
   return (
     <div className="reviews-list">
-      {/* This div houses all reviews to be shown */}
       <div>
         <div>{`${results.length} reviews, sorted by`}</div>
 

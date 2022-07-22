@@ -1,7 +1,3 @@
-/**
- * @jest-environment jsdom
- */
-
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 import React from 'react';
@@ -87,10 +83,6 @@ function addStarAndBar(results, stars) {
 
       <div style={progressStyleObj} />
 
-      <div style={{ float: 'right' }}>
-        {totalStars}
-      </div>
-
       <br />
     </div>
   );
@@ -159,7 +151,6 @@ const RatingsContainer = connect(
   (dispatch) => ({
     setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews }),
     sort: (sortMethod) => dispatch((dis) => sortReviews(dis, sortMethod)),
-    // filter: (reviews) => dispatch({ type: "FILTERREVIEWS", reviews })
   })
 )(Ratings);
 

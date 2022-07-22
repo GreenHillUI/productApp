@@ -19,7 +19,7 @@ function characteristicsBars({ resultsMeta }) {
   };
 
   const charPaddingT = { padding: 10, paddingTop: 20 };
-  const charPaddingB = { padding: 10, paddingBottom: 20 };
+  const charPaddingB = { padding: 10, paddingBottom: 30 };
 
   if (resultsMeta.Size) {
     return [
