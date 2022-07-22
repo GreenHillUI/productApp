@@ -10,7 +10,7 @@ function makeSizeOptions(skuList) {
       .map(([key, value]) => (
         <option key={key} value={key}>{value.size}</option>
       ));
-  
+
   }
   if (optionList.length === 0) {
     optionList.push(<option key='OutOfStock' value=''>Out of Stock</option>);
@@ -21,22 +21,22 @@ function makeSizeOptions(skuList) {
   }
   return optionList;
 }
-  
-  
+
+
 function makeQuantityOptions(quantity, sku) {
   const quantityOptionList = [];
   const max = quantity >= 15 ? 15 : quantity;
   for (let i = 1; i <= max; i += 1) {
     quantityOptionList.push(<option key={`${sku}${i}`} value={i}>{i}</option>);
   }
-   
+
   return quantityOptionList;
 }
 
 function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
 
   const sizeOptions = makeSizeOptions(selectedStyle.skus);
- 
+
   function handleSizeChange(event) {
     const sku = Object.entries(selectedStyle.skus).filter((entry) => entry[0] === event.target.value);
     setSelectedSku(sku);
@@ -46,33 +46,33 @@ function AddToCart({ selectedStyle, selectedSku, setSelectedSku }) {
     <div id='addToCartContainer'>
       <form className='addToCartForm' action='/'>
         <label htmlFor='sizeSelect'>
-          Size: 
-          <select 
-            id='sizeSelect' 
-            onChange={handleSizeChange} 
+          {'Size:  '}
+          <select
+            id='sizeSelect'
+            onChange={handleSizeChange}
             required
           >
             {sizeOptions}
           </select>
         </label>
         <label htmlFor='quantitySelect'>
-          Qty:  
+          {'  Qty:  '}
           <select id='quantitySelect'>
             {selectedSku.length > 0 ? makeQuantityOptions(selectedSku[0][1].quantity, selectedSku) : <option>-</option>}
           </select>
         </label>
         <br />
         { sizeOptions.length > 1
-          ? <input  
-              id='addToCartButton' 
-              type='submit' 
-              value='Add To Cart' 
-          /> 
-          : <input 
-              id='addToCartButton' 
-              type='button' 
-              value='Out Of Stock' 
-              disabled 
+          ? <input
+              id='addToCartButton'
+              type='submit'
+              value='Add To Cart'
+          />
+          : <input
+              id='addToCartButton'
+              type='button'
+              value='Out Of Stock'
+              disabled
           /> }
       </form>
     </div>

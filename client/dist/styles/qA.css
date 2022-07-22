@@ -117,18 +117,21 @@
 /**************** END OF Q/A QUESTION PORTION **************** */
 
 
+
 .a-load {
   grid-column: 1 / span 2;
   grid-row: 3;
   max-height: 25%;
-  max-width: 127px;
+  max-width: 112px;
   min-height: 25%;
-  font-size: .5em;
+  display: flex;
+  margin: 5px 25px;
+  padding: 1px 3px 11px 9px;
+  border: 1px solid black;
   font-weight: bold;
-  border: none;
-  background-color: white;
-  margin-top: 10px;
+  font-size: .5em;
 }
+
 .a-list, .a-list-exp {
   grid-column: 1 / span 3;
   grid-row: 2;
@@ -220,7 +223,7 @@
   grid-template-columns: 1fr 2fr 6fr 1fr;
   grid-template-rows: max-content max-content max-content 8fr;
   z-index: 300;
-  background-color: bisque;
+  background-color: rgb(206, 206, 206);
   border: 2px solid black;
   border-radius: 10px;
   padding: 10px;
@@ -252,7 +255,7 @@
 #close-modal {
   grid-column: 5;
   grid-row: 1;
-  border: 2px solid darkgray;
+  border: 2px solid rgb(124, 123, 123);
   border-radius: 5px;
   padding: 5px 5px;
   font-size: 0.8em;
