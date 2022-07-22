@@ -42,7 +42,6 @@ export default function Question({ question }) {
     .sort((a, b) => (b.helpfulness - a.helpfulness));
 
   const moreAs = answers[2] !== undefined;
-
   const loadAs = moreAs && <button onClick={expand} className='a-load' type='button'>{exp ? 'COLLAPSE ANSWERS' : 'LOAD MORE ANSWERS'}</button>;
 
   if (!exp) {
