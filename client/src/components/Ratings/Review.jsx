@@ -87,7 +87,7 @@ function Review({ review }) {
         </div>
 
         <div
-          style={{ position: 'relative', left: 115, bottom: 16 }}
+          style={{ position: 'relative', left: 125, bottom: 16 }}
         >
           Report
         </div>
