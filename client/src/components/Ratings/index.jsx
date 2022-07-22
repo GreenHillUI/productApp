@@ -7,10 +7,8 @@ import ReviewsList from './ReviewsList';
 import Stars from '../Stars';
 import Characteristics from './Characteristics';
 
-
-
 function sortReviews(dispatch, sortMethod) {
-  axios.get(`/a/reviews/40348?sort=${sortMethod}`)
+  axios.get(`/a/reviews/40340?sort=${sortMethod}`)
     .then((response) => {
       dispatch({ type: "SETREVIEWS", reviews: response.data.results });
     })
@@ -22,11 +20,10 @@ function getPercentageRecommended(results) {
   const trues = copy.filter(
     (resultItem) => (resultItem === true)
   );
-  return ((trues.length / results.length) * 100).toFixed(1);
+  return Math.round((trues.length / results.length) * 100);
 }
 
 function averageToNearestTenth(ratings) {
-
   const total = ratings.reduce(
     (sum, item) => sum + item.rating,
     0,
@@ -88,9 +85,6 @@ function addStarAndBar(results, stars) {
   );
 }
 
-
-
-// Main function
 function Ratings({ results, resultsMeta, setReviews, sort }) {
 
   return (
@@ -110,9 +104,7 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
             ? `${getPercentageRecommended(results)}% of reviews recommend this product`
             : "Loading..."}
         </div>
-
         <br />
-
         <div>
           <div onClick={() => filterByRating(5)} style={{ padding: 10 }}>{addStarAndBar(results, 5)}</div>
           <br />
