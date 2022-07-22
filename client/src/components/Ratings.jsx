@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import ReviewsList from './ReviewsList';
 import Stars from './Stars';
+import store from '../store';
 
 
 function sortReviews(dispatch, sortMethod) {
-  axios.get(`/a/reviews/40348?sort=${sortMethod}`)
+  axios.get(`/a/reviews/${store.getState().productId}?sort=${sortMethod}`)
     .then((response) => {
       dispatch({ type: "SETREVIEWS", reviews: response.data.results });
     })
