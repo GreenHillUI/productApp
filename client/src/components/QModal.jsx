@@ -55,7 +55,7 @@ function QModal({ pID }) {
       </h4>
       {aModal && <h2 id='q-sb-question'>{aModalQ.question_body}</h2>}
       <form className='modal-form' onSubmit={onSubmitClickVal}>
-        <span id='req-span'> (*) indicates required field</span>
+        <span id='req-span'> ( * ) indicates required field</span>
         <br />
         <br />
         <label className='mod-label' htmlFor='newQA'>
