@@ -2,10 +2,48 @@
 <html>
 <head>
   <title>Product App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport">
   <meta
   name="description"
   content="View product descriptions, reviews, ratings, questions and answers for different apparel items">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      color: rgb(100, 100, 100);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: baseline;
+      font-family: 'PT Sans', sans-serif;
+    }
+    html, body {
+      height: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      scroll-behavior: smooth;
+    }
+    body {
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+    }
+    img, picture, video, canvas, svg {
+      display: block;
+      max-width: 100%;
+    }
+    input, button, textarea, select {
+      font: inherit;
+    }
+    p, h1, h2, h3, h4, h5, h6 {
+      overflow-wrap: break-word;
+    }
+    ol, ul {
+      list-style: none;
+    }
+  </style>
   <link rel="stylesheet" href="./styles/styles.css">
   <link rel="stylesheet" href="./styles/qA.css">
   <link rel="stylesheet" href="./styles/bubble.css">
@@ -19,6 +57,6 @@
   <link href="https://fonts.googleapis.com/css2?family=PT+Serif&display=swap" rel="stylesheet"></head>
 <body>
   <div id="app"></div>
-  <script type="text/javascript" src="bundle.js"></script> <!-- Runs all files via bundle,js for weppack-->
+  <script type="text/javascript" defer src="bundle.js"></script> <!-- Runs all files via bundle,js for weppack-->
 </body>
 </html>

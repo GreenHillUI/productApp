@@ -1,8 +1,10 @@
+const compression = require('compression');
 const express = require('express');
 const routes = require('./routes');
 
 const app = express();
 
+app.use(compression());
 app.use(express.json());
 
 app.use(express.static('client/dist'));
