@@ -1,15 +1,10 @@
-/* eslint-disable no-unused-vars */
-
 import React, { useState } from 'react';
 import Review from './Review';
 import ReviewModal from './ReviewModal';
 
-
 function ReviewsList({ results, sort }) {
-
   const [count, setCount] = useState(0);
   const [openModal, setOpenModal] = useState(false);
-
   function handleOptionChange(event) {
     sort(event.target.value);
   }
@@ -18,7 +13,6 @@ function ReviewsList({ results, sort }) {
     <div className="reviews-list">
       <div>
         <div>{`${results.length} reviews, sorted by`}</div>
-
         <select
           id="sort-dd"
           onChange={handleOptionChange}
@@ -27,7 +21,6 @@ function ReviewsList({ results, sort }) {
           <option value="helpful">Helpful</option>
           <option value="newest">Newest</option>
         </select>
-
       </div>
       <div>
         {!count
@@ -46,7 +39,6 @@ function ReviewsList({ results, sort }) {
             />
           ))}
       </div>
-
       {(!count ? (
         <button
           className='review-button'
@@ -56,7 +48,6 @@ function ReviewsList({ results, sort }) {
           Show More
         </button>
       ) : '')}
-
       <button
         className='review-button'
         type="button"
@@ -64,9 +55,7 @@ function ReviewsList({ results, sort }) {
       >
         Add A Review +
       </button>
-
       {openModal && <ReviewModal closeModal={setOpenModal} />}
-
     </div>
   );
 }

@@ -6,7 +6,6 @@ import Stars from '../Stars';
 import Characteristics from './Characteristics';
 import store from '../../store';
 
-
 function sortReviews(dispatch, sortMethod) {
   axios.get(`/a/reviews/${store.getState().productId}?sort=${sortMethod}`)
     .then((response) => {
@@ -50,10 +49,10 @@ function addStarAndBar(results, stars) {
     background: 'green',
     top: 4,
   };
+
   return (
     <div style={{ position: 'absolute' }}>
       <div style={{ float: 'left' }}>{`${stars} stars`}</div>
-
       <div style={{
         position: 'absolute',
         height: 8,

@@ -4,11 +4,12 @@ import Stars from '../Stars';
 
 function Review({ review }) {
 
+
+  // eslint-disable-next-line no-unused-vars
   function splitLines(reviewBody) {
     const { body } = review;
     const firstLine = `${body.slice(0, 60)}...`;
     const remaining = `...${body.slice(60)}`;
-
     if (body.length > 60) {
       return (
         <div id="review-title">
@@ -18,7 +19,6 @@ function Review({ review }) {
         </div>
       );
     }
-
     return (
       <div id="review-title" style={{ fontWeight: 'bold' }}>
         {body}
@@ -27,11 +27,9 @@ function Review({ review }) {
   }
 
   return (
-
     <div className="review">
       <br />
       <Stars rating={review.rating} />
-
       <div className="review-name-date">
         {`${review.reviewer_name},
           ${new Date(review.date).toLocaleDateString(
@@ -39,16 +37,13 @@ function Review({ review }) {
           { year: "numeric", month: "long", day: "numeric" }
         )}`}
       </div>
-
       <div>
         {splitLines(review.summary)}
       </div>
-
       <div style={{ bottom: 8, top: 8 }}>
         {review.body}
       </div>
       <br />
-
       <div id="review-recommended">
         {review.recommend
           ? (
@@ -59,28 +54,22 @@ function Review({ review }) {
           )
           : ''}
       </div>
-
       <div
         id="review-response"
         style={{ background: '#D3D3D3' }}
       >
         {review.response ? `Response: <br>${review.response}` : ''}
       </div>
-
       <br />
-
       <div>
         <div style={{ position: 'relative' }}>
           {`Helpful? Yes ${review.helpfulness} |`}
         </div>
-
         <div style={{ position: 'relative', left: 125, bottom: 16 }}>
           Report
         </div>
-
         <br />
       </div>
-
     </div>
   );
 }
