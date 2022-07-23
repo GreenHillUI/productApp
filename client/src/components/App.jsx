@@ -11,12 +11,12 @@ import Navbar from './navbar/Navbar';
 function App() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar />
       <Setter />
-      <Overview />
+      <Overview /> */}
       <RelatedProducts />
-      <QuestionList />
-      <Ratings />
+      {/* <QuestionList />
+      <Ratings /> */}
     </>
   );
 }
