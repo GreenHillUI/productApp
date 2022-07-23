@@ -6,14 +6,16 @@ import Card from './ProductCard';
 // the width in pixels that a card can be covered by the left/right gradient
 const leniency = 25;
 
-function scrollLeft(offset, viewport, cardWidth) {
-  const cards = Math.floor((viewport + offset + leniency) / cardWidth) - 1;
-  const margin = cards * cardWidth - viewport + end;
-  return 
+function scrollLeft(offset, cardWidth) {
+  const cards = Math.ceil((offset + 125) / cardWidth) - 1;
+  if (cards <= 0) return 0;
+  return cards * cardWidth - 125;
 }
-function scrollRight(offset, viewport, cardWidth) {
+function scrollRight(offset, viewport, cardWidth, size) {
   const cards = Math.floor((viewport + offset + leniency) / cardWidth) + 1;
-  return cards * cardWidth - viewport;
+  const margin = cards * cardWidth - viewport;
+  if (cards >= size) return margin - 125;
+  return margin;
 }
 
 function RelatedProductsComponent({ related }) {
@@ -34,20 +36,28 @@ function RelatedProductsComponent({ related }) {
       <h1>Related Products</h1>
       <div className="product-carrousel">
 
-        <ul style={{ 'margin-left': -offset }}>
+        <ul style={{ marginLeft: -offset }}>
           {related.map((product) => <Card key={product.id} product={product} />)}
         </ul>
 
-        {offset >= 0 ? (
-          <button aria-label="left" type="button" onClick={() => setOffset(scrollLeft(offset, width - 125, 320))}>
-            &#10094;
-          </button>
-        ) : null}
-        {offset + width < size * 320 ? (
-          <button aria-label="right" type="button" onClick={() => setOffset(scrollRight(offset, width - 125, 320))}>
-            &#10095;
-          </button>
-        ) : null}
+        <button
+          disabled={offset <= 0}
+          className={offset <= 0 ? 'hide' : ''}
+          aria-label="left"
+          type="button"
+          onClick={() => setOffset(scrollLeft(offset, 320))}
+        >
+          &#10094;
+        </button>
+        <button
+          disabled={offset + width >= size * 320}
+          className={offset + width >= size * 320 ? 'hide' : ''}
+          aria-label="right"
+          type="button"
+          onClick={() => setOffset(scrollRight(offset, width - 125, 320, size))}
+        >
+          &#10095;
+        </button>
 
       </div>
     </section>
