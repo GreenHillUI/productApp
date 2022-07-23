@@ -1,21 +1,15 @@
-/**
- * @jest-environment jsdom
- */
-
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-// import { VscTriangleDown } from 'react-icons/vsc';
 import ReviewsList from './ReviewsList';
 import Stars from '../Stars';
 import Characteristics from './Characteristics';
 import store from '../../store';
 
-
 function sortReviews(dispatch, sortMethod) {
-  axios.get(`/a/reviews/${store.getState().productId}?sort=${sortMethod}`)
+  axios.get(`/a/reviews/${store.getState().productId}?sort=${sortMethod}&count=100`)
     .then((response) => {
       dispatch({ type: "SETREVIEWS", reviews: response.data.results });
     })
@@ -27,22 +21,28 @@ function getPercentageRecommended(results) {
   const trues = copy.filter(
     (resultItem) => (resultItem === true)
   );
-  return (trues.length / results.length) * 100;
+  return Math.round((trues.length / results.length) * 100);
 }
 
 function averageToNearestTenth(ratings) {
-
   const total = ratings.reduce(
     (sum, item) => sum + item.rating,
     0,
   );
-  return (total / ratings.length).toFixed(1);
+
+  if (total) {
+    return (total / ratings.length).toFixed(1);
+  }
+
+  return "";
 }
+
 
 // WIP to filter by rating
 function filterByRating(stars) {
   console.log(`You clicked to filter ${stars} stars!`);
 }
+
 
 function addStarAndBar(results, stars) {
   let totalStars = 0;
@@ -68,7 +68,6 @@ function addStarAndBar(results, stars) {
     <div style={{ position: 'absolute' }}>
       <div style={{ float: 'left' }}>{`${stars} stars`}</div>
 
-      {/* background bar */}
       <div style={{
         position: 'absolute',
         height: 8,
@@ -80,7 +79,6 @@ function addStarAndBar(results, stars) {
       }}
       />
 
-      {/* progress bar */}
       <div style={progressStyleObj} />
 
       <br />
@@ -88,86 +86,17 @@ function addStarAndBar(results, stars) {
   );
 }
 
-
-
-
-
-
-// // INCOMPLETE CHARACTERISTICS - MOVED
-// function characteristicsBars(data) {
-
-
-//   function getArrowPosition(value) {
-//     return (value / 5) * 264;
-//   }
-
-//   if (data.Size) {
-
-
-//     return [
-
-//       <div
-//         className="characteristics"
-//         style={{ padding: 10, top: 40 }}
-//       >
-//         <div style={{ bottom: 10 }}>Fit</div>
-
-//         <div style={{
-//           position: 'flex',
-//           height: 8,
-//           left: 100,
-//           width: 264,
-//           background: '#D3D3D3',
-//           bottom: 30,
-//         }}
-//         />
-
-//         <div>
-//           <VscTriangleDown style={{ position: 'relative', left: getArrowPosition(data.Size.value) }} />
-//         </div>
-
-//         <div>
-//           <div style={{ display: 'inline', float: 'left' }}>Runs Tight</div>
-//           <div style={{ display: 'inline', float: 'right' }}>Runs Loose</div>
-//         </div>
-
-
-//       </div>,
-
-
-
-//       // <div className="characteristics">{`${data.Width.value} Width`}</div>,
-
-//       // <div className="characteristics">{`${data.Comfort.value} Comfort`}</div>,
-
-//       // <div className="characteristics">{`${data.Quality.value} Quality`}</div>,
-
-//     ];
-//   }
-
-//   return (<div> LOADING CHARS</div>);
-// }
-
-
-
-
-
-
-
-// Main function
 function Ratings({ results, resultsMeta, setReviews, sort }) {
 
-  // console.log("resultsMeta ", resultsMeta);
   return (
     <div id="ratings-reviews">
 
-      {/* Use generateStars function from Overview */}
       <div>Ratings And Reviews</div>
 
       <div className="review-summary">
 
         <h2 id="big-review-num">
-          <div style={{ float: 'left' }}>{averageToNearestTenth(results) ? averageToNearestTenth(results) : "Loading..."}</div>
+          <div style={{ float: 'left' }}>{averageToNearestTenth(results) ? averageToNearestTenth(results) : ""}</div>
           <div id="review-stars"><Stars rating={averageToNearestTenth(results)} /></div>
         </h2>
 
@@ -176,9 +105,7 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
             ? `${getPercentageRecommended(results)}% of reviews recommend this product`
             : "Loading..."}
         </div>
-
         <br />
-
         <div>
           <div onClick={() => filterByRating(5)} style={{ padding: 10 }}>{addStarAndBar(results, 5)}</div>
           <br />
@@ -192,13 +119,14 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
         </div>
 
         <Characteristics
+          key={resultsMeta.product_id}
           resultsMeta={resultsMeta}
         />
 
       </div>
 
       <ReviewsList
-        id={results.id}
+        key={results.id}
         results={results}
         setReviews={setReviews}
         sort={sort}
@@ -216,7 +144,6 @@ const RatingsContainer = connect(
   (dispatch) => ({
     setReviews: (reviews) => dispatch({ type: "SETREVIEWS", reviews }),
     sort: (sortMethod) => dispatch((dis) => sortReviews(dis, sortMethod)),
-    // filter: (reviews) => dispatch({ type: "FILTERREVIEWS", reviews })
   })
 )(Ratings);
 

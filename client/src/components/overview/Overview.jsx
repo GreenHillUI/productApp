@@ -8,6 +8,7 @@ import StyleSelector from "../StyleSelector";
 import AddToCart from '../addToCart/AddtoCart';
 import Gallery from '../Gallery';
 import Stars from '../Stars';
+import SocialMediaBar from "../SocialMediaBar";
 import { getTotalReviews, handleAllReviewsClick } from './overviewhelpers';
 
 const iconClass = { className: 'closeIcon' };
@@ -15,17 +16,17 @@ const iconClass = { className: 'closeIcon' };
 function Overview({
   productInfo, selectedStyle, metaData, expandedView, setExpandedView
 }) {
-  
+
   const closeIconStyle = { fill: 'black', height: '5em', width: '5em' };
-  
+
   function handleModalClose() {
-    setExpandedView(false); 
+    setExpandedView(false);
   }
 
   const modalCloseButton = (
-    <button 
-      className='overviewModalClose' 
-      type='button' 
+    <button
+      className='overviewModalClose'
+      type='button'
       onClick={handleModalClose}
     >
       <AiOutlineClose style={closeIconStyle} />
@@ -36,7 +37,7 @@ function Overview({
   return (
     <div id='overviewContainer'>
       <IconContext.Provider value={iconClass}>
-        { expandedView 
+        { expandedView
         && <div id='overviewModal'>
           {modalCloseButton}
           <div className="overviewModalView">
@@ -47,11 +48,11 @@ function Overview({
       <div id='overviewProductInfo'>
         <div id='overviewTop'>
           <div id='overviewStars'>
-            Review Score 
-            <Stars rating={metaData} />  
-            <button 
+            Review Score
+            <Stars rating={metaData} />
+            <button
               id='overviewReadAll'
-              type='button' 
+              type='button'
               onClick={handleAllReviewsClick}
             >
               {`  read all  ${totalReviews} reviews  `}
@@ -64,21 +65,22 @@ function Overview({
             {productInfo ? productInfo.name : `Loading`}
           </h1>
           <div className='overviewPrice'>
-            { selectedStyle.sale_price 
+            { selectedStyle.sale_price
               ? (
-                <div> 
+                <div>
                   <s>
                     $ {selectedStyle.original_price}
                   </s>
                   ${selectedStyle.sale_price}!
-                </div>     
+                </div>
               ) : `$${selectedStyle.original_price}` }
           </div>
           <StyleSelector />
           <AddToCart />
+          <SocialMediaBar />
         </div>
-        <Gallery /> 
-    
+        <Gallery />
+
         <div id='overviewTextBlurb'>
           <div className='overviewProductSlogan'>
             {productInfo ? productInfo.slogan : `Loading`}
@@ -89,9 +91,9 @@ function Overview({
             </p>
           </div>
         </div>
-        <ul className='overviewFeatures'> 
+        <ul className='overviewFeatures'>
           Features:
-          { productInfo.features 
+          { productInfo.features
             ? productInfo.features
               .map((feature) => <li key={feature.feature}>
                 <div className='overviewFeatureName'>
@@ -99,8 +101,8 @@ function Overview({
                 </div>
                 <div className='overviewFeatureValue'>
                   {feature.value}
-                </div> 
-              </li>) 
+                </div>
+              </li>)
             : `Loading` }
         </ul>
       </div>
