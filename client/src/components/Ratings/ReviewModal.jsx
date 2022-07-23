@@ -100,36 +100,37 @@ function ReviewModal({ closeModal }) {
             </div>
           </div>
         </div>
-
         <div className="review-modal-selector-container">
           <div> Review Summary </div>
-          <input placeholder="  I really loved this product!" style={{ width: '100%', border: '1px solid black' }} />
+          <input placeholder="  I really loved this product!" />
         </div>
 
-        <div className="review-modal-selector-container">
+        <div className="review-modal-selector-container long-form">
           <div> Why did you like this product or not? </div>
-          <input placeholder="  I really loved this product!" style={{ width: '100%', height: "20px", border: '1px solid black' }} />
+          <input placeholder="  I really loved this product!" />
         </div>
 
         <div className="review-modal-selector-container">
           <div> Your nickname *</div>
-          <input placeholder="  I really loved this product!" style={{ width: '100%', border: '1px solid black' }} />
+          <input placeholder="  I really loved this product!" />
         </div>
 
         <div className="review-modal-selector-container">
           <div> Your email *</div>
-          <input placeholder="  I really loved this product!" style={{ width: '100%', border: '1px solid black' }} />
+          <input placeholder="  I really loved this product!" />
         </div>
 
         <div className="review-modal-footer">
-          <button className="review-button" onClick={() => closeModal(false)}>Submit Review</button>
+          <button
+            className="review-button"
+            onClick={() => closeModal(false)}
+          >
+            Submit Review
+          </button>
         </div>
-
       </div>
-
     </div>
   );
-
 }
 
 export default ReviewModal;

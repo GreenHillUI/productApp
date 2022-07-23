@@ -17,17 +17,13 @@ function characteristicsBars({ resultsMeta }) {
     bottom: 30,
   };
 
-  const charPaddingT = { padding: 10, paddingTop: 20 };
-  const charPaddingB = { padding: 10, paddingBottom: 30 };
-
   if (resultsMeta.Size) {
     return [
 
       <div
-        className="characteristics"
-        style={charPaddingT}
+        className="char-padding-top"
       >
-        <div style={charPaddingB}>Fit</div>
+        <div className="char-padding-top">Fit</div>
         <div style={barStyling} />
         <div>
           <VscTriangleDown
@@ -36,16 +32,15 @@ function characteristicsBars({ resultsMeta }) {
           />
         </div>
         <div>
-          <div style={{ display: 'inline', float: 'left' }}>Runs Tight</div>
+          <div className="char-descriptor-l">Runs Tight</div>
           <div style={{ display: 'inline', float: 'right' }}>Runs Loose</div>
         </div>
       </div>,
 
       <div
-        className="characteristics"
-        style={charPaddingT}
+        className="char-padding-top"
       >
-        <div style={charPaddingB}>Length</div>
+        <div className="char-padding-top">Length</div>
         <div style={barStyling} />
         <div>
           <VscTriangleDown
@@ -54,16 +49,15 @@ function characteristicsBars({ resultsMeta }) {
           />
         </div>
         <div>
-          <div style={{ display: 'inline', float: 'left' }}>Runs Short</div>
+          <div className="char-descriptor-l">Runs Short</div>
           <div style={{ display: 'inline', float: 'right' }}>Runs Long</div>
         </div>
       </div>,
 
       <div
-        className="characteristics"
-        style={charPaddingT}
+        className="char-padding-top"
       >
-        <div style={charPaddingB}>Comfort</div>
+        <div className="char-padding-top">Comfort</div>
         <div style={barStyling} />
         <div>
           <VscTriangleDown
@@ -72,16 +66,15 @@ function characteristicsBars({ resultsMeta }) {
           />
         </div>
         <div>
-          <div style={{ display: 'inline', float: 'left' }}>Uncomfortable</div>
+          <div className="char-descriptor-l">Uncomfortable</div>
           <div style={{ display: 'inline', float: 'right' }}>Perfect</div>
         </div>
       </div>,
 
       <div
-        className="characteristics"
-        style={charPaddingT}
+        className="char-padding-top"
       >
-        <div style={charPaddingB}>Quality</div>
+        <div className="char-padding-top">Quality</div>
         <div style={barStyling} />
         <div>
           <VscTriangleDown
@@ -90,7 +83,7 @@ function characteristicsBars({ resultsMeta }) {
           />
         </div>
         <div>
-          <div style={{ display: 'inline', float: 'left' }}>Poor</div>
+          <div className="char-descriptor-l">Poor</div>
           <div style={{ display: 'inline', float: 'right' }}>Premium</div>
         </div>
 

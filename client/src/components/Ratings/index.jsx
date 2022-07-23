@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -30,11 +28,9 @@ function averageToNearestTenth(ratings) {
     (sum, item) => sum + item.rating,
     0,
   );
-
   if (total) {
     return (total / ratings.length).toFixed(1);
   }
-
   return "";
 }
 
@@ -74,7 +70,9 @@ function addStarAndBar(results, stars) {
   );
 }
 
-function Ratings({ results, resultsMeta, setReviews, sort }) {
+function Ratings({
+  results, resultsMeta, setReviews, sort
+}) {
 
   return (
     <div id="ratings-reviews">
@@ -82,7 +80,7 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
       <div className="review-summary">
         <h2 id="big-review-num">
           <div style={{ float: 'left' }}>{averageToNearestTenth(results) ? averageToNearestTenth(results) : ""}</div>
-          <div id="review-stars"><Stars rating={Math.round(averageToNearestTenth(results))} /></div>
+          <div id="review-stars"><Stars ratings={averageToNearestTenth(results)} /></div>
         </h2>
         <div>
           {getPercentageRecommended(results)
@@ -106,7 +104,6 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
           key={resultsMeta.product_id}
           resultsMeta={resultsMeta}
         />
-
       </div>
 
       <ReviewsList
