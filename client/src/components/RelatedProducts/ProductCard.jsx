@@ -11,7 +11,7 @@ import Stars from '../Stars';
 function ProductsCardComponent({ product, setProductId }) {
   return (
     <li>
-      <button type="button" onClick={() => setProductId(product.id)}>
+      <button type="button" className="product-button" onClick={() => setProductId(product.id)}>
         <img src={product.img} alt={`A thumbnail of ${product.name}`} />
       </button>
       <h3>{`${product.category}`}</h3>

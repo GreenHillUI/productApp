@@ -7,7 +7,7 @@ import Characteristics from './Characteristics';
 import store from '../../store';
 
 function sortReviews(dispatch, sortMethod) {
-  axios.get(`/a/reviews/${store.getState().productId}?sort=${sortMethod}`)
+  axios.get(`/a/reviews/${store.getState().productId}?sort=${sortMethod}&count=100`)
     .then((response) => {
       dispatch({ type: "SETREVIEWS", reviews: response.data.results });
     })
@@ -28,7 +28,7 @@ function averageToNearestTenth(ratings) {
     0,
   );
   if (total) {
-    return (total / ratings.length).toFixed(1);
+    return Number((total / ratings.length).toFixed(1));
   }
   return "";
 }
@@ -79,7 +79,7 @@ function Ratings({
       <div className="review-summary">
         <h2 id="big-review-num">
           <div style={{ float: 'left' }}>{averageToNearestTenth(results) ? averageToNearestTenth(results) : ""}</div>
-          <div id="review-stars"><Stars ratings={averageToNearestTenth(results)} /></div>
+          <div id="review-stars"><Stars rating={averageToNearestTenth(results)} /></div>
         </h2>
         <div>
           {getPercentageRecommended(results)

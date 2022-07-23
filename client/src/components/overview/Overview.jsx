@@ -8,6 +8,7 @@ import StyleSelector from "../StyleSelector";
 import AddToCart from '../addToCart/AddtoCart';
 import Gallery from '../Gallery';
 import Stars from '../Stars';
+import SocialMediaBar from "../SocialMediaBar";
 import { getTotalReviews, handleAllReviewsClick } from './overviewhelpers';
 
 const iconClass = { className: 'closeIcon' };
@@ -76,6 +77,7 @@ function Overview({
           </div>
           <StyleSelector />
           <AddToCart />
+          <SocialMediaBar />
         </div>
         <Gallery /> 
     
