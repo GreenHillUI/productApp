@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { postQ, postA, getQ } from './QAhelp/QArequests';
+import { postQ, postA } from './QAhelp/QArequests';
 
 function QModal({ pID }) {
   // const qModal = useSelector((state) => state.qList.mo)
