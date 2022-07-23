@@ -31,7 +31,7 @@ function averageToNearestTenth(ratings) {
   );
 
   if (total) {
-    return (total / ratings.length).toFixed(1);
+    return Number((total / ratings.length).toFixed(1));
   }
 
   return "";
