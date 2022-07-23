@@ -20,7 +20,7 @@
   border: solid 2px rgb(130, 130, 130);
 }
 
-#related-products a {
+#related-products button {
   display: block;
   background-color: rgb(235, 235, 235);
   width: 100%;
