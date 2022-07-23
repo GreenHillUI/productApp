@@ -11,7 +11,6 @@ function ReviewsList({ results, sort }) {
   const [openModal, setOpenModal] = useState(false);
 
   function handleOptionChange(event) {
-    console.log(event.target.value);
     sort(event.target.value);
   }
 
@@ -21,13 +20,7 @@ function ReviewsList({ results, sort }) {
         <div>{`${results.length} reviews, sorted by`}</div>
 
         <select
-          style={{
-            position: 'relative',
-            left: 150,
-            bottom: 18,
-            background: 'transparent',
-            border: 'none',
-          }}
+          id="sort-dd"
           onChange={handleOptionChange}
         >
           <option value="relevant">Relevant</option>
@@ -59,7 +52,6 @@ function ReviewsList({ results, sort }) {
           className='review-button'
           type="button"
           onClick={() => setCount(count + 1)}
-          style={{ float: 'left' }}
         >
           Show More
         </button>
@@ -69,7 +61,6 @@ function ReviewsList({ results, sort }) {
         className='review-button'
         type="button"
         onClick={() => { setOpenModal(true); }}
-        style={{ float: 'left' }}
       >
         Add A Review +
       </button>

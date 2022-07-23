@@ -1,4 +1,3 @@
-/* eslint-disable react/button-has-type */
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { RiCloseLine } from "react-icons/ri";
@@ -92,13 +91,10 @@ function ReviewModal({ closeModal }) {
             <input TYPE="Radio" Name="Quality" Value={5} onChange={() => handleOptionClick(5)} />
           </div>
           <div className="modal-chars">
-            <div className="review-desc-left">
-              Poor
-            </div>
-            <div className="review-desc-right">
-              Premium
-            </div>
+            <div className="review-desc-left">Poor</div>
+            <div className="review-desc-right">Premium</div>
           </div>
+
         </div>
         <div className="review-modal-selector-container">
           <div> Review Summary </div>
@@ -122,6 +118,7 @@ function ReviewModal({ closeModal }) {
 
         <div className="review-modal-footer">
           <button
+            type="button"
             className="review-button"
             onClick={() => closeModal(false)}
           >

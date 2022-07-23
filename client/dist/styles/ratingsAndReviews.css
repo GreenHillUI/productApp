@@ -40,7 +40,7 @@
   border: 1px solid black;
   font-weight: bold;
   font-size: .85em;
-
+  float:left;
 }
 
 #review-title {
@@ -140,4 +140,18 @@
 .char-descriptor-l {
   display: 'inline';
   float: 'left';
+}
+
+#recommend-text {
+  position: 'relative';
+  left: 24px;
+  bottom: 18px;
+}
+
+#sort-dd {
+  position: relative ;
+  left: 150px;
+  bottom: 18px;
+  background: transparent;
+  border: 'none';
 }

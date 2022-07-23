@@ -32,7 +32,7 @@ function characteristicsBars({ resultsMeta }) {
           />
         </div>
         <div>
-          <div className="char-descriptor-l">Runs Tight</div>
+          <div style={{ display: 'inline', float: 'left' }}>Runs Tight</div>
           <div style={{ display: 'inline', float: 'right' }}>Runs Loose</div>
         </div>
       </div>,
@@ -49,7 +49,7 @@ function characteristicsBars({ resultsMeta }) {
           />
         </div>
         <div>
-          <div className="char-descriptor-l">Runs Short</div>
+          <div style={{ display: 'inline', float: 'left' }}>Runs Short</div>
           <div style={{ display: 'inline', float: 'right' }}>Runs Long</div>
         </div>
       </div>,
@@ -66,7 +66,7 @@ function characteristicsBars({ resultsMeta }) {
           />
         </div>
         <div>
-          <div className="char-descriptor-l">Uncomfortable</div>
+          <div style={{ display: 'inline', float: 'left' }}>Uncomfortable</div>
           <div style={{ display: 'inline', float: 'right' }}>Perfect</div>
         </div>
       </div>,
@@ -83,7 +83,7 @@ function characteristicsBars({ resultsMeta }) {
           />
         </div>
         <div>
-          <div className="char-descriptor-l">Poor</div>
+          <div style={{ display: 'inline', float: 'left' }}>Poor</div>
           <div style={{ display: 'inline', float: 'right' }}>Premium</div>
         </div>
 
