@@ -8,10 +8,17 @@ import Stars from '../Stars';
  * @param {props} product Product object retrieved from API to be rendered
  * @returns list item containing product card
  */
-function ProductsCardComponent({ product, setProductId }) {
+function ProductsCardComponent({ product, setProductId, setOffset }) {
   return (
     <li>
-      <button type="button" className="product-button" onClick={() => setProductId(product.id)}>
+      <button
+        type="button"
+        className="product-button"
+        onClick={() => {
+          setProductId(product.id);
+          setOffset(0);
+        }}
+      >
         <img src={product.img} alt={`A thumbnail of ${product.name}`} />
       </button>
       <h3>{`${product.category}`}</h3>

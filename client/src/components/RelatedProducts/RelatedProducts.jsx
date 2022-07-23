@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 import Card from './ProductCard';
@@ -7,7 +6,7 @@ import Card from './ProductCard';
 const leniency = 25;
 
 function scrollLeft(offset, cardWidth) {
-  const cards = Math.ceil((offset + 125) / cardWidth) - 1;
+  const cards = Math.ceil((offset + 125 - leniency) / cardWidth) - 1;
   if (cards <= 0) return 0;
   return cards * cardWidth - 125;
 }
@@ -37,7 +36,7 @@ function RelatedProductsComponent({ related }) {
       <div className="product-carrousel">
 
         <ul style={{ marginLeft: -offset }}>
-          {related.map((product) => <Card key={product.id} product={product} />)}
+          {related.map((product) => <Card key={product.id} product={product} setOffset={setOffset} />)}
         </ul>
 
         <button
