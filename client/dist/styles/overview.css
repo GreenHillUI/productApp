@@ -1,6 +1,6 @@
 #overviewProductInfo {
   display: grid;
-  grid-template-columns: repeat(2, 700px);
+  grid-template-columns: repeat(2, minmax(400px, 700px));
   grid-template-rows: 600px 200px;
   justify-content: center;
 }
@@ -13,7 +13,7 @@
 
 #overviewTextBlurb{
   transform: translateY(20px);
-  width: 650px;
+  width: minmax(400px, auto);
 }
 
 .overviewProductCategory{
@@ -29,7 +29,7 @@
 }
 
 #overviewTop{
-  margin-left: 1em;
+  margin-left: 10em;
 }
 
 .overviewProductSlogan{
@@ -67,7 +67,9 @@
   transform: translateY(20px)
 }
 
+
 .overviewFeatures{
+  display: inline-table;
   justify-self: center;
   list-style-type: disclosure-closed;
   transform: translate(-100px, 12px);
@@ -75,9 +77,10 @@
 }
 
 
-#overviewFeatures li {
+.overviewFeatures li {
  padding: 6px;
 }
+
 
 
 #socialMediaBar{
@@ -93,7 +96,6 @@
 
 .socialMediaButton{
   padding: 2px;
-
   background-color: transparent;
 
 }
