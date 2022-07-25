@@ -42,7 +42,8 @@ class Setter extends React.Component {
         setMetaCharacteristics(response.data.characteristics);
       })
       .catch((err) => console.log(err));
-    
+
+
     axios.get(`/a/reviews/${productId}`)
       .then((res) => {
         setReviews(res.data.results);
@@ -54,7 +55,7 @@ class Setter extends React.Component {
         setProductQs(res.data);
       })
       .catch((err) => { console.log(err); });
-      
+
     return null;
   }
 

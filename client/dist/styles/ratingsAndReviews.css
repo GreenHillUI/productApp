@@ -40,7 +40,7 @@
   border: 1px solid black;
   font-weight: bold;
   font-size: .85em;
-
+  float:left;
 }
 
 #review-title {
@@ -115,4 +115,43 @@
   font-size: 24px;
   padding-bottom: 5px;
   padding-top: 5px;
+}
+
+.star-bar {
+  padding: 10px;
+}
+
+.long-form {
+  width: '100%';
+  height: "20px";
+  border: '1px solid black'
+}
+
+.char-padding-top {
+  padding: 10px;
+  padding-top: 20px;
+}
+
+.char-padding-bottom {
+  padding: 10px;
+  padding-bottom: 30px;
+}
+
+.char-descriptor-l {
+  display: 'inline';
+  float: 'left';
+}
+
+#recommend-text {
+  position: 'relative';
+  left: 24px;
+  bottom: 18px;
+}
+
+#sort-dd {
+  position: relative ;
+  left: 150px;
+  bottom: 18px;
+  background: transparent;
+  border: 'none';
 }
