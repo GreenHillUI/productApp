@@ -17,17 +17,13 @@ function characteristicsBars({ resultsMeta }) {
     bottom: 30,
   };
 
-  const charPaddingT = { padding: 10, paddingTop: 20 };
-  const charPaddingB = { padding: 10, paddingBottom: 30 };
-
   if (resultsMeta.Size) {
     return [
 
       <div
-        className="characteristics"
-        style={charPaddingT}
+        className="char-padding-top"
       >
-        <div style={charPaddingB}>Fit</div>
+        <div className="char-padding-top">Fit</div>
         <div style={barStyling} />
         <div>
           <VscTriangleDown
@@ -42,10 +38,9 @@ function characteristicsBars({ resultsMeta }) {
       </div>,
 
       <div
-        className="characteristics"
-        style={charPaddingT}
+        className="char-padding-top"
       >
-        <div style={charPaddingB}>Length</div>
+        <div className="char-padding-top">Length</div>
         <div style={barStyling} />
         <div>
           <VscTriangleDown
@@ -60,10 +55,9 @@ function characteristicsBars({ resultsMeta }) {
       </div>,
 
       <div
-        className="characteristics"
-        style={charPaddingT}
+        className="char-padding-top"
       >
-        <div style={charPaddingB}>Comfort</div>
+        <div className="char-padding-top">Comfort</div>
         <div style={barStyling} />
         <div>
           <VscTriangleDown
@@ -78,10 +72,9 @@ function characteristicsBars({ resultsMeta }) {
       </div>,
 
       <div
-        className="characteristics"
-        style={charPaddingT}
+        className="char-padding-top"
       >
-        <div style={charPaddingB}>Quality</div>
+        <div className="char-padding-top">Quality</div>
         <div style={barStyling} />
         <div>
           <VscTriangleDown

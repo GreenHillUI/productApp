@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
@@ -29,32 +27,20 @@ function averageToNearestTenth(ratings) {
     (sum, item) => sum + item.rating,
     0,
   );
-
   if (total) {
     return Number((total / ratings.length).toFixed(1));
   }
-
   return "";
 }
 
-
-// WIP to filter by rating
-function filterByRating(stars) {
-  console.log(`You clicked to filter ${stars} stars!`);
-}
-
-
 function addStarAndBar(results, stars) {
   let totalStars = 0;
-
   results.forEach((review) => {
     if (review.rating === stars) {
       totalStars++;
     }
   });
-
   const percentageOfMax = (totalStars / results.length) * 200;
-
   const progressStyleObj = {
     position: 'absolute',
     height: 8,
@@ -67,7 +53,6 @@ function addStarAndBar(results, stars) {
   return (
     <div style={{ position: 'absolute' }}>
       <div style={{ float: 'left' }}>{`${stars} stars`}</div>
-
       <div style={{
         position: 'absolute',
         height: 8,
@@ -78,28 +63,24 @@ function addStarAndBar(results, stars) {
         top: 4,
       }}
       />
-
       <div style={progressStyleObj} />
-
       <br />
     </div>
   );
 }
 
-function Ratings({ results, resultsMeta, setReviews, sort }) {
+function Ratings({
+  results, resultsMeta, setReviews, sort
+}) {
 
   return (
     <div id="ratings-reviews">
-
       <div>Ratings And Reviews</div>
-
       <div className="review-summary">
-
         <h2 id="big-review-num">
           <div style={{ float: 'left' }}>{averageToNearestTenth(results) ? averageToNearestTenth(results) : ""}</div>
           <div id="review-stars"><Stars rating={averageToNearestTenth(results)} /></div>
         </h2>
-
         <div>
           {getPercentageRecommended(results)
             ? `${getPercentageRecommended(results)}% of reviews recommend this product`
@@ -107,22 +88,21 @@ function Ratings({ results, resultsMeta, setReviews, sort }) {
         </div>
         <br />
         <div>
-          <div onClick={() => filterByRating(5)} style={{ padding: 10 }}>{addStarAndBar(results, 5)}</div>
+          <div className="star-bar">{addStarAndBar(results, 5)}</div>
           <br />
-          <div onClick={() => filterByRating(4)} style={{ padding: 10 }}>{addStarAndBar(results, 4)}</div>
+          <div className="star-bar">{addStarAndBar(results, 4)}</div>
           <br />
-          <div onClick={() => filterByRating(3)} style={{ padding: 10 }}>{addStarAndBar(results, 3)}</div>
+          <div className="star-bar">{addStarAndBar(results, 3)}</div>
           <br />
-          <div onClick={() => filterByRating(2)} style={{ padding: 10 }}>{addStarAndBar(results, 2)}</div>
+          <div className="star-bar">{addStarAndBar(results, 2)}</div>
           <br />
-          <div onClick={() => filterByRating(1)} style={{ padding: 10 }}>{addStarAndBar(results, 1)}</div>
+          <div className="star-bar">{addStarAndBar(results, 1)}</div>
         </div>
 
         <Characteristics
           key={resultsMeta.product_id}
           resultsMeta={resultsMeta}
         />
-
       </div>
 
       <ReviewsList
