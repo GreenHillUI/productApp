@@ -42,6 +42,25 @@
   right: 0;
   justify-content: right;
 }
+.product-carrousel .hide {
+  animation-name: hidebutton;
+  animation-duration: .6s;
+  animation-fill-mode: forwards;
+}
+@keyframes hidebutton {
+  from {
+    opacity: 1;
+    z-index: 1;
+  }
+  99% {
+    opacity: 0.01;
+    z-index: 1;
+  }
+  to {
+    opacity: 0;
+    z-index: -1;
+  }
+}
 
 /********************* END CARROUSEL BUTTONS *********************/
 /********************* START PRODUCT CARD *********************/
