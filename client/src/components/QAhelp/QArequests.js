@@ -1,10 +1,13 @@
 /* eslint-disable camelcase */
 const axios = require('axios');
 
-module.exports.getQ = (qID) => (
-  axios.get(`a/questions/${qID}?count=${100}`)
+module.exports.getQ = (pID) => (
+  axios.get(`a/questions/${pID}?count=${100}`)
     .then((res) => res.data)
     .catch((err) => console.error(err))
+);
+module.exports.getA = (qID) => (
+  axios.get(`a/answers/${qID}?count=${100}`)
 );
 module.exports.postQ = (qObj) => {
   axios.post(`/a/questions/${qObj.product_id}`, qObj)
@@ -16,7 +19,6 @@ module.exports.markQ = (qID) => {
     .then((res) => res)
     .catch((err) => console.error(err, 'unsucessful put req'));
 };
-
 module.exports.postA = (aObj) => {
   axios.post(`/a/answers/${aObj.question_id}`, aObj)
     .then((res) => res)

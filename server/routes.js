@@ -37,7 +37,7 @@ function apiPutRequest(req, res, path) {
 /**
  * PATH
  * /a/products
- * 
+ *
  * QUERY PARAMETERS
  * page (default 1)
  * count (default 5)
@@ -59,7 +59,7 @@ routes.get('/products/:product_id/:info(styles|related)?', (req, res) => {
  * PATHS
  * /a/reviews/40348
  * /a/reviews/40348/meta
- * 
+ *
  * QUERY PARAMETERS (only applicable non-meta request)
  * page (default 1)
  * count (default 5)
@@ -70,13 +70,13 @@ routes.get('/reviews/:product_id/:meta(meta)?', (req, res) => {
     ? '/reviews/meta'
     : '/reviews';
   req.query.product_id = req.params.product_id;
-  
+
   apiGetRequest(req, res, path);
 });
 /**
  * PATHS
  * /a/reviews/40348
- * 
+ *
  * BODY PARAMETERS
  * rating           (int)
  * summary          (text)
@@ -103,7 +103,7 @@ routes.put('/reviews/:review_id/:action(helpful|report)', (req, res) => {
 /**
  * PATHS
  * /a/questions/40349
- * 
+ *
  * QUERY PARAMETERS
  * page (default 1)
  * count (default 5)
@@ -133,18 +133,19 @@ routes.put('/questions/:product_id/:action(helpful|report)', (req, res) => {
 /**
  * PATHS
  * /a/answers/40349
- * 
+ *
  * QUERY PARAMETERS
  * page (default 1)
  * count (default 5)
  */
 routes.get('/answers/:question_id', (req, res) => {
   const path = `/qa/questions/${req.params.question_id}/answers`;
+  console.log(path);
   apiGetRequest(req, res, path);
 });
 /**
  * /a/answers/40349
- * 
+ *
  * BODY PARAMETERS
  * body    (text)
  * name    (text)

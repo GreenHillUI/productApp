@@ -21,9 +21,8 @@ function authorize(config = {}) {
  */
 module.exports.get = (endpoint, config) => {
   const url = new URL(join(api, endpoint)).href;
-
   const options = authorize(config);
-
+  // console.log(url, options);
   return axios.get(url, options);
 };
 
